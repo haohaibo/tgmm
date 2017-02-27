@@ -1,0 +1,16 @@
+/*
+ * Copyright 2017 Haibo Hao
+ * Author: haohaibo
+ * Email: haohaibo@ncic.ac.cn  haohaibo031113@163.com
+*/
+
+ccmake的时候，将release改为debug　即可调试
+
+suppose executable file: TGMM
+
+gdb TGMM
+
+set args  ../data/TGMM_configFile_linux.txt 0 30
+
+
+layout src #show current source code

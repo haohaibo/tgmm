@@ -1,0 +1,10 @@
+#ifndef __CONSTANTS_RULES_H__
+#define __CONSTANTS_RULES_H__
+
+
+#ifndef DIMS_IMAGE_CONST //to protect agains teh same constant define in other places in the code
+#define DIMS_IMAGE_CONST
+static const int dimsImage = 3;//to be able to precompile code
+#endif
+
+#endif

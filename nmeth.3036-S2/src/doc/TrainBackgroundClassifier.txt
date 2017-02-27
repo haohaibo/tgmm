@@ -1,0 +1,18 @@
+HOW TO TRAIN BACKGROUND CLASSIFIER
+
+
+1.-You need to parse CATMAID annotations into binary files (with segmentation information) on your own hard drive.
+
+	CATMAIDinterface::mainCATMAIDinterface.cpp::mainParseMatchHS2CatmaidAnnotations
+
+2.-Parse the annotations from CATMAID generated in step 1 into training data (confidence = 4 -> background; confidence = 5-> foreground ). Training data is a generic xTrain, yTrain arrays.
+
+	BackgroundDetectionTrain::mainBackgroundDetection.cpp::mainExtractFeatures
+
+3.-Train classifier (it will save a txt file with the generated classifier )
+	
+	GentleBoost_MainTrain::mainTrainSet.cxx::main
+
+4.-(Optional) Active learning: run the classifier on the data and check the results in CATMAID to improve training set
+
+	BackgroundDetectionTrain::mainBackgroundDetection.cpp::mainTestFeatures

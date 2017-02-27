@@ -1,0 +1,56 @@
+/*
+ * Copyright 1993-2010 NVIDIA Corporation.  All rights reserved.
+ *
+ * NVIDIA Corporation and its licensors retain all intellectual property and
+ * proprietary rights in and to this software and related documentation.
+ * Any use, reproduction, disclosure, or distribution of this software
+ * and related documentation without an express license agreement from
+ * NVIDIA Corporation is strictly prohibited.
+ *
+ * Please refer to the applicable NVIDIA end user license agreement (EULA)
+ * associated with this source code for terms and conditions that govern
+ * your use of this NVIDIA software.
+ *
+ */
+
+
+#ifndef __BOOK_H__
+#define __BOOK_H__
+#include <stdio.h>
+
+static void HandleError( cudaError_t err,
+                         const char *file,
+                         int line ) {
+    if (err != cudaSuccess) {
+        printf( "%s in %s at line %d\n", cudaGetErrorString( err ),
+                file, line );
+        exit( EXIT_FAILURE );
+    }
+}
+
+
+
+#define HANDLE_ERROR_KERNEL HandleError(cudaPeekAtLastError(),__FILE__, __LINE__ )
+
+#define HANDLE_ERROR( err ) (HandleError( err, __FILE__, __LINE__ ))
+
+#define HANDLE_NULL( a ) {if (a == NULL) { \
+                            printf( "Host memory failed in %s at line %d\n", \
+                                    __FILE__, __LINE__ ); \
+                            exit( EXIT_FAILURE );}}
+
+static void HandleError( cudaError_t err,
+                         const char *file,
+                         int line, const char *msg) {
+    if (err != cudaSuccess) 
+	{
+        printf( "%s in %s at line %d\n", cudaGetErrorString( err ), file, line );
+		printf( "User msg %s\n", msg);
+
+        exit( EXIT_FAILURE );
+    }
+}
+
+#define HANDLE_ERROR_KERNEL_MSG( msg ) ( HandleError(cudaPeekAtLastError(),__FILE__, __LINE__ , msg) )
+
+#endif  // __BOOK_H__
