@@ -1003,137 +1003,158 @@ int checkRegionMerge(const imgVoxelType* img, const vector<ForegroundVoxel>& for
 	return 0;
 }
 
-//===================================================================
-int64* buildNeighboorhoodConnectivity(int conn3D, const int64* imgDims,
- 						int64* boundarySize)
+//=====================================================
+int64* buildNeighboorhoodConnectivity(int conn3D,
+	const int64* imgDims,int64* boundarySize)
+ 	
 {
 	int64 *neighOffset= new int64[conn3D];
 
-    //margin we need to calculate connected components
+        //margin we need to calculate connected components
 	//int64 boundarySize[dimsImage];
 
-	//VIP: NEIGHOFFSET HAS TO BE IN ORDER (FROM LOWEST OFFSET TO
-	//HIGHEST OFFSET IN ORDER TO CALCULATE FAST IF WE ARE IN A BORDER)
+	//VIP: NEIGHOFFSET HAS TO BE IN ORDER
+	//(FROM LOWEST OFFSET TO HIGHEST OFFSET IN ORDER 
+	//TO CALCULATE FAST IF WE ARE IN A BORDER)
+	
 	switch(conn3D)
 	{
-    //4 connected component (so considering neighbors only
-	//in 2D slices)
+        //4 connected component (so considering neighbors 
+	//only in 2D slices)
 	case 4:
-		{
-			neighOffset[1]=-1;neighOffset[2]=1;
-			neighOffset[0]=-imgDims[0];neighOffset[3]=imgDims[0];
+	    {
+  		  neighOffset[1]=-1;
+		  neighOffset[2]=1;
+		  neighOffset[0]=-imgDims[0];
+		  neighOffset[3]=imgDims[0];
 
-			boundarySize[0] = 1; boundarySize[1] = 1;
-		    boundarySize[2] = 0;
-			break;
-		}
-    //6 connected components as neighborhood
+		  boundarySize[0] = 1;
+		  boundarySize[1] = 1;
+		  boundarySize[2] = 0;
+		  break;
+	    }
+        //6 connected components as neighborhood
 	case 6:
-		{
-			neighOffset[2]=-1;neighOffset[3]=1;
-			neighOffset[1]=-imgDims[0]; neighOffset[4]=imgDims[0];
-			neighOffset[0]=-imgDims[0]*imgDims[1];
-		    neighOffset[5]=imgDims[0]*imgDims[1];         
+	    {
+ 		  neighOffset[2]=-1;
+		  neighOffset[3]=1;
+		  neighOffset[1]=-imgDims[0];
+		  neighOffset[4]=imgDims[0];
+		  neighOffset[0]=-imgDims[0]*imgDims[1];
+		  neighOffset[5]=imgDims[0]*imgDims[1];         
 
-			boundarySize[0] = 1; boundarySize[1] = 1;
-            boundarySize[2] = 1;
-			break;
-		}
-    //8 connected component (so considering neighbors only 
-	//in 2D slices)
+		  boundarySize[0] = 1;
+		  boundarySize[1] = 1;
+                  boundarySize[2] = 1;
+		  break;
+	    }
+        //8 connected component (so considering neighbors 
+	//only in 2D slices) 
 	case 8:
-		{
-			int countW=0;
-			for(int64 yy=-1;yy<=1;yy++)
-			{
-				for(int64 xx=-1;xx<=1;xx++)
-				{
-					if(yy==0 && xx==0) 
-						continue;//skipp the middle point
-					neighOffset[countW++] = xx+imgDims[0]*yy;
-				}
-			}
+	    {
+		  int countW=0;
+		  for(int64 yy=-1;yy<=1;yy++)
+		  {
+		    for(int64 xx=-1;xx<=1;xx++)
+		    {
+			if(yy==0 && xx==0) 
+			  continue;//skipp the middle point
 
-			if(countW!=8)
-			{
-				cout<<"ERROR: at watershedPersistanceAgglomeration: Window size structure has not been completed correctly"<<endl;
+			neighOffset[countW++] = xx+imgDims[0]*yy;
+		    }
+		  }
+
+		  if(countW!=8)
+		  {
+		    cout<<"ERROR: at watershedPersistanceAgglomeration: Window size structure has not been completed correctly"<<endl;
 				return NULL;
-			}
+		  }
 
-			boundarySize[0] = 1; boundarySize[1] = 1; boundarySize[2] = 0;
+			boundarySize[0] = 1;
+		       	boundarySize[1] = 1;
+		       	boundarySize[2] = 0;
 			break;
-		}
-    //a cube around teh pixel in 3D
+	    }
+        //a cube around the pixel in 3D
 	case 26:
+	    {
+	        int countW=0;
+	        for(int64 zz=-1;zz<=1;zz++)
+	            for(int64 yy=-1;yy<=1;yy++)
+	   	        for(int64 xx=-1;xx<=1;xx++)
+			    {
+			        if(zz==0 && yy==0 && xx==0) 
+				    continue;//skipp the middle point
+
+				 neighOffset[countW++] = 
+				    xx+imgDims[0]*(yy+imgDims[1]*zz);
+			    }
+	         if(countW!=26)
+		 {
+		     cout<<"ERROR: at watershedPersistanceAgglomeration: Window size structure has not been completed correctly"<<endl;
+		     return NULL;
+		 }
+
+  		 boundarySize[0] = 1;
+		 boundarySize[1] = 1;
+		 boundarySize[2] = 1;
+		 break;
+	    }
+
+        //especial case for nuclei in DLSM: [2,2,1] radius windows 
+        //to make sure local maxima are not that local
+	case 74:
+	    {
+	      int countW=0;
+	      for(int64 zz=-1;zz<=1;zz++)
+	         for(int64 yy=-2;yy<=2;yy++)
+		     for(int64 xx=-2;xx<=2;xx++)
+		     {
+		         if(zz==0 && yy==0 && xx==0)
+			     continue;//skipp the middle point
+
+			 neighOffset[countW++]=xx+
+			     imgDims[0]*(yy+imgDims[1]*zz);
+		     }
+
+	      if(countW!=74)
 		{
-			int countW=0;
-			for(int64 zz=-1;zz<=1;zz++)
-				for(int64 yy=-1;yy<=1;yy++)
-					for(int64 xx=-1;xx<=1;xx++)
-					{
-						if(zz==0 && yy==0 && xx==0) 
-							continue;//skipp the middle point
-						neighOffset[countW++] = 
-							xx+imgDims[0]*(yy+imgDims[1]*zz);
-					}
-					if(countW!=26)
-					{
-						cout<<"ERROR: at watershedPersistanceAgglomeration: Window size structure has not been completed correctly"<<endl;
-						return NULL;
-					}
-					boundarySize[0] = 1; boundarySize[1] = 1;
-				    boundarySize[2] = 1;
-					break;
+		   cout<<"ERROR: at watershedPersistanceAgglomeration: Window size structure has not been completed correctly"<<endl;
+		   return NULL;
 		}
 
-    //especial case for nuclei in DLSM: [2,2,1] radius windows 
-    //to make sure local maxima are not that local
-	case 74:
-		{
-			int countW=0;
-			for(int64 zz=-1;zz<=1;zz++)
-				for(int64 yy=-2;yy<=2;yy++)
-					for(int64 xx=-2;xx<=2;xx++)
-					{
-						if(zz==0 && yy==0 && xx==0)
-					        continue;//skipp the middle point
-						neighOffset[countW++]=xx+
-							imgDims[0]*(yy+imgDims[1]*zz);
-					}
-					if(countW!=74)
-					{
-						cout<<"ERROR: at watershedPersistanceAgglomeration: Window size structure has not been completed correctly"<<endl;
-						return NULL;
-					}
-					boundarySize[0] = 2; boundarySize[1] = 2;
-				    boundarySize[2] = 1;
-					break;
-		}
+	      boundarySize[0] = 2;
+	      boundarySize[1] = 2;
+ 	      boundarySize[2] = 1;
+	      break;
+	    }
 
 		//especial case to coarsely xplore negihborhood around
 		// [+-6,+-3,0] in XY and [+-1,0] in Z. It is also 74 
 		//elements but we need to distinguish it from above
-		case 75:
-		{
-			int countW=0;
-			for(int64 zz=-1;zz<=1;zz++)
-				for(int64 yy=-6;yy<=6;yy+=3)
-					for(int64 xx=-6;xx<=6;xx+=3)
-					{
-						if(zz==0 && yy==0 && xx==0)
-							 continue;//skipp the middle point
-						neighOffset[countW++]=xx+
-							imgDims[0]*(yy+imgDims[1]*zz);
-					}
-					if(countW!=74)
-					{
-						cout<<"ERROR: at watershedPersistanceAgglomeration: Window size structure has not been completed correctly"<<endl;
-						return NULL;
-					}
-					boundarySize[0] = 6; boundarySize[1] = 6;
-				    boundarySize[2] = 1;
-					break;
-		}
+	case 75:
+	   {
+	     int countW=0;
+	     for(int64 zz=-1;zz<=1;zz++)
+	       for(int64 yy=-6;yy<=6;yy+=3)
+	         for(int64 xx=-6;xx<=6;xx+=3)
+		 {
+		    if(zz==0 && yy==0 && xx==0)
+		        continue;//skipp the middle point
+		    neighOffset[countW++]=xx+
+			imgDims[0]*(yy+imgDims[1]*zz);
+		 }
+	     if(countW!=74)
+	     {
+		cout<<"ERROR: at watershedPersistanceAgglomeration: Window size structure has not been completed correctly"<<endl;
+		return NULL;
+	     }
+
+	     boundarySize[0] = 6; 
+	     boundarySize[1] = 6;
+	     boundarySize[2] = 1;
+	     break;
+	   }
 	default:
 		cout<<"ERROR: at watershedPersistanceAgglomeration: Code not ready for these connected components"<<endl;
 		return NULL;
@@ -1142,17 +1163,22 @@ int64* buildNeighboorhoodConnectivity(int conn3D, const int64* imgDims,
 	return neighOffset;
 }
 
-//===================================================================
+//====================================================
 void selectForegroundElements(const imgVoxelType* img, 
-  const int64* imgDims, imgVoxelType backgroundThr, int conn3D,
-  vector<ForegroundVoxel>& foregroundVec, imgLabelType* imgL, 
-  int64* numForegroundElementsPerSlice)
+  const int64* imgDims, imgVoxelType backgroundThr,
+  int conn3D,vector<ForegroundVoxel>& foregroundVec,
+  imgLabelType* imgL,int64* numForegroundElementsPerSlice)
+  
 {
 
-	if( dimsImage !=3)
+	if(dimsImage !=3)
 	{
-	 //TODO: it might be easy to geenralize to any full [xx,yy,zz]
-	 //but it might be harder to geenralize for 2n connectivity 
+	 //TODO:it might be easy to geenralize to any
+	 //full [xx,yy,zz]
+	 
+	 //but it might be harder to geenralize for 2n
+	 //connectivity 
+	 
 	 //since it is not a nested for loop
 		cout<<"ERROR: selectForegroundElements at: code is not ready for this kind or conn3D or this dimensionality. Conn3D = "<<conn3D<<"; dimsImage = "<<dimsImage<<endl;
 		exit(3);
@@ -1160,19 +1186,23 @@ void selectForegroundElements(const imgVoxelType* img,
 
 	const int lastDim = dimsImage - 1;
 	foregroundVec.clear();
-	if (numForegroundElementsPerSlice != NULL)//reset counter
-		memset(numForegroundElementsPerSlice, 0,
-			 sizeof(int64) * imgDims[lastDim]);
 
-    //keeps image coordinates to decide if we are close to 
-    //a border
+	//reset counter
+	if(numForegroundElementsPerSlice != NULL)
+	    memset(numForegroundElementsPerSlice, 0,
+	      sizeof(int64) * imgDims[lastDim]);
+
+        //keeps image coordinates to decide if we are 
+	//close to a border 
 	int64 imgCoord[dimsImage];
 	memset(imgCoord,0,sizeof(uint64) * dimsImage);
 	int count;
 	bool isBorder;
 	int64 boundarySize[dimsImage];
-	int64* neighOffset = buildNeighboorhoodConnectivity(conn3D,
-				imgDims,boundarySize);
+	int64* neighOffset = 
+          buildNeighboorhoodConnectivity(conn3D,imgDims,
+			  boundarySize);
+				
 
 	uint64 imgSize = imgDims[0];
 	for(int ii = 1;ii<dimsImage;ii++) 
@@ -1180,40 +1210,41 @@ void selectForegroundElements(const imgVoxelType* img,
 
 	if(imgL != NULL )
      	//reset image label as background
-		memset(imgL, 0, sizeof(imgLabelType) * imgSize );
+       	  memset(imgL, 0, sizeof(imgLabelType) * imgSize );
 
 	for(uint64 ii=0;ii<imgSize;ii++)
 	{
-		if(img[ii] > backgroundThr)
+          if(img[ii] > backgroundThr)
+	  {
+            //decide if we are close to a border
+	    isBorder = false;
+     	    for(int jj =0; jj<dimsImage; jj++)
+	    {
+  	      if(imgCoord[jj]<boundarySize[jj] ||
+	        imgCoord[jj]>=imgDims[jj]-boundarySize[jj])
 		{
-			//decide if we are close to a border
-			isBorder = false;
-			for(int jj =0; jj<dimsImage; jj++)
-			{
-				if( imgCoord[jj]<boundarySize[jj] ||
-					 imgCoord[jj] >= imgDims[jj]-boundarySize[jj] )
-				{
-					isBorder = true;
-					break;
-				}
-			}
-			//save values
-			foregroundVec.push_back( 
-				ForegroundVoxel(ii, img[ii], isBorder));
-			if (numForegroundElementsPerSlice != NULL)
-				numForegroundElementsPerSlice [ imgCoord[lastDim] ]++;
+		  isBorder = true;
+		  break;
 		}
+	    }
+	    //save values
+	    foregroundVec.push_back( 
+    	      ForegroundVoxel(ii, img[ii], isBorder));
+    	    if(numForegroundElementsPerSlice != NULL)
+	      numForegroundElementsPerSlice[
+		         imgCoord[lastDim]]++;
+	   }
 
-		//upgrade counter for coordinates
-		count = 0;
-		imgCoord[0]++;
-		while( imgCoord[count] >= imgDims[count])
-		{
-			imgCoord[count] = 0;
-			count++;
-			if(count >= dimsImage) break;
-			imgCoord[count]++;
-		}
+	   //upgrade counter for coordinates
+	   count = 0;
+	   imgCoord[0]++;
+	   while( imgCoord[count] >= imgDims[count])
+	   {
+		imgCoord[count] = 0;
+		count++;
+		if(count >= dimsImage) break;
+		imgCoord[count]++;
+	   }
 	}
 	delete[] neighOffset;
 }
@@ -1291,7 +1322,10 @@ int averageNumberOfNeighborsPerRegion(const imgLabelType* imgL,const int64* imgD
 
 //=======================================================
 
-hierarchicalSegmentation* buildHierarchicalSegmentation(imgVoxelType *img, const int64 *imgDims, imgVoxelType backgroundThr, int conn3D, imgVoxelType minTau, int numThreads)
+hierarchicalSegmentation* buildHierarchicalSegmentation(
+  		imgVoxelType *img, const int64 *imgDims,
+  		imgVoxelType backgroundThr, int conn3D, 
+  		imgVoxelType minTau, int numThreads)
 {
 
 #ifdef WATERSHED_TIMING_CPU
@@ -1312,10 +1346,12 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(imgVoxelType *img, const
 	for(int ii =0;ii<dimsImage; ii++) 
 		imgSize *= imgDims[ii];
 
-	//keep only foreground elements (in general our images are very sparse)
+	//keep only foreground elements
+	//(in general our images are very sparse)
 	vector<ForegroundVoxel> foregroundVec;
 	foregroundVec.reserve (imgSize / 3);
-	selectForegroundElements(img, imgDims, backgroundThr, conn3D, foregroundVec, NULL, NULL);
+	selectForegroundElements(img,imgDims,backgroundThr,
+		       	conn3D, foregroundVec, NULL, NULL);
 
 
 	//sort elements in P in descending order 
@@ -1325,26 +1361,48 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(imgVoxelType *img, const
 	sort(foregroundVec.begin(), foregroundVec.end());
 #ifdef WATERSHED_TIMING_CPU
 	time(&end);
-	cout<<"in buildH Sorting took "<<difftime(end,start)<< " secs for "<<foregroundVec.size()<<" voxels"<<endl;
+	cout<<"in buildH Sorting took "<<
+	    difftime(end,start)<<
+	    " secs for "<<foregroundVec.size()<<
+	    " voxels"<<endl;
 #endif
 
 	//allocate memory for Label ID output
-	set_unionC* L=(set_unionC*)malloc(sizeof(set_unionC));//we use union-find data structure to efficiently run algorithm
-	set_union_init(L,imgSize);//we initialize every object to null assignment
+	
+	//we use union-find data structure to efficiently
+	//run algorithm
+	set_unionC* L=(set_unionC*)malloc(sizeof(set_unionC));
+	//we initialize every object to null assignment
+	set_union_init(L,imgSize);
 	
 	//allocate memory for persistance diagram
 	//vector< pairPD > PDvec;//store unique elements
 	//PDvec.reserve(foregroundVec.size());
 	//set< pairPD > PDvec;
-	unordered_set< pairPD, pairPDKeyHash> PDhash;//checks if an element is unique or not (hash table look up in average is constant time isntead of logarithmic)
-	pair< unordered_set< pairPD, pairPDKeyHash>::iterator, bool > PDhashIter;//checks if an element is unique or not (hash table look up in average is constant time isntead of logarithmic)
-	PDhash.rehash( ceil( (foregroundVec.size() / 50 ) / PDhash.max_load_factor() ));//to avoid rehash. a.reserve(n) is the ame as a.rehash(ceil(n / a.max_load_factor()))
+	
+	//checks if an element is unique or not (hash table 
+	//look up in average is constant time isntead of 
+	//logarithmic)
+	unordered_set< pairPD, pairPDKeyHash> PDhash;
+
+	//checks if an element is unique or not (hash table
+	//look up in average is constant time isntead of
+	//logarithmic)
+	pair< unordered_set< pairPD, pairPDKeyHash>::iterator,
+	       	bool > PDhashIter;
+
+	//to avoid rehash. a.reserve(n) is the same as 
+	//a.rehash(ceil(n / a.max_load_factor()))
+	PDhash.rehash(ceil( 
+	 (foregroundVec.size()/50)/PDhash.max_load_factor()));
 	//PDvec.reserve( foregroundVec.size() / 50  );
 
 	//define neighborhood scheme
-	int64 boundarySize[dimsImage];//margin we need to calculate connected components	
-	int64 *neighOffset = buildNeighboorhoodConnectivity(conn3D, imgDims, boundarySize);
-	if( neighOffset == NULL)
+	//margin we need to calculate connected components
+	int64 boundarySize[dimsImage];	
+	int64 *neighOffset = buildNeighboorhoodConnectivity(
+			conn3D, imgDims, boundarySize);
+	if(neighOffset == NULL)
 		return NULL;
 
 
