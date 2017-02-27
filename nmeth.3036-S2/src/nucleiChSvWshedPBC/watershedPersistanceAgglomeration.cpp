@@ -1289,11 +1289,21 @@ int averageNumberOfNeighborsPerRegion(const imgLabelType* imgL,const int64* imgD
 	return 0;
 }
 
-//====================================================================
+//=======================================================
 
 hierarchicalSegmentation* buildHierarchicalSegmentation(imgVoxelType *img, const int64 *imgDims, imgVoxelType backgroundThr, int conn3D, imgVoxelType minTau, int numThreads)
 {
-	#ifdef WATERSHED_TIMING_CPU
+
+#ifdef WATERSHED_TIMING_CPU
+	time_t buildH_start, buildH_end;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	time(&buildH_start);
+#endif
+
+
+#ifdef WATERSHED_TIMING_CPU
 	time_t start, end;
 #endif
 
@@ -1848,8 +1858,15 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(imgVoxelType *img, const
 
 	int iterD = 0;
 	size_t numNodes = agglomerateGraph.getNumNodes();
+#ifdef WATERSHED_TIMING_CPU
+	time_t while_start, while_end;
+#endif
+	
+#ifdef WATERSHED_TIMING_CPU
+	time(&while_start);
+#endif
 	while( numNodes > 1 )
-	{		
+	{
 		//find node with min tau (next merging)
 		//imgVoxelType tauE;
 		//GraphEdge* edgeMin = findEdgeWithMinTau(agglomerateGraph, tauE); //this function is too slow since it checks all teh edges everytime
@@ -1950,6 +1967,13 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(imgVoxelType *img, const
 
 		iterD++;
 	}
+#ifdef WATERSHED_TIMING_CPU
+	time(&while_end);
+	cout << "in buildH while took "
+		<<difftime(while_end,while_start)<<
+		" secs"<<endl;
+#endif
+
 
 	//cout<<"DEBUGGING: join disconnected regions"<<endl;
 	while( agglomerateGraph.getNumNodes() > 1 )
@@ -2018,6 +2042,11 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(imgVoxelType *img, const
 	delete[] threadData;
 #endif
 
+#ifdef WATERSHED_TIMING_CPU
+	time(&buildH_end);
+	cout<< "in buildH total took "<< 
+	 difftime(buildH_end,buildH_start) <<" secs"<< endl;
+#endif
 	return hs;
 }
 
