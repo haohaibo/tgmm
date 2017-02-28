@@ -101,7 +101,7 @@ labelType find(const set_unionC *s, labelType x)
         return -1;//elements might not be assigned
 	}
 	*/
-
+ 
     while(s->p[x] != x)
     {
 	x = s->p[x];
