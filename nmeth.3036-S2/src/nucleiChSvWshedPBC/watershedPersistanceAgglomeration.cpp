@@ -19,7 +19,8 @@
 #include <vector>
 #include <algorithm>
 #include <map>
-
+#include <stdio.h>
+#include <stdlib.h>
 //hash_tabel implementation 
 //(it should be faster than maps (they are trees)
 #include <unordered_map> 
@@ -48,6 +49,8 @@
 //Added by Haibo Hao
 #include <thrust/host_vector.h>
 #include <thrust/device_vector.h>
+#include <omp.h>
+#include "omp.h"
 //Added by Haibo Hao
 
 #include "watershedPersistanceAgglomeration.h"
@@ -55,7 +58,7 @@
 #include "graph.h"
 
 //uncomment this to time code and find bottlenecks
-#define WATERSHED_TIMING_CPU 
+//#define WATERSHED_TIMING_CPU 
 
 using namespace std;
 
@@ -1335,7 +1338,7 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 #ifdef WATERSHED_TIMING_CPU
 	time(&buildH_start);
 #endif
-
+ 
 
 #ifdef WATERSHED_TIMING_CPU
 	time_t start, end;
@@ -1407,19 +1410,25 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 
 
 	//main algorithm to find topologically persistande regions    
-	labelType *neighLabel=(labelType*)malloc(sizeof(labelType)*conn3D);
-	imgVoxelType *neighVal=(imgVoxelType*)malloc(sizeof(imgVoxelType)*conn3D);
-	imgVoxelType *neighFmax=(imgVoxelType*)malloc(sizeof(imgVoxelType)*conn3D);
+	labelType *neighLabel=(labelType*)malloc(
+				sizeof(labelType)*conn3D);
+	imgVoxelType *neighVal=(imgVoxelType*)malloc(
+				sizeof(imgVoxelType)*conn3D);
+	imgVoxelType *neighFmax=(imgVoxelType*)malloc(
+				sizeof(imgVoxelType)*conn3D);
 
 
 
 //#define USE_MULTITHREAD: much slower because of the mutex
 
 #ifdef USE_MULTITHREAD
-	//for multthread purposes
-	labelType *neighLabelMT=(labelType*)malloc(sizeof(labelType)*conn3D);
-	imgVoxelType *neighValMT=(imgVoxelType*)malloc(sizeof(imgVoxelType)*conn3D);
-	imgVoxelType *neighFmaxMT=(imgVoxelType*)malloc(sizeof(imgVoxelType)*conn3D);
+	//for multithread purposes
+	labelType *neighLabelMT=(labelType*)malloc(
+				  sizeof(labelType)*conn3D);
+	imgVoxelType *neighValMT=(imgVoxelType*)malloc(
+			           sizeof(imgVoxelType)*conn3D);
+	imgVoxelType *neighFmaxMT=(imgVoxelType*)malloc(
+			            sizeof(imgVoxelType)*conn3D);
 
 
 	//set main data structure
@@ -1431,48 +1440,67 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 	threadNeighborhoodInfoData::neighOffset = neighOffset;
 	threadNeighborhoodInfoData::conn3D = conn3D;
 
-	threadNeighborhoodInfoData::hEvent = CreateEvent (NULL,  // No security attributes
-                                   FALSE,  // Automatic-reset event
-                                   FALSE,  // Initial state is not signaled
-                                   NULL);
+	threadNeighborhoodInfoData::hEvent = CreateEvent(
+			NULL, // No security attributes
+                        FALSE, // Automatic-reset event
+                        FALSE, // Initial state is not signaled
+                        NULL);
 
 	//initialize conition varibales
-	InitializeCriticalSection( &(threadNeighborhoodInfoData::BufferLock) );
-	InitializeConditionVariable( &(threadNeighborhoodInfoData::BufferNotEmpty) );
+	InitializeCriticalSection(
+		    &(threadNeighborhoodInfoData::BufferLock) );
+	InitializeConditionVariable(
+	 	   &(threadNeighborhoodInfoData::BufferNotEmpty) );
 	threadNeighborhoodInfoData::queueSize = -1;
 	threadNeighborhoodInfoData::jobsDone = 0;
 	
 	
 	//create threads
-	threadNeighborhoodInfoData* threadData = new threadNeighborhoodInfoData[numThreads];
+	threadNeighborhoodInfoData* threadData =
+	       	new threadNeighborhoodInfoData[numThreads];
 	vector< HANDLE > threadHandle(numThreads);
 	for(int jj = 0; jj < numThreads; jj++)
 	{
-		threadHandle[jj] = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)&(threadNeighborhoodInfoProc),(LPVOID) (&(threadData[jj])), 0, NULL);
-		if(threadHandle[jj] == NULL )
-		{
-			cout<<"ERROR: creating thread"<<endl;
-			exit(3);
-		}
+ 	   threadHandle[jj] = CreateThread(
+	     NULL, 
+	     0,
+	     (LPTHREAD_START_ROUTINE)&(threadNeighborhoodInfoProc),
+	     (LPVOID) (&(threadData[jj])),
+	     0,
+	     NULL);
+
+	   if(threadHandle[jj] == NULL )
+	   {
+		cout<<"ERROR: creating thread"<<endl;
+		exit(3);
+	   }
 	}
 #endif
-
-	int neighSize;//number of elements that have been already labeled
+	//number of elements that have been already labeled
+	int neighSize;
 
 	imgVoxelType Pval = imgVoxelMaxValue, auxVal;
 	int64 posB, posBneigh;
 	labelType auxLabel;
-	imgVoxelType fMaxValNeigh;//maximum value in the neighborhod
+	//maximum value in the neighborhood
+	imgVoxelType fMaxValNeigh;
 	labelType fMaxPosNeigh;
 	imgVoxelType fMaxVal;
 	labelType fMaxPos;	
 	int64 imgCoord[dimsImage];
 	pairPD PDaux;
 	int numLabels = 0;
-	vector<labelType> PDmergedElem;//to avoid adding to PDvec redundant elements
+	//to avoid adding to PDvec redundant elements
+	vector<labelType> PDmergedElem;
 	PDmergedElem.reserve( conn3D );
-	vector<labelType> elemToMerge;//stores unique labels that need to be merged. It is more efficient since we do not need to call union_sets unnecessarily
-	elemToMerge.reserve( conn3D );//vector with linear find is faster than set for small arrays
+
+	//stores unique labels that need to be merged.
+	//It is more efficient since we do not need to 
+	//call union_sets unnecessarily
+	vector<labelType> elemToMerge;
+	
+	//vector with linear find is faster than set for small arrays
+	elemToMerge.reserve( conn3D );
 
 	pair< set<pairPD>::iterator, bool> PDvecIter;
 
@@ -1487,8 +1515,11 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 		posB=iter->pos;
 
 		neighSize = 0;
-		fMaxValNeigh = imgVoxelMinValue;//maximum value in the neighborhod
-		fMaxPosNeigh = -1; //position of teh maximum value in the neighboorhood
+
+		//maximum value in the neighborhod
+		fMaxValNeigh = imgVoxelMinValue;
+		//position of the maximum value in the neighboorhood
+		fMaxPosNeigh = -1; 
 		fMaxVal = imgVoxelMinValue;
 		fMaxPos = -1;	
 
@@ -1497,13 +1528,17 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 		{
 
 #ifndef USE_MULTITHREAD
-			for(int jj=0;jj<conn3D;jj++)
-			{
-				posBneigh = posB + neighOffset[jj];
-				//find_and_get_fMax(L,posBneigh,&auxLabel,&auxVal);
-				//auxLabel = find(L,posBneigh);//this is teh bottleneck: it takes 50% of the time
-
-				//if(auxLabel >= 0)//we only care about labels that have been assigned since we have sorted elements
+	 	  for(int jj=0;jj<conn3D;jj++)
+		  {
+		      posBneigh = posB + neighOffset[jj];
+		      //find_and_get_fMax(L,posBneigh,&auxLabel,&auxVal);
+		      
+		      //this is the bottleneck: it takes 50% of the time
+		      //auxLabel = find(L,posBneigh);
+			
+	     	      //we only care about labels that have been 
+		      //assigned since we have sorted elements
+		      //if(auxLabel >= 0)
 				if( img[ posBneigh ] > Pval )
 				{						
 					auxLabel = find(L,posBneigh);//this is teh bottleneck: it takes 50% of the time
@@ -1917,14 +1952,69 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 	int iterD = 0;
 	size_t numNodes = agglomerateGraph.getNumNodes();
 #ifdef WATERSHED_TIMING_CPU
-	time_t while_start, while_end;
+	double while1_start, while1_end;
 #endif
-	
+	double while1_start, while1_end;
+	while1_start = omp_get_wtime();
 #ifdef WATERSHED_TIMING_CPU
-	time(&while_start);
+	while1_start = omp_get_wtime();
 #endif
+
+#ifdef WATERSHED_TIMING_CPU
+	double  while1_for1_start, while1_for1_end;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	double  while1_for2_start, while1_for2_end;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	double  while1_while1_start, while1_while1_end;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	double  while1_while2_start, while1_while2_end;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	double  while1_sort_start, while1_sort_end;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	double  while1_phase1_start, while1_phase1_end;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	double  while1_phase2_start, while1_phase2_end;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+   double  while1_phase2_p1_start, while1_phase2_p1_end;
+   double  while1_phase2_p2_start, while1_phase2_p2_end;
+   double  while1_phase2_p3_start, while1_phase2_p3_end;
+#endif
+ 
+long long int count_while1 = 0;
+
+double sum_time_while1 = 0;
+double sum_time_while1_for1 = 0;
+double sum_time_while1_for2 = 0;
+double sum_time_while1_while1 = 0;
+double sum_time_while1_while2 = 0;
+double sum_time_while1_sort = 0;
+double sum_time_while1_phase1 = 0;
+double sum_time_while1_phase2 = 0;
+double sum_time_while1_phase2_p1 = 0;
+double sum_time_while1_phase2_p2 = 0;
+double sum_time_while1_phase2_p3 = 0;
+
 	while( numNodes > 1 )
 	{
+
+#ifdef WATERSHED_TIMING_CPU
+	while1_phase1_start = omp_get_wtime();
+#endif
+		count_while1++;
 		//find node with min tau (next merging)
 		//imgVoxelType tauE;
 		//GraphEdge* edgeMin = findEdgeWithMinTau(agglomerateGraph, tauE); //this function is too slow since it checks all teh edges everytime
@@ -1932,6 +2022,10 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 		//find the minimum across all nodes
 		GraphEdge* edgeMin = NULL;
 		imgVoxelType tauE = imgVoxelMaxValue;
+
+#ifdef WATERSHED_TIMING_CPU
+	while1_for1_start = omp_get_wtime();	
+#endif
 		for(vector< pair<GraphEdge*,imgVoxelType> >::iterator iter = minTauVec.begin(); iter!= minTauVec.end(); ++iter)
 		{
 			if( iter->second < tauE )
@@ -1941,6 +2035,14 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 			}
 		}
 
+#ifdef WATERSHED_TIMING_CPU
+	while1_for1_end = omp_get_wtime();
+
+	sum_time_while1_for1 += 
+	 (double)(while1_for1_end-
+	  while1_for1_start);
+#endif
+		
 		if(edgeMin == NULL)
 		{
 			//it means we have disconnected completely diconnected regions
@@ -1981,32 +2083,98 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 		updateEdgeVec.clear();
 		updateEdgeVec.push_back(e1);
 		edgeMin = agglomerateGraph.edges[e1];
+
+#ifdef WATERSHED_TIMING_CPU
+	while1_while1_start = omp_get_wtime();
+#endif
 		while( edgeMin != NULL )
 		{
-			updateEdgeVec.push_back( edgeMin->e2 );
-			edgeMin = edgeMin->next;
+		   updateEdgeVec.push_back( edgeMin->e2 );
+		   edgeMin = edgeMin->next;
 		}
 
+#ifdef WATERSHED_TIMING_CPU
+   while1_while1_end = omp_get_wtime();	
+   sum_time_while1_while1 +=  
+      (double)(while1_while1_end - 
+	while1_while1_start);
+#endif
 		edgeMin = agglomerateGraph.edges[e2];
-		while( edgeMin != NULL )
-		{
-			updateEdgeVec.push_back( edgeMin->e2 );
-			edgeMin = edgeMin->next;
-		}
+
+#ifdef WATERSHED_TIMING_CPU
+   while1_while2_start = omp_get_wtime(); 		
+#endif
+
+	while( edgeMin != NULL )
+	{
+		updateEdgeVec.push_back( edgeMin->e2 );
+		edgeMin = edgeMin->next;
+	}
+
+#ifdef WATERSHED_TIMING_CPU
+	while1_while2_end = omp_get_wtime();
+	sum_time_while1_while2 +=
+	    (double)(while1_while2_end - 
+		while1_while2_start);
+#endif
 
 
+#ifdef WATERSHED_TIMING_CPU
+	while1_phase1_end = omp_get_wtime();
+	sum_time_while1_phase1 +=
+	       (double)(while1_phase1_end -
+		while1_phase1_start);	
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	while1_phase2_start = omp_get_wtime();
+#endif
 		
-		//remove duplicates
-		sort(updateEdgeVec.begin(), updateEdgeVec.end());
+#ifdef WATERSHED_TIMING_CPU
+	while1_sort_start = omp_get_wtime();
+#endif
+	//remove duplicates
+	sort(updateEdgeVec.begin(), updateEdgeVec.end());
+
+#ifdef WATERSHED_TIMING_CPU
+	while1_sort_end = omp_get_wtime();
+	sum_time_while1_sort +=
+   	    (double)(while1_sort_end -
+	    while1_sort_start);
+#endif
+	
+#ifdef WATERSHED_TIMING_CPU
+	while1_phase2_p1_start = omp_get_wtime();
+#endif
 		vector<unsigned int>::iterator it = unique(updateEdgeVec.begin(), updateEdgeVec.end());
 		updateEdgeVec.resize( distance(updateEdgeVec.begin(),it) );//unique does not resize vector
 
-
+ 
+#ifdef WATERSHED_TIMING_CPU
+	while1_phase2_p1_end = omp_get_wtime();
+	sum_time_while1_phase2_p1 +=
+		(double)(while1_phase2_p1_end - 
+		while1_phase2_p1_start);
+#endif
 		//cout<<"Check point 7"<<endl; //TODO: this is teh functions that seg faults for large specific datasets
 		//insert the new node (new region) into node e1 and delete e2. We have to recalculate all the edges from auxNode to all the edges between e1 and e2
+		
+#ifdef WATERSHED_TIMING_CPU
+	while1_phase2_p2_start = omp_get_wtime();
+#endif
 		agglomerateGraph.mergeNodes(e1, e2, auxNode ,mergeNodesFunctorPtr);
 
 
+#ifdef WATERSHED_TIMING_CPU
+	while1_phase2_p2_end = omp_get_wtime();
+	sum_time_while1_phase2_p2 +=
+		(double)(while1_phase2_p2_end - 
+		while1_phase2_p2_start);
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	while1_for2_start = omp_get_wtime();
+#endif
 		//cout<<"Check point 8"<<endl;
 		//update min tau for affected edges
 		for(vector<unsigned int>::iterator iter = updateEdgeVec.begin(); iter != updateEdgeVec.end(); ++iter)
@@ -2014,25 +2182,125 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 			minTauVec[*iter].first = findEdgeWithMinTau(*iter, agglomerateGraph, minTauVec[ *iter].second );
 		}
 
-		//check that agglomeration was correct
-		if( numNodes != agglomerateGraph.getNumNodes() + 1)
-		{
-			cout<<"Check point 2: iter="<<(iterD)<<";numNodes = "<<numNodes<<".Selected nodes:e1="<<e1<<";e2="<<e2<<";tauE="<<tauE<<endl;
-			cout<<"ERROR: buildHierarchicalSegmentation: numNodes = "<<numNodes<<"; numNodes (after agglomeration ) = "<<agglomerateGraph.getNumNodes()<<endl;
-			exit(3);
-		}
+
+#ifdef WATERSHED_TIMING_CPU
+	while1_for2_end = omp_get_wtime();
+	sum_time_while1_for2 +=
+	    (double)(while1_for2_end - 
+	    while1_for2_start);
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	while1_phase2_p3_start = omp_get_wtime();
+#endif
+    //check that agglomeration was correct 
+    if( numNodes != agglomerateGraph.getNumNodes() + 1)
+    {
+      cout<<"Check point 2: iter="<<(iterD)<<";numNodes = "<<numNodes<<".Selected nodes:e1="<<e1<<";e2="<<e2<<";tauE="<<tauE<<endl;
+
+      cout<<"ERROR: buildHierarchicalSegmentation: numNodes = "<<numNodes<<"; numNodes (after agglomeration ) = "<<agglomerateGraph.getNumNodes()<<endl;
+ 
+      exit(3);
+    }
+
+#ifdef WATERSHED_TIMING_CPU
+	while1_phase2_p3_end = omp_get_wtime();
+	sum_time_while1_phase2_p3 +=
+		(double)(while1_phase2_p3_end - 
+		while1_phase2_p3_start);
+#endif
 		numNodes--;
 
 		iterD++;
-	}
+
+
 #ifdef WATERSHED_TIMING_CPU
-	time(&while_end);
-	cout << "in buildH while took "
-		<<difftime(while_end,while_start)<<
+	while1_phase2_end = omp_get_wtime();
+	sum_time_while1_phase2 +=
+		(double)(while1_phase2_end - 
+		 while1_phase2_start);
+#endif
+	}
+
+	
+cout<<"in buildH while1 loop " << count_while1 <<
+	" times"<<endl;
+#ifdef WATERSHED_TIMING_CPU
+	cout << "in buildH while1 for1 took "
+		<<sum_time_while1_for1<<
+		" secs"<<endl;
+
+	cout << "in buildH while1 for2 took "
+		<<sum_time_while1_for2<<
 		" secs"<<endl;
 #endif
 
 
+#ifdef WATERSHED_TIMING_CPU
+	cout << "int buildH while1 while1 took "
+	   <<sum_time_while1_while1<<
+	   " secs"<<endl;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	cout << "int buildH while1 while2 took "
+	   <<sum_time_while1_while2<<
+	   " secs"<<endl;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	cout << "in buildH while1 sort took "
+	   <<sum_time_while1_sort<<
+	   " secs"<<endl;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	cout << "in buildH while1 phase1 took "
+		<<sum_time_while1_phase1<<
+		" secs"<<endl;
+
+	cout << "in buildH while1 phase2 took "
+		<<sum_time_while1_phase2<<
+		" secs"<<endl;
+	cout << "in buildH while1 phase2 p1 took "
+		<<sum_time_while1_phase2_p1<<
+		" secs"<<endl;
+	cout << "in buildH while1 phase2 p2 took "
+		<<sum_time_while1_phase2_p2<<
+		" secs"<<endl;
+	cout << "in buildH while1 phase2 p3 took "
+		<<sum_time_while1_phase2_p3<<
+		" secs"<<endl;
+
+#endif
+
+	while1_end = omp_get_wtime();
+	sum_time_while1 +=
+		(double)(while1_end - 
+		while1_start);
+
+	cout << "(new!) in buildH while1 took "
+		<<sum_time_while1<<
+		" secs"<<endl;
+#ifdef WATERSHED_TIMING_CPU
+	while1_end = omp_get_wtime();
+	sum_time_while1 +=
+		(double)(while1_end - 
+		while1_start);
+
+	cout << "in buildH while1 took "
+		<<sum_time_while1<<
+		" secs"<<endl;
+#endif
+
+
+#ifdef WATERSHED_TIMING_CPU
+	time_t while2_start, while2_end;
+#endif
+
+#ifdef WATERSHED_TIMING_CPU
+	time(&while2_start);
+#endif
 	//cout<<"DEBUGGING: join disconnected regions"<<endl;
 	while( agglomerateGraph.getNumNodes() > 1 )
 	{
@@ -2069,6 +2337,13 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 		//insert the new node (new region) into node e1 and delete e2. We have to recalculate all the edges from auxNode to all the edges between e1 and e2
 		agglomerateGraph.mergeNodes(e1, e2, auxNode ,mergeNodesFunctorPtr);
 	}
+
+#ifdef WATERSHED_TIMING_CPU
+	time(&while2_end);
+	cout << "in buildH while2 took "<<
+		difftime(while2_end, while2_start)<<
+		" secs"<<endl;
+#endif
 
 	//set the root of the binary tree
 	hs->dendrogram.SetMainRoot( auxNode.nodePtr );

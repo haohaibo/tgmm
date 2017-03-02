@@ -21,6 +21,7 @@
 
 using namespace std;
 
+#define NUM_THREADS 8
 
 struct GraphEdge
 {
@@ -60,6 +61,12 @@ public:
 
 	//basic set/get functions
 	size_t getNumNodes();//because deleteNodes just "isolate" nodes (it does not physically delete them from memory because we would have to change all the indexes
+
+	//added by Haibo Hao
+	//Openmp version of getNumNodes()
+	size_t getNumNodes_Omp();
+	//added by Haibo Hao
+	
 	void reserveNodeSpace(size_t numExpectedNodes)
 	{
 		nodes.reserve(numExpectedNodes);
@@ -126,7 +133,7 @@ graphFA<ItemType>::~graphFA()
 	}
 }
 
-//=============================================================
+//=======================================================
 template<class ItemType>
 inline size_t graphFA<ItemType>::getNumNodes()
 {
@@ -140,6 +147,23 @@ inline size_t graphFA<ItemType>::getNumNodes()
 	return count;
 }
 
+template<class ItemType>
+inline size_t graphFA<ItemType>::getNumNodes_Omp()
+{
+	size_t count = 0;
+
+	size_t sizeOfActiveNodes = activeNodes.size();
+
+	//printf("sizeOfActiveNodes =  %d\n",sizeOfActiveNodes);
+#pragma omp parallel for reduction(+:count) num_threads(NUM_THREADS)	
+	for(size_t ii = 0; ii < sizeOfActiveNodes; ii++)
+	{
+		if( activeNodes[ii] == true )
+			count++;
+	}
+
+	return count;
+}
 //=================================================================
 
 template<class ItemType>
