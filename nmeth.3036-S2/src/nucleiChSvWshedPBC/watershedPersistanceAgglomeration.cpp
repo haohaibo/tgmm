@@ -2194,7 +2194,7 @@ double sum_time_while1_phase2_p3 = 0;
 	while1_phase2_p3_start = omp_get_wtime();
 #endif
     //check that agglomeration was correct 
-    if( numNodes != agglomerateGraph.getNumNodes() + 1)
+    if( numNodes != agglomerateGraph.getNumNodes_Omp() + 1)
     {
       cout<<"Check point 2: iter="<<(iterD)<<";numNodes = "<<numNodes<<".Selected nodes:e1="<<e1<<";e2="<<e2<<";tauE="<<tauE<<endl;
 
