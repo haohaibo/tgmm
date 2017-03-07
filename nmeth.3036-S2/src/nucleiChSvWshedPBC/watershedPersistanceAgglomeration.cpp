@@ -2198,7 +2198,7 @@ double sum_time_while1_phase2_p3 = 0;
     {
       cout<<"Check point 2: iter="<<(iterD)<<";numNodes = "<<numNodes<<".Selected nodes:e1="<<e1<<";e2="<<e2<<";tauE="<<tauE<<endl;
 
-      cout<<"ERROR: buildHierarchicalSegmentation: numNodes = "<<numNodes<<"; numNodes (after agglomeration ) = "<<agglomerateGraph.getNumNodes()<<endl;
+      cout<<"ERROR: buildHierarchicalSegmentation: numNodes = "<<numNodes<<"; numNodes (after agglomeration ) = "<<agglomerateGraph.getNumNodes_Omp()<<endl;
  
       exit(3);
     }
