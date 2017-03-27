@@ -1409,7 +1409,7 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 		return NULL;
 
 
-	//main algorithm to find topologically persistande regions    
+	//main algorithm to find topologically persistant regions    
 	labelType *neighLabel=(labelType*)malloc(
 				sizeof(labelType)*conn3D);
 	imgVoxelType *neighVal=(imgVoxelType*)malloc(

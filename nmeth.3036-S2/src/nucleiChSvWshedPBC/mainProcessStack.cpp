@@ -9,7 +9,8 @@
  *  Created on: September 17th, 2012
  *      Author: Fernando Amat
  *
- * \brief Generates a hierachical segmentation of a 3D stack and saves teh result in binary format
+ * \brief Generates a hierachical segmentation of a 3D stack and
+ * saves the result in binary format
  *
  */
 
@@ -27,6 +28,10 @@
 
 #include "parseConfigFile.h"
 
+//Added by Haibo Hao
+#include <omp.h>
+//Added by Haibo Hao
+
 namespace mylib
 {
 	#include "../temporalLogicalRules/mylib/array.h"
@@ -42,8 +47,9 @@ void parseImageFilePattern(string& imgRawPath, int frame);
 int main( int argc, const char** argv )
 {
 
-
-	if( argc == 4)//we have a .bin file from hierarchical segmentation and we want to output a segmentation for a specific tau
+    //we have a .bin file from hierarchical segmentation and we want
+    //to output a segmentation for a specific tau
+	if( argc == 4)
 	{
 		//Call function with ProcessStack <hsFilename.bin> <tau> <minSupervoxelSize>
 
@@ -58,17 +64,20 @@ int main( int argc, const char** argv )
 
 	
 	//parse input parameters
-	string basename;//filename without extension so we can save our binary hierarchical segmentation
+    //filename without extension so we can save our binary
+    //hierarchical segmentation
+	string basename;
 	int radiusMedianFilter = 0;//if radius = 1->3x3 medianFilter
 	int minTau = 0;
 	int backgroundThr = 0;
 	int conn3D = 0;
 
-	if( argc == 3 ) //we call program wiht <configFile> <timePoint>
+	if( argc == 3 ) //we call program with <configFile> <timePoint>
 	{
 		configOptionsTrackingGaussianMixture configOptions;
 		string configFilename(argv[1]);
-		int err = configOptions.parseConfigFileTrackingGaussianMixture(configFilename);
+		int err = configOptions.parseConfigFileTrackingGaussianMixture(
+                configFilename);
 		if( err != 0 ) 
 			return err;
 
@@ -83,7 +92,9 @@ int main( int argc, const char** argv )
 
 	}else if( argc == 6)
 	{
-		basename = string(argv[1]);//filename without extension so we can save our binary hierarchical segmentation
+        //filename without extension so we can save our 
+        //binary hierarchical segmentation 
+		basename = string(argv[1]);
 		radiusMedianFilter = atoi(argv[2]);//if radius = 1->3x3 medianFilter
 		minTau = atoi(argv[3]);
 		backgroundThr = atoi(argv[4]);
@@ -97,7 +108,7 @@ int main( int argc, const char** argv )
 	
 
 	int devCUDA = 0;
-	//================================================================================
+	//======================================================================
 	
 	//read current image
 	string imgFilename(basename + ".tif");
@@ -127,7 +138,7 @@ int main( int argc, const char** argv )
 	}
 
 
-	//hack to make the code work for uin8 without changing everything to templates
+	//hack to make the code work for uint8 without changing everything to templates
 	//basically, parse the image to uint16, since the code was designed for uint16
 	if( img->type == mylib::UINT8_TYPE )
 	{	
@@ -159,27 +170,43 @@ int main( int argc, const char** argv )
 		return 2;
 	}
 	
-	
+
+    double median_start, median_end, sum_time_median;
+    
+    median_start = omp_get_wtime();	
 	//calculate median filter
 	medianFilterCUDASliceBySlice((imgVoxelType*) (img->data), img->dims, radiusMedianFilter,devCUDA);
 
+    median_end = omp_get_wtime();
+    sum_time_median = (double)(median_end - median_start);
+    cout << "median filter took " << sum_time_median << " secs."<<endl;
 	//build hierarchical tree
 	//cout<<"DEBUGGING: building hierarchical tree"<<endl;
 	int64 imgDims[dimsImage];
 	for(int ii = 0;ii<dimsImage; ii++)
 		imgDims[ii] = img->dims[ii];
+    
+
+    double HS_start, HS_end, sum_time_HS;
+    
+    HS_start = omp_get_wtime();	
 	hierarchicalSegmentation* hs =  buildHierarchicalSegmentation((imgVoxelType*) (img->data), imgDims, backgroundThr, conn3D, minTau, 1);
 	
+    HS_end = omp_get_wtime();
+    sum_time_HS = (double)(HS_end - HS_start);
+    cout << "HS filter took " << sum_time_HS << " secs."<<endl;
 	//save hierarchical histogram
 	//cout<<"DEBUGGING: saving hierarchical histogram"<<endl;
 	char buffer[256];
 	sprintf(buffer,"_hierarchicalSegmentation_conn3D%d_medFilRad%d",conn3D,radiusMedianFilter);
 	string suffix(buffer);
 	string fileOutHS(basename + suffix + ".bin");
+    cout << "the .bin file path is "<< fileOutHS <<endl;
 	ofstream os(fileOutHS.c_str(), ios::binary | ios:: out);
 	if( !os.is_open() )
 	{
-		cout<<"ERROR: could not open file "<< fileOutHS<<" to save hierarchical segmentation"<<endl;
+		cout<<"ERROR: could not open file "<< fileOutHS<<
+        " to save hierarchical segmentation"<<endl;
 		return 3;
 	}
 	hs->writeToBinary( os );

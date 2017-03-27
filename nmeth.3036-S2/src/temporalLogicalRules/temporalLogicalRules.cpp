@@ -28,7 +28,9 @@
 #include <limits>
 #include "temporalLogicalRules.h"
 #include "binaryTree.h"
-#include "nuclei.h" //contains the class to use for each node. You can change thsi depending on the application and teh attributes you want to keep for each in the tree
+//contains the class to use for each node. You can change this depending on the application
+//and the attributes you want to keep for each in the tree
+#include "nuclei.h" 
 #include "trackletCalculation.h"
 #include "lineageWindowFeatures.h"
 
