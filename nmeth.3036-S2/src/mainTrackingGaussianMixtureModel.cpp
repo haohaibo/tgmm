@@ -423,6 +423,13 @@ int main( int argc, const char** argv )
     double for1_iner_start = 0;
     double for1_iner_end = 0;
 
+    double for1_time_GMM_start = 0;
+    double for1_time_GMM_end = 0;
+
+    double for1_before_GMM = 0;
+    double for1_GMM = 0;
+    double for1_after_GMM = 0;
+
     double for1_for1_sum = 0;
     double for1_for2_sum = 0;
     double for1_for3_sum = 0;
@@ -470,6 +477,7 @@ int main( int argc, const char** argv )
     for1_start = omp_get_wtime();
     for(int frame=iniFrame;frame<=endFrame;frame++)
     {
+	for1_time_GMM_start = omp_get_wtime();
         TicTocTimer tt=tic();
         cout<<"Processing frame "<<frame<<endl;
         //==============================================================
@@ -996,7 +1004,10 @@ int main( int argc, const char** argv )
         cout<<"Nearest neighbors took "<<toc(&ttKNN)<<" secs"<<endl;
         //-----------------------------------------------------------------------
 
+	for1_time_GMM_end = omp_get_wtime();
+	for1_before_GMM += for1_time_GMM_end - for1_time_GMM_start;
 
+	for1_time_GMM_start = omp_get_wtime();
         //--------------------------------------------------------------
         //initialize Gaussians with priors from previous frame
         int numDeaths=0;
@@ -1736,7 +1747,10 @@ int main( int argc, const char** argv )
         cout<<"Generated (not touching supervoxels) "<<numCellDivisions<<" cell divisions out of "<<lht.nucleiList[frame].size() - numCellDivisions<<" cells in frame "<<frame<<".Also added "<<numBirths<<" new tracks"<<endl;
 
 
+	for1_time_GMM_end = omp_get_wtime();
+	for1_GMM += for1_time_GMM_end - for1_time_GMM_start;
 
+	for1_time_GMM_start = omp_get_wtime();
         //-------perform modifications using temporal logical rules----------------------------------
         //my sliding window is t \in [frame - 2 * configOptions.temporalWindowRadiusForLogicalRules, frame] => size of sliding window is 2 * configOptions.temporalWindowRadiusForLogicalRules + 1
         //lht still contains Tm frame - 2 * configOptions.temporalWindowRadiusForLogicalRules - 1 as an "anchor" time point: it cannot be modified by sliding window => solution should be consistent with it (we cannot merge two lineages present at athe acnhor time point)
@@ -2059,6 +2073,9 @@ int main( int argc, const char** argv )
         for1_if9_sum += (double)(for1_iner_end - for1_iner_start);
         //-----------------------------end of if(configOptions.deathThrOpticalFlow>0)--------------------------------
 
+	for1_time_GMM_end = omp_get_wtime();
+	for1_after_GMM += for1_time_GMM_end - for1_time_GMM_start;
+
 
     }//end of for(frame=...) loop
 
@@ -2109,6 +2126,10 @@ int main( int argc, const char** argv )
        <<"for1_time10_sum = "<< for1_time10_sum << "\n" 
        <<"for1_time11_sum = "<< for1_time11_sum << endl; 
         
+
+    cout << "before GMM took " << for1_before_GMM << " secs"<<endl;
+    cout << "GMM took " << for1_GMM << " secs"<<endl;
+    cout << "after GMM took " << for1_after_GMM << " secs"<<endl;
 
     //--------------------------------------------------------------------------------
     //-----flush out the last time points in the lineage that were
