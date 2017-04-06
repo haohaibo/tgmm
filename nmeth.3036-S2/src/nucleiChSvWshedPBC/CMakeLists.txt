@@ -13,7 +13,8 @@ project (WatershedWithPersistanceAgglomeration_project)
 #Set important flags
 #
 
-# Call  "cmake-gui -DCMAKE_BUILD_TYPE=Release .." on the command line to specify a particular build, take their definition
+# Call  "cmake-gui -DCMAKE_BUILD_TYPE=Release .." on the command line to specify a 
+#particular build, take their definition
 # and dump it in the cache along with proper documentation, otherwise set CMAKE_BUILD_TYPE
 # to Debug prior to calling PROJECT()
 #

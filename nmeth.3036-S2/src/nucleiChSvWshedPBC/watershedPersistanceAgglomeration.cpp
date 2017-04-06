@@ -1536,12 +1536,13 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 		      //this is the bottleneck: it takes 50% of the time
 		      //auxLabel = find(L,posBneigh);
 			
-	     	      //we only care about labels that have been 
+	     	  //we only care about labels that have been 
 		      //assigned since we have sorted elements
 		      //if(auxLabel >= 0)
 				if( img[ posBneigh ] > Pval )
-				{						
-					auxLabel = find(L,posBneigh);//this is teh bottleneck: it takes 50% of the time
+				{	
+                    //this is the bottleneck: it takes 50% of the time					
+					auxLabel = find(L,posBneigh);
 					auxVal = L->fMax[auxLabel];
 					insertNeigh( neighVal,  neighLabel, neighFmax,neighSize,  img[posBneigh],  auxLabel,  auxVal,  fMaxValNeigh, fMaxPosNeigh,  fMaxVal, fMaxPos);
 					neighSize++;					

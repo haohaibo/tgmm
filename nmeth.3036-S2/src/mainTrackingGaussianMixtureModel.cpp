@@ -3,8 +3,11 @@
  *
  *  Created on: May 12, 2011
  *      Author: amatf
+ *      
+ *  Modified By: Haibo Hao
+ *  Date: March 29, 2017
+ *  Email: haohaibo@ncic.ac.cn
  */
-
 
 
 #include <string>
@@ -69,11 +72,18 @@ namespace mylib
 
 using namespace std;
 
-//#define DEBUG_EM_ITER //uncomment this line to write XML files with all the steps within an iteration of the Variational inference EM
-//#define DEBUG_TGMM_XML_FILES //uncomment this line to write xml files with intermediate steps during the sequential GMM fitting process
+//uncomment this line to write XML files with all the steps
+//within an iteration of the Variational inference EM
+//#define DEBUG_EM_ITER 
 
-//TODO: WORK_WITH_UNITS only works with CUDA code so far
-//#define WORK_WITH_UNITS //uncomment this define to work with metric units (instead of pixels). So scale is incoporated directly in all the calculation.
+//uncomment this line to write xml files with intermediate 
+//steps during the sequential GMM fitting process
+//#define DEBUG_TGMM_XML_FILES 
+
+//-- WORK_WITH_UNITS only works with CUDA code so far --
+//uncomment this define to work with metric units (instead of pixels).
+//So scale is incoporated directly in all the calculation.
+//#define WORK_WITH_UNITS 
 
 
 #ifndef ROUND

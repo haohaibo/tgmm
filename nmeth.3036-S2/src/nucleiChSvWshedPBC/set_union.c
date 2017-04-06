@@ -92,24 +92,53 @@ void set_union_destroy(set_unionC *s)
 //        return( find(s,s->p[x]) );
 //}
 
-labelType find(const set_unionC *s, labelType x)
-{
-	/*
-    if(s->p[x]<0)
+
+//labelType find(const set_unionC *s, labelType x)
+//{
+	
+   /* if(s->p[x]<0)
 	{
 		//printf("I am here!\n");
         return -1;//elements might not be assigned
 	}
-	*/
+    */
+	
+//    if(s->p[x] == x)
+//        return x;
  
-    while(s->p[x] != x)
-    {
-	x = s->p[x];
-	if(s->p[x] == x)
-	   return(x);
-    }
-   // printf("go into find x=%d, s->p[x]=%d\n",x,s->p[x]);
+//    while(s->p[x] != x)
+//    {
+//	x = s->p[x];
+//	if(s->p[x] == x)
+//	   return(x);
+//    }
+//   // printf("go into find x=%d, s->p[x]=%d\n",x,s->p[x]);
+//}
+
+labelType find(const set_unionC *s, labelType x)
+{
+  /*
+  if(s->p[x]<0)
+  {
+  	//printf("I am here!\n");
+      return -1;//elements might not be assigned
+  }
+  */
+
+   if(s->p[x] == x)
+       return x;
+   return s->p[x] = find(s, s->p[x]); 
+
+  
+ /*while(s->p[x] != x)
+  {
+     
+  }
+  */
+  
+ // printf("go into find x=%d, s->p[x]=%d\n",x,s->p[x]);
 }
+
 imgVoxelType get_fMax(set_unionC *s, labelType x)
 {
 	/*

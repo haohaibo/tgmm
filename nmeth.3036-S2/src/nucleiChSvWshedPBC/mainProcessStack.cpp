@@ -12,6 +12,10 @@
  * \brief Generates a hierachical segmentation of a 3D stack and
  * saves the result in binary format
  *
+ *  Modified By: Haibo Hao
+ *  Date: March 30th, 2017
+ *  Email: haohaibo@ncic.ac.cn
+ *
  */
 
 

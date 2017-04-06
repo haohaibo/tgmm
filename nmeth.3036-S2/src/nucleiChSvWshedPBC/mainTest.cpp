@@ -9,6 +9,10 @@
  *  Created on: September 17th, 2012
  *      Author: Fernando Amat
  *
+ *  Modified By: Haibo Hao
+ *  Date: March 31th, 2017
+ *  Email: haohaibo@ncic.ac.cn
+ *
  * \brief Shows how to use the watershedPersistanceAgglomeration.cpp functions
  *
  */
@@ -27,10 +31,15 @@ namespace medianFilter2D //to perform median filter slice by slice
 
 using namespace std;
 //---------------------------------------------------
-//forward definition of the different test functions
-int mainTestBasic( int argc, const char** argv );//test watershed+merging algorithm
-int mainTestNumberOfAvgNeighbors(int argc, const char** argv );//counts average number of neighbors per voxel in a segmented region. It could be useful to differentiate foreground / background regions
-int mainTestHierarchicalSegmentation( int argc, const char** argv );//test hierarchical segmentation (the segmentation for all tau at once)
+//--forward definition of the different test functions--
+//test watershed+merging algorithm
+int mainTestBasic( int argc, const char** argv );
+//counts average number of neighbors per voxel in a 
+//segmented region. It could be useful to differentiate 
+//foreground / background regions
+int mainTestNumberOfAvgNeighbors(int argc, const char** argv );
+//test hierarchical segmentation (the segmentation for all tau at once)
+int mainTestHierarchicalSegmentation( int argc, const char** argv );
 //---------------------------------------------------
 
 //main function
@@ -209,7 +218,10 @@ int mainTestHierarchicalSegmentation( int argc, const char** argv )
 {
 	cout<<"TESTING mainTestHierarchicalSegmentation"<<endl;
 	int radiusMedianFilter = 3; //radius of the mdian filter. A 3x3 median filter has radius 1
-	string fileOutHS("C:\\Users\\Fernando\\cppProjects\\nucleiChannelSupervoxelsWatershedWithPersistanceAgglomeration\\testData\\testHS.hs");//file to save hierarchical histogram
+	//string fileOutHS("C:\\Users\\Fernando\\cppProjects\\nucleiChannelSupervoxelsWatershedWithPersistanceAgglomeration\\testData\\testHS.hs");//file to save hierarchical histogram
+    
+    //file to save hierarchical histogram
+	string fileOutHS("/home/hhb/work/tgmm-hhb-m/nmeth.3036-S2/data/test/testHS.hs");
 	
 	//-------------synthetic line---------------
 	/*
