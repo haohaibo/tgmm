@@ -248,7 +248,7 @@ struct threadWatershedData
 
 //===================================================================
 
-//needed to explore the neighborhood around and update values.
+// needed to explore the neighborhood around and update values.
 // Written as a separate inline function so code is cleaner
 inline void insertNeigh(imgVoxelType* neighVal, labelType* neighLabel,
   imgVoxelType* neighFmax, int neighSize, imgVoxelType imgVal, 
@@ -1552,12 +1552,15 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 					neighSize++;					
 				}
 				else if( img[ posBneigh ] == Pval && L->p[posBneigh] >= 0)
-				{
-					auxLabel = find(L,posBneigh);//this is teh bottleneck: it takes 50% of the time
+				{  
+                    //this is the bottleneck: it takes 50% of the time
+					auxLabel = find(L,posBneigh);
 					//if( auxLabel >= 0)
 					{
 						auxVal = L->fMax[auxLabel];
-						insertNeigh( neighVal,  neighLabel, neighFmax,neighSize,  img[posBneigh],  auxLabel,  auxVal,  fMaxValNeigh, fMaxPosNeigh,  fMaxVal, fMaxPos);
+						insertNeigh( neighVal,  neighLabel, neighFmax,neighSize, 
+                                img[posBneigh],  auxLabel,  auxVal,  fMaxValNeigh,
+                                fMaxPosNeigh,  fMaxVal, fMaxPos);
 						neighSize++;
 					}
 				}
@@ -1645,13 +1648,18 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 				{
 					boundaryCounter[countC] = -boundarySize[countC];
 					countC++;
-					if(countC>= dimsImage) break;
+					if(countC>= dimsImage)
+                        break;
 					boundaryCounter[countC]++;
 				}
 				countC = 0;
 				for(int ii = 0; ii<dimsImage;ii++)
 					countC += abs(boundaryCounter[ii]);
-				if(countC == 0) boundaryCounter[0]++;//all zeros is not allowed
+                
+                //all zeros is not allowed
+				if(countC == 0) 
+                    boundaryCounter[0]++;
+
 				bool isOutOfBounds = false;
 				for(int ii = 0;ii<dimsImage;ii++)
 				{
@@ -1671,7 +1679,12 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 
 				//same for loop as before (when we were not close to a border)
 				posBneigh = posB+neighOffset[jj];
-				if(posB < -neighOffset[jj]) //out of bounds. TODO: this is not completely correct since we need to check bounds from x,y,z separately. However, most of our images have background in the borders and it will avoid comparing all the time.
+
+                //out of bounds. TODO: this is not completely correct
+                //since we need to check bounds from x,y,z separately.
+                //However, most of our images have background in the
+                //borders and it will avoid comparing all the time. 
+				if(posB < -neighOffset[jj]) 
 				{
 					posBneigh = 0;
 				}else if(posBneigh >= ((int64)(imgSize) ))
@@ -1681,51 +1694,71 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 				//find_and_get_fMax(L,posBneigh,&auxLabel,&auxVal);
 				/*
 				auxLabel = find(L,posBneigh);
-				if(auxLabel >= 0)//we only care about labels that have been assigned since we have sorted elements
+
+                //we only care about labels that have been assigned 
+                //since we have sorted elements
+				if(auxLabel >= 0)
 				{	
 					auxVal = L->fMax[auxLabel];
-					insertNeigh( neighVal,  neighLabel, neighFmax,neighSize,  img[posBneigh],  auxLabel,  auxVal,  fMaxValNeigh, fMaxPosNeigh,  fMaxVal, fMaxPos);
+					insertNeigh( neighVal,  neighLabel, neighFmax,neighSize,
+                         img[posBneigh],  auxLabel,  auxVal,  fMaxValNeigh, 
+                         fMaxPosNeigh,  fMaxVal, fMaxPos);
 					neighSize++;
 				}
 				*/
 				if( img[ posBneigh ] > Pval )
 				{						
-					auxLabel = find(L,posBneigh);//this is teh bottleneck: it takes 50% of the time
+                    //this is the bottleneck: it takes 50% of the time 
+					auxLabel = find(L,posBneigh);
 					auxVal = L->fMax[auxLabel];
-					insertNeigh( neighVal,  neighLabel, neighFmax,neighSize,  img[posBneigh],  auxLabel,  auxVal,  fMaxValNeigh, fMaxPosNeigh,  fMaxVal, fMaxPos);
+					insertNeigh( neighVal,  neighLabel, neighFmax,neighSize,
+                            img[posBneigh],  auxLabel,  auxVal,  fMaxValNeigh,
+                            fMaxPosNeigh,  fMaxVal, fMaxPos);
 					neighSize++;					
 				}else if( img[ posBneigh ] == Pval && L->p[posBneigh] >= 0)
 				{
-					auxLabel = find(L,posBneigh);//this is teh bottleneck: it takes 50% of the time
+                    //this is the bottleneck: it takes 50% of the time
+					auxLabel = find(L,posBneigh);
 					//if( auxLabel >= 0)
 					{
 						auxVal = L->fMax[auxLabel];
-						insertNeigh( neighVal,  neighLabel, neighFmax,neighSize,  img[posBneigh],  auxLabel,  auxVal,  fMaxValNeigh, fMaxPosNeigh,  fMaxVal, fMaxPos);
+						insertNeigh( neighVal,  neighLabel, neighFmax,neighSize,
+                                img[posBneigh],  auxLabel,  auxVal,  fMaxValNeigh,
+                                fMaxPosNeigh,  fMaxVal, fMaxPos);
 						neighSize++;
 					}
 				}
 			}
 		}		
 
-		//decide what to do with the value after checking neighbors: 3 cases (local maximum, only one label, multiple labels -maybe merge-) 
-		if(Pval>fMaxValNeigh || (Pval == fMaxValNeigh && fMaxPosNeigh < 0) )//we have a local maxima or a flat region with no assignments yet
+		//decide what to do with the value after checking neighbors:
+        //3 cases (local maximum, only one label, multiple labels -maybe merge-) 
+        
+        //we have a local maxima or a flat region with no assignments yet
+		if(Pval>fMaxValNeigh || (Pval == fMaxValNeigh && fMaxPosNeigh < 0) )
 		{
 
-			add_new_component(L,posB,Pval);//add ne component
+			add_new_component(L,posB,Pval);//add new component
 			numLabels++;
 		}
 		else{
 
 			//assign the element to the region with highest value                       
 
-			//COMMENT:VIP:THIS IS A CRITICIAL CHOICE. fMaxPos GENERERATES BETTER OUTLINES WHILE 0 is REALLY A PARTITION OF THE SPACE
-			//TODO: CHECK WHICH ONE WORKS BETTER FOR NUCLEI SEGMENTATION. A PRIORI, fMaxPos SEEM TO HAVE MORE LEAKAGE
+			//COMMENT:VIP:THIS IS A CRITICIAL CHOICE. fMaxPos GENERERATES 
+            //BETTER OUTLINES WHILE 0 is REALLY A PARTITION OF THE SPACE
+            
+			//TODO: CHECK WHICH ONE WORKS BETTER FOR NUCLEI SEGMENTATION.
+            //A PRIORI, fMaxPos SEEM TO HAVE MORE LEAKAGE
+            
 			//merge current pixel to the region with the AVERALL highest value
+            
 			//#define MERGE_TO_REGION_FMAX 
 #ifdef MERGE_TO_REGION_FMAX
 			add_element_to_set(L, fMaxPos, posB,Pval);
 #else
-			//merge current pixel to the region with the highest value in the neighborhood
+			//merge current pixel to the region with the highest value 
+            //in the neighborhood
 			add_element_to_set(L, fMaxPosNeigh, posB,Pval);
 #endif
 
@@ -1735,22 +1768,34 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 			PDmergedElem.clear();
 			for(int aa = 0; aa < neighSize; aa++)
 			{
+                //we do not need to check merge since they belong 
+                //already to maximum value
 				if(neighLabel[aa] == fMaxPos) 
-					continue;//we do not need to check merge since they belong already to maximum value								
+					continue;								
 
-				if( find(PDmergedElem.begin(), PDmergedElem.end(), neighLabel[aa] ) != PDmergedElem.end() )//element neighLabel[aa] was already checked
+                //element neighLabel[aa] was already checked
+				if( find(PDmergedElem.begin(), PDmergedElem.end(), neighLabel[aa] )
+                        != PDmergedElem.end() )
 					continue;
 
 				PDmergedElem.push_back(neighLabel[aa]);
 
-				if((neighFmax[aa]-Pval)<=minTau)//merge components using absolute value
-					//TODO: add a generic "merging decision" function with common inputs so I can play with different strategies
-					//if((neighFmax[aa]-Pval)/neighFmax[aa]<=tau)//merge components using relative value
+
+                //merge components using absolute value
+                
+                //TODO: add a generic "merging decision" function
+                //with common inputs so I can play with different strategies/
+				if((neighFmax[aa]-Pval)<=minTau)					
+					//if((neighFmax[aa]-Pval)/neighFmax[aa]<=tau)
+                    //merge components using relative value
 				{
-					if( find( elemToMerge.begin(), elemToMerge.end(), neighLabel[aa] ) == elemToMerge.end() )//element was not inserted
+					if( find( elemToMerge.begin(), elemToMerge.end(), neighLabel[aa] ) 
+                            == elemToMerge.end() )//element was not inserted
 						elemToMerge.push_back(neighLabel[aa] );
 				}else{
-					//to build PD we would run the code with tau = Inf ( so basically we would merge everything, and everytime we merge something we output the pair (neighFmax[aa], Pval)
+					//to build PD we would run the code with tau = Inf 
+                    //( so basically we would merge everything, and everytime
+                    //we merge something we output the pair (neighFmax[aa], Pval)
 					PDaux.fMaxMergedRegion = neighFmax[aa];
 					PDaux.fMergeVal = Pval;
 					PDaux.fMaxMergedRegionPos = neighLabel[aa];
@@ -1760,12 +1805,14 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 					PDhashIter = PDhash.insert( PDaux );
 					if( PDhashIter.second == false )//update element
 					{
-						PDhashIter.first->fMergeVal = std::max( PDhashIter.first->fMergeVal, Pval );
+						PDhashIter.first->fMergeVal = 
+                            std::max( PDhashIter.first->fMergeVal, Pval );
 					}														
 				}
 			}
 
-			for(vector<labelType>::iterator iter = elemToMerge.begin(); iter != elemToMerge.end(); ++iter)
+			for(vector<labelType>::iterator iter = elemToMerge.begin(); 
+                    iter != elemToMerge.end(); ++iter)
 			{
 				union_sets(L, fMaxPos, *iter);		
 				numLabels--;
