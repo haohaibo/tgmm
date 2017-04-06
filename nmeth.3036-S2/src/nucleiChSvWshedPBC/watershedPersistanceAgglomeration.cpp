@@ -58,7 +58,7 @@
 #include "graph.h"
 
 //uncomment this to time code and find bottlenecks
-//#define WATERSHED_TIMING_CPU 
+#define WATERSHED_TIMING_CPU 
 
 using namespace std;
 
@@ -1509,7 +1509,8 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 #endif	
 
 	int countDebug = 0;
-	for(vector<ForegroundVoxel>::const_iterator iter=foregroundVec.begin();iter!=foregroundVec.end();++iter, ++countDebug)
+	for(vector<ForegroundVoxel>::const_iterator iter=foregroundVec.begin();
+        iter!=foregroundVec.end();++iter, ++countDebug)
 	{
 		Pval=iter->val;
 		posB=iter->pos;
@@ -1543,8 +1544,11 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 				{	
                     //this is the bottleneck: it takes 50% of the time					
 					auxLabel = find(L,posBneigh);
+
 					auxVal = L->fMax[auxLabel];
-					insertNeigh( neighVal,  neighLabel, neighFmax,neighSize,  img[posBneigh],  auxLabel,  auxVal,  fMaxValNeigh, fMaxPosNeigh,  fMaxVal, fMaxPos);
+					insertNeigh( neighVal,  neighLabel, neighFmax,neighSize,  
+                            img[posBneigh],  auxLabel,  auxVal,  fMaxValNeigh, 
+                            fMaxPosNeigh,  fMaxVal, fMaxPos);
 					neighSize++;					
 				}
 				else if( img[ posBneigh ] == Pval && L->p[posBneigh] >= 0)
@@ -1908,7 +1912,7 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 
 	if( numSelfEdges > 0 )
 	{
-		cout<<"WARNING: buildHierarchicalSegmentation: num nodes with self edges = "<<numSelfEdges<<" out of "<<agglomerateGraph.getNumNodes()<<". Right now I have a quick fix but this should not happen"<<endl;
+		cout<<"WARNING: buildHierarchicalSegmentation: num nodes with self edges = "<<numSelfEdges<<" out of "<<agglomerateGraph.getNumNodes_Omp()<<". Right now I have a quick fix but this should not happen"<<endl;
 	}
 
 	
@@ -1951,12 +1955,12 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 
 
 	int iterD = 0;
-	size_t numNodes = agglomerateGraph.getNumNodes();
+	size_t numNodes = agglomerateGraph.getNumNodes_Omp();
 #ifdef WATERSHED_TIMING_CPU
 	double while1_start, while1_end;
 #endif
-	double while1_start, while1_end;
-	while1_start = omp_get_wtime();
+	//double while1_start, while1_end;
+	//while1_start = omp_get_wtime();
 #ifdef WATERSHED_TIMING_CPU
 	while1_start = omp_get_wtime();
 #endif
@@ -2275,14 +2279,14 @@ cout<<"in buildH while1 loop " << count_while1 <<
 
 #endif
 
-	while1_end = omp_get_wtime();
-	sum_time_while1 +=
-		(double)(while1_end - 
-		while1_start);
+	//while1_end = omp_get_wtime();
+	//sum_time_while1 +=
+	//	(double)(while1_end - 
+	//	while1_start);
 
-	cout << "(new!) in buildH while1 took "
-		<<sum_time_while1<<
-		" secs"<<endl;
+	//cout << "(new!) in buildH while1 took "
+	//	<<sum_time_while1<<
+	//	" secs"<<endl;
 #ifdef WATERSHED_TIMING_CPU
 	while1_end = omp_get_wtime();
 	sum_time_while1 +=
@@ -2303,7 +2307,7 @@ cout<<"in buildH while1 loop " << count_while1 <<
 	time(&while2_start);
 #endif
 	//cout<<"DEBUGGING: join disconnected regions"<<endl;
-	while( agglomerateGraph.getNumNodes() > 1 )
+	while( agglomerateGraph.getNumNodes_Omp() > 1 )
 	{
 		//find two active nodes
 		e1 = e2 = std::numeric_limits<unsigned int>::max();

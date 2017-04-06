@@ -49,6 +49,8 @@ void set_union_init(set_unionC *s, labelType n)
 }
 */
 
+labelType *temp_q;
+
 //initialize all elements to null assignment
 void set_union_init(set_unionC *s, labelType n)
 {
@@ -57,8 +59,9 @@ void set_union_init(set_unionC *s, labelType n)
     //allocate memory
     s->p=(labelType*)malloc(n*sizeof(labelType));
     s->size=(labelType*)malloc(n*sizeof(labelType));
-   s->fMax=(imgVoxelType*)malloc(n*sizeof(imgVoxelType));
+    s->fMax=(imgVoxelType*)malloc(n*sizeof(imgVoxelType));
  
+    temp_q = (labelType*)malloc(n*sizeof(labelType));
     
     for (i=0; i<n; i++) {
         s->p[i] = -1;
@@ -114,6 +117,22 @@ void set_union_destroy(set_unionC *s)
 //    }
 //   // printf("go into find x=%d, s->p[x]=%d\n",x,s->p[x]);
 //}
+//labelType find(const set_unionC *s, labelType x)
+//{
+//  /*
+//  if(s->p[x]<0)
+//  {
+//  	//printf("I am here!\n");
+//      return -1;//elements might not be assigned
+//  }
+//  */
+//
+//   if(s->p[x] == x)
+//       return x;
+//   return s->p[x] = find(s, s->p[x]); 
+//  
+// // printf("go into find x=%d, s->p[x]=%d\n",x,s->p[x]);
+//}
 
 labelType find(const set_unionC *s, labelType x)
 {
@@ -127,14 +146,31 @@ labelType find(const set_unionC *s, labelType x)
 
    if(s->p[x] == x)
        return x;
-   return s->p[x] = find(s, s->p[x]); 
+  //return s->p[x] = find(s, s->p[x]); 
 
+   int count = 0;
   
- /*while(s->p[x] != x)
-  {
-     
-  }
-  */
+   while(s->p[x] != x)
+   {
+       temp_q[count++] = x;
+       //printf("count = %d, s = %d\n", count, temp_q[count - 1]);
+       x = s->p[x];   
+       //printf("go in while\n");
+       if(s->p[x] == x)
+       {
+           int root = x;
+           if(count > 10)
+             printf("current root is %d, tree depth is %d\n",x,count);
+           while(count > 0)
+           {
+               //printf("count = %d, s = %d\n", count, temp_q[count - 1]);
+               s->p[temp_q[--count]] = root;
+           }
+           //puts("233");
+           return x;
+       }
+   }
+  
   
  // printf("go into find x=%d, s->p[x]=%d\n",x,s->p[x]);
 }
