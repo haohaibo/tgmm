@@ -134,7 +134,7 @@ void set_union_destroy(set_unionC *s)
 // // printf("go into find x=%d, s->p[x]=%d\n",x,s->p[x]);
 //}
 
-labelType find(const set_unionC *s, labelType x)
+inline labelType find(const set_unionC *s, labelType x)
 {
   /*
   if(s->p[x]<0)
