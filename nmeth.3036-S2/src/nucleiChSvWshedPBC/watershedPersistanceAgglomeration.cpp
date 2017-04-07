@@ -213,12 +213,12 @@ struct nodeAgglomeration
 double mergeNodesFunctor(double w1, double w2){ return max(w1,w2);};
 
 GraphEdge* findEdgeWithMinTau(
-    		graphFA<nodeAgglomeration>& agglomerateGraph, 
-		imgVoxelType& tauE);
+    		    graphFA<nodeAgglomeration>& agglomerateGraph, 
+		        imgVoxelType& tauE);
 
 GraphEdge* findEdgeWithMinTau(unsigned int e1, 
-		graphFA<nodeAgglomeration>& agglomerateGraph, 
-		imgVoxelType& tauE);
+		        graphFA<nodeAgglomeration>& agglomerateGraph, 
+		        imgVoxelType& tauE);
 //the same as bove but for a specific edge
 //====================================================================
 //needed to pass information to each thread
@@ -1835,43 +1835,57 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 	uint64 imgDimsUINT64[dimsImage];
 	for(int ii = 0;ii <dimsImage; ii++)
 		imgDimsUINT64[ii] = imgDims[ii];
+
 	supervoxel::setDataDims(imgDimsUINT64);
 	supervoxel::dataSizeInBytes = sizeof(imgVoxelType) * imgSize;
 
 
 	unordered_map<labelType,imgLabelType> mapLabel;
-	mapLabel.rehash( ceil( (foregroundVec.size() / 50 ) / mapLabel.max_load_factor() ));//to avoid rehash. a.reserve(n) is the ame as a.rehash(ceil(n / a.max_load_factor()))
+
+    //to avoid rehash. a.reserve(n) is the same as
+    //a.rehash(ceil(n / a.max_load_factor()))
+	mapLabel.rehash( ceil( (foregroundVec.size() / 50 ) / mapLabel.max_load_factor() ));
 	unordered_map<labelType,imgLabelType>::const_iterator mapLabelIter;
 	//mapLabel.insert( make_pair(1,0) );
 	labelType auxL;
 	int numBasicRegions = 0;
 	//imgVoxelType auxFmax;
+    
 #ifdef WATERSHED_TIMING_CPU
 	time(&start);
 #endif
 
-	for(vector<ForegroundVoxel>::const_iterator iter=foregroundVec.begin();iter!=foregroundVec.end();++iter)//TODO: it can be faster if we access elements in order in the image for cache friendliness. Right now (iter->pos) jumps all over the image
+    //TODO: it can be faster if we access elements in order in the 
+    //image for cache friendliness. Right now (iter->pos) jumps all over the image
+	for(vector<ForegroundVoxel>::const_iterator iter=foregroundVec.begin();iter!=foregroundVec.end();++iter)
 	{
-
-		auxL = find(L,iter->pos);//here we do not need to reserve label 0 for background
+        //here we do not need to reserve label 0 for background
+		auxL = find(L,iter->pos);
 		mapLabelIter = mapLabel.find(auxL);
 
-		if( mapLabelIter == mapLabel.end())//element not found
+        //element not found
+		if( mapLabelIter == mapLabel.end())
 		{
 			//auxFmax = get_fMax(L, iter->pos);
-			if(L->fMax[auxL] > minTau)//if L->fMax[auxL] < minTau, we consider region as part of the background
+            
+            //if L->fMax[auxL] < minTau, we consider region as part of the background
+			if(L->fMax[auxL] > minTau)
 			{
 				//new label
 				if( numBasicRegions >= numLabels)
 				{
-					cout<<"ERROR: at buildHierarchicalSegmentation: maximum number of labels "<< numLabels<<"  reached"<<endl;
+					cout<<"ERROR: at buildHierarchicalSegmentation:"
+                        <<" maximum number of labels "
+                        << numLabels<<"  reached"<<endl;
 					delete hs;
 					return NULL;
 				}
 				mapLabel.insert( make_pair(auxL, numBasicRegions) );				
 				//imgL [iter->pos] = (*numLabels);
 				hs->basicRegionsVec[ numBasicRegions ].PixelIdxList.push_back( iter->pos );
-				hs->basicRegionsVec[ numBasicRegions ].tempWildcard = L->fMax[auxL];//we store the maximum value of this basic region
+
+                //we store the maximum value of this basic region
+				hs->basicRegionsVec[ numBasicRegions ].tempWildcard = L->fMax[auxL];
 				hs->basicRegionsVec[ numBasicRegions ].dataPtr = (void*)(img);
 				numBasicRegions++;
 			}
@@ -1891,7 +1905,8 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 	//sort PixelIdxList for each basic region
 	for(unsigned int ii = 0; ii < hs->getNumberOfBasicRegions(); ii++)
 	{
-		sort(hs->basicRegionsVec[ii].PixelIdxList.begin(),hs->basicRegionsVec[ii].PixelIdxList.end());
+		sort(hs->basicRegionsVec[ii].PixelIdxList.begin(),
+             hs->basicRegionsVec[ii].PixelIdxList.end());
 	}
 
 #ifdef WATERSHED_TIMING_CPU
@@ -1900,18 +1915,25 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 #endif
 
 
-	//cout<<"DEBUGGING: number of basic regions "<<numBasicRegions<<"; number of PDvec points "<<PDhash.size()<<endl;
+	//cout<<"DEBUGGING: number of basic regions "
+    //    <<numBasicRegions
+    //    <<"; number of PDvec points "
+    //    <<PDhash.size()<<endl;
 
 	//second, build dendrogram from basic regions
 #ifdef WATERSHED_TIMING_CPU
 	time(&start);
 #endif
 
-	//build dendrogram (it is basically an agglomeration algorithm). Check notebook February 5th 2013
-	graphFA<nodeAgglomeration> agglomerateGraph(false);//unidrected graph. We have to merge all the edges until only one node stands
+	//build dendrogram (it is basically an agglomeration algorithm).
+    //Check notebook February 5th 2013
+    
+    //unidrected graph. We have to merge all the edges until only one node stands
+	graphFA<nodeAgglomeration> agglomerateGraph(false);
 	agglomerateGraph.reserveNodeSpace( hs->getNumberOfBasicRegions() );
 
-	//initialize node agglomeration: bottom of the binary tree containing basic regions
+	//initialize node agglomeration: 
+    //bottom of the binary tree containing basic regions
 	nodeAgglomeration auxNode;
 	for(unsigned int countVec = 0; countVec <  hs->getNumberOfBasicRegions(); countVec++)
 	{
@@ -1928,12 +1950,16 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 
 	
 
-	//cout<<"DEBUGGING:parse PD into a set of unique edges between basic regions (nodes in the graph) to initialize all the edges in agglomerationGraph"<<endl;
+	//cout<<"DEBUGGING:parse PD into a set of unique edges"
+    //    <<" between basic regions (nodes in the graph) "
+    //    <<"to initialize all the edges in agglomerationGraph"
+    //    <<endl;
 	labelType id1, id2;
 	GraphEdge* auxEdge;
 
 	int numSelfEdges = 0;
-	for(unordered_set< pairPD, pairPDKeyHash >::iterator iterPD = PDhash.begin(); iterPD!= PDhash.end(); ++iterPD)
+	for(unordered_set< pairPD, pairPDKeyHash >::iterator iterPD = PDhash.begin(); 
+            iterPD!= PDhash.end(); ++iterPD)
 	{
 		auxL = find(L, iterPD->fNewMaxRegionPos);
 		id1 = mapLabel.find(auxL)->second;
@@ -1943,23 +1969,39 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 		if( id1 == id2)
 		{
 			numSelfEdges++;
-			continue;//TODO: this should not happen, but in some very large images it was crashing the code (since we get self edges). For example, in mouse 12-08-2010_TM0, 34 / 675393 nodes have self edges.
+
+            //TODO: this should not happen, but in some very 
+            //large images it was crashing the code
+            //(since we get self edges). For example, 
+            //in mouse 12-08-2010_TM0, 34 / 675393 nodes have self edges.
+			continue;
 		}
 		//check if edge has already been stablished
 		auxEdge = agglomerateGraph.findEdge(id1, id2);
 
-		if ( auxEdge == NULL )//not found->insert new edge
+        //not found->insert new edge
+		if ( auxEdge == NULL )
 		{
-			agglomerateGraph.insert_edge(id1,id2,iterPD->fMergeVal);//the weight is the value at which both regions touch
+            //the weight is the value at which both regions touch
+			agglomerateGraph.insert_edge(id1,id2,iterPD->fMergeVal);
 		}else{//found->update edge
-			auxEdge->weight = std::max( auxEdge->weight, (double)(iterPD->fMergeVal));//the weight is the value at which both regions touch (we are looking for maxima)
+
+            //the weight is the value at which both regions touch 
+            //(we are looking for maxima)
+			auxEdge->weight = std::max( auxEdge->weight, (double)(iterPD->fMergeVal));
 		}
 
 	}
 
 	if( numSelfEdges > 0 )
 	{
-		cout<<"WARNING: buildHierarchicalSegmentation: num nodes with self edges = "<<numSelfEdges<<" out of "<<agglomerateGraph.getNumNodes_Omp()<<". Right now I have a quick fix but this should not happen"<<endl;
+		cout<<"WARNING: buildHierarchicalSegmentation:"
+            <<" num nodes with self edges = "
+            <<numSelfEdges
+            <<" out of "
+            <<agglomerateGraph.getNumNodes_Omp()
+            <<". Right now I have a quick fix but this should not happen"
+            <<endl;
 	}
 
 	
@@ -1978,7 +2020,8 @@ hierarchicalSegmentation* buildHierarchicalSegmentation(
 
 	//initialize
 	unsigned int countE = 0;
-	for(vector< pair<GraphEdge*,imgVoxelType> >::iterator iter = minTauVec.begin(); iter!= minTauVec.end(); ++iter, ++countE)
+	for(vector< pair<GraphEdge*,imgVoxelType> >::iterator iter = minTauVec.begin();
+            iter!= minTauVec.end(); ++iter, ++countE)
 	{
 		iter->first = findEdgeWithMinTau(countE, agglomerateGraph, iter->second );
 	}
@@ -2248,9 +2291,16 @@ double sum_time_while1_phase2_p3 = 0;
     //check that agglomeration was correct 
     if( numNodes != agglomerateGraph.getNumNodes_Omp() + 1)
     {
-      cout<<"Check point 2: iter="<<(iterD)<<";numNodes = "<<numNodes<<".Selected nodes:e1="<<e1<<";e2="<<e2<<";tauE="<<tauE<<endl;
+      cout<<"Check point 2: iter="<<(iterD)
+          <<";numNodes = "<<numNodes
+          <<".Selected nodes:e1="<<e1
+          <<";e2="<<e2
+          <<";tauE="<<tauE
+          <<endl;
 
-      cout<<"ERROR: buildHierarchicalSegmentation: numNodes = "<<numNodes<<"; numNodes (after agglomeration ) = "<<agglomerateGraph.getNumNodes_Omp()<<endl;
+      cout<<"ERROR: buildHierarchicalSegmentation: numNodes = "<<numNodes
+          <<"; numNodes (after agglomeration ) = "<<agglomerateGraph.getNumNodes_Omp()
+          <<endl;
  
       exit(3);
     }
@@ -2336,41 +2386,90 @@ cout<<"in buildH while1 loop " << count_while1 <<
 	//	" secs"<<endl;
 #ifdef WATERSHED_TIMING_CPU
 	while1_end = omp_get_wtime();
-	sum_time_while1 +=
-		(double)(while1_end - 
-		while1_start);
+	sum_time_while1 += (double)(while1_end - while1_start);
 
 	cout << "in buildH while1 took "
-		<<sum_time_while1<<
-		" secs"<<endl;
+	     << sum_time_while1 << " secs" << endl;
 #endif
 
 
 #ifdef WATERSHED_TIMING_CPU
-	time_t while2_start, while2_end;
+	double while2_start, while2_end;
+    double sum_time_while2 = 0;
+
+	double while2_for_start, while2_for_end, sum_time_while2_for = 0;
+	double while2_mergeNode_start, while2_mergeNode_end, sum_time_while2_mergeNode = 0;
+    double while2_phase1_start, while2_phase1_end, sum_time_while2_phase1 = 0;
+    double while2_phase2_start, while2_phase2_end, sum_time_while2_phase2 = 0;
+    double while2_phase3_start, while2_phase3_end, sum_time_while2_phase3 = 0;
+
+    while2_start = omp_get_wtime();
 #endif
 
 #ifdef WATERSHED_TIMING_CPU
-	time(&while2_start);
+	//time(&while2_start);
 #endif
 	//cout<<"DEBUGGING: join disconnected regions"<<endl;
+    //
+    
+    cout <<"agglomerateGraph.getNumNodes_Omp() = "
+         << agglomerateGraph.getNumNodes_Omp()
+         << endl;
+    int my_count = 0;
+
 	while( agglomerateGraph.getNumNodes_Omp() > 1 )
 	{
+        while2_phase1_start = omp_get_wtime();
+        my_count++;
+        //cout <<"agglomerateGraph.getNumNodes_Omp()"
+        //     << agglomerateGraph.getNumNodes_Omp()
+        //     << endl;
+        
 		//find two active nodes
 		e1 = e2 = std::numeric_limits<unsigned int>::max();
-		for(size_t ii = 0; ii<agglomerateGraph.activeNodes.size(); ii++)
+
+        while2_for_start = omp_get_wtime();
+        bool e1_flag = false;
+        bool e2_flag = false;
+        size_t activeNodesSize = agglomerateGraph.activeNodes.size();
+		for(size_t ii = 0; ii < activeNodesSize; ii++)
 		{
+            //cout << "agglomerateGraph.activeNodes.size() = "
+            //     << agglomerateGraph.activeNodes.size() << endl;
+            if(e1_flag == true && e2_flag == true)
+            {
+                break;
+            }
+
 			if( agglomerateGraph.activeNodes[ii] == true )
 			{
 				if( e1 == std::numeric_limits<unsigned int>::max() )
+                {
 					e1 = ii;
-				else if( e2 == std::numeric_limits<unsigned int>::max() )
-					e2 = ii;
-				else
-					break;
+                    e1_flag = true;
+                }
+				else 
+                {
+
+                    if( e2 == std::numeric_limits<unsigned int>::max() )
+                     {
+					       e2 = ii;
+                           e2_flag = true;
+                     }else
+                     {
+					    break;
+                     }
+                }
 			}
 		}
 
+        while2_phase1_end = omp_get_wtime();
+        sum_time_while2_phase1 += while2_phase1_end - while2_phase1_start;
+
+        while2_for_end = omp_get_wtime();
+        sum_time_while2_for += while2_for_end - while2_for_start;    
+
+        while2_phase2_start = omp_get_wtime();
 		e1NodeOld = agglomerateGraph.nodes[ e1 ];
 		
 		//create new node in the binary tree 
@@ -2379,22 +2478,36 @@ cout<<"in buildH while1 loop " << count_while1 <<
 		auxNode.nodePtr->left = e1NodeOld.nodePtr;
 		auxNode.nodePtr->right = agglomerateGraph.nodes[ e2 ].nodePtr;
 		auxNode.nodePtr->parent = NULL;
-		auxNode.nodePtr->data.svPtr = NULL;//it is not a basic region anymore
+        //it is not a basic region anymore 
+		auxNode.nodePtr->data.svPtr = NULL;
 		auxNode.nodePtr->data.thrTau = std::numeric_limits<imgVoxelType>::max();
 
 		//update parents for e1 and e2
 		e1NodeOld.nodePtr->parent = auxNode.nodePtr;
 		agglomerateGraph.nodes[ e2 ].nodePtr->parent = auxNode.nodePtr;
 		
-		//insert the new node (new region) into node e1 and delete e2. We have to recalculate all the edges from auxNode to all the edges between e1 and e2
+		//insert the new node (new region) into node e1 and delete e2.
+        //We have to recalculate all the edges from auxNode to all the
+        //edges between e1 and e2
+        
+        while2_phase2_end = omp_get_wtime();
+        sum_time_while2_phase2 += while2_phase2_end - while2_phase2_start;
+        while2_mergeNode_start = omp_get_wtime();
 		agglomerateGraph.mergeNodes(e1, e2, auxNode ,mergeNodesFunctorPtr);
+        while2_mergeNode_end = omp_get_wtime();
+        sum_time_while2_mergeNode += while2_mergeNode_end - while2_mergeNode_start;
 	}
 
+    cout << "in buildH while2 loop = " << my_count << " times" << endl;
 #ifdef WATERSHED_TIMING_CPU
-	time(&while2_end);
-	cout << "in buildH while2 took "<<
-		difftime(while2_end, while2_start)<<
-		" secs"<<endl;
+    	
+    cout << "in buildH while2 for took " << sum_time_while2_for << " secs" << endl;
+    cout << "in buildH while2 mergeNode took " << sum_time_while2_mergeNode << " secs" << endl; 
+    cout << "in buildH while2 phase1 took " << sum_time_while2_phase1 << " secs" << endl;
+    cout << "in buildH while2 phase2 took " << sum_time_while2_phase2 << " secs" << endl;
+    while2_end = omp_get_wtime();
+    sum_time_while2 += while2_end - while2_start;
+	cout << "in buildH while2 took " << sum_time_while2 << " secs" <<endl;
 #endif
 
 	//set the root of the binary tree
@@ -2437,18 +2550,23 @@ cout<<"in buildH while1 loop " << count_while1 <<
 
 
 //==================================================================
-GraphEdge* findEdgeWithMinTau(graphFA<nodeAgglomeration>& agglomerateGraph, imgVoxelType& tauE)
+GraphEdge* findEdgeWithMinTau(graphFA<nodeAgglomeration>& agglomerateGraph, 
+                              imgVoxelType& tauE)
 {
 	imgVoxelType tauAux;
 	tauE = imgVoxelMaxValue;
 	GraphEdge* auxEdge, *edgeMin = NULL;
 	unsigned int e1 = 0;
-	for(vector<GraphEdge*>::iterator iterE = agglomerateGraph.edges.begin(); iterE != agglomerateGraph.edges.end(); ++iterE, ++e1)
+	for(vector<GraphEdge*>::iterator iterE = agglomerateGraph.edges.begin();
+            iterE != agglomerateGraph.edges.end(); ++iterE, ++e1)
 	{
 		auxEdge = (*iterE);
 		while( auxEdge != NULL )
 		{
-			tauAux = min( agglomerateGraph.nodes[e1].fMax, agglomerateGraph.nodes[auxEdge->e2].fMax ) - auxEdge->weight;
+			tauAux = 
+                min( agglomerateGraph.nodes[e1].fMax, 
+                     agglomerateGraph.nodes[auxEdge->e2].fMax ) - auxEdge->weight;
+
 			if( tauAux  < tauE)
 			{
 				tauE = tauAux;
@@ -2463,7 +2581,9 @@ GraphEdge* findEdgeWithMinTau(graphFA<nodeAgglomeration>& agglomerateGraph, imgV
 }
 
 //==================================================================
-GraphEdge* findEdgeWithMinTau(unsigned int e1, graphFA<nodeAgglomeration>& agglomerateGraph, imgVoxelType& tauE)
+GraphEdge* findEdgeWithMinTau(unsigned int e1,
+                              graphFA<nodeAgglomeration>& agglomerateGraph,
+                              imgVoxelType& tauE)
 {
 	imgVoxelType tauAux;
 	tauE = imgVoxelMaxValue;
@@ -2475,7 +2595,10 @@ GraphEdge* findEdgeWithMinTau(unsigned int e1, graphFA<nodeAgglomeration>& agglo
 	GraphEdge* auxEdge = agglomerateGraph.edges[e1];
 	while( auxEdge != NULL )
 	{
-		tauAux = min( agglomerateGraph.nodes[e1].fMax, agglomerateGraph.nodes[auxEdge->e2].fMax ) - auxEdge->weight;
+		tauAux = 
+            min( agglomerateGraph.nodes[e1].fMax, 
+                agglomerateGraph.nodes[auxEdge->e2].fMax ) - auxEdge->weight;
+
 		if( tauAux  < tauE)
 		{
 			tauE = tauAux;

@@ -1622,7 +1622,6 @@ float supervoxel::otsuThreshold(float* arrayValues, int N)
 	//convert to [0,255] values
 
 
-	
 
 	float minVal = std::numeric_limits<float>::max();
 	float maxVal = -minVal;

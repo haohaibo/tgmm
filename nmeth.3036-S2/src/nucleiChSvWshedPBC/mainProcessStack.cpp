@@ -194,7 +194,8 @@ int main( int argc, const char** argv )
     double HS_start, HS_end, sum_time_HS;
     
     HS_start = omp_get_wtime();	
-	hierarchicalSegmentation* hs =  buildHierarchicalSegmentation((imgVoxelType*) (img->data), imgDims, backgroundThr, conn3D, minTau, 1);
+	hierarchicalSegmentation* hs =  buildHierarchicalSegmentation((imgVoxelType*) (img->data),
+                                                    imgDims, backgroundThr, conn3D, minTau, 1);
 	
     HS_end = omp_get_wtime();
     sum_time_HS = (double)(HS_end - HS_start);

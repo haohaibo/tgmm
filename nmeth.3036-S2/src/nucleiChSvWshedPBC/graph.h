@@ -49,7 +49,11 @@ public:
 
 	//main variables
 	vector< ItemType > nodes;//in case you want to hold some information in the node, we made it a template class
-	vector< bool > activeNodes;//keeps track of which nodes are active and which ones have been "deleted" (we need to do this because we use indexes to nodes instead of pointers to objects floating in different parts of memory)
+
+    //keeps track of which nodes are active and which ones have been
+    //"deleted" (we need to do this because we use indexes to nodes
+    //instead of pointers to objects floating in different parts of memory)
+	vector< bool > activeNodes;
 	vector< GraphEdge* > edges; //adjecincy info for each node (it is a single list node, so for each element in the graph it just has teh first edge). It should be teh same size as nodes.
 	//vector<int> degrees;//degrees (number of edges) for each node. It should have the same size as nodes.
 	bool isDirected;
@@ -171,7 +175,10 @@ GraphEdge* graphFA<ItemType>::insert_edge(unsigned int e1, unsigned int e2, doub
 {
 	if( e1 >= nodes.size() || e2 >= nodes.size() )
 	{
-		cout<<"ERROR: at graphFA<ItemType>::insert_edge: requested id for edges is larger than the current number of nodes"<<endl;
+		cout<<"ERROR: at graphFA<ItemType>::insert_edge:"
+            <<" requested id for edges is larger than the"
+            <<" current number of nodes"
+            <<endl;
 		return NULL;
 	}
 
