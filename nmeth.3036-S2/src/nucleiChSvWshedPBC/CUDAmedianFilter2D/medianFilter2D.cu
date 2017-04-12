@@ -228,6 +228,7 @@ int medianFilterCUDASliceBySlice(imgType* im,int* imDim,int radius,int devCUDA)
 		//transfer input: image and image dimensions
 		HANDLE_ERROR(cudaMemcpy(imCUDAinput, im, imSize * sizeof(imgType), cudaMemcpyHostToDevice));
 		HANDLE_ERROR(cudaMemcpyToSymbol(imDimCUDA,imDim, dimsImageSlice * sizeof(int)));//constant memory
+		//HANDLE_ERROR(cudaMemcpy(imDimCUDA,imDim, dimsImageSlice * sizeof(int),cudaMemcpyHostToDevice));//constant memory
 
 		//run kernel			
 		switch(radius)
