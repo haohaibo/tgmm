@@ -577,7 +577,8 @@ int main( int argc, const char** argv )
         }
         if(img->ndims!=dimsImage)
         {
-            cout<<"ERROR: constant dimsImage does not match img->ndims. Please change dimsImage and recompile the code"<<endl;
+            cout<<"ERROR: constant dimsImage does not match img->ndims. "
+                <<"Please change dimsImage and recompile the code"<<endl;
             exit(3);
         }
         //associate each supervoxel with the correct data pointer
@@ -593,18 +594,35 @@ int main( int argc, const char** argv )
         {
             if( img->dims[ii] != supervoxel::dataDims[ii] )
             {
-                if( img->dims[0] == supervoxel::dataDims[1] && img->dims[1] == supervoxel::dataDims[0] && img->dims[2] == supervoxel::dataDims[2])
+                if( img->dims[0] == supervoxel::dataDims[1] && 
+                    img->dims[1] == supervoxel::dataDims[0] && 
+                        img->dims[2] == supervoxel::dataDims[2])
                 {
-                    cout<<"WARNING:"<<supervoxel::dataDims[0]<<"x"<<supervoxel::dataDims[1]<<"x"<<supervoxel::dataDims[2]<<endl;
-                    cout<<"WARNING:"<<img->dims[0]<<"x"<<img->dims[1]<<"x"<<img->dims[2]<<endl;
+                    cout<<"WARNING:"<<supervoxel::dataDims[0]
+                        <<"x"<<supervoxel::dataDims[1]<<"x"
+                        <<supervoxel::dataDims[2]
+                        <<endl;
+                    cout<<"WARNING:"<<img->dims[0]
+                        <<"x"<<img->dims[1]<<"x"
+                        <<img->dims[2]
+                        <<endl;
                     cout<<"WARNING: transposing image"<<endl;
                     transposeStackUINT16( img );
                     break;
                 }else{
 
-                    cout<<"ERROR!: data dimensions do not match between image and supervoxel record. Most likely a flipped x and y due to tiff to jp2 format with Matlab"<<endl;
-                    cout<<"ERROR:"<<supervoxel::dataDims[0]<<"x"<<supervoxel::dataDims[1]<<"x"<<supervoxel::dataDims[2]<<endl;
-                    cout<<"ERROR:"<<img->dims[0]<<"x"<<img->dims[1]<<"x"<<img->dims[2]<<endl;
+                    cout<<"ERROR!: data dimensions do not match between "
+                        <<"image and supervoxel record. Most likely a "
+                        <<"flipped x and y due to tiff to jp2 format with Matlab"
+                        <<endl;
+                    cout<<"ERROR:"<<supervoxel::dataDims[0]
+                        <<"x"<<supervoxel::dataDims[1]<<"x"
+                        <<supervoxel::dataDims[2]
+                        <<endl;
+                    cout<<"ERROR:"<<img->dims[0]
+                        <<"x"<<img->dims[1]<<"x"
+                        <<img->dims[2]
+                        <<endl;
                     exit(3);
                 }
             }

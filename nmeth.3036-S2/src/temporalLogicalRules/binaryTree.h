@@ -2,15 +2,20 @@
  * Copyright (C) 2011-2012 by  Fernando Amat
  * See license.txt for full license and copyright notice.
  *
- * Authors: Fernando Amat based on description at http://library.thinkquest.org/C005618/text/binarytrees.htm
+ * Authors: Fernando Amat based on description at 
+ * http://library.thinkquest.org/C005618/text/binarytrees.htm
  *
  * bynaryTree.h
  *
  *  Created on: August 17th, 2012
  *      Author: Fernando Amat
  *
- * \brief Template class to implement binary treees. This implementation contains specific functions for cell lineaging
+ * \brief Template class to implement binary trees. This implementation contains 
+ * specific functions for cell lineaging
  *
+ *  Modified by: Haibo Hao
+ *         Date: 2017.4.12
+ *        Email: haohaibo@ncic.ac.cn 
  */
 
 #ifndef __BINARY_TREE_LINEAGE_H__
@@ -22,15 +27,22 @@
 
 using namespace std;
 
-//NOTE: Many books make a class for a single node, and use it to implement the tree. However, we will separate the structure for each node and the entire tree to conserve overhead processing time. Each time a node is created, much less time and memory is used than when a whole tree structure is made. Each node will store a value, and pointers to its children and parent. These will be used and modified by the general tree class.
+//NOTE: Many books make a class for a single node, and use it to implement the tree. 
+//However, we will separate the structure for each node and the entire tree to conserve
+//overhead processing time. Each time a node is created, much less time and memory is 
+//used than when a whole tree structure is made. Each node will store a value, and pointers 
+//to its children and parent. These will be used and modified by the general tree class.
 template <class ItemType>
 struct TreeNode
 {
-   ItemType data;//If you want to use a pointer (so daata is not copied all the time, define ItemType as a pointer type)
+   //If you want to use a pointer
+   //(so data is not copied all the time, define ItemType as a pointer type)
+   ItemType data;
    TreeNode<ItemType> *left;
    TreeNode<ItemType> *right;
    TreeNode<ItemType> *parent;
-   int nodeId;//some times it is necessary to know location
+   //some times it is necessary to know location
+   int nodeId;
 
 
    	TreeNode()
@@ -54,7 +66,9 @@ template <class ItemType>
 class BinaryTree
 {
 public:
-   BinaryTree(); //create empty tree with default root node which has no value. set current to main root node.
+   //create empty tree with default root node which has no value. 
+   //set current to main root node.
+   BinaryTree(); 
    BinaryTree(TreeNode<ItemType>*,int); //create new tree with passed node as the new main root. set current to main root. if the second parameter is 0, the new object simply points to the node of the original tree. If the second parameter is 1, a new copy of the subtree is created, which the object points to.
    BinaryTree(const BinaryTree &other);
    ~BinaryTree();
@@ -115,8 +129,10 @@ private:
    bool subtree; //does it reference a part of a larger object?
 };
 
-//==================================================================================================================================
-//The first constructor simply sets the main_root and current data members to NULL, since the tree has no nodes. A new tree is made, therefore it is not part of a larger tree object, and the subtree value is set accordingly.
+//=================================================================================
+//The first constructor simply sets the main_root and current data members to NULL,
+//since the tree has no nodes. A new tree is made, therefore it is not part of a 
+//larger tree object, and the subtree value is set accordingly.
 template <class ItemType>
 BinaryTree<ItemType>::BinaryTree()
 {
@@ -126,7 +142,7 @@ BinaryTree<ItemType>::BinaryTree()
    subtree = false;
 };
 
-//=================================================================================================================== 
+//================================================================================== 
 //The second constructor accepts a pointer to a node, and creates a new tree object with the node that is passed acting as the new tree's main root. current is then set to the main root. The second parameter specifies whether the new subtree object points directly to the original tree's nodes (the root and its decedents), or creates a copy of the subtree and is thus a new tree. The subtree variable specifies if the subtree points directly to the original tree's nodes. As you will later find out, this is important in the class destructor.
 template <class ItemType>
 BinaryTree<ItemType>::BinaryTree(TreeNode<ItemType>* root, int op)

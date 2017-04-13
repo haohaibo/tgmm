@@ -25,8 +25,12 @@
 //simple structure to hold a node in the hierarchical segmentation
 struct nodeHierarchicalSegmentation
 {
-	imgVoxelType thrTau;//tau value for which the two children of this node merge. The thrTau of any descendant of this node should be lower
-	supervoxel* svPtr;//if the node is a leaf node (basic region), it points to basicRegionsVec that represents this leave node. Otherwise it should be NULL;
+    //tau value for which the two children of this node merge.
+    //The thrTau of any descendant of this node should be lower
+	imgVoxelType thrTau;
+    //if the node is a leaf node (basic region), it points to 
+    //basicRegionsVec that represents this leave node. Otherwise it should be NULL;
+	supervoxel* svPtr;
 
 	nodeHierarchicalSegmentation()
 	{
