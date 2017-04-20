@@ -121,7 +121,8 @@ hierarchicalSegmentation::~hierarchicalSegmentation()
 	dendrogram.clear();
 };
 
-hierarchicalSegmentation::hierarchicalSegmentation(istream& is)//create supervoxel from biunary file
+//create supervoxel from binary file
+hierarchicalSegmentation::hierarchicalSegmentation(istream& is)
 {
 	is.read((char*) ( &(numBasicRegions) ),sizeof(unsigned int));
 
@@ -147,7 +148,8 @@ hierarchicalSegmentation::hierarchicalSegmentation(istream& is)//create supervox
 
 	if( parentIdx[0] != -1 )//root
 	{
-		cout<<"ERROR: at hierarchicalSegmentation: binary file seems corrupted. First node is not root"<<endl;
+		cout<<"ERROR: at hierarchicalSegmentation: binary file seems corrupted. "
+            <<"First node is not root"<<endl;
 		exit(3);
 	}
 	dendrogram.SetMainRoot( nodes[0] );
@@ -156,7 +158,9 @@ hierarchicalSegmentation::hierarchicalSegmentation(istream& is)//create supervox
 	{
 		if( parentIdx[ii] < 0 )
 		{
-			cout<<"ERROR: at hierarchicalSegmentation: binary file seems corrupted. Node " <<ii<<" is also root"<<endl;
+			cout<<"ERROR: at hierarchicalSegmentation: "
+                <<"binary file seems corrupted. Node " 
+                <<ii<<" is also root"<<endl;
 			exit(3);
 		}
 		nodes[ii]->parent = nodes[ parentIdx[ii] ];
@@ -168,7 +172,9 @@ hierarchicalSegmentation::hierarchicalSegmentation(istream& is)//create supervox
 		{
 			nodes[ parentIdx[ii] ]->right = nodes[ii];
 		}else{
-			cout<<"ERROR: at hierarchicalSegmentation: node cannot have more children. Node " <<ii<<" is also root"<<endl;
+			cout<<"ERROR: at hierarchicalSegmentation: "
+                <<"node cannot have more children. Node "
+                <<ii<<" is also root"<<endl;
 			exit(5);
 		}
 	}

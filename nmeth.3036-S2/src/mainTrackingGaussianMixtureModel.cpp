@@ -504,7 +504,8 @@ int main( int argc, const char** argv )
 
         //to load hierarchical segmentation
         char bufferHS[128];
-        sprintf(bufferHS, "_hierarchicalSegmentation_conn3D%d_medFilRad%d.bin",configOptions.conn3D, configOptions.radiusMedianFilter);
+        sprintf(bufferHS, "_hierarchicalSegmentation_conn3D%d_medFilRad%d.bin",
+                        configOptions.conn3D, configOptions.radiusMedianFilter);
         string imgHS = string ((imgBasename + string(bufferHS)).c_str());
 
         //try to read JP2 image		
@@ -700,7 +701,8 @@ int main( int argc, const char** argv )
             {
                 size_t aa = q.front();
                 q.pop();			
-                if( hs->currentSegmentatioSupervoxel[aa].getDeltaZ() > supervoxel::pMergeSplit.deltaZthr )
+                if( hs->currentSegmentatioSupervoxel[aa].getDeltaZ() > 
+                                     supervoxel::pMergeSplit.deltaZthr )
                 {
                     scoreS = hs->suggestSplit<mylib::uint16>(hs->currentSegmentationNodes[aa],
                             hs->currentSegmentatioSupervoxel[aa], rootSplit, rootSplitSv);
@@ -718,7 +720,9 @@ int main( int argc, const char** argv )
                     }
                     //recalculate thr
                     thr = numeric_limits<mylib::uint16>::max();
-                    for(vector<uint64>::const_iterator iter = hs->currentSegmentatioSupervoxel[ii].PixelIdxList.begin(); iter != hs->currentSegmentatioSupervoxel[ii].PixelIdxList.end(); ++iter)
+                    for(vector<uint64>::const_iterator iter = 
+                        hs->currentSegmentatioSupervoxel[ii].PixelIdxList.begin(); 
+                        iter != hs->currentSegmentatioSupervoxel[ii].PixelIdxList.end(); ++iter)
                     {
                         thr = min(thr , imgDataUINT16[ *iter ] );
                     }
@@ -733,9 +737,12 @@ int main( int argc, const char** argv )
                 //local background subtraction and reference points for local geometrical descriptors
                 hs->currentSegmentatioSupervoxel[ii].weightedGaussianStatistics<mylib::uint16>(true);
 
-                localGeometricDescriptor<dimsImage>::addRefPt(frame, hs->currentSegmentatioSupervoxel[ii].centroid);
+                localGeometricDescriptor<dimsImage>::addRefPt(frame, 
+                        hs->currentSegmentatioSupervoxel[ii].centroid);
 
-                for(vector<uint64>::const_iterator iter = hs->currentSegmentatioSupervoxel[ii].PixelIdxList.begin(); iter != hs->currentSegmentatioSupervoxel[ii].PixelIdxList.end(); ++iter)
+                for(vector<uint64>::const_iterator iter = 
+                    hs->currentSegmentatioSupervoxel[ii].PixelIdxList.begin(); 
+                    iter != hs->currentSegmentatioSupervoxel[ii].PixelIdxList.end(); ++iter)
                 {
                     //local background subtraction: since these are the trimmed 
                     //supervoxels, they are guaranteed to be above thr

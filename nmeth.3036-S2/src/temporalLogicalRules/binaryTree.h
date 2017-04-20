@@ -125,8 +125,10 @@ public:
 private:
    TreeNode<ItemType>* current;
    TreeNode<ItemType>* main_root;
-   TreeNode<ItemType>* CopyTree(TreeNode<ItemType>*,TreeNode<ItemType>*) const; //create a new copy of a subtree if passed to the constructor
-   bool subtree; //does it reference a part of a larger object?
+   //create a new copy of a subtree if passed to the constructor
+   TreeNode<ItemType>* CopyTree(TreeNode<ItemType>*,TreeNode<ItemType>*) const; 
+   //does it reference a part of a larger object?
+   bool subtree; 
 };
 
 //=================================================================================

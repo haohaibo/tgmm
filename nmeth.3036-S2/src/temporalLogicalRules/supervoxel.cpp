@@ -136,7 +136,8 @@ supervoxel::~supervoxel()
 	//supervoxel calss does not take care of freeing dataPtr
 }
 
-supervoxel::supervoxel(istream& is)//create supervoxel from biunary file
+//create supervoxel from binary file
+supervoxel::supervoxel(istream& is)
 {
 	is.read((char*) (&TM),sizeof(int));
 	is.read((char*) (&dataSizeInBytes), sizeof(uint64));
