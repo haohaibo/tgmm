@@ -52,6 +52,7 @@
 
 //Added by Haibo Hao
 #include <omp.h>
+#include <pthread.h>
 //Added by Haibo Hao
 
 
@@ -149,6 +150,13 @@ struct OffsetCoordinates
         return *this;
     }
 };
+
+
+void * thread_fun_trimming_supervoxel(void *arg)
+{
+
+    return ((void*)0);
+}
 
 //===========================================
 int main( int argc, const char** argv )
@@ -541,7 +549,10 @@ int main( int argc, const char** argv )
         ifstream inHS( imgHS.c_str(), ios::binary | ios::in );
         if( !inHS.is_open() )
         {
-            cout<<"ERROR: could not open binary file "<<imgHS<<" to read hierarchical segmentation"<<endl;
+            cout<<"ERROR: could not open binary file "
+                <<imgHS
+                <<" to read hierarchical segmentation"
+                <<endl;
             return 4;
         }
         //TODO: parse directly segmentation to supervoxels
@@ -670,8 +681,8 @@ int main( int argc, const char** argv )
         for1_iner_end = omp_get_wtime();
         for1_time7_sum += (double)(for1_iner_end - for1_iner_start);
 
-
-        int64 boundarySize[dimsImage];//margin we need to calculate connected components	
+        //margin we need to calculate connected components
+        int64 boundarySize[dimsImage];	
         int64 *neighOffsetSv = supervoxel::buildNeighboorhoodConnectivity(conn3Dsv, boundarySize);
         mylib::uint16 thr;
         bool *imgVisited = new bool[img->size];
@@ -686,9 +697,12 @@ int main( int argc, const char** argv )
         int numSplits = 0;		
 
         for1_iner_start = omp_get_wtime();
+
+        // doing  construct thread pool
+        
         for(size_t ii = 0; ii < hs->currentSegmentatioSupervoxel.size(); ii++)
         {
-            //trimmming supervoxels
+            //trimming supervoxels
             thr = hs->currentSegmentatioSupervoxel[ii].trimSupervoxel<mylib::uint16>();			
 
             //split supervoxels if necessary (obvius oversegmentations)
