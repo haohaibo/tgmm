@@ -1,0 +1,3 @@
+#!/bin/bash
+path=/home/tgmm/3036/tgmm-pyl
+$path/build/TGMM $path/data/TGMM_configFile_linux_0805ylf.txt 0 71

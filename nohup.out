@@ -1,0 +1,1308 @@
+median filter took 340.278 secs.
+in buildH while1 loop 41418 times
+(new!) in buildH while1 took 209.527 secs
+HS filter took 5657.95 secs.
+the .bin file path is /home/hhb/work/tgmm-hhb-m/nmeth.3036-S2/data/tgmm-ljh/00/00_hierarchicalSegmentation_conn3D74_medFilRad2.bin
+median filter took 341.839 secs.
+in buildH while1 loop 46309 times
+(new!) in buildH while1 took 256.633 secs
+HS filter took 7717.87 secs.
+the .bin file path is /home/hhb/work/tgmm-hhb-m/nmeth.3036-S2/data/tgmm-ljh/08/08_hierarchicalSegmentation_conn3D74_medFilRad2.bin
+median filter took 340.203 secs.
+in buildH while1 loop 48276 times
+(new!) in buildH while1 took 663.189 secs
+HS filter took 7793.2 secs.
+the .bin file path is /home/hhb/work/tgmm-hhb-m/nmeth.3036-S2/data/tgmm-ljh/03/03_hierarchicalSegmentation_conn3D74_medFilRad2.bin
+median filter took 339.7 secs.
+in buildH while1 loop 48375 times
+(new!) in buildH while1 took 342.066 secs
+HS filter took 8239.42 secs.
+the .bin file path is /home/hhb/work/tgmm-hhb-m/nmeth.3036-S2/data/tgmm-ljh/01/01_hierarchicalSegmentation_conn3D74_medFilRad2.bin
+median filter took 340.25 secs.
+in buildH while1 loop 47422 times
+(new!) in buildH while1 took 702.585 secs
+HS filter took 8558.5 secs.
+the .bin file path is /home/hhb/work/tgmm-hhb-m/nmeth.3036-S2/data/tgmm-ljh/09/09_hierarchicalSegmentation_conn3D74_medFilRad2.bin
+median filter took 340.1 secs.
+in buildH while1 loop 50292 times
+(new!) in buildH while1 took 909.966 secs
+HS filter took 8870.7 secs.
+the .bin file path is /home/hhb/work/tgmm-hhb-m/nmeth.3036-S2/data/tgmm-ljh/04/04_hierarchicalSegmentation_conn3D74_medFilRad2.bin
+median filter took 342.103 secs.
+in buildH while1 loop 45973 times
+(new!) in buildH while1 took 680.313 secs
+HS filter took 8885.63 secs.
+the .bin file path is /home/hhb/work/tgmm-hhb-m/nmeth.3036-S2/data/tgmm-ljh/02/02_hierarchicalSegmentation_conn3D74_medFilRad2.bin
+median filter took 340.721 secs.
+in buildH while1 loop 47559 times
+(new!) in buildH while1 took 843.266 secs
+HS filter took 9172.21 secs.
+the .bin file path is /home/hhb/work/tgmm-hhb-m/nmeth.3036-S2/data/tgmm-ljh/06/06_hierarchicalSegmentation_conn3D74_medFilRad2.bin
+median filter took 339.597 secs.
+in buildH while1 loop 49628 times
+(new!) in buildH while1 took 930.904 secs
+HS filter took 9535.78 secs.
+the .bin file path is /home/hhb/work/tgmm-hhb-m/nmeth.3036-S2/data/tgmm-ljh/05/05_hierarchicalSegmentation_conn3D74_medFilRad2.bin
+median filter took 336.198 secs.
+in buildH while1 loop 50352 times
+(new!) in buildH while1 took 999.074 secs
+HS filter took 10197.6 secs.
+the .bin file path is /home/hhb/work/tgmm-hhb-m/nmeth.3036-S2/data/tgmm-ljh/07/07_hierarchicalSegmentation_conn3D74_medFilRad2.bin
+
+
+Overwriting CUDA device selction to default
+Selected CUDA device 0
+Processing frame 0
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171712 supervoxels out of 172975 for being of size<50 after trimming. Left 1263
+Splitted 53 supervoxels for having deltaZ >11
+Parsing 1263 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 110090680;CUDA choosing device:  0;memory available=11829575680;total mem=12079136768
+Frame=0;iter=4;Log-likelihood =-699703.242187500000
+ done in 0.062497 secs for 3 EM iterations (0.020832 secs per iteration)
+Generated (not touching supervoxels) 12 cell divisions out of 1246 cells in frame 0.Also added 3 new tracks
+Updated thrDist2LargeDisplacement to = 2048 * 2048
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 1
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 188249 supervoxels out of 190477 for being of size<50 after trimming. Left 2228
+Splitted 34 supervoxels for having deltaZ >11
+Parsing 2228 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 130621568;CUDA choosing device:  0;memory available=11822366720;total mem=12079136768
+Frame=1;iter=8;Log-likelihood =-1664505.562500000000
+ done in 0.184444 secs for 7 EM iterations (0.026349 secs per iteration)
+Generated (not touching supervoxels) 213 cell divisions out of 1496 cells in frame 1.Also added 682 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 2
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189958 supervoxels out of 191162 for being of size<50 after trimming. Left 1204
+Splitted 51 supervoxels for having deltaZ >11
+Parsing 1204 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 109759060;CUDA choosing device:  0;memory available=11829706752;total mem=12079136768
+Frame=2;iter=6;Log-likelihood =-884550.890625000000
+ done in 0.105344 secs for 5 EM iterations (0.021069 secs per iteration)
+Generated (not touching supervoxels) 184 cell divisions out of 857 cells in frame 2.Also added 117 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 3
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171688 supervoxels out of 173147 for being of size<50 after trimming. Left 1459
+Splitted 75 supervoxels for having deltaZ >11
+Parsing 1459 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 116556112;CUDA choosing device:  0;memory available=11826954240;total mem=12079136768
+Frame=3;iter=8;Log-likelihood =-922814.406250000000
+ done in 0.148674 secs for 7 EM iterations (0.021239 secs per iteration)
+Generated (not touching supervoxels) 196 cell divisions out of 936 cells in frame 3.Also added 217 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 4
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189633 supervoxels out of 190920 for being of size<50 after trimming. Left 1287
+Splitted 70 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 115179840;CUDA choosing device:  0;memory available=11827478528;total mem=12079136768
+Frame=4;iter=5;Log-likelihood =-789796.531250000000
+ done in 0.083972 secs for 4 EM iterations (0.020993 secs per iteration)
+Generated (not touching supervoxels) 161 cell divisions out of 918 cells in frame 4.Also added 104 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 5
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 207955 supervoxels out of 209248 for being of size<50 after trimming. Left 1293
+Splitted 87 supervoxels for having deltaZ >11
+Parsing 1293 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 117027388;CUDA choosing device:  0;memory available=11826823168;total mem=12079136768
+Frame=5;iter=5;Log-likelihood =-524454.765625000000
+ done in 0.085883 secs for 4 EM iterations (0.021471 secs per iteration)
+Generated (not touching supervoxels) 144 cell divisions out of 936 cells in frame 5.Also added 46 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 6
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 198396 supervoxels out of 199671 for being of size<50 after trimming. Left 1275
+Splitted 74 supervoxels for having deltaZ >11
+Parsing 1275 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 116812872;CUDA choosing device:  0;memory available=11826823168;total mem=12079136768
+Frame=6;iter=5;Log-likelihood =-454315.789062500000
+ done in 0.083397 secs for 4 EM iterations (0.020849 secs per iteration)
+Generated (not touching supervoxels) 179 cell divisions out of 918 cells in frame 6.Also added 103 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 7
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 221825 supervoxels out of 223119 for being of size<50 after trimming. Left 1294
+Splitted 82 supervoxels for having deltaZ >11
+Parsing 1294 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 117850860;CUDA choosing device:  0;memory available=11826429952;total mem=12079136768
+Frame=7;iter=7;Log-likelihood =-438195.289062500000
+ done in 0.127411 secs for 6 EM iterations (0.021235 secs per iteration)
+Generated (not touching supervoxels) 170 cell divisions out of 950 cells in frame 7.Also added 56 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 8
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 187296 supervoxels out of 188576 for being of size<50 after trimming. Left 1280
+Splitted 76 supervoxels for having deltaZ >11
+Parsing 1280 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 117199508;CUDA choosing device:  0;memory available=11826561024;total mem=12079136768
+Frame=8;iter=4;Log-likelihood =-538184.585937500000
+ done in 0.063467 secs for 3 EM iterations (0.021156 secs per iteration)
+Generated (not touching supervoxels) 142 cell divisions out of 954 cells in frame 8.Also added 55 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 9
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189169 supervoxels out of 190456 for being of size<50 after trimming. Left 1287
+Splitted 60 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 119235812;CUDA choosing device:  0;memory available=11825774592;total mem=12079136768
+Frame=9;iter=5;Log-likelihood =-450496.507812500000
+ done in 0.085566 secs for 4 EM iterations (0.021391 secs per iteration)
+Generated (not touching supervoxels) 132 cell divisions out of 968 cells in frame 9.Also added 20 new tracks
+Deleted 621 out of 753 splits because of a sibling death before 5 time points after cell division
+Deleted 1984 lineages that died during the burning period
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+for1 took 1410.18
+Cut 0 linkages out of 19 cell divisions because it did not satisfy the cell division midplane constraint (frame0)
+Cut 0 linkages out of 35 cell divisions because it did not satisfy the cell division midplane constraint (frame1)
+Cut 0 linkages out of 36 cell divisions because it did not satisfy the cell division midplane constraint (frame2)
+Cut 0 linkages out of 42 cell divisions because it did not satisfy the cell division midplane constraint (frame3)
+Cut 0 linkages out of 144 cell divisions because it did not satisfy the cell division midplane constraint (frame4)
+Cut 0 linkages out of 179 cell divisions because it did not satisfy the cell division midplane constraint (frame5)
+Cut 0 linkages out of 170 cell divisions because it did not satisfy the cell division midplane constraint (frame6)
+Cut 0 linkages out of 142 cell divisions because it did not satisfy the cell division midplane constraint (frame7)
+Cut 0 linkages out of 132 cell divisions because it did not satisfy the cell division midplane constraint (frame8)
+for 2 took 6.09379
+Running forward-backward pass with hysteresis threshold background =(0.2,0.7) to remove non-cell like objects
+Background filter: Reading frame 0 for forward-backward pass
+Background filter: Reading frame 1 for forward-backward pass
+Background filter: Reading frame 2 for forward-backward pass
+Background filter: Reading frame 3 for forward-backward pass
+Background filter: Reading frame 4 for forward-backward pass
+Background filter: Reading frame 5 for forward-backward pass
+Background filter: Reading frame 6 for forward-backward pass
+Background filter: Reading frame 7 for forward-backward pass
+Background filter: Reading frame 8 for forward-backward pass
+Background filter: Reading frame 9 for forward-backward pass
+Background filter: backward pass for interpolation
+Background filter: forward-backward pass for 675 lineages
+Background filter: updating frame 0 after forward/backward pass
+Background filter: updating frame 1 after forward/backward pass
+Background filter: updating frame 2 after forward/backward pass
+Background filter: updating frame 3 after forward/backward pass
+Background filter: updating frame 4 after forward/backward pass
+Background filter: updating frame 5 after forward/backward pass
+Background filter: updating frame 6 after forward/backward pass
+Background filter: updating frame 7 after forward/backward pass
+Background filter: updating frame 8 after forward/backward pass
+Background filter: updating frame 9 after forward/backward pass
+Deleted 0 out of 6981 with background thrHigh = 0.7; thrLow=0.2
+-nan secs
+
+
+Overwriting CUDA device selction to default
+Selected CUDA device 0
+Processing frame 0
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171712 supervoxels out of 172975 for being of size<50 after trimming. Left 1263
+Splitted 53 supervoxels for having deltaZ >11
+Parsing 1263 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 110090680;CUDA choosing device:  0;memory available=11829575680;total mem=12079136768
+Frame=0;iter=4;Log-likelihood =-699703.242187500000
+ done in 0.061900 secs for 3 EM iterations (0.020633 secs per iteration)
+Generated (not touching supervoxels) 12 cell divisions out of 1246 cells in frame 0.Also added 3 new tracks
+Updated thrDist2LargeDisplacement to = 2048 * 2048
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 1
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 188249 supervoxels out of 190477 for being of size<50 after trimming. Left 2228
+Splitted 34 supervoxels for having deltaZ >11
+Parsing 2228 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 130621568;CUDA choosing device:  0;memory available=11822366720;total mem=12079136768
+Frame=1;iter=8;Log-likelihood =-1664505.562500000000
+ done in 0.183373 secs for 7 EM iterations (0.026196 secs per iteration)
+Generated (not touching supervoxels) 213 cell divisions out of 1496 cells in frame 1.Also added 682 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 2
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189958 supervoxels out of 191162 for being of size<50 after trimming. Left 1204
+Splitted 51 supervoxels for having deltaZ >11
+Parsing 1204 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 109759060;CUDA choosing device:  0;memory available=11829706752;total mem=12079136768
+Frame=2;iter=6;Log-likelihood =-884550.890625000000
+ done in 0.104387 secs for 5 EM iterations (0.020877 secs per iteration)
+Generated (not touching supervoxels) 184 cell divisions out of 857 cells in frame 2.Also added 117 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 3
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171688 supervoxels out of 173147 for being of size<50 after trimming. Left 1459
+Splitted 75 supervoxels for having deltaZ >11
+Parsing 1459 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 116556112;CUDA choosing device:  0;memory available=11826954240;total mem=12079136768
+Frame=3;iter=8;Log-likelihood =-922814.406250000000
+ done in 0.148553 secs for 7 EM iterations (0.021222 secs per iteration)
+Generated (not touching supervoxels) 196 cell divisions out of 936 cells in frame 3.Also added 217 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 4
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189633 supervoxels out of 190920 for being of size<50 after trimming. Left 1287
+Splitted 70 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 115179840;CUDA choosing device:  0;memory available=11827478528;total mem=12079136768
+Frame=4;iter=5;Log-likelihood =-789796.531250000000
+ done in 0.083875 secs for 4 EM iterations (0.020969 secs per iteration)
+Generated (not touching supervoxels) 161 cell divisions out of 918 cells in frame 4.Also added 104 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 5
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 207955 supervoxels out of 209248 for being of size<50 after trimming. Left 1293
+Splitted 87 supervoxels for having deltaZ >11
+Parsing 1293 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 117027388;CUDA choosing device:  0;memory available=11826823168;total mem=12079136768
+Frame=5;iter=5;Log-likelihood =-524454.765625000000
+ done in 0.086513 secs for 4 EM iterations (0.021628 secs per iteration)
+Generated (not touching supervoxels) 144 cell divisions out of 936 cells in frame 5.Also added 46 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 6
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 198396 supervoxels out of 199671 for being of size<50 after trimming. Left 1275
+Splitted 74 supervoxels for having deltaZ >11
+Parsing 1275 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 116812872;CUDA choosing device:  0;memory available=11826823168;total mem=12079136768
+Frame=6;iter=5;Log-likelihood =-454315.789062500000
+ done in 0.084231 secs for 4 EM iterations (0.021058 secs per iteration)
+Generated (not touching supervoxels) 179 cell divisions out of 918 cells in frame 6.Also added 103 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 7
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 221825 supervoxels out of 223119 for being of size<50 after trimming. Left 1294
+Splitted 82 supervoxels for having deltaZ >11
+Parsing 1294 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 117850860;CUDA choosing device:  0;memory available=11826429952;total mem=12079136768
+Frame=7;iter=7;Log-likelihood =-438195.289062500000
+ done in 0.126741 secs for 6 EM iterations (0.021123 secs per iteration)
+Generated (not touching supervoxels) 170 cell divisions out of 950 cells in frame 7.Also added 56 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 8
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 187296 supervoxels out of 188576 for being of size<50 after trimming. Left 1280
+Splitted 76 supervoxels for having deltaZ >11
+Parsing 1280 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 117199508;CUDA choosing device:  0;memory available=11826561024;total mem=12079136768
+Frame=8;iter=4;Log-likelihood =-538184.585937500000
+ done in 0.063350 secs for 3 EM iterations (0.021117 secs per iteration)
+Generated (not touching supervoxels) 142 cell divisions out of 954 cells in frame 8.Also added 55 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 9
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189169 supervoxels out of 190456 for being of size<50 after trimming. Left 1287
+Splitted 60 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 119235812;CUDA choosing device:  0;memory available=11825774592;total mem=12079136768
+Frame=9;iter=5;Log-likelihood =-450496.507812500000
+ done in 0.085546 secs for 4 EM iterations (0.021387 secs per iteration)
+Generated (not touching supervoxels) 132 cell divisions out of 968 cells in frame 9.Also added 20 new tracks
+Deleted 621 out of 753 splits because of a sibling death before 5 time points after cell division
+Deleted 1984 lineages that died during the burning period
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+for1 took 1417.31
+Cut 0 linkages out of 19 cell divisions because it did not satisfy the cell division midplane constraint (frame0)
+Cut 0 linkages out of 35 cell divisions because it did not satisfy the cell division midplane constraint (frame1)
+Cut 0 linkages out of 36 cell divisions because it did not satisfy the cell division midplane constraint (frame2)
+Cut 0 linkages out of 42 cell divisions because it did not satisfy the cell division midplane constraint (frame3)
+Cut 0 linkages out of 144 cell divisions because it did not satisfy the cell division midplane constraint (frame4)
+Cut 0 linkages out of 179 cell divisions because it did not satisfy the cell division midplane constraint (frame5)
+Cut 0 linkages out of 170 cell divisions because it did not satisfy the cell division midplane constraint (frame6)
+Cut 0 linkages out of 142 cell divisions because it did not satisfy the cell division midplane constraint (frame7)
+Cut 0 linkages out of 132 cell divisions because it did not satisfy the cell division midplane constraint (frame8)
+for 2 took 5.86843
+Running forward-backward pass with hysteresis threshold background =(0.2,0.7) to remove non-cell like objects
+Background filter: Reading frame 0 for forward-backward pass
+Background filter: Reading frame 1 for forward-backward pass
+Background filter: Reading frame 2 for forward-backward pass
+Background filter: Reading frame 3 for forward-backward pass
+Background filter: Reading frame 4 for forward-backward pass
+Background filter: Reading frame 5 for forward-backward pass
+Background filter: Reading frame 6 for forward-backward pass
+Background filter: Reading frame 7 for forward-backward pass
+Background filter: Reading frame 8 for forward-backward pass
+Background filter: Reading frame 9 for forward-backward pass
+Background filter: backward pass for interpolation
+Background filter: forward-backward pass for 675 lineages
+Background filter: updating frame 0 after forward/backward pass
+Background filter: updating frame 1 after forward/backward pass
+Background filter: updating frame 2 after forward/backward pass
+Background filter: updating frame 3 after forward/backward pass
+Background filter: updating frame 4 after forward/backward pass
+Background filter: updating frame 5 after forward/backward pass
+Background filter: updating frame 6 after forward/backward pass
+Background filter: updating frame 7 after forward/backward pass
+Background filter: updating frame 8 after forward/backward pass
+Background filter: updating frame 9 after forward/backward pass
+Deleted 0 out of 6981 with background thrHigh = 0.7; thrLow=0.2
+-nan secs
+mainGaussian_sum = 1428.26
+Overwriting CUDA device selction to default
+Selected CUDA device 0
+Processing frame 0
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171712 supervoxels out of 172975 for being of size<50 after trimming. Left 1263
+Splitted 53 supervoxels for having deltaZ >11
+Parsing 1263 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 110090680;CUDA choosing device:  0;memory available=11725860864;total mem=12079136768
+Frame=0;iter=4;Log-likelihood =-699703.242187500000
+ done in 0.077164 secs for 3 EM iterations (0.025721 secs per iteration)
+Generated (not touching supervoxels) 12 cell divisions out of 1246 cells in frame 0.Also added 3 new tracks
+Updated thrDist2LargeDisplacement to = 2048 * 2048
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 1
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 188249 supervoxels out of 190477 for being of size<50 after trimming. Left 2228
+Splitted 34 supervoxels for having deltaZ >11
+Parsing 2228 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 130621568;CUDA choosing device:  0;memory available=11718651904;total mem=12079136768
+Frame=1;iter=8;Log-likelihood =-1664505.562500000000
+ done in 0.182843 secs for 7 EM iterations (0.026120 secs per iteration)
+Generated (not touching supervoxels) 213 cell divisions out of 1496 cells in frame 1.Also added 682 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 2
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189958 supervoxels out of 191162 for being of size<50 after trimming. Left 1204
+Splitted 51 supervoxels for having deltaZ >11
+Parsing 1204 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 109759060;CUDA choosing device:  0;memory available=11725991936;total mem=12079136768
+Frame=2;iter=6;Log-likelihood =-884550.890625000000
+ done in 0.104190 secs for 5 EM iterations (0.020838 secs per iteration)
+Generated (not touching supervoxels) 184 cell divisions out of 857 cells in frame 2.Also added 117 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 3
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171688 supervoxels out of 173147 for being of size<50 after trimming. Left 1459
+Splitted 75 supervoxels for having deltaZ >11
+Parsing 1459 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 116556112;CUDA choosing device:  0;memory available=11723239424;total mem=12079136768
+Frame=3;iter=8;Log-likelihood =-922814.406250000000
+ done in 0.148332 secs for 7 EM iterations (0.021190 secs per iteration)
+Generated (not touching supervoxels) 196 cell divisions out of 936 cells in frame 3.Also added 217 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 4
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189633 supervoxels out of 190920 for being of size<50 after trimming. Left 1287
+Splitted 70 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 115179840;CUDA choosing device:  0;memory available=11723763712;total mem=12079136768
+Frame=4;iter=5;Log-likelihood =-789796.531250000000
+ done in 0.083042 secs for 4 EM iterations (0.020761 secs per iteration)
+Generated (not touching supervoxels) 161 cell divisions out of 918 cells in frame 4.Also added 104 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 5
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 207955 supervoxels out of 209248 for being of size<50 after trimming. Left 1293
+Splitted 87 supervoxels for having deltaZ >11
+Parsing 1293 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 117027388;CUDA choosing device:  0;memory available=11723108352;total mem=12079136768
+Frame=5;iter=5;Log-likelihood =-524454.765625000000
+ done in 0.084855 secs for 4 EM iterations (0.021214 secs per iteration)
+Generated (not touching supervoxels) 144 cell divisions out of 936 cells in frame 5.Also added 46 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 6
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 198396 supervoxels out of 199671 for being of size<50 after trimming. Left 1275
+Splitted 74 supervoxels for having deltaZ >11
+Parsing 1275 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 116812872;CUDA choosing device:  0;memory available=11723108352;total mem=12079136768
+Frame=6;iter=5;Log-likelihood =-454315.789062500000
+ done in 0.083294 secs for 4 EM iterations (0.020823 secs per iteration)
+Generated (not touching supervoxels) 179 cell divisions out of 918 cells in frame 6.Also added 103 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 7
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 221825 supervoxels out of 223119 for being of size<50 after trimming. Left 1294
+Splitted 82 supervoxels for having deltaZ >11
+Parsing 1294 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 117850860;CUDA choosing device:  0;memory available=11722715136;total mem=12079136768
+Frame=7;iter=7;Log-likelihood =-438195.289062500000
+ done in 0.126191 secs for 6 EM iterations (0.021032 secs per iteration)
+Generated (not touching supervoxels) 170 cell divisions out of 950 cells in frame 7.Also added 56 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 8
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 187296 supervoxels out of 188576 for being of size<50 after trimming. Left 1280
+Splitted 76 supervoxels for having deltaZ >11
+Parsing 1280 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 117199508;CUDA choosing device:  0;memory available=11722846208;total mem=12079136768
+Frame=8;iter=4;Log-likelihood =-538184.585937500000
+ done in 0.063143 secs for 3 EM iterations (0.021048 secs per iteration)
+Generated (not touching supervoxels) 142 cell divisions out of 954 cells in frame 8.Also added 55 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 9
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189169 supervoxels out of 190456 for being of size<50 after trimming. Left 1287
+Splitted 60 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took -nan secs
+Memory required: 119235812;CUDA choosing device:  0;memory available=11722059776;total mem=12079136768
+Frame=9;iter=5;Log-likelihood =-450496.507812500000
+ done in 0.085369 secs for 4 EM iterations (0.021342 secs per iteration)
+Generated (not touching supervoxels) 132 cell divisions out of 968 cells in frame 9.Also added 20 new tracks
+Deleted 621 out of 753 splits because of a sibling death before 5 time points after cell division
+Deleted 1984 lineages that died during the burning period
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+for1 took 1434.04
+for1_for2_sum0.178691
+for1_for3_sum778.531
+for1_for4_sum0.204807
+for1_for5_sum47.9197
+for1_for6_sum4.50393e-06
+for1_for7_sum0.20576
+for1_for8_sum0.00122233
+for1_for9_sum5.79155
+for1_for10_sum0
+for1_for11_sum0.00591423
+for1_for12_sum0.00984468
+for1_for13_sum0
+for1_for13_sum0
+for1_for14_sum0
+for1_for15_sum0
+for1_for16_sum0
+for1_for17_sum0
+for1_for18_sum0
+for1_for19_sum0
+for1_for20_sum2.88
+for1_if1_sum8.54593e-06
+for1_if2_sum3.4292
+for1_if3_sum2.10502e-06
+for1_if4_sum0
+for1_if5_sum0
+for1_if6_sum0.00966277
+for1_if7_sum0.00604722
+for1_if8_sum1.58197e-06
+for1_if9_sum1.38697e-06
+for1_time1_sum4.53776
+for1_time2_sum0
+for1_time3_sum0
+for1_time4_sum0
+for1_time5_sum0.00175539
+for1_time6_sum2.51939
+Cut 0 linkages out of 19 cell divisions because it did not satisfy the cell division midplane constraint (frame0)
+Cut 0 linkages out of 35 cell divisions because it did not satisfy the cell division midplane constraint (frame1)
+Cut 0 linkages out of 36 cell divisions because it did not satisfy the cell division midplane constraint (frame2)
+Cut 0 linkages out of 42 cell divisions because it did not satisfy the cell division midplane constraint (frame3)
+Cut 0 linkages out of 144 cell divisions because it did not satisfy the cell division midplane constraint (frame4)
+Cut 0 linkages out of 179 cell divisions because it did not satisfy the cell division midplane constraint (frame5)
+Cut 0 linkages out of 170 cell divisions because it did not satisfy the cell division midplane constraint (frame6)
+Cut 0 linkages out of 142 cell divisions because it did not satisfy the cell division midplane constraint (frame7)
+Cut 0 linkages out of 132 cell divisions because it did not satisfy the cell division midplane constraint (frame8)
+for 2 took 6.80992
+Running forward-backward pass with hysteresis threshold background =(0.2,0.7) to remove non-cell like objects
+Background filter: Reading frame 0 for forward-backward pass
+Background filter: Reading frame 1 for forward-backward pass
+Background filter: Reading frame 2 for forward-backward pass
+Background filter: Reading frame 3 for forward-backward pass
+Background filter: Reading frame 4 for forward-backward pass
+Background filter: Reading frame 5 for forward-backward pass
+Background filter: Reading frame 6 for forward-backward pass
+Background filter: Reading frame 7 for forward-backward pass
+Background filter: Reading frame 8 for forward-backward pass
+Background filter: Reading frame 9 for forward-backward pass
+Background filter: backward pass for interpolation
+Background filter: forward-backward pass for 675 lineages
+Background filter: updating frame 0 after forward/backward pass
+Background filter: updating frame 1 after forward/backward pass
+Background filter: updating frame 2 after forward/backward pass
+Background filter: updating frame 3 after forward/backward pass
+Background filter: updating frame 4 after forward/backward pass
+Background filter: updating frame 5 after forward/backward pass
+Background filter: updating frame 6 after forward/backward pass
+Background filter: updating frame 7 after forward/backward pass
+Background filter: updating frame 8 after forward/backward pass
+Background filter: updating frame 9 after forward/backward pass
+Deleted 0 out of 6981 with background thrHigh = 0.7; thrLow=0.2
+-nan secs
+mainGaussian_sum = 1443.05
+
+
+==============================================================================
+Overwriting CUDA device selction to default
+Selected CUDA device 0
+Processing frame 0
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171712 supervoxels out of 172975 for being of size<50 after trimming. Left 1263
+Splitted 53 supervoxels for having deltaZ >11
+Parsing 1263 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 110090680;CUDA choosing device:  0;memory available=11725860864;total mem=12079136768
+Frame=0;iter=4;Log-likelihood =-699703.242187500000
+ done in 0.077033 secs for 3 EM iterations (0.025678 secs per iteration)
+Generated (not touching supervoxels) 12 cell divisions out of 1246 cells in frame 0.Also added 3 new tracks
+Updated thrDist2LargeDisplacement to = 2048 * 2048
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 1
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 188249 supervoxels out of 190477 for being of size<50 after trimming. Left 2228
+Splitted 34 supervoxels for having deltaZ >11
+Parsing 2228 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 130621568;CUDA choosing device:  0;memory available=11718651904;total mem=12079136768
+Frame=1;iter=8;Log-likelihood =-1664505.562500000000
+ done in 0.183267 secs for 7 EM iterations (0.026181 secs per iteration)
+Generated (not touching supervoxels) 213 cell divisions out of 1496 cells in frame 1.Also added 682 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 2
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189958 supervoxels out of 191162 for being of size<50 after trimming. Left 1204
+Splitted 51 supervoxels for having deltaZ >11
+Parsing 1204 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 109759060;CUDA choosing device:  0;memory available=11725991936;total mem=12079136768
+Frame=2;iter=6;Log-likelihood =-884550.890625000000
+ done in 0.104713 secs for 5 EM iterations (0.020943 secs per iteration)
+Generated (not touching supervoxels) 184 cell divisions out of 857 cells in frame 2.Also added 117 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 3
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171688 supervoxels out of 173147 for being of size<50 after trimming. Left 1459
+Splitted 75 supervoxels for having deltaZ >11
+Parsing 1459 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 116556112;CUDA choosing device:  0;memory available=11723239424;total mem=12079136768
+Frame=3;iter=8;Log-likelihood =-922814.406250000000
+ done in 0.148246 secs for 7 EM iterations (0.021178 secs per iteration)
+Generated (not touching supervoxels) 196 cell divisions out of 936 cells in frame 3.Also added 217 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 4
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189633 supervoxels out of 190920 for being of size<50 after trimming. Left 1287
+Splitted 70 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 115179840;CUDA choosing device:  0;memory available=11723763712;total mem=12079136768
+Frame=4;iter=5;Log-likelihood =-789796.531250000000
+ done in 0.082894 secs for 4 EM iterations (0.020724 secs per iteration)
+Generated (not touching supervoxels) 161 cell divisions out of 918 cells in frame 4.Also added 104 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 5
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 207955 supervoxels out of 209248 for being of size<50 after trimming. Left 1293
+Splitted 87 supervoxels for having deltaZ >11
+Parsing 1293 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 117027388;CUDA choosing device:  0;memory available=11723108352;total mem=12079136768
+Frame=5;iter=5;Log-likelihood =-524454.765625000000
+ done in 0.084807 secs for 4 EM iterations (0.021202 secs per iteration)
+Generated (not touching supervoxels) 144 cell divisions out of 936 cells in frame 5.Also added 46 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 6
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 198396 supervoxels out of 199671 for being of size<50 after trimming. Left 1275
+Splitted 74 supervoxels for having deltaZ >11
+Parsing 1275 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 116812872;CUDA choosing device:  0;memory available=11723108352;total mem=12079136768
+Frame=6;iter=5;Log-likelihood =-454315.789062500000
+ done in 0.083799 secs for 4 EM iterations (0.020950 secs per iteration)
+Generated (not touching supervoxels) 179 cell divisions out of 918 cells in frame 6.Also added 103 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 7
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 221825 supervoxels out of 223119 for being of size<50 after trimming. Left 1294
+Splitted 82 supervoxels for having deltaZ >11
+Parsing 1294 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 117850860;CUDA choosing device:  0;memory available=11722715136;total mem=12079136768
+Frame=7;iter=7;Log-likelihood =-438195.289062500000
+ done in 0.126138 secs for 6 EM iterations (0.021023 secs per iteration)
+Generated (not touching supervoxels) 170 cell divisions out of 950 cells in frame 7.Also added 56 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 8
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 187296 supervoxels out of 188576 for being of size<50 after trimming. Left 1280
+Splitted 76 supervoxels for having deltaZ >11
+Parsing 1280 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 117199508;CUDA choosing device:  0;memory available=11722846208;total mem=12079136768
+Frame=8;iter=4;Log-likelihood =-538184.585937500000
+ done in 0.063339 secs for 3 EM iterations (0.021113 secs per iteration)
+Generated (not touching supervoxels) 142 cell divisions out of 954 cells in frame 8.Also added 55 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 9
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189169 supervoxels out of 190456 for being of size<50 after trimming. Left 1287
+Splitted 60 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 119235812;CUDA choosing device:  0;memory available=11722059776;total mem=12079136768
+Frame=9;iter=5;Log-likelihood =-450496.507812500000
+ done in 0.085387 secs for 4 EM iterations (0.021347 secs per iteration)
+Generated (not touching supervoxels) 132 cell divisions out of 968 cells in frame 9.Also added 20 new tracks
+Deleted 621 out of 753 splits because of a sibling death before 5 time points after cell division
+Deleted 1984 lineages that died during the burning period
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+for1 took 1434.69
+for1_for1_sum = 1.73041e-05secs
+for1_for2_sum =0.190659
+for1_for3_sum =783.757
+for1_for4_sum =0.20383
+for1_for5_sum =47.7792
+for1_for6_sum =7.90996e-06
+for1_for7_sum =0.204456
+for1_for8_sum =0.0012188
+for1_for9_sum =5.75384
+for1_for10_sum =0
+for1_for11_sum =0.00602164
+for1_for12_sum =0.0105038
+for1_for13_sum =0
+for1_for13_sum =0
+for1_for14_sum =0
+for1_for15_sum =0
+for1_for16_sum =0
+for1_for17_sum =0
+for1_for18_sum =0
+for1_for19_sum =0
+for1_for20_sum =2.95314
+for1_if1_sum =9.34396e-06
+for1_if2_sum =3.39444
+for1_if3_sum =1.67894e-06
+for1_if4_sum =0
+for1_if5_sum =0
+for1_if6_sum =0.00952826
+for1_if7_sum =0.00615411
+for1_if8_sum =2.107e-06
+for1_if9_sum =1.10501e-06
+for1_time1_sum =4.7027
+for1_time2_sum =0
+for1_time3_sum =0
+for1_time4_sum =0
+for1_time5_sum =0.00180659
+for1_time6_sum =2.51748
+for1_time7_sum = 259.163
+for1_time8_sum = 13.1129
+for1_time9_sum = 0.328083
+for1_time10_sum = 0.000678022
+Cut 0 linkages out of 19 cell divisions because it did not satisfy the cell division midplane constraint (frame0)
+Cut 0 linkages out of 35 cell divisions because it did not satisfy the cell division midplane constraint (frame1)
+Cut 0 linkages out of 36 cell divisions because it did not satisfy the cell division midplane constraint (frame2)
+Cut 0 linkages out of 42 cell divisions because it did not satisfy the cell division midplane constraint (frame3)
+Cut 0 linkages out of 144 cell divisions because it did not satisfy the cell division midplane constraint (frame4)
+Cut 0 linkages out of 179 cell divisions because it did not satisfy the cell division midplane constraint (frame5)
+Cut 0 linkages out of 170 cell divisions because it did not satisfy the cell division midplane constraint (frame6)
+Cut 0 linkages out of 142 cell divisions because it did not satisfy the cell division midplane constraint (frame7)
+Cut 0 linkages out of 132 cell divisions because it did not satisfy the cell division midplane constraint (frame8)
+for 2 took 6.28427
+Running forward-backward pass with hysteresis threshold background =(0.2,0.7) to remove non-cell like objects
+Background filter: Reading frame 0 for forward-backward pass
+Background filter: Reading frame 1 for forward-backward pass
+Background filter: Reading frame 2 for forward-backward pass
+Background filter: Reading frame 3 for forward-backward pass
+Background filter: Reading frame 4 for forward-backward pass
+Background filter: Reading frame 5 for forward-backward pass
+Background filter: Reading frame 6 for forward-backward pass
+Background filter: Reading frame 7 for forward-backward pass
+Background filter: Reading frame 8 for forward-backward pass
+Background filter: Reading frame 9 for forward-backward pass
+Background filter: backward pass for interpolation
+Background filter: forward-backward pass for 675 lineages
+Background filter: updating frame 0 after forward/backward pass
+Background filter: updating frame 1 after forward/backward pass
+Background filter: updating frame 2 after forward/backward pass
+Background filter: updating frame 3 after forward/backward pass
+Background filter: updating frame 4 after forward/backward pass
+Background filter: updating frame 5 after forward/backward pass
+Background filter: updating frame 6 after forward/backward pass
+Background filter: updating frame 7 after forward/backward pass
+Background filter: updating frame 8 after forward/backward pass
+Background filter: updating frame 9 after forward/backward pass
+Deleted 0 out of 6981 with background thrHigh = 0.7; thrLow=0.2
+-nan secs
+mainGaussian_sum = 1442.89
+
+==============================================================================
+
+Overwriting CUDA device selction to default
+Selected CUDA device 0
+Processing frame 0
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171712 supervoxels out of 172975 for being of size<50 after trimming. Left 1263
+Splitted 53 supervoxels for having deltaZ >11
+Parsing 1263 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 110090680;CUDA choosing device:  0;memory available=11725860864;total mem=12079136768
+Frame=0;iter=4;Log-likelihood =-699703.242187500000
+ done in 0.062179 secs for 3 EM iterations (0.020726 secs per iteration)
+Generated (not touching supervoxels) 12 cell divisions out of 1246 cells in frame 0.Also added 3 new tracks
+Updated thrDist2LargeDisplacement to = 2048 * 2048
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 1
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 188249 supervoxels out of 190477 for being of size<50 after trimming. Left 2228
+Splitted 34 supervoxels for having deltaZ >11
+Parsing 2228 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 130621568;CUDA choosing device:  0;memory available=11718651904;total mem=12079136768
+Frame=1;iter=8;Log-likelihood =-1664505.562500000000
+ done in 0.183352 secs for 7 EM iterations (0.026193 secs per iteration)
+Generated (not touching supervoxels) 213 cell divisions out of 1496 cells in frame 1.Also added 682 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 2
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189958 supervoxels out of 191162 for being of size<50 after trimming. Left 1204
+Splitted 51 supervoxels for having deltaZ >11
+Parsing 1204 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 109759060;CUDA choosing device:  0;memory available=11725991936;total mem=12079136768
+Frame=2;iter=6;Log-likelihood =-884550.890625000000
+ done in 0.104035 secs for 5 EM iterations (0.020807 secs per iteration)
+Generated (not touching supervoxels) 184 cell divisions out of 857 cells in frame 2.Also added 117 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 3
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171688 supervoxels out of 173147 for being of size<50 after trimming. Left 1459
+Splitted 75 supervoxels for having deltaZ >11
+Parsing 1459 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 116556112;CUDA choosing device:  0;memory available=11643641856;total mem=12079136768
+Frame=3;iter=8;Log-likelihood =-922814.406250000000
+ done in 0.150699 secs for 7 EM iterations (0.021528 secs per iteration)
+Generated (not touching supervoxels) 196 cell divisions out of 936 cells in frame 3.Also added 217 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 4
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189633 supervoxels out of 190920 for being of size<50 after trimming. Left 1287
+Splitted 70 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 115179840;CUDA choosing device:  0;memory available=11644166144;total mem=12079136768
+Frame=4;iter=5;Log-likelihood =-789796.531250000000
+ done in 0.084472 secs for 4 EM iterations (0.021118 secs per iteration)
+Generated (not touching supervoxels) 161 cell divisions out of 918 cells in frame 4.Also added 104 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 5
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 207955 supervoxels out of 209248 for being of size<50 after trimming. Left 1293
+Splitted 87 supervoxels for having deltaZ >11
+Parsing 1293 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 117027388;CUDA choosing device:  0;memory available=11643510784;total mem=12079136768
+Frame=5;iter=5;Log-likelihood =-524454.765625000000
+ done in 0.084974 secs for 4 EM iterations (0.021244 secs per iteration)
+Generated (not touching supervoxels) 144 cell divisions out of 936 cells in frame 5.Also added 46 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 6
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 198396 supervoxels out of 199671 for being of size<50 after trimming. Left 1275
+Splitted 74 supervoxels for having deltaZ >11
+Parsing 1275 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 116812872;CUDA choosing device:  0;memory available=11643510784;total mem=12079136768
+Frame=6;iter=5;Log-likelihood =-454315.789062500000
+ done in 0.084014 secs for 4 EM iterations (0.021003 secs per iteration)
+Generated (not touching supervoxels) 179 cell divisions out of 918 cells in frame 6.Also added 103 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 7
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 221825 supervoxels out of 223119 for being of size<50 after trimming. Left 1294
+Splitted 82 supervoxels for having deltaZ >11
+Parsing 1294 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 117850860;CUDA choosing device:  0;memory available=11643117568;total mem=12079136768
+Frame=7;iter=7;Log-likelihood =-438195.289062500000
+ done in 0.126974 secs for 6 EM iterations (0.021162 secs per iteration)
+Generated (not touching supervoxels) 170 cell divisions out of 950 cells in frame 7.Also added 56 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 8
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 187296 supervoxels out of 188576 for being of size<50 after trimming. Left 1280
+Splitted 76 supervoxels for having deltaZ >11
+Parsing 1280 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 117199508;CUDA choosing device:  0;memory available=11722846208;total mem=12079136768
+Frame=8;iter=4;Log-likelihood =-538184.585937500000
+ done in 0.063257 secs for 3 EM iterations (0.021086 secs per iteration)
+Generated (not touching supervoxels) 142 cell divisions out of 954 cells in frame 8.Also added 55 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 9
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189169 supervoxels out of 190456 for being of size<50 after trimming. Left 1287
+Splitted 60 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 119235812;CUDA choosing device:  0;memory available=11722059776;total mem=12079136768
+Frame=9;iter=5;Log-likelihood =-450496.507812500000
+ done in 0.085281 secs for 4 EM iterations (0.021320 secs per iteration)
+Generated (not touching supervoxels) 132 cell divisions out of 968 cells in frame 9.Also added 20 new tracks
+Deleted 621 out of 753 splits because of a sibling death before 5 time points after cell division
+Deleted 1984 lineages that died during the burning period
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+for1 took 1461.12
+for1_for1_sum = 4.96692e-06secs
+for1_for2_sum =0.20707
+for1_for3_sum =794.399
+for1_for4_sum =0.218129
+for1_for5_sum =47.939
+for1_for6_sum =7.08597e-06
+for1_for7_sum =0.223609
+for1_for8_sum =0.00134986
+for1_for9_sum =5.87755
+for1_for10_sum =0
+for1_for11_sum =0.00620119
+for1_for12_sum =0.0104703
+for1_for13_sum =0
+for1_for13_sum =0
+for1_for14_sum =0
+for1_for15_sum =0
+for1_for16_sum =0
+for1_for17_sum =0
+for1_for18_sum =0
+for1_for19_sum =0
+for1_for20_sum =3.02014
+for1_if1_sum =8.92399e-06
+for1_if2_sum =3.47258
+for1_if3_sum =2.80596e-06
+for1_if4_sum =0
+for1_if5_sum =0
+for1_if6_sum =0.00998597
+for1_if7_sum =0.00710936
+for1_if8_sum =4.21616e-06
+for1_if9_sum =2.17202e-06
+for1_time1_sum =3.87521
+for1_time2_sum =0
+for1_time3_sum =0
+for1_time4_sum =0
+for1_time5_sum =0.00209568
+for1_time6_sum =2.558
+for1_time7_sum = 265.312
+for1_time8_sum = 13.6402
+for1_time9_sum = 0.322259
+for1_time10_sum = 0.000720169
+for1_time11_sum = 31.5018
+Cut 0 linkages out of 19 cell divisions because it did not satisfy the cell division midplane constraint (frame0)
+Cut 0 linkages out of 35 cell divisions because it did not satisfy the cell division midplane constraint (frame1)
+Cut 0 linkages out of 36 cell divisions because it did not satisfy the cell division midplane constraint (frame2)
+Cut 0 linkages out of 42 cell divisions because it did not satisfy the cell division midplane constraint (frame3)
+Cut 0 linkages out of 144 cell divisions because it did not satisfy the cell division midplane constraint (frame4)
+Cut 0 linkages out of 179 cell divisions because it did not satisfy the cell division midplane constraint (frame5)
+Cut 0 linkages out of 170 cell divisions because it did not satisfy the cell division midplane constraint (frame6)
+Cut 0 linkages out of 142 cell divisions because it did not satisfy the cell division midplane constraint (frame7)
+Cut 0 linkages out of 132 cell divisions because it did not satisfy the cell division midplane constraint (frame8)
+for 2 took 6.29286
+Running forward-backward pass with hysteresis threshold background =(0.2,0.7) to remove non-cell like objects
+Background filter: Reading frame 0 for forward-backward pass
+Background filter: Reading frame 1 for forward-backward pass
+Background filter: Reading frame 2 for forward-backward pass
+Background filter: Reading frame 3 for forward-backward pass
+Background filter: Reading frame 4 for forward-backward pass
+Background filter: Reading frame 5 for forward-backward pass
+Background filter: Reading frame 6 for forward-backward pass
+Background filter: Reading frame 7 for forward-backward pass
+Background filter: Reading frame 8 for forward-backward pass
+Background filter: Reading frame 9 for forward-backward pass
+Background filter: backward pass for interpolation
+Background filter: forward-backward pass for 675 lineages
+Background filter: updating frame 0 after forward/backward pass
+Background filter: updating frame 1 after forward/backward pass
+Background filter: updating frame 2 after forward/backward pass
+Background filter: updating frame 3 after forward/backward pass
+Background filter: updating frame 4 after forward/backward pass
+Background filter: updating frame 5 after forward/backward pass
+Background filter: updating frame 6 after forward/backward pass
+Background filter: updating frame 7 after forward/backward pass
+Background filter: updating frame 8 after forward/backward pass
+Background filter: updating frame 9 after forward/backward pass
+Deleted 0 out of 6981 with background thrHigh = 0.7; thrLow=0.2
+-nan secs
+mainGaussian_sum = 1469.25
+
+
+
+Overwriting CUDA device selction to default
+Selected CUDA device 0
+Processing frame 0
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171712 supervoxels out of 172975 for being of size<50 after trimming. Left 1263
+Splitted 53 supervoxels for having deltaZ >11
+Parsing 1263 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 110090680;CUDA choosing device:  0;memory available=11725860864;total mem=12079136768
+Frame=0;iter=4;Log-likelihood =-699703.242187500000
+ done in 0.079946 secs for 3 EM iterations (0.026649 secs per iteration)
+Generated (not touching supervoxels) 12 cell divisions out of 1246 cells in frame 0.Also added 3 new tracks
+Updated thrDist2LargeDisplacement to = 2048 * 2048
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 1
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 188249 supervoxels out of 190477 for being of size<50 after trimming. Left 2228
+Splitted 34 supervoxels for having deltaZ >11
+Parsing 2228 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 130621568;CUDA choosing device:  0;memory available=11718651904;total mem=12079136768
+Frame=1;iter=8;Log-likelihood =-1664505.562500000000
+ done in 0.183422 secs for 7 EM iterations (0.026203 secs per iteration)
+Generated (not touching supervoxels) 213 cell divisions out of 1496 cells in frame 1.Also added 682 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 2
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189958 supervoxels out of 191162 for being of size<50 after trimming. Left 1204
+Splitted 51 supervoxels for having deltaZ >11
+Parsing 1204 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 109759060;CUDA choosing device:  0;memory available=11725991936;total mem=12079136768
+Frame=2;iter=6;Log-likelihood =-884550.890625000000
+ done in 0.104747 secs for 5 EM iterations (0.020949 secs per iteration)
+Generated (not touching supervoxels) 184 cell divisions out of 857 cells in frame 2.Also added 117 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 3
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 171688 supervoxels out of 173147 for being of size<50 after trimming. Left 1459
+Splitted 75 supervoxels for having deltaZ >11
+Parsing 1459 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 116556112;CUDA choosing device:  0;memory available=11643641856;total mem=12079136768
+Frame=3;iter=8;Log-likelihood =-922814.406250000000
+ done in 0.149317 secs for 7 EM iterations (0.021331 secs per iteration)
+Generated (not touching supervoxels) 196 cell divisions out of 936 cells in frame 3.Also added 217 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 4
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189633 supervoxels out of 190920 for being of size<50 after trimming. Left 1287
+Splitted 70 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 115179840;CUDA choosing device:  0;memory available=11644166144;total mem=12079136768
+Frame=4;iter=5;Log-likelihood =-789796.531250000000
+ done in 0.083306 secs for 4 EM iterations (0.020826 secs per iteration)
+Generated (not touching supervoxels) 161 cell divisions out of 918 cells in frame 4.Also added 104 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 5
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 207955 supervoxels out of 209248 for being of size<50 after trimming. Left 1293
+Splitted 87 supervoxels for having deltaZ >11
+Parsing 1293 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 117027388;CUDA choosing device:  0;memory available=11643510784;total mem=12079136768
+Frame=5;iter=5;Log-likelihood =-524454.765625000000
+ done in 0.085604 secs for 4 EM iterations (0.021401 secs per iteration)
+Generated (not touching supervoxels) 144 cell divisions out of 936 cells in frame 5.Also added 46 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 6
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 198396 supervoxels out of 199671 for being of size<50 after trimming. Left 1275
+Splitted 74 supervoxels for having deltaZ >11
+Parsing 1275 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 116812872;CUDA choosing device:  0;memory available=11643510784;total mem=12079136768
+Frame=6;iter=5;Log-likelihood =-454315.789062500000
+ done in 0.083184 secs for 4 EM iterations (0.020796 secs per iteration)
+Generated (not touching supervoxels) 179 cell divisions out of 918 cells in frame 6.Also added 103 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 7
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 221825 supervoxels out of 223119 for being of size<50 after trimming. Left 1294
+Splitted 82 supervoxels for having deltaZ >11
+Parsing 1294 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 117850860;CUDA choosing device:  0;memory available=11643117568;total mem=12079136768
+Frame=7;iter=7;Log-likelihood =-438195.289062500000
+ done in 0.126214 secs for 6 EM iterations (0.021036 secs per iteration)
+Generated (not touching supervoxels) 170 cell divisions out of 950 cells in frame 7.Also added 56 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 8
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 187296 supervoxels out of 188576 for being of size<50 after trimming. Left 1280
+Splitted 76 supervoxels for having deltaZ >11
+Parsing 1280 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 117199508;CUDA choosing device:  0;memory available=11643248640;total mem=12079136768
+Frame=8;iter=4;Log-likelihood =-538184.585937500000
+ done in 0.063429 secs for 3 EM iterations (0.021143 secs per iteration)
+Generated (not touching supervoxels) 142 cell divisions out of 954 cells in frame 8.Also added 55 new tracks
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+Processing frame 9
+Generating segmentation mask from HS (trimming supervoxels).
+Deleted 189169 supervoxels out of 190456 for being of size<50 after trimming. Left 1287
+Splitted 60 supervoxels for having deltaZ >11
+Parsing 1287 supervoxels from HS took inf secs
+Calculating nearest neighbors for supervoxels
+Nearest neighbors took inf secs
+Memory required: 119235812;CUDA choosing device:  0;memory available=11642462208;total mem=12079136768
+Frame=9;iter=5;Log-likelihood =-450496.507812500000
+ done in 0.085411 secs for 4 EM iterations (0.021353 secs per iteration)
+Generated (not touching supervoxels) 132 cell divisions out of 968 cells in frame 9.Also added 20 new tracks
+Deleted 621 out of 753 splits because of a sibling death before 5 time points after cell division
+Deleted 1984 lineages that died during the burning period
+Updated thrDist2LargeDisplacement to = nan * nan
+Applying all the temporal logical rules took inf secs
+inf secs
+for1 took 1422.14
+for1_for1_sum = 4.89305e-06secs
+for1_for2_sum =0.186169
+for1_for3_sum =784.67
+for1_for4_sum =0.235071
+for1_for5_sum =48.2295
+for1_for6_sum =7.97678e-06
+for1_for7_sum =0.206395
+for1_for8_sum =0.00123137
+for1_for9_sum =5.76503
+for1_for10_sum =0
+for1_for11_sum =0.00622052
+for1_for12_sum =0.0107568
+for1_for13_sum =0
+for1_for13_sum =0
+for1_for14_sum =0
+for1_for15_sum =0
+for1_for16_sum =0
+for1_for17_sum =0
+for1_for18_sum =0
+for1_for19_sum =0
+for1_for20_sum =3.08122
+for1_if1_sum =8.92405e-06
+for1_if2_sum =3.5205
+for1_if3_sum =2.22097e-06
+for1_if4_sum =0
+for1_if5_sum =0
+for1_if6_sum =0.0246271
+for1_if7_sum =0.0066349
+for1_if8_sum =4.16616e-06
+for1_if9_sum =1.12923e-06
+for1_time1_sum =4.62926
+for1_time2_sum =0
+for1_time3_sum =0
+for1_time4_sum =0
+for1_time5_sum =0.00197928
+for1_time6_sum =2.55841
+for1_time7_sum = 260.658
+for1_time8_sum = 14.5544
+for1_time9_sum = 0.352173
+for1_time10_sum = 0.000741609
+for1_time11_sum = 22.0171
+for1_before_GMM_sum = 1407.88
+for1_GMM_sum0
+for1_after_GMM_sum5.67434
+Cut 0 linkages out of 19 cell divisions because it did not satisfy the cell division midplane constraint (frame0)
+Cut 0 linkages out of 35 cell divisions because it did not satisfy the cell division midplane constraint (frame1)
+Cut 0 linkages out of 36 cell divisions because it did not satisfy the cell division midplane constraint (frame2)
+Cut 0 linkages out of 42 cell divisions because it did not satisfy the cell division midplane constraint (frame3)
+Cut 0 linkages out of 144 cell divisions because it did not satisfy the cell division midplane constraint (frame4)
+Cut 0 linkages out of 179 cell divisions because it did not satisfy the cell division midplane constraint (frame5)
+Cut 0 linkages out of 170 cell divisions because it did not satisfy the cell division midplane constraint (frame6)
+Cut 0 linkages out of 142 cell divisions because it did not satisfy the cell division midplane constraint (frame7)
+Cut 0 linkages out of 132 cell divisions because it did not satisfy the cell division midplane constraint (frame8)
+for 2 took 6.94264
+Running forward-backward pass with hysteresis threshold background =(0.2,0.7) to remove non-cell like objects
+Background filter: Reading frame 0 for forward-backward pass
+Background filter: Reading frame 1 for forward-backward pass
+Background filter: Reading frame 2 for forward-backward pass
+Background filter: Reading frame 3 for forward-backward pass
+Background filter: Reading frame 4 for forward-backward pass
+Background filter: Reading frame 5 for forward-backward pass
+Background filter: Reading frame 6 for forward-backward pass
+Background filter: Reading frame 7 for forward-backward pass
+Background filter: Reading frame 8 for forward-backward pass
+Background filter: Reading frame 9 for forward-backward pass
+Background filter: backward pass for interpolation
+Background filter: forward-backward pass for 675 lineages
+Background filter: updating frame 0 after forward/backward pass
+Background filter: updating frame 1 after forward/backward pass
+Background filter: updating frame 2 after forward/backward pass
+Background filter: updating frame 3 after forward/backward pass
+Background filter: updating frame 4 after forward/backward pass
+Background filter: updating frame 5 after forward/backward pass
+Background filter: updating frame 6 after forward/backward pass
+Background filter: updating frame 7 after forward/backward pass
+Background filter: updating frame 8 after forward/backward pass
+Background filter: updating frame 9 after forward/backward pass
+Deleted 0 out of 6981 with background thrHigh = 0.7; thrLow=0.2
+-nan secs
+mainGaussian_sum = 1431.13

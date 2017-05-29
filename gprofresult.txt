@@ -1,0 +1,1265 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 16.76      3.44     3.44                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::lower_bound<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long long const&)
+  6.02      4.68     1.24                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator*() const
+  5.02      5.71     1.03                             void std::advance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >&, long)
+  3.90      6.51     0.80                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator+=(long const&)
+  3.61      7.25     0.74                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long)
+  3.02      7.87     0.62                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::__normal_iterator(unsigned long long* const&)
+  2.92      8.47     0.60                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator++()
+  2.83      9.05     0.58                             __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float)
+  2.49      9.56     0.51                             void lineageHyperTree::calculateGMMparametersFromNuclei<float>(std::_List_iterator<nucleus>&, float*, float*, float*)
+  2.10      9.99     0.43                             unsigned short supervoxel::trimSupervoxel<unsigned short>(int, float, int, long long*)
+  2.05     10.41     0.42                             float supervoxel::trimSupervoxel<float>(int, float, int, long long*)
+  1.95     10.81     0.40                             void std::__advance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >&, long, std::random_access_iterator_tag)
+  1.90     11.20     0.39                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::base() const
+  1.90     11.59     0.39                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator+(long const&) const
+  1.88     11.97     0.39                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::difference_type __gnu_cxx::operator-<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&)
+  1.75     12.33     0.36                             void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long)
+  1.61     12.66     0.33                             int lineageHyperTree::calculateNucleiIntensityCentroid<float>(std::_List_iterator<nucleus>&)
+  1.61     12.99     0.33                             bool __gnu_cxx::operator!=<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&)
+  1.46     13.29     0.30                             __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator*() const
+  1.32     13.56     0.27                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator--()
+  1.27     13.82     0.26                             supervoxel::intersectionSize(supervoxel const&) const
+  1.22     14.07     0.25                             std::vector<unsigned long long, std::allocator<unsigned long long> >::end() const
+  1.17     14.31     0.24                             bool __gnu_cxx::operator!=<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&)
+  1.15     14.55     0.24                             void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float)
+  1.07     14.77     0.22                             void std::__adjust_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, long, unsigned long long)
+  1.05     14.98     0.22                             std::iterator_traits<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >::difference_type std::distance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  1.02     15.19     0.21                             __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator--()
+  0.83     15.36     0.17  2891299     0.00     0.00  coord4idx
+  0.83     15.53     0.17                             __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::base() const
+  0.83     15.70     0.17                             __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator*() const
+  0.80     15.87     0.17                             __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator++()
+  0.78     16.03     0.16                             std::iterator_traits<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >::iterator_category std::__iterator_category<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&)
+  0.71     16.17     0.15                             bool __gnu_cxx::operator< <float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&)
+  0.68     16.31     0.14                             int supervoxel::weightedGaussianStatistics<unsigned short>(bool)
+  0.68     16.45     0.14                             std::vector<unsigned long long, std::allocator<unsigned long long> >::end()
+  0.66     16.59     0.14                             void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  0.63     16.72     0.13                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::__copy_move_backward_a2<false, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  0.54     16.83     0.11                             supervoxel::otsuThreshold(float*, int)
+  0.54     16.94     0.11                             supervoxel::neighboringVoxels(supervoxel const&, int, long long*, std::vector<unsigned long long, std::allocator<unsigned long long> >&, std::vector<unsigned long long, std::allocator<unsigned long long> >&)
+  0.54     17.05     0.11                             __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::__normal_iterator(unsigned long long const* const&)
+  0.54     17.16     0.11                             main
+  0.49     17.26     0.10                             __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator++(int)
+  0.49     17.36     0.10                             std::vector<unsigned long long, std::allocator<unsigned long long> >::size() const
+  0.49     17.46     0.10                             std::vector<unsigned long long, std::allocator<unsigned long long> >::begin()
+  0.49     17.56     0.10                             std::vector<unsigned long long, std::allocator<unsigned long long> >::operator[](unsigned long)
+  0.49     17.66     0.10                             void std::__introsort_loop<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long)
+  0.46     17.75     0.10                             unsigned long long const&&& std::forward<unsigned long long const&>(std::identity<unsigned long long const&>::type&&)
+  0.44     17.84     0.09                             bool __gnu_cxx::operator< <unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&)
+  0.44     17.93     0.09                             std::iterator_traits<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >::difference_type std::__distance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, std::random_access_iterator_tag)
+  0.39     18.01     0.08                             void std::swap<float>(float&, float&)
+  0.39     18.09     0.08                             void std::sort_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  0.37     18.17     0.08                             __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::base() const
+  0.34     18.24     0.07                             void supervoxel::removeZeros<float>()
+  0.34     18.31     0.07                             std::deque<int, std::allocator<int> >::push_back(int const&)
+  0.34     18.38     0.07                             void std::__push_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, long, unsigned long long)
+  0.34     18.45     0.07                             void std::iter_swap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  0.34     18.52     0.07                             void std::partial_sort<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >)
+  0.29     18.58     0.06                             void std::iter_swap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >)
+  0.24     18.63     0.05       31     1.61     1.61  Scale_Array
+  0.24     18.68     0.05                             supervoxel::JaccardIndexWithOffset(supervoxel const&)
+  0.24     18.73     0.05                             supervoxel::numHoles()
+  0.24     18.78     0.05                             __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::difference_type __gnu_cxx::operator-<float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&)
+  0.24     18.83     0.05                             std::_Deque_iterator<int, int&, int*>::_Deque_iterator(std::_Deque_iterator<int, int&, int*> const&)
+  0.24     18.88     0.05                             std::deque<int, std::allocator<int> >::pop_front()
+  0.24     18.93     0.05                             __gnu_cxx::__enable_if<std::__is_scalar<unsigned long long>::__value, unsigned long long*>::__type std::__fill_n_a<unsigned long long*, unsigned long, unsigned long long>(unsigned long long*, unsigned long, unsigned long long const&)
+  0.24     18.98     0.05                             void std::swap<unsigned long long>(unsigned long long&, unsigned long long&)
+  0.19     19.02     0.04                             float supervoxel::intensityThreshold<float>(int, float, unsigned int*, bool)
+  0.19     19.06     0.04                             bool __gnu_cxx::operator!=<float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&)
+  0.19     19.10     0.04                             void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >)
+  0.19     19.14     0.04                             void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  0.19     19.18     0.04                             std::deque<unsigned long, std::allocator<unsigned long> >::push_back(unsigned long&&)
+  0.19     19.22     0.04                             std::vector<unsigned long long, std::allocator<unsigned long long> >::resize(unsigned long, unsigned long long)
+  0.19     19.26     0.04                             void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >)
+  0.15     19.29     0.03       31     0.97     0.97  Array_Range
+  0.15     19.32     0.03                             fromXMLString(char const*, int, XML*)
+  0.15     19.35     0.03                             GetNextToken(XML*, int*, XMLTokenTypeTag*)
+  0.15     19.38     0.03                             std::deque<int, std::allocator<int> >::empty() const
+  0.15     19.41     0.03                             std::deque<int, std::allocator<int> >::begin()
+  0.15     19.44     0.03                             std::queue<int, std::deque<int, std::allocator<int> > >::front()
+  0.15     19.47     0.03                             std::vector<float, std::allocator<float> >::operator[](unsigned long)
+  0.15     19.50     0.03                             void std::__pop_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  0.15     19.53     0.03                             float const& std::min<float>(float const&, float const&)
+  0.15     19.56     0.03                             bool std::operator==<int, int&, int*>(std::_Deque_iterator<int, int&, int*> const&, std::_Deque_iterator<int, int&, int*> const&)
+  0.12     19.58     0.03  2891361     0.00     0.00  make_shape
+  0.12     19.61     0.03                             std::remove_reference<float&>::type&& std::move<float&>(float&&&)
+  0.10     19.63     0.02  2891361     0.00     0.00  array_dsize
+  0.10     19.65     0.02  2891361     0.00     0.00  make_start
+  0.10     19.67     0.02  2891361     0.00     0.00  new_array
+  0.10     19.69     0.02       31     0.65     0.65  translate
+  0.10     19.71     0.02                             supervoxel::isNeighboring(supervoxel const&, int, long long*)
+  0.10     19.73     0.02                             unsigned short supervoxel::intensityThreshold<unsigned short>(int, float, unsigned int*, bool)
+  0.10     19.75     0.02                             bool __gnu_cxx::operator==<float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&)
+  0.10     19.77     0.02                             bool __gnu_cxx::operator==<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&)
+  0.10     19.79     0.02                             bool __gnu_cxx::operator!=<treeStump const*, std::vector<treeStump, std::allocator<treeStump> > >(__gnu_cxx::__normal_iterator<treeStump const*, std::vector<treeStump, std::allocator<treeStump> > > const&, __gnu_cxx::__normal_iterator<treeStump const*, std::vector<treeStump, std::allocator<treeStump> > > const&)
+  0.10     19.81     0.02                             std::vector<unsigned long long, std::allocator<unsigned long long> >::begin() const
+  0.10     19.83     0.02                             __gnu_cxx::__enable_if<std::__is_scalar<float>::__value, float*>::__type std::__fill_n_a<float*, unsigned long, float>(float*, unsigned long, float const&)
+  0.10     19.85     0.02                             void std::__introsort_loop<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, long>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, long)
+  0.07     19.86     0.02  2891361     0.00     0.00  Make_Array
+  0.07     19.88     0.02                             XMLNode::getAttribute(char const*, int*) const
+  0.05     19.89     0.01  2891330     0.00     0.00  Free_Array
+  0.05     19.90     0.01  2891330     0.00     0.00  free_array
+  0.05     19.91     0.01                             int parseString<double>(std::string const&, std::vector<double, std::allocator<double> >&)
+  0.05     19.92     0.01                             boostingTreeClassifier(float*, float*, std::vector<std::vector<treeStump, std::allocator<treeStump> >, std::allocator<std::vector<treeStump, std::allocator<treeStump> > > >&, unsigned long long, unsigned long long)
+  0.05     19.93     0.01                             getNextChar(XML*)
+  0.05     19.94     0.01                             supervoxel::getCoordinates(unsigned long long, unsigned long long*)
+  0.05     19.95     0.01                             supervoxel::mergeSupervoxels(std::vector<supervoxel*, std::allocator<supervoxel*> >&)
+  0.05     19.96     0.01                             Eigen::DenseStorage<double, 9, 3, 3, 0>::data()
+  0.05     19.97     0.01                             void Eigen::DenseCoeffsBase<Eigen::Matrix<double, 6, 6, 0, 6, 6>, 1>::copyCoeffByOuterInner<Eigen::CwiseNullaryOp<Eigen::internal::scalar_identity_op<double>, Eigen::Matrix<double, 6, 6, 0, 6, 6> > >(long, long, Eigen::DenseBase<Eigen::CwiseNullaryOp<Eigen::internal::scalar_identity_op<double>, Eigen::Matrix<double, 6, 6, 0, 6, 6> > > const&)
+  0.05     19.98     0.01                             Eigen::MapBase<Eigen::Block<Eigen::Matrix<double, 3, 3, 0, 3, 3>, 3, 1, true, true>, 1>::coeffRef(long)
+  0.05     19.99     0.01                             Eigen::EigenBase<Eigen::Matrix<double, 3, 3, 0, 3, 3> >::derived()
+  0.05     20.00     0.01                             __gnu_cxx::new_allocator<int>::construct(int*, int const&)
+  0.05     20.01     0.01                             __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator++()
+  0.05     20.02     0.01                             __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::__normal_iterator(float* const&)
+  0.05     20.03     0.01                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::__normal_iterator()
+  0.05     20.04     0.01                             bool __gnu_cxx::operator!=<unsigned long long const*, unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&)
+  0.05     20.05     0.01                             bool __gnu_cxx::operator!=<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&)
+  0.05     20.06     0.01                             Eigen::DenseCoeffsBase<Eigen::CwiseUnaryOp<Eigen::internal::scalar_abs_op<double>, Eigen::Matrix<double, 3, 3, 0, 3, 3> const>, 0>::coeffByOuterInner(long, long) const
+  0.05     20.07     0.01                             Eigen::PlainObjectBase<Eigen::Matrix<double, 3, 3, 0, 3, 3> >::cols() const
+  0.05     20.08     0.01                             Eigen::Block<Eigen::Matrix<double, 3, 3, 0, 3, 3> const, 3, 1, true, true>::outerStride() const
+  0.05     20.09     0.01                             Eigen::MapBase<Eigen::Block<Eigen::Matrix<double, 3, 3, 0, 3, 3> const, 3, 1, true, true>, 0>::coeff(long, long) const
+  0.05     20.10     0.01                             Eigen::EigenBase<Eigen::Matrix<double, 3, 1, 0, 3, 1> >::rows() const
+  0.05     20.11     0.01                             Eigen::EigenBase<Eigen::Matrix<double, 3, 3, 0, 3, 3> >::derived() const
+  0.05     20.12     0.01                             XMLNode::nChildNode(char const*) const
+  0.05     20.13     0.01                             TreeNode<std::_List_iterator<nucleus> >::getNumChildren() const
+  0.05     20.14     0.01                             __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator-(long const&) const
+  0.05     20.15     0.01                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator-(long const&) const
+  0.05     20.16     0.01                             std::_List_iterator<supervoxel>::operator*() const
+  0.05     20.17     0.01                             std::_List_iterator<nucleus>::operator->() const
+  0.05     20.18     0.01                             std::_Deque_iterator<int, int&, int*>::operator*() const
+  0.05     20.19     0.01                             std::vector<supervoxel*, std::allocator<supervoxel*> >::size() const
+  0.05     20.20     0.01                             std::vector<std::_List_iterator<supervoxel>, std::allocator<std::_List_iterator<supervoxel> > >::max_size() const
+  0.05     20.21     0.01                             std::vector<unsigned long long, std::allocator<unsigned long long> >::empty() const
+  0.05     20.22     0.01                             std::_Vector_base<char, std::allocator<char> >::_Vector_impl::_Vector_impl()
+  0.05     20.23     0.01                             std::_List_iterator<supervoxel>::_List_iterator(std::_List_node_base*)
+  0.05     20.24     0.01                             std::_List_const_iterator<supervoxel>::operator++()
+  0.05     20.25     0.01                             void std::__uninitialized_fill_n<false>::uninitialized_fill_n<std::_List_iterator<nucleus>*, unsigned long, std::_List_iterator<nucleus> >(std::_List_iterator<nucleus>*, unsigned long, std::_List_iterator<nucleus> const&)
+  0.05     20.26     0.01                             std::queue<int, std::deque<int, std::allocator<int> > >::push(int const&)
+  0.05     20.27     0.01                             std::queue<int, std::deque<int, std::allocator<int> > >::queue(std::deque<int, std::allocator<int> > const&)
+  0.05     20.28     0.01                             std::queue<unsigned long, std::deque<unsigned long, std::allocator<unsigned long> > >::push(unsigned long&&)
+  0.05     20.29     0.01                             std::vector<supervoxel, std::allocator<supervoxel> >::operator[](unsigned long)
+  0.05     20.30     0.01                             std::vector<treeStump, std::allocator<treeStump> >::vector(unsigned long, treeStump const&, std::allocator<treeStump> const&)
+  0.05     20.31     0.01                             std::vector<treeStump, std::allocator<treeStump> >::operator[](unsigned long)
+  0.05     20.32     0.01                             std::vector<GaussianMixtureModel*, std::allocator<GaussianMixtureModel*> >::_M_fill_insert(__gnu_cxx::__normal_iterator<GaussianMixtureModel**, std::vector<GaussianMixtureModel*, std::allocator<GaussianMixtureModel*> > >, unsigned long, GaussianMixtureModel* const&)
+  0.05     20.33     0.01                             std::vector<std::vector<std::_List_iterator<supervoxel>, std::allocator<std::_List_iterator<supervoxel> > >, std::allocator<std::vector<std::_List_iterator<supervoxel>, std::allocator<std::_List_iterator<supervoxel> > > > >::operator[](unsigned long)
+  0.05     20.34     0.01                             void std::vector<float, std::allocator<float> >::_M_insert_aux<float const&>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float const&&&)
+  0.05     20.35     0.01                             std::vector<unsigned long long, std::allocator<unsigned long long> >::clear()
+  0.05     20.36     0.01                             void std::__pop_heap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >)
+  0.05     20.37     0.01                             __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::copy_backward<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  0.05     20.38     0.01                             std::__deque_buf_size(unsigned long)
+  0.05     20.39     0.01                             std::move_iterator<double*> std::make_move_iterator<double*>(double* const&)
+  0.05     20.40     0.01                             float const& std::max<float>(float const&, float const&)
+  0.05     20.41     0.01                             unsigned long long* std::fill_n<unsigned long long*, unsigned long, unsigned long long>(unsigned long long*, unsigned long, unsigned long long const&)
+  0.05     20.42     0.01                             float const& std::__median<float>(float const&, float const&, float const&)
+  0.05     20.43     0.01                             unsigned long long const& std::__median<unsigned long long>(unsigned long long const&, unsigned long long const&, unsigned long long const&)
+  0.05     20.44     0.01                             void std::sort_heap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >)
+  0.05     20.45     0.01                             __gnu_cxx::__normal_iterator<char*, std::string> std::transform<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, int (*)(int)>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, int (*)(int))
+  0.05     20.46     0.01                             bool std::operator==<std::_List_iterator<supervoxel>*, std::_List_iterator<supervoxel>*>(std::move_iterator<std::_List_iterator<supervoxel>*> const&, std::move_iterator<std::_List_iterator<supervoxel>*> const&)
+  0.02     20.46     0.01                             Eigen::DenseCoeffsBase<Eigen::ReturnByValue<Eigen::internal::inverse_impl<Eigen::Matrix<double, 3, 3, 0, 3, 3> > >, 1>::DenseCoeffsBase()
+  0.02     20.47     0.01                             Eigen::DenseCoeffsBase<Eigen::Matrix<double, 3, 1, 0, 3, 1>, 1>::operator()(long)
+  0.02     20.47     0.01                             Eigen::DenseCoeffsBase<Eigen::Matrix<double, 3, 1, 0, 3, 1>, 1>::operator[](long)
+  0.02     20.48     0.01                             Eigen::internal::special_scalar_op_base<Eigen::ReturnByValue<Eigen::internal::inverse_impl<Eigen::Matrix<double, 3, 3, 0, 3, 3> > >, double, double, false>::special_scalar_op_base()
+  0.02     20.48     0.01                             __gnu_cxx::new_allocator<std::_List_iterator<supervoxel> >::allocate(unsigned long, void const*)
+  0.02     20.49     0.01                             XMLNode::getChildNodeWithAttribute(char const*, char const*, char const*, int*) const
+  0.02     20.49     0.01                             __gnu_cxx::new_allocator<float>::max_size() const
+  0.02     20.50     0.01                             std::_Vector_base<float, std::allocator<float> >::_M_get_Tp_allocator() const
+  0.02     20.50     0.01                             std::vector<unsigned long long, std::allocator<unsigned long long> >::_M_check_len(unsigned long, char const*) const
+  0.02     20.51     0.01                             std::__niter_base<__gnu_cxx::__normal_iterator<hierarchicalSegmentation**, std::vector<hierarchicalSegmentation*, std::allocator<hierarchicalSegmentation*> > >, true>::__b(__gnu_cxx::__normal_iterator<hierarchicalSegmentation**, std::vector<hierarchicalSegmentation*, std::allocator<hierarchicalSegmentation*> > >)
+  0.02     20.51     0.01                             std::_List_iterator<lineage>::operator--()
+  0.02     20.52     0.01                             void std::vector<float, std::allocator<float> >::_M_insert_aux<float>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float&&)
+  0.02     20.52     0.01                             std::move_iterator<std::_List_iterator<supervoxel>*> std::make_move_iterator<std::_List_iterator<supervoxel>*>(std::_List_iterator<supervoxel>* const&)
+  0.00     20.52     0.00  5782753     0.00     0.00  allocate_array_data
+  0.00     20.52     0.00  2891392     0.00     0.00  allocate_array_dims
+  0.00     20.52     0.00  2891392     0.00     0.00  allocate_array_text
+  0.00     20.52     0.00  2891361     0.00     0.00  array_size
+  0.00     20.52     0.00  2891299     0.00     0.00  Idx2CoordA
+  0.00     20.52     0.00    25172     0.00     0.00  Get_Tiff_Tag
+  0.00     20.52     0.00    15283     0.00     0.00  get_integer_tag
+  0.00     20.52     0.00     8990     0.00     0.00  optseek
+  0.00     20.52     0.00     6293     0.00     0.00  Grab_Message_8qm5
+  0.00     20.52     0.00     3596     0.00     0.00  allocate_tifd_values
+  0.00     20.52     0.00     2697     0.00     0.00  Free_Tiff_IFD
+  0.00     20.52     0.00     2697     0.00     0.00  free_tifd
+  0.00     20.52     0.00     1860     0.00     0.00  Free_Tiff_Reader
+  0.00     20.52     0.00     1860     0.00     0.00  Tiff_Reader_Refcount
+  0.00     20.52     0.00     1860     0.00     0.00  free_treader
+  0.00     20.52     0.00     1798     0.00     0.00  Get_Tiff_IFD_Stream
+  0.00     20.52     0.00     1798     0.00     0.00  Inc_Tiff_Reader
+  0.00     20.52     0.00     1798     0.00     0.00  Read_Tiff_IFD
+  0.00     20.52     0.00     1798     0.00     0.00  allocate_tifd_tags
+  0.00     20.52     0.00     1798     0.00     0.00  extract_image_tags
+  0.00     20.52     0.00     1798     0.00     0.00  extract_shape
+  0.00     20.52     0.00     1798     0.00     0.00  new_tifd
+  0.00     20.52     0.00     1798     0.00     0.00  optseek
+  0.00     20.52     0.00      930     0.00     0.00  End_Of_Tiff
+  0.00     20.52     0.00      930     0.00     0.00  determine_kind
+  0.00     20.52     0.00      930     0.00     0.00  image_reader
+  0.00     20.52     0.00      899     0.00     0.00  Free_Tiff_Channel
+  0.00     20.52     0.00      899     0.00     0.00  Free_Tiff_Image
+  0.00     20.52     0.00      899     0.00     0.00  Get_Tiff_IFD_Data_Flip
+  0.00     20.52     0.00      899     0.00     0.00  Get_Tiff_Image
+  0.00     20.52     0.00      899     0.00     0.00  Inc_Tiff_IFD
+  0.00     20.52     0.00      899     0.00     0.00  Load_Tiff_Image_Planes
+  0.00     20.52     0.00      899     0.00     0.00  allocate_timage_channels
+  0.00     20.52     0.00      899     0.00     0.00  allocate_timage_map
+  0.00     20.52     0.00      899     0.00     0.00  determine_type
+  0.00     20.52     0.00      899     0.00     0.00  free_tiff_channel
+  0.00     20.52     0.00      899     0.00     0.00  free_timage
+  0.00     20.52     0.00      899     0.00     0.00  new_tiff_channel
+  0.00     20.52     0.00      899     0.00     0.00  new_timage
+  0.00     20.52     0.00      223     0.00     0.00  Guarded_Realloc
+  0.00     20.52     0.00      186     0.00     0.00  AForm_Class
+  0.00     20.52     0.00      125     0.00     0.00  tic
+  0.00     20.52     0.00      125     0.00     0.00  toc
+  0.00     20.52     0.00       93     0.00     0.00  AForm_Array
+  0.00     20.52     0.00       62     0.00     0.00  AForm_Size
+  0.00     20.52     0.00       62     0.00     0.00  Is_Frame
+  0.00     20.52     0.00       62     0.00     0.00  Native_Endian
+  0.00     20.52     0.00       62     0.00     0.00  Open_Tiff_Reader
+  0.00     20.52     0.00       62     0.00     0.00  new_treader
+  0.00     20.52     0.00       31     0.00     0.65  Convert_Array_Inplace
+  0.00     20.52     0.00       31     0.00     0.00  Is_Slice
+  0.00     20.52     0.00       31     0.00     0.00  Read_Image
+  0.00     20.52     0.00       31     0.00     2.58  Scale_Array_To_Range
+  0.00     20.52     0.00       31     0.00     0.00  Set_Array_Text
+  0.00     20.52     0.00       31     0.00     0.65  convert_array
+  0.00     20.52     0.00       31     0.00     0.00  image_depth
+  0.00     20.52     0.00       31     0.00     0.00  read_array
+  0.00     20.52     0.00       31     0.00     0.00  read_tiff
+  0.00     20.52     0.00        4     0.00     0.00  Guarded_Realloc
+  0.00     20.52     0.00        3     0.00     0.00  Guarded_Realloc
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.05% of 20.52 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     16.8    3.44    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::lower_bound<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long long const&) [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]      6.0    1.24    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator*() const [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]      5.0    1.03    0.00                 void std::advance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >&, long) [3]
+-----------------------------------------------
+                                                 <spontaneous>
+[4]      3.9    0.80    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator+=(long const&) [4]
+-----------------------------------------------
+                                                 <spontaneous>
+[5]      3.6    0.74    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long) [5]
+-----------------------------------------------
+                                                 <spontaneous>
+[6]      3.0    0.62    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::__normal_iterator(unsigned long long* const&) [6]
+-----------------------------------------------
+                                                 <spontaneous>
+[7]      2.9    0.60    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator++() [7]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]      2.8    0.58    0.00                 __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float) [8]
+-----------------------------------------------
+                                                 <spontaneous>
+[9]      2.5    0.51    0.00                 void lineageHyperTree::calculateGMMparametersFromNuclei<float>(std::_List_iterator<nucleus>&, float*, float*, float*) [9]
+-----------------------------------------------
+                                                 <spontaneous>
+[10]     2.4    0.11    0.39                 main [10]
+                0.00    0.27 2891299/2891299     Idx2CoordA [22]
+                0.00    0.08      31/31          Scale_Array_To_Range [52]
+                0.01    0.01 2891330/2891330     Free_Array [92]
+                0.00    0.02      31/31          Convert_Array_Inplace [93]
+                0.00    0.00      31/31          Read_Image [175]
+                0.00    0.00      31/2891361     Make_Array [43]
+                0.00    0.00     125/125         tic [218]
+                0.00    0.00     125/125         toc [219]
+-----------------------------------------------
+                                                 <spontaneous>
+[11]     2.1    0.43    0.00                 unsigned short supervoxel::trimSupervoxel<unsigned short>(int, float, int, long long*) [11]
+-----------------------------------------------
+                                                 <spontaneous>
+[12]     2.0    0.42    0.00                 float supervoxel::trimSupervoxel<float>(int, float, int, long long*) [12]
+-----------------------------------------------
+                                                 <spontaneous>
+[13]     1.9    0.40    0.00                 void std::__advance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >&, long, std::random_access_iterator_tag) [13]
+-----------------------------------------------
+                                                 <spontaneous>
+[14]     1.9    0.39    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::base() const [14]
+-----------------------------------------------
+                                                 <spontaneous>
+[15]     1.9    0.39    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator+(long const&) const [15]
+-----------------------------------------------
+                                                 <spontaneous>
+[16]     1.9    0.39    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::difference_type __gnu_cxx::operator-<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [16]
+-----------------------------------------------
+                                                 <spontaneous>
+[17]     1.8    0.36    0.00                 void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long) [17]
+-----------------------------------------------
+                                                 <spontaneous>
+[18]     1.6    0.33    0.00                 int lineageHyperTree::calculateNucleiIntensityCentroid<float>(std::_List_iterator<nucleus>&) [18]
+-----------------------------------------------
+                                                 <spontaneous>
+[19]     1.6    0.33    0.00                 bool __gnu_cxx::operator!=<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [19]
+-----------------------------------------------
+                                                 <spontaneous>
+[20]     1.5    0.30    0.00                 __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator*() const [20]
+-----------------------------------------------
+                                                 <spontaneous>
+[21]     1.3    0.27    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator--() [21]
+-----------------------------------------------
+                0.00    0.27 2891299/2891299     main [10]
+[22]     1.3    0.00    0.27 2891299         Idx2CoordA [22]
+                0.17    0.10 2891299/2891299     coord4idx [23]
+-----------------------------------------------
+                0.17    0.10 2891299/2891299     Idx2CoordA [22]
+[23]     1.3    0.17    0.10 2891299         coord4idx [23]
+                0.01    0.08 2891299/2891361     Make_Array [43]
+-----------------------------------------------
+                                                 <spontaneous>
+[24]     1.3    0.26    0.00                 supervoxel::intersectionSize(supervoxel const&) const [24]
+-----------------------------------------------
+                                                 <spontaneous>
+[25]     1.2    0.25    0.00                 std::vector<unsigned long long, std::allocator<unsigned long long> >::end() const [25]
+-----------------------------------------------
+                                                 <spontaneous>
+[26]     1.2    0.24    0.00                 bool __gnu_cxx::operator!=<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [26]
+-----------------------------------------------
+                                                 <spontaneous>
+[27]     1.1    0.24    0.00                 void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float) [27]
+-----------------------------------------------
+                                                 <spontaneous>
+[28]     1.1    0.22    0.00                 void std::__adjust_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, long, unsigned long long) [28]
+-----------------------------------------------
+                                                 <spontaneous>
+[29]     1.0    0.22    0.00                 std::iterator_traits<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >::difference_type std::distance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >) [29]
+-----------------------------------------------
+                                                 <spontaneous>
+[30]     1.0    0.21    0.00                 __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator--() [30]
+-----------------------------------------------
+                                                 <spontaneous>
+[31]     0.8    0.17    0.00                 __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::base() const [31]
+-----------------------------------------------
+                                                 <spontaneous>
+[32]     0.8    0.17    0.00                 __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator*() const [32]
+-----------------------------------------------
+                                                 <spontaneous>
+[33]     0.8    0.17    0.00                 __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator++() [33]
+-----------------------------------------------
+                                                 <spontaneous>
+[34]     0.8    0.16    0.00                 std::iterator_traits<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >::iterator_category std::__iterator_category<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [34]
+-----------------------------------------------
+                                                 <spontaneous>
+[35]     0.7    0.15    0.00                 bool __gnu_cxx::operator< <float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&) [35]
+-----------------------------------------------
+                                                 <spontaneous>
+[36]     0.7    0.14    0.00                 int supervoxel::weightedGaussianStatistics<unsigned short>(bool) [36]
+-----------------------------------------------
+                                                 <spontaneous>
+[37]     0.7    0.14    0.00                 std::vector<unsigned long long, std::allocator<unsigned long long> >::end() [37]
+-----------------------------------------------
+                                                 <spontaneous>
+[38]     0.7    0.14    0.00                 void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >) [38]
+-----------------------------------------------
+                                                 <spontaneous>
+[39]     0.6    0.13    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::__copy_move_backward_a2<false, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >) [39]
+-----------------------------------------------
+                                                 <spontaneous>
+[40]     0.5    0.11    0.00                 supervoxel::otsuThreshold(float*, int) [40]
+-----------------------------------------------
+                                                 <spontaneous>
+[41]     0.5    0.11    0.00                 supervoxel::neighboringVoxels(supervoxel const&, int, long long*, std::vector<unsigned long long, std::allocator<unsigned long long> >&, std::vector<unsigned long long, std::allocator<unsigned long long> >&) [41]
+-----------------------------------------------
+                                                 <spontaneous>
+[42]     0.5    0.11    0.00                 __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::__normal_iterator(unsigned long long const* const&) [42]
+-----------------------------------------------
+                0.00    0.00      31/2891361     main [10]
+                0.00    0.00      31/2891361     read_tiff [177]
+                0.01    0.08 2891299/2891361     coord4idx [23]
+[43]     0.5    0.02    0.09 2891361         Make_Array [43]
+                0.03    0.04 2891361/2891361     make_shape [61]
+                0.02    0.00 2891361/2891361     array_dsize [90]
+                0.00    0.00 2891361/5782753     allocate_array_data [178]
+-----------------------------------------------
+                                                 <spontaneous>
+[44]     0.5    0.10    0.00                 __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator++(int) [44]
+-----------------------------------------------
+                                                 <spontaneous>
+[45]     0.5    0.10    0.00                 std::vector<unsigned long long, std::allocator<unsigned long long> >::size() const [45]
+-----------------------------------------------
+                                                 <spontaneous>
+[46]     0.5    0.10    0.00                 std::vector<unsigned long long, std::allocator<unsigned long long> >::begin() [46]
+-----------------------------------------------
+                                                 <spontaneous>
+[47]     0.5    0.10    0.00                 std::vector<unsigned long long, std::allocator<unsigned long long> >::operator[](unsigned long) [47]
+-----------------------------------------------
+                                                 <spontaneous>
+[48]     0.5    0.10    0.00                 void std::__introsort_loop<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long) [48]
+-----------------------------------------------
+                                                 <spontaneous>
+[49]     0.5    0.10    0.00                 unsigned long long const&&& std::forward<unsigned long long const&>(std::identity<unsigned long long const&>::type&&) [49]
+-----------------------------------------------
+                                                 <spontaneous>
+[50]     0.4    0.09    0.00                 bool __gnu_cxx::operator< <unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [50]
+-----------------------------------------------
+                                                 <spontaneous>
+[51]     0.4    0.09    0.00                 std::iterator_traits<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >::difference_type std::__distance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, std::random_access_iterator_tag) [51]
+-----------------------------------------------
+                0.00    0.08      31/31          main [10]
+[52]     0.4    0.00    0.08      31         Scale_Array_To_Range [52]
+                0.05    0.00      31/31          Scale_Array [63]
+                0.03    0.00      31/31          Array_Range [79]
+                0.00    0.00      31/93          AForm_Array [220]
+                0.00    0.00      31/62          Is_Frame [222]
+-----------------------------------------------
+                                                 <spontaneous>
+[53]     0.4    0.08    0.00                 void std::swap<float>(float&, float&) [53]
+-----------------------------------------------
+                                                 <spontaneous>
+[54]     0.4    0.08    0.00                 void std::sort_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >) [54]
+-----------------------------------------------
+                                                 <spontaneous>
+[55]     0.4    0.08    0.00                 __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::base() const [55]
+-----------------------------------------------
+                                                 <spontaneous>
+[56]     0.3    0.07    0.00                 void supervoxel::removeZeros<float>() [56]
+-----------------------------------------------
+                                                 <spontaneous>
+[57]     0.3    0.07    0.00                 std::deque<int, std::allocator<int> >::push_back(int const&) [57]
+-----------------------------------------------
+                                                 <spontaneous>
+[58]     0.3    0.07    0.00                 void std::__push_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, long, unsigned long long) [58]
+-----------------------------------------------
+                                                 <spontaneous>
+[59]     0.3    0.07    0.00                 void std::iter_swap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >) [59]
+-----------------------------------------------
+                                                 <spontaneous>
+[60]     0.3    0.07    0.00                 void std::partial_sort<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >) [60]
+-----------------------------------------------
+                0.03    0.04 2891361/2891361     Make_Array [43]
+[61]     0.3    0.03    0.04 2891361         make_shape [61]
+                0.02    0.02 2891361/2891361     make_start [71]
+                0.00    0.00 2891361/2891361     array_size [181]
+-----------------------------------------------
+                                                 <spontaneous>
+[62]     0.3    0.06    0.00                 void std::iter_swap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >) [62]
+-----------------------------------------------
+                0.05    0.00      31/31          Scale_Array_To_Range [52]
+[63]     0.2    0.05    0.00      31         Scale_Array [63]
+                0.00    0.00      31/93          AForm_Array [220]
+                0.00    0.00      31/62          Is_Frame [222]
+                0.00    0.00      31/62          AForm_Size [221]
+                0.00    0.00      31/31          Is_Slice [226]
+-----------------------------------------------
+                                                 <spontaneous>
+[64]     0.2    0.05    0.00                 supervoxel::JaccardIndexWithOffset(supervoxel const&) [64]
+-----------------------------------------------
+                                                 <spontaneous>
+[65]     0.2    0.05    0.00                 supervoxel::numHoles() [65]
+-----------------------------------------------
+                                                 <spontaneous>
+[66]     0.2    0.05    0.00                 __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::difference_type __gnu_cxx::operator-<float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&) [66]
+-----------------------------------------------
+                                                 <spontaneous>
+[67]     0.2    0.05    0.00                 std::_Deque_iterator<int, int&, int*>::_Deque_iterator(std::_Deque_iterator<int, int&, int*> const&) [67]
+-----------------------------------------------
+                                                 <spontaneous>
+[68]     0.2    0.05    0.00                 std::deque<int, std::allocator<int> >::pop_front() [68]
+-----------------------------------------------
+                                                 <spontaneous>
+[69]     0.2    0.05    0.00                 __gnu_cxx::__enable_if<std::__is_scalar<unsigned long long>::__value, unsigned long long*>::__type std::__fill_n_a<unsigned long long*, unsigned long, unsigned long long>(unsigned long long*, unsigned long, unsigned long long const&) [69]
+-----------------------------------------------
+                                                 <spontaneous>
+[70]     0.2    0.05    0.00                 void std::swap<unsigned long long>(unsigned long long&, unsigned long long&) [70]
+-----------------------------------------------
+                0.02    0.02 2891361/2891361     make_shape [61]
+[71]     0.2    0.02    0.02 2891361         make_start [71]
+                0.02    0.00 2891361/2891361     new_array [91]
+-----------------------------------------------
+                                                 <spontaneous>
+[72]     0.2    0.04    0.00                 float supervoxel::intensityThreshold<float>(int, float, unsigned int*, bool) [72]
+-----------------------------------------------
+                                                 <spontaneous>
+[73]     0.2    0.04    0.00                 bool __gnu_cxx::operator!=<float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&) [73]
+-----------------------------------------------
+                                                 <spontaneous>
+[74]     0.2    0.04    0.00                 void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >) [74]
+-----------------------------------------------
+                                                 <spontaneous>
+[75]     0.2    0.04    0.00                 void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >) [75]
+-----------------------------------------------
+                                                 <spontaneous>
+[76]     0.2    0.04    0.00                 std::deque<unsigned long, std::allocator<unsigned long> >::push_back(unsigned long&&) [76]
+-----------------------------------------------
+                                                 <spontaneous>
+[77]     0.2    0.04    0.00                 std::vector<unsigned long long, std::allocator<unsigned long long> >::resize(unsigned long, unsigned long long) [77]
+-----------------------------------------------
+                                                 <spontaneous>
+[78]     0.2    0.04    0.00                 void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >) [78]
+-----------------------------------------------
+                0.03    0.00      31/31          Scale_Array_To_Range [52]
+[79]     0.1    0.03    0.00      31         Array_Range [79]
+                0.00    0.00      31/93          AForm_Array [220]
+                0.00    0.00      31/62          AForm_Size [221]
+                0.00    0.00      31/186         AForm_Class [217]
+-----------------------------------------------
+                                                 <spontaneous>
+[80]     0.1    0.03    0.00                 fromXMLString(char const*, int, XML*) [80]
+-----------------------------------------------
+                                                 <spontaneous>
+[81]     0.1    0.03    0.00                 GetNextToken(XML*, int*, XMLTokenTypeTag*) [81]
+-----------------------------------------------
+                                                 <spontaneous>
+[82]     0.1    0.03    0.00                 std::deque<int, std::allocator<int> >::empty() const [82]
+-----------------------------------------------
+                                                 <spontaneous>
+[83]     0.1    0.03    0.00                 std::deque<int, std::allocator<int> >::begin() [83]
+-----------------------------------------------
+                                                 <spontaneous>
+[84]     0.1    0.03    0.00                 std::queue<int, std::deque<int, std::allocator<int> > >::front() [84]
+-----------------------------------------------
+                                                 <spontaneous>
+[85]     0.1    0.03    0.00                 std::vector<float, std::allocator<float> >::operator[](unsigned long) [85]
+-----------------------------------------------
+                                                 <spontaneous>
+[86]     0.1    0.03    0.00                 void std::__pop_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >) [86]
+-----------------------------------------------
+                                                 <spontaneous>
+[87]     0.1    0.03    0.00                 float const& std::min<float>(float const&, float const&) [87]
+-----------------------------------------------
+                                                 <spontaneous>
+[88]     0.1    0.03    0.00                 bool std::operator==<int, int&, int*>(std::_Deque_iterator<int, int&, int*> const&, std::_Deque_iterator<int, int&, int*> const&) [88]
+-----------------------------------------------
+                                                 <spontaneous>
+[89]     0.1    0.03    0.00                 std::remove_reference<float&>::type&& std::move<float&>(float&&&) [89]
+-----------------------------------------------
+                0.02    0.00 2891361/2891361     Make_Array [43]
+[90]     0.1    0.02    0.00 2891361         array_dsize [90]
+-----------------------------------------------
+                0.02    0.00 2891361/2891361     make_start [71]
+[91]     0.1    0.02    0.00 2891361         new_array [91]
+                0.00    0.00 2891361/2891392     allocate_array_dims [179]
+                0.00    0.00 2891361/5782753     allocate_array_data [178]
+                0.00    0.00 2891361/2891392     allocate_array_text [180]
+                0.00    0.00      33/223         Guarded_Realloc [216]
+-----------------------------------------------
+                0.01    0.01 2891330/2891330     main [10]
+[92]     0.1    0.01    0.01 2891330         Free_Array [92]
+                0.01    0.00 2891330/2891330     free_array [105]
+-----------------------------------------------
+                0.00    0.02      31/31          main [10]
+[93]     0.1    0.00    0.02      31         Convert_Array_Inplace [93]
+                0.00    0.02      31/31          convert_array [94]
+-----------------------------------------------
+                0.00    0.02      31/31          Convert_Array_Inplace [93]
+[94]     0.1    0.00    0.02      31         convert_array [94]
+                0.02    0.00      31/31          translate [95]
+                0.00    0.00      31/5782753     allocate_array_data [178]
+                0.00    0.00      31/2891392     allocate_array_dims [179]
+-----------------------------------------------
+                0.02    0.00      31/31          convert_array [94]
+[95]     0.1    0.02    0.00      31         translate [95]
+-----------------------------------------------
+                                                 <spontaneous>
+[96]     0.1    0.02    0.00                 supervoxel::isNeighboring(supervoxel const&, int, long long*) [96]
+-----------------------------------------------
+                                                 <spontaneous>
+[97]     0.1    0.02    0.00                 unsigned short supervoxel::intensityThreshold<unsigned short>(int, float, unsigned int*, bool) [97]
+-----------------------------------------------
+                                                 <spontaneous>
+[98]     0.1    0.02    0.00                 bool __gnu_cxx::operator==<float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&) [98]
+-----------------------------------------------
+                                                 <spontaneous>
+[99]     0.1    0.02    0.00                 bool __gnu_cxx::operator==<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [99]
+-----------------------------------------------
+                                                 <spontaneous>
+[100]    0.1    0.02    0.00                 bool __gnu_cxx::operator!=<treeStump const*, std::vector<treeStump, std::allocator<treeStump> > >(__gnu_cxx::__normal_iterator<treeStump const*, std::vector<treeStump, std::allocator<treeStump> > > const&, __gnu_cxx::__normal_iterator<treeStump const*, std::vector<treeStump, std::allocator<treeStump> > > const&) [100]
+-----------------------------------------------
+                                                 <spontaneous>
+[101]    0.1    0.02    0.00                 std::vector<unsigned long long, std::allocator<unsigned long long> >::begin() const [101]
+-----------------------------------------------
+                                                 <spontaneous>
+[102]    0.1    0.02    0.00                 __gnu_cxx::__enable_if<std::__is_scalar<float>::__value, float*>::__type std::__fill_n_a<float*, unsigned long, float>(float*, unsigned long, float const&) [102]
+-----------------------------------------------
+                                                 <spontaneous>
+[103]    0.1    0.02    0.00                 void std::__introsort_loop<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, long>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, long) [103]
+-----------------------------------------------
+                                                 <spontaneous>
+[104]    0.1    0.02    0.00                 XMLNode::getAttribute(char const*, int*) const [104]
+-----------------------------------------------
+                0.01    0.00 2891330/2891330     Free_Array [92]
+[105]    0.0    0.01    0.00 2891330         free_array [105]
+-----------------------------------------------
+                                                 <spontaneous>
+[106]    0.0    0.01    0.00                 int parseString<double>(std::string const&, std::vector<double, std::allocator<double> >&) [106]
+-----------------------------------------------
+                                                 <spontaneous>
+[107]    0.0    0.01    0.00                 boostingTreeClassifier(float*, float*, std::vector<std::vector<treeStump, std::allocator<treeStump> >, std::allocator<std::vector<treeStump, std::allocator<treeStump> > > >&, unsigned long long, unsigned long long) [107]
+-----------------------------------------------
+                                                 <spontaneous>
+[108]    0.0    0.01    0.00                 getNextChar(XML*) [108]
+-----------------------------------------------
+                                                 <spontaneous>
+[109]    0.0    0.01    0.00                 supervoxel::getCoordinates(unsigned long long, unsigned long long*) [109]
+-----------------------------------------------
+                                                 <spontaneous>
+[110]    0.0    0.01    0.00                 supervoxel::mergeSupervoxels(std::vector<supervoxel*, std::allocator<supervoxel*> >&) [110]
+-----------------------------------------------
+                                                 <spontaneous>
+[111]    0.0    0.01    0.00                 Eigen::DenseStorage<double, 9, 3, 3, 0>::data() [111]
+-----------------------------------------------
+                                                 <spontaneous>
+[112]    0.0    0.01    0.00                 void Eigen::DenseCoeffsBase<Eigen::Matrix<double, 6, 6, 0, 6, 6>, 1>::copyCoeffByOuterInner<Eigen::CwiseNullaryOp<Eigen::internal::scalar_identity_op<double>, Eigen::Matrix<double, 6, 6, 0, 6, 6> > >(long, long, Eigen::DenseBase<Eigen::CwiseNullaryOp<Eigen::internal::scalar_identity_op<double>, Eigen::Matrix<double, 6, 6, 0, 6, 6> > > const&) [112]
+-----------------------------------------------
+                                                 <spontaneous>
+[113]    0.0    0.01    0.00                 Eigen::MapBase<Eigen::Block<Eigen::Matrix<double, 3, 3, 0, 3, 3>, 3, 1, true, true>, 1>::coeffRef(long) [113]
+-----------------------------------------------
+                                                 <spontaneous>
+[114]    0.0    0.01    0.00                 Eigen::EigenBase<Eigen::Matrix<double, 3, 3, 0, 3, 3> >::derived() [114]
+-----------------------------------------------
+                                                 <spontaneous>
+[115]    0.0    0.01    0.00                 __gnu_cxx::new_allocator<int>::construct(int*, int const&) [115]
+-----------------------------------------------
+                                                 <spontaneous>
+[116]    0.0    0.01    0.00                 __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator++() [116]
+-----------------------------------------------
+                                                 <spontaneous>
+[117]    0.0    0.01    0.00                 __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::__normal_iterator(float* const&) [117]
+-----------------------------------------------
+                                                 <spontaneous>
+[118]    0.0    0.01    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::__normal_iterator() [118]
+-----------------------------------------------
+                                                 <spontaneous>
+[119]    0.0    0.01    0.00                 bool __gnu_cxx::operator!=<unsigned long long const*, unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [119]
+-----------------------------------------------
+                                                 <spontaneous>
+[120]    0.0    0.01    0.00                 bool __gnu_cxx::operator!=<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [120]
+-----------------------------------------------
+                                                 <spontaneous>
+[121]    0.0    0.01    0.00                 Eigen::DenseCoeffsBase<Eigen::CwiseUnaryOp<Eigen::internal::scalar_abs_op<double>, Eigen::Matrix<double, 3, 3, 0, 3, 3> const>, 0>::coeffByOuterInner(long, long) const [121]
+-----------------------------------------------
+                                                 <spontaneous>
+[122]    0.0    0.01    0.00                 Eigen::PlainObjectBase<Eigen::Matrix<double, 3, 3, 0, 3, 3> >::cols() const [122]
+-----------------------------------------------
+                                                 <spontaneous>
+[123]    0.0    0.01    0.00                 Eigen::Block<Eigen::Matrix<double, 3, 3, 0, 3, 3> const, 3, 1, true, true>::outerStride() const [123]
+-----------------------------------------------
+                                                 <spontaneous>
+[124]    0.0    0.01    0.00                 Eigen::MapBase<Eigen::Block<Eigen::Matrix<double, 3, 3, 0, 3, 3> const, 3, 1, true, true>, 0>::coeff(long, long) const [124]
+-----------------------------------------------
+                                                 <spontaneous>
+[125]    0.0    0.01    0.00                 Eigen::EigenBase<Eigen::Matrix<double, 3, 1, 0, 3, 1> >::rows() const [125]
+-----------------------------------------------
+                                                 <spontaneous>
+[126]    0.0    0.01    0.00                 Eigen::EigenBase<Eigen::Matrix<double, 3, 3, 0, 3, 3> >::derived() const [126]
+-----------------------------------------------
+                                                 <spontaneous>
+[127]    0.0    0.01    0.00                 XMLNode::nChildNode(char const*) const [127]
+-----------------------------------------------
+                                                 <spontaneous>
+[128]    0.0    0.01    0.00                 TreeNode<std::_List_iterator<nucleus> >::getNumChildren() const [128]
+-----------------------------------------------
+                                                 <spontaneous>
+[129]    0.0    0.01    0.00                 __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator-(long const&) const [129]
+-----------------------------------------------
+                                                 <spontaneous>
+[130]    0.0    0.01    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator-(long const&) const [130]
+-----------------------------------------------
+                                                 <spontaneous>
+[131]    0.0    0.01    0.00                 std::_List_iterator<supervoxel>::operator*() const [131]
+-----------------------------------------------
+                                                 <spontaneous>
+[132]    0.0    0.01    0.00                 std::_List_iterator<nucleus>::operator->() const [132]
+-----------------------------------------------
+                                                 <spontaneous>
+[133]    0.0    0.01    0.00                 std::_Deque_iterator<int, int&, int*>::operator*() const [133]
+-----------------------------------------------
+                                                 <spontaneous>
+[134]    0.0    0.01    0.00                 std::vector<supervoxel*, std::allocator<supervoxel*> >::size() const [134]
+-----------------------------------------------
+                                                 <spontaneous>
+[135]    0.0    0.01    0.00                 std::vector<std::_List_iterator<supervoxel>, std::allocator<std::_List_iterator<supervoxel> > >::max_size() const [135]
+-----------------------------------------------
+                                                 <spontaneous>
+[136]    0.0    0.01    0.00                 std::vector<unsigned long long, std::allocator<unsigned long long> >::empty() const [136]
+-----------------------------------------------
+                                                 <spontaneous>
+[137]    0.0    0.01    0.00                 std::_Vector_base<char, std::allocator<char> >::_Vector_impl::_Vector_impl() [137]
+-----------------------------------------------
+                                                 <spontaneous>
+[138]    0.0    0.01    0.00                 std::_List_iterator<supervoxel>::_List_iterator(std::_List_node_base*) [138]
+-----------------------------------------------
+                                                 <spontaneous>
+[139]    0.0    0.01    0.00                 std::_List_const_iterator<supervoxel>::operator++() [139]
+-----------------------------------------------
+                                                 <spontaneous>
+[140]    0.0    0.01    0.00                 void std::__uninitialized_fill_n<false>::uninitialized_fill_n<std::_List_iterator<nucleus>*, unsigned long, std::_List_iterator<nucleus> >(std::_List_iterator<nucleus>*, unsigned long, std::_List_iterator<nucleus> const&) [140]
+-----------------------------------------------
+                                                 <spontaneous>
+[141]    0.0    0.01    0.00                 std::queue<int, std::deque<int, std::allocator<int> > >::push(int const&) [141]
+-----------------------------------------------
+                                                 <spontaneous>
+[142]    0.0    0.01    0.00                 std::queue<int, std::deque<int, std::allocator<int> > >::queue(std::deque<int, std::allocator<int> > const&) [142]
+-----------------------------------------------
+                                                 <spontaneous>
+[143]    0.0    0.01    0.00                 std::queue<unsigned long, std::deque<unsigned long, std::allocator<unsigned long> > >::push(unsigned long&&) [143]
+-----------------------------------------------
+                                                 <spontaneous>
+[144]    0.0    0.01    0.00                 std::vector<supervoxel, std::allocator<supervoxel> >::operator[](unsigned long) [144]
+-----------------------------------------------
+                                                 <spontaneous>
+[145]    0.0    0.01    0.00                 std::vector<treeStump, std::allocator<treeStump> >::vector(unsigned long, treeStump const&, std::allocator<treeStump> const&) [145]
+-----------------------------------------------
+                                                 <spontaneous>
+[146]    0.0    0.01    0.00                 std::vector<treeStump, std::allocator<treeStump> >::operator[](unsigned long) [146]
+-----------------------------------------------
+                                                 <spontaneous>
+[147]    0.0    0.01    0.00                 std::vector<GaussianMixtureModel*, std::allocator<GaussianMixtureModel*> >::_M_fill_insert(__gnu_cxx::__normal_iterator<GaussianMixtureModel**, std::vector<GaussianMixtureModel*, std::allocator<GaussianMixtureModel*> > >, unsigned long, GaussianMixtureModel* const&) [147]
+-----------------------------------------------
+                                                 <spontaneous>
+[148]    0.0    0.01    0.00                 std::vector<std::vector<std::_List_iterator<supervoxel>, std::allocator<std::_List_iterator<supervoxel> > >, std::allocator<std::vector<std::_List_iterator<supervoxel>, std::allocator<std::_List_iterator<supervoxel> > > > >::operator[](unsigned long) [148]
+-----------------------------------------------
+                                                 <spontaneous>
+[149]    0.0    0.01    0.00                 void std::vector<float, std::allocator<float> >::_M_insert_aux<float const&>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float const&&&) [149]
+-----------------------------------------------
+                                                 <spontaneous>
+[150]    0.0    0.01    0.00                 std::vector<unsigned long long, std::allocator<unsigned long long> >::clear() [150]
+-----------------------------------------------
+                                                 <spontaneous>
+[151]    0.0    0.01    0.00                 void std::__pop_heap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >) [151]
+-----------------------------------------------
+                                                 <spontaneous>
+[152]    0.0    0.01    0.00                 __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::copy_backward<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >) [152]
+-----------------------------------------------
+                                                 <spontaneous>
+[153]    0.0    0.01    0.00                 std::__deque_buf_size(unsigned long) [153]
+-----------------------------------------------
+                                                 <spontaneous>
+[154]    0.0    0.01    0.00                 std::move_iterator<double*> std::make_move_iterator<double*>(double* const&) [154]
+-----------------------------------------------
+                                                 <spontaneous>
+[155]    0.0    0.01    0.00                 float const& std::max<float>(float const&, float const&) [155]
+-----------------------------------------------
+                                                 <spontaneous>
+[156]    0.0    0.01    0.00                 unsigned long long* std::fill_n<unsigned long long*, unsigned long, unsigned long long>(unsigned long long*, unsigned long, unsigned long long const&) [156]
+-----------------------------------------------
+                                                 <spontaneous>
+[157]    0.0    0.01    0.00                 float const& std::__median<float>(float const&, float const&, float const&) [157]
+-----------------------------------------------
+                                                 <spontaneous>
+[158]    0.0    0.01    0.00                 unsigned long long const& std::__median<unsigned long long>(unsigned long long const&, unsigned long long const&, unsigned long long const&) [158]
+-----------------------------------------------
+                                                 <spontaneous>
+[159]    0.0    0.01    0.00                 void std::sort_heap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >) [159]
+-----------------------------------------------
+                                                 <spontaneous>
+[160]    0.0    0.01    0.00                 __gnu_cxx::__normal_iterator<char*, std::string> std::transform<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, int (*)(int)>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, int (*)(int)) [160]
+-----------------------------------------------
+                                                 <spontaneous>
+[161]    0.0    0.01    0.00                 bool std::operator==<std::_List_iterator<supervoxel>*, std::_List_iterator<supervoxel>*>(std::move_iterator<std::_List_iterator<supervoxel>*> const&, std::move_iterator<std::_List_iterator<supervoxel>*> const&) [161]
+-----------------------------------------------
+                                                 <spontaneous>
+[162]    0.0    0.01    0.00                 Eigen::DenseCoeffsBase<Eigen::ReturnByValue<Eigen::internal::inverse_impl<Eigen::Matrix<double, 3, 3, 0, 3, 3> > >, 1>::DenseCoeffsBase() [162]
+-----------------------------------------------
+                                                 <spontaneous>
+[163]    0.0    0.01    0.00                 Eigen::DenseCoeffsBase<Eigen::Matrix<double, 3, 1, 0, 3, 1>, 1>::operator()(long) [163]
+-----------------------------------------------
+                                                 <spontaneous>
+[164]    0.0    0.01    0.00                 Eigen::DenseCoeffsBase<Eigen::Matrix<double, 3, 1, 0, 3, 1>, 1>::operator[](long) [164]
+-----------------------------------------------
+                                                 <spontaneous>
+[165]    0.0    0.01    0.00                 Eigen::internal::special_scalar_op_base<Eigen::ReturnByValue<Eigen::internal::inverse_impl<Eigen::Matrix<double, 3, 3, 0, 3, 3> > >, double, double, false>::special_scalar_op_base() [165]
+-----------------------------------------------
+                                                 <spontaneous>
+[166]    0.0    0.01    0.00                 __gnu_cxx::new_allocator<std::_List_iterator<supervoxel> >::allocate(unsigned long, void const*) [166]
+-----------------------------------------------
+                                                 <spontaneous>
+[167]    0.0    0.01    0.00                 XMLNode::getChildNodeWithAttribute(char const*, char const*, char const*, int*) const [167]
+-----------------------------------------------
+                                                 <spontaneous>
+[168]    0.0    0.01    0.00                 __gnu_cxx::new_allocator<float>::max_size() const [168]
+-----------------------------------------------
+                                                 <spontaneous>
+[169]    0.0    0.01    0.00                 std::_Vector_base<float, std::allocator<float> >::_M_get_Tp_allocator() const [169]
+-----------------------------------------------
+                                                 <spontaneous>
+[170]    0.0    0.01    0.00                 std::vector<unsigned long long, std::allocator<unsigned long long> >::_M_check_len(unsigned long, char const*) const [170]
+-----------------------------------------------
+                                                 <spontaneous>
+[171]    0.0    0.01    0.00                 std::__niter_base<__gnu_cxx::__normal_iterator<hierarchicalSegmentation**, std::vector<hierarchicalSegmentation*, std::allocator<hierarchicalSegmentation*> > >, true>::__b(__gnu_cxx::__normal_iterator<hierarchicalSegmentation**, std::vector<hierarchicalSegmentation*, std::allocator<hierarchicalSegmentation*> > >) [171]
+-----------------------------------------------
+                                                 <spontaneous>
+[172]    0.0    0.01    0.00                 std::_List_iterator<lineage>::operator--() [172]
+-----------------------------------------------
+                                                 <spontaneous>
+[173]    0.0    0.01    0.00                 void std::vector<float, std::allocator<float> >::_M_insert_aux<float>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float&&) [173]
+-----------------------------------------------
+                                                 <spontaneous>
+[174]    0.0    0.01    0.00                 std::move_iterator<std::_List_iterator<supervoxel>*> std::make_move_iterator<std::_List_iterator<supervoxel>*>(std::_List_iterator<supervoxel>* const&) [174]
+-----------------------------------------------
+                0.00    0.00      31/31          main [10]
+[175]    0.0    0.00    0.00      31         Read_Image [175]
+                0.00    0.00      31/31          read_array [176]
+-----------------------------------------------
+                0.00    0.00      31/31          Read_Image [175]
+[176]    0.0    0.00    0.00      31         read_array [176]
+                0.00    0.00      31/31          read_tiff [177]
+                0.00    0.00      31/31          image_depth [228]
+-----------------------------------------------
+                0.00    0.00      31/31          read_array [176]
+[177]    0.0    0.00    0.00      31         read_tiff [177]
+                0.00    0.00      31/2891361     Make_Array [43]
+                0.00    0.00     930/930         image_reader [202]
+                0.00    0.00     930/930         determine_kind [201]
+                0.00    0.00     899/1798        Read_Tiff_IFD [194]
+                0.00    0.00     899/899         Get_Tiff_Image [206]
+                0.00    0.00     899/899         determine_type [211]
+                0.00    0.00     899/25172       Get_Tiff_Tag [182]
+                0.00    0.00     899/899         Load_Tiff_Image_Planes [208]
+                0.00    0.00     899/899         Free_Tiff_Image [204]
+                0.00    0.00     899/2697        Free_Tiff_IFD [187]
+                0.00    0.00      31/31          Set_Array_Text [227]
+-----------------------------------------------
+                0.00    0.00      31/5782753     convert_array [94]
+                0.00    0.00 2891361/5782753     new_array [91]
+                0.00    0.00 2891361/5782753     Make_Array [43]
+[178]    0.0    0.00    0.00 5782753         allocate_array_data [178]
+                0.00    0.00      94/223         Guarded_Realloc [216]
+-----------------------------------------------
+                0.00    0.00      31/2891392     convert_array [94]
+                0.00    0.00 2891361/2891392     new_array [91]
+[179]    0.0    0.00    0.00 2891392         allocate_array_dims [179]
+                0.00    0.00      63/223         Guarded_Realloc [216]
+-----------------------------------------------
+                0.00    0.00      31/2891392     Set_Array_Text [227]
+                0.00    0.00 2891361/2891392     new_array [91]
+[180]    0.0    0.00    0.00 2891392         allocate_array_text [180]
+                0.00    0.00      33/223         Guarded_Realloc [216]
+-----------------------------------------------
+                0.00    0.00 2891361/2891361     make_shape [61]
+[181]    0.0    0.00    0.00 2891361         array_size [181]
+-----------------------------------------------
+                0.00    0.00     899/25172       read_tiff [177]
+                0.00    0.00     899/25172       image_depth [228]
+                0.00    0.00    1798/25172       extract_shape [197]
+                0.00    0.00    2697/25172       Get_Tiff_Image [206]
+                0.00    0.00    3596/25172       extract_image_tags [196]
+                0.00    0.00   15283/25172       get_integer_tag [183]
+[182]    0.0    0.00    0.00   25172         Get_Tiff_Tag [182]
+                0.00    0.00    6293/6293        Grab_Message_8qm5 [185]
+-----------------------------------------------
+                0.00    0.00     899/15283       Get_Tiff_Image [206]
+                0.00    0.00    7192/15283       extract_shape [197]
+                0.00    0.00    7192/15283       extract_image_tags [196]
+[183]    0.0    0.00    0.00   15283         get_integer_tag [183]
+                0.00    0.00   15283/25172       Get_Tiff_Tag [182]
+-----------------------------------------------
+                0.00    0.00    8990/8990        Read_Tiff_IFD [194]
+[184]    0.0    0.00    0.00    8990         optseek [184]
+-----------------------------------------------
+                0.00    0.00    6293/6293        Get_Tiff_Tag [182]
+[185]    0.0    0.00    0.00    6293         Grab_Message_8qm5 [185]
+-----------------------------------------------
+                0.00    0.00    1798/3596        new_tifd [198]
+                0.00    0.00    1798/3596        Read_Tiff_IFD [194]
+[186]    0.0    0.00    0.00    3596         allocate_tifd_values [186]
+                0.00    0.00       1/4           Guarded_Realloc [229]
+-----------------------------------------------
+                0.00    0.00     899/2697        read_tiff [177]
+                0.00    0.00     899/2697        image_depth [228]
+                0.00    0.00     899/2697        free_timage [213]
+[187]    0.0    0.00    0.00    2697         Free_Tiff_IFD [187]
+                0.00    0.00    2697/2697        free_tifd [188]
+-----------------------------------------------
+                0.00    0.00    2697/2697        Free_Tiff_IFD [187]
+[188]    0.0    0.00    0.00    2697         free_tifd [188]
+                0.00    0.00    1798/1860        Free_Tiff_Reader [189]
+-----------------------------------------------
+                0.00    0.00      31/1860        image_depth [228]
+                0.00    0.00      31/1860        image_reader [202]
+                0.00    0.00    1798/1860        free_tifd [188]
+[189]    0.0    0.00    0.00    1860         Free_Tiff_Reader [189]
+                0.00    0.00    1860/1860        Tiff_Reader_Refcount [190]
+                0.00    0.00    1860/1860        free_treader [191]
+-----------------------------------------------
+                0.00    0.00    1860/1860        Free_Tiff_Reader [189]
+[190]    0.0    0.00    0.00    1860         Tiff_Reader_Refcount [190]
+-----------------------------------------------
+                0.00    0.00    1860/1860        Free_Tiff_Reader [189]
+[191]    0.0    0.00    0.00    1860         free_treader [191]
+-----------------------------------------------
+                0.00    0.00    1798/1798        Load_Tiff_Image_Planes [208]
+[192]    0.0    0.00    0.00    1798         Get_Tiff_IFD_Stream [192]
+-----------------------------------------------
+                0.00    0.00    1798/1798        Read_Tiff_IFD [194]
+[193]    0.0    0.00    0.00    1798         Inc_Tiff_Reader [193]
+-----------------------------------------------
+                0.00    0.00     899/1798        read_tiff [177]
+                0.00    0.00     899/1798        image_depth [228]
+[194]    0.0    0.00    0.00    1798         Read_Tiff_IFD [194]
+                0.00    0.00    8990/8990        optseek [184]
+                0.00    0.00    1798/1798        new_tifd [198]
+                0.00    0.00    1798/1798        Inc_Tiff_Reader [193]
+                0.00    0.00    1798/3596        allocate_tifd_values [186]
+-----------------------------------------------
+                0.00    0.00    1798/1798        new_tifd [198]
+[195]    0.0    0.00    0.00    1798         allocate_tifd_tags [195]
+                0.00    0.00       1/4           Guarded_Realloc [229]
+-----------------------------------------------
+                0.00    0.00     899/1798        Get_Tiff_Image [206]
+                0.00    0.00     899/1798        Load_Tiff_Image_Planes [208]
+[196]    0.0    0.00    0.00    1798         extract_image_tags [196]
+                0.00    0.00    7192/15283       get_integer_tag [183]
+                0.00    0.00    3596/25172       Get_Tiff_Tag [182]
+-----------------------------------------------
+                0.00    0.00     899/1798        Get_Tiff_Image [206]
+                0.00    0.00     899/1798        Load_Tiff_Image_Planes [208]
+[197]    0.0    0.00    0.00    1798         extract_shape [197]
+                0.00    0.00    7192/15283       get_integer_tag [183]
+                0.00    0.00    1798/25172       Get_Tiff_Tag [182]
+-----------------------------------------------
+                0.00    0.00    1798/1798        Read_Tiff_IFD [194]
+[198]    0.0    0.00    0.00    1798         new_tifd [198]
+                0.00    0.00    1798/1798        allocate_tifd_tags [195]
+                0.00    0.00    1798/3596        allocate_tifd_values [186]
+                0.00    0.00       1/4           Guarded_Realloc [229]
+-----------------------------------------------
+                0.00    0.00    1798/1798        Load_Tiff_Image_Planes [208]
+[199]    0.0    0.00    0.00    1798         optseek [199]
+-----------------------------------------------
+                0.00    0.00     930/930         image_depth [228]
+[200]    0.0    0.00    0.00     930         End_Of_Tiff [200]
+-----------------------------------------------
+                0.00    0.00     930/930         read_tiff [177]
+[201]    0.0    0.00    0.00     930         determine_kind [201]
+-----------------------------------------------
+                0.00    0.00     930/930         read_tiff [177]
+[202]    0.0    0.00    0.00     930         image_reader [202]
+                0.00    0.00      31/62          Open_Tiff_Reader [224]
+                0.00    0.00      31/1860        Free_Tiff_Reader [189]
+-----------------------------------------------
+                0.00    0.00     899/899         Free_Tiff_Image [204]
+[203]    0.0    0.00    0.00     899         Free_Tiff_Channel [203]
+                0.00    0.00     899/899         free_tiff_channel [212]
+-----------------------------------------------
+                0.00    0.00     899/899         read_tiff [177]
+[204]    0.0    0.00    0.00     899         Free_Tiff_Image [204]
+                0.00    0.00     899/899         Free_Tiff_Channel [203]
+                0.00    0.00     899/899         free_timage [213]
+-----------------------------------------------
+                0.00    0.00     899/899         Load_Tiff_Image_Planes [208]
+[205]    0.0    0.00    0.00     899         Get_Tiff_IFD_Data_Flip [205]
+-----------------------------------------------
+                0.00    0.00     899/899         read_tiff [177]
+[206]    0.0    0.00    0.00     899         Get_Tiff_Image [206]
+                0.00    0.00    2697/25172       Get_Tiff_Tag [182]
+                0.00    0.00     899/1798        extract_shape [197]
+                0.00    0.00     899/1798        extract_image_tags [196]
+                0.00    0.00     899/15283       get_integer_tag [183]
+                0.00    0.00     899/899         new_timage [215]
+                0.00    0.00     899/899         Inc_Tiff_IFD [207]
+                0.00    0.00     899/899         new_tiff_channel [214]
+-----------------------------------------------
+                0.00    0.00     899/899         Get_Tiff_Image [206]
+[207]    0.0    0.00    0.00     899         Inc_Tiff_IFD [207]
+-----------------------------------------------
+                0.00    0.00     899/899         read_tiff [177]
+[208]    0.0    0.00    0.00     899         Load_Tiff_Image_Planes [208]
+                0.00    0.00    1798/1798        Get_Tiff_IFD_Stream [192]
+                0.00    0.00    1798/1798        optseek [199]
+                0.00    0.00     899/1798        extract_shape [197]
+                0.00    0.00     899/1798        extract_image_tags [196]
+                0.00    0.00     899/899         Get_Tiff_IFD_Data_Flip [205]
+-----------------------------------------------
+                0.00    0.00     899/899         new_timage [215]
+[209]    0.0    0.00    0.00     899         allocate_timage_channels [209]
+                0.00    0.00       1/3           Guarded_Realloc [230]
+-----------------------------------------------
+                0.00    0.00     899/899         new_timage [215]
+[210]    0.0    0.00    0.00     899         allocate_timage_map [210]
+-----------------------------------------------
+                0.00    0.00     899/899         read_tiff [177]
+[211]    0.0    0.00    0.00     899         determine_type [211]
+-----------------------------------------------
+                0.00    0.00     899/899         Free_Tiff_Channel [203]
+[212]    0.0    0.00    0.00     899         free_tiff_channel [212]
+-----------------------------------------------
+                0.00    0.00     899/899         Free_Tiff_Image [204]
+[213]    0.0    0.00    0.00     899         free_timage [213]
+                0.00    0.00     899/2697        Free_Tiff_IFD [187]
+-----------------------------------------------
+                0.00    0.00     899/899         Get_Tiff_Image [206]
+[214]    0.0    0.00    0.00     899         new_tiff_channel [214]
+                0.00    0.00       1/3           Guarded_Realloc [230]
+-----------------------------------------------
+                0.00    0.00     899/899         Get_Tiff_Image [206]
+[215]    0.0    0.00    0.00     899         new_timage [215]
+                0.00    0.00     899/899         allocate_timage_channels [209]
+                0.00    0.00     899/899         allocate_timage_map [210]
+                0.00    0.00       1/3           Guarded_Realloc [230]
+-----------------------------------------------
+                0.00    0.00      33/223         allocate_array_text [180]
+                0.00    0.00      33/223         new_array [91]
+                0.00    0.00      63/223         allocate_array_dims [179]
+                0.00    0.00      94/223         allocate_array_data [178]
+[216]    0.0    0.00    0.00     223         Guarded_Realloc [216]
+-----------------------------------------------
+                0.00    0.00      31/186         Array_Range [79]
+                0.00    0.00      62/186         AForm_Size [221]
+                0.00    0.00      93/186         AForm_Array [220]
+[217]    0.0    0.00    0.00     186         AForm_Class [217]
+-----------------------------------------------
+                0.00    0.00     125/125         main [10]
+[218]    0.0    0.00    0.00     125         tic [218]
+-----------------------------------------------
+                0.00    0.00     125/125         main [10]
+[219]    0.0    0.00    0.00     125         toc [219]
+-----------------------------------------------
+                0.00    0.00      31/93          Array_Range [79]
+                0.00    0.00      31/93          Scale_Array [63]
+                0.00    0.00      31/93          Scale_Array_To_Range [52]
+[220]    0.0    0.00    0.00      93         AForm_Array [220]
+                0.00    0.00      93/186         AForm_Class [217]
+-----------------------------------------------
+                0.00    0.00      31/62          Array_Range [79]
+                0.00    0.00      31/62          Scale_Array [63]
+[221]    0.0    0.00    0.00      62         AForm_Size [221]
+                0.00    0.00      62/186         AForm_Class [217]
+-----------------------------------------------
+                0.00    0.00      31/62          Scale_Array [63]
+                0.00    0.00      31/62          Scale_Array_To_Range [52]
+[222]    0.0    0.00    0.00      62         Is_Frame [222]
+-----------------------------------------------
+                0.00    0.00      62/62          Open_Tiff_Reader [224]
+[223]    0.0    0.00    0.00      62         Native_Endian [223]
+-----------------------------------------------
+                0.00    0.00      31/62          image_depth [228]
+                0.00    0.00      31/62          image_reader [202]
+[224]    0.0    0.00    0.00      62         Open_Tiff_Reader [224]
+                0.00    0.00      62/62          Native_Endian [223]
+                0.00    0.00      62/62          new_treader [225]
+-----------------------------------------------
+                0.00    0.00      62/62          Open_Tiff_Reader [224]
+[225]    0.0    0.00    0.00      62         new_treader [225]
+                0.00    0.00       1/4           Guarded_Realloc [229]
+-----------------------------------------------
+                0.00    0.00      31/31          Scale_Array [63]
+[226]    0.0    0.00    0.00      31         Is_Slice [226]
+-----------------------------------------------
+                0.00    0.00      31/31          read_tiff [177]
+[227]    0.0    0.00    0.00      31         Set_Array_Text [227]
+                0.00    0.00      31/2891392     allocate_array_text [180]
+-----------------------------------------------
+                0.00    0.00      31/31          read_array [176]
+[228]    0.0    0.00    0.00      31         image_depth [228]
+                0.00    0.00     930/930         End_Of_Tiff [200]
+                0.00    0.00     899/1798        Read_Tiff_IFD [194]
+                0.00    0.00     899/25172       Get_Tiff_Tag [182]
+                0.00    0.00     899/2697        Free_Tiff_IFD [187]
+                0.00    0.00      31/62          Open_Tiff_Reader [224]
+                0.00    0.00      31/1860        Free_Tiff_Reader [189]
+-----------------------------------------------
+                0.00    0.00       1/4           new_treader [225]
+                0.00    0.00       1/4           allocate_tifd_tags [195]
+                0.00    0.00       1/4           allocate_tifd_values [186]
+                0.00    0.00       1/4           new_tifd [198]
+[229]    0.0    0.00    0.00       4         Guarded_Realloc [229]
+-----------------------------------------------
+                0.00    0.00       1/3           new_tiff_channel [214]
+                0.00    0.00       1/3           allocate_timage_channels [209]
+                0.00    0.00       1/3           new_timage [215]
+[230]    0.0    0.00    0.00       3         Guarded_Realloc [230]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+ [220] AForm_Array            [35] bool __gnu_cxx::operator< <float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&) [86] void std::__pop_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+ [217] AForm_Class            [50] bool __gnu_cxx::operator< <unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [58] void std::__push_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, long, unsigned long long)
+ [221] AForm_Size             [66] __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::difference_type __gnu_cxx::operator-<float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&) [1] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::lower_bound<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long long const&)
+  [79] Array_Range            [16] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::difference_type __gnu_cxx::operator-<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [60] void std::partial_sort<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >)
+  [93] Convert_Array_Inplace [100] bool __gnu_cxx::operator!=<treeStump const*, std::vector<treeStump, std::allocator<treeStump> > >(__gnu_cxx::__normal_iterator<treeStump const*, std::vector<treeStump, std::allocator<treeStump> > > const&, __gnu_cxx::__normal_iterator<treeStump const*, std::vector<treeStump, std::allocator<treeStump> > > const&) [28] void std::__adjust_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long, long, unsigned long long)
+ [200] End_Of_Tiff           [119] bool __gnu_cxx::operator!=<unsigned long long const*, unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [152] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::copy_backward<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  [92] Free_Array             [26] bool __gnu_cxx::operator!=<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [153] std::__deque_buf_size(unsigned long)
+ [203] Free_Tiff_Channel     [120] bool __gnu_cxx::operator!=<char*, std::string>(__gnu_cxx::__normal_iterator<char*, std::string> const&, __gnu_cxx::__normal_iterator<char*, std::string> const&) [103] void std::__introsort_loop<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, long>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, long)
+ [187] Free_Tiff_IFD          [73] bool __gnu_cxx::operator!=<float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&) [48] void std::__introsort_loop<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long)
+ [204] Free_Tiff_Image        [19] bool __gnu_cxx::operator!=<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [174] std::move_iterator<std::_List_iterator<supervoxel>*> std::make_move_iterator<std::_List_iterator<supervoxel>*>(std::_List_iterator<supervoxel>* const&)
+ [189] Free_Tiff_Reader       [24] supervoxel::intersectionSize(supervoxel const&) const [154] std::move_iterator<double*> std::make_move_iterator<double*>(double* const&)
+ [205] Get_Tiff_IFD_Data_Flip [121] Eigen::DenseCoeffsBase<Eigen::CwiseUnaryOp<Eigen::internal::scalar_abs_op<double>, Eigen::Matrix<double, 3, 3, 0, 3, 3> const>, 0>::coeffByOuterInner(long, long) const [34] std::iterator_traits<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >::iterator_category std::__iterator_category<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&)
+ [192] Get_Tiff_IFD_Stream   [122] Eigen::PlainObjectBase<Eigen::Matrix<double, 3, 3, 0, 3, 3> >::cols() const [8] __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float)
+ [206] Get_Tiff_Image        [123] Eigen::Block<Eigen::Matrix<double, 3, 3, 0, 3, 3> const, 3, 1, true, true>::outerStride() const [5] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::__unguarded_partition<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long)
+ [182] Get_Tiff_Tag          [124] Eigen::MapBase<Eigen::Block<Eigen::Matrix<double, 3, 3, 0, 3, 3> const, 3, 1, true, true>, 0>::coeff(long, long) const [39] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > std::__copy_move_backward_a2<false, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+ [185] Grab_Message_8qm5     [125] Eigen::EigenBase<Eigen::Matrix<double, 3, 1, 0, 3, 1> >::rows() const [27] void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float)
+ [216] Guarded_Realloc       [126] Eigen::EigenBase<Eigen::Matrix<double, 3, 3, 0, 3, 3> >::derived() const [17] void std::__unguarded_linear_insert<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, unsigned long long)
+ [229] Guarded_Realloc (tiff.io.c) [127] XMLNode::nChildNode(char const*) const [78] void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >)
+ [230] Guarded_Realloc (tiff.image.c) [104] XMLNode::getAttribute(char const*, int*) const [38] void std::__unguarded_insertion_sort<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  [22] Idx2CoordA            [167] XMLNode::getChildNodeWithAttribute(char const*, char const*, char const*, int*) const [155] float const& std::max<float>(float const&, float const&)
+ [207] Inc_Tiff_IFD          [128] TreeNode<std::_List_iterator<nucleus> >::getNumChildren() const [87] float const& std::min<float>(float const&, float const&)
+ [193] Inc_Tiff_Reader       [168] __gnu_cxx::new_allocator<float>::max_size() const [89] std::remove_reference<float&>::type&& std::move<float&>(float&&&)
+ [222] Is_Frame               [31] __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::base() const [53] void std::swap<float>(float&, float&)
+ [226] Is_Slice               [32] __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator*() const [70] void std::swap<unsigned long long>(unsigned long long&, unsigned long long&)
+ [208] Load_Tiff_Image_Planes [55] __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::base() const [156] unsigned long long* std::fill_n<unsigned long long*, unsigned long, unsigned long long>(unsigned long long*, unsigned long, unsigned long long const&)
+  [43] Make_Array             [20] __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator*() const [3] void std::advance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >&, long)
+ [223] Native_Endian         [129] __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator-(long const&) const [49] unsigned long long const&&& std::forward<unsigned long long const&>(std::identity<unsigned long long const&>::type&&)
+ [224] Open_Tiff_Reader       [14] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::base() const [157] float const& std::__median<float>(float const&, float const&, float const&)
+ [175] Read_Image              [2] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator*() const [158] unsigned long long const& std::__median<unsigned long long>(unsigned long long const&, unsigned long long const&, unsigned long long const&)
+ [194] Read_Tiff_IFD         [130] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator-(long const&) const [29] std::iterator_traits<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >::difference_type std::distance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  [63] Scale_Array            [15] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator+(long const&) const [13] void std::__advance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, long>(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >&, long, std::random_access_iterator_tag)
+  [52] Scale_Array_To_Range  [169] std::_Vector_base<float, std::allocator<float> >::_M_get_Tp_allocator() const [62] void std::iter_swap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >)
+ [227] Set_Array_Text        [131] std::_List_iterator<supervoxel>::operator*() const [59] void std::iter_swap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+ [190] Tiff_Reader_Refcount  [132] std::_List_iterator<nucleus>::operator->() const [159] void std::sort_heap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >)
+ [106] int parseString<double>(std::string const&, std::vector<double, std::allocator<double> >&) [133] std::_Deque_iterator<int, int&, int*>::operator*() const [54] void std::sort_heap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >)
+  [80] fromXMLString(char const*, int, XML*) [82] std::deque<int, std::allocator<int> >::empty() const [160] __gnu_cxx::__normal_iterator<char*, std::string> std::transform<__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, int (*)(int)>(__gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, __gnu_cxx::__normal_iterator<char*, std::string>, int (*)(int))
+ [107] boostingTreeClassifier(float*, float*, std::vector<std::vector<treeStump, std::allocator<treeStump> >, std::allocator<std::vector<treeStump, std::allocator<treeStump> > > >&, unsigned long long, unsigned long long) [134] std::vector<supervoxel*, std::allocator<supervoxel*> >::size() const [161] bool std::operator==<std::_List_iterator<supervoxel>*, std::_List_iterator<supervoxel>*>(std::move_iterator<std::_List_iterator<supervoxel>*> const&, std::move_iterator<std::_List_iterator<supervoxel>*> const&)
+ [108] getNextChar(XML*) (xmlParser.cpp) [135] std::vector<std::_List_iterator<supervoxel>, std::allocator<std::_List_iterator<supervoxel> > >::max_size() const [88] bool std::operator==<int, int&, int*>(std::_Deque_iterator<int, int&, int*> const&, std::_Deque_iterator<int, int&, int*> const&)
+  [81] GetNextToken(XML*, int*, XMLTokenTypeTag*) (xmlParser.cpp) [170] std::vector<unsigned long long, std::allocator<unsigned long long> >::_M_check_len(unsigned long, char const*) const [178] allocate_array_data (array.c)
+  [56] void supervoxel::removeZeros<float>() [25] std::vector<unsigned long long, std::allocator<unsigned long long> >::end() const [179] allocate_array_dims (array.c)
+  [96] supervoxel::isNeighboring(supervoxel const&, int, long long*) [45] std::vector<unsigned long long, std::allocator<unsigned long long> >::size() const [180] allocate_array_text (array.c)
+  [40] supervoxel::otsuThreshold(float*, int) [101] std::vector<unsigned long long, std::allocator<unsigned long long> >::begin() const [195] allocate_tifd_tags (tiff.io.c)
+ [109] supervoxel::getCoordinates(unsigned long long, unsigned long long*) [136] std::vector<unsigned long long, std::allocator<unsigned long long> >::empty() const [186] allocate_tifd_values (tiff.io.c)
+  [12] float supervoxel::trimSupervoxel<float>(int, float, int, long long*) [74] void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >) [209] allocate_timage_channels (tiff.image.c)
+  [11] unsigned short supervoxel::trimSupervoxel<unsigned short>(int, float, int, long long*) [75] void std::__iter_swap<true>::iter_swap<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >) [210] allocate_timage_map (tiff.image.c)
+ [110] supervoxel::mergeSupervoxels(std::vector<supervoxel*, std::allocator<supervoxel*> >&) [137] std::_Vector_base<char, std::allocator<char> >::_Vector_impl::_Vector_impl() [90] array_dsize (array.c)
+  [41] supervoxel::neighboringVoxels(supervoxel const&, int, long long*, std::vector<unsigned long long, std::allocator<unsigned long long> >&, std::vector<unsigned long long, std::allocator<unsigned long long> >&) [171] std::__niter_base<__gnu_cxx::__normal_iterator<hierarchicalSegmentation**, std::vector<hierarchicalSegmentation*, std::allocator<hierarchicalSegmentation*> > >, true>::__b(__gnu_cxx::__normal_iterator<hierarchicalSegmentation**, std::vector<hierarchicalSegmentation*, std::allocator<hierarchicalSegmentation*> > >) [181] array_size (array.c)
+  [72] float supervoxel::intensityThreshold<float>(int, float, unsigned int*, bool) [138] std::_List_iterator<supervoxel>::_List_iterator(std::_List_node_base*) [94] convert_array (array.c)
+  [97] unsigned short supervoxel::intensityThreshold<unsigned short>(int, float, unsigned int*, bool) [172] std::_List_iterator<lineage>::operator--() [23] coord4idx (array.c)
+  [64] supervoxel::JaccardIndexWithOffset(supervoxel const&) [67] std::_Deque_iterator<int, int&, int*>::_Deque_iterator(std::_Deque_iterator<int, int&, int*> const&) [201] determine_kind (image.c)
+  [36] int supervoxel::weightedGaussianStatistics<unsigned short>(bool) [139] std::_List_const_iterator<supervoxel>::operator++() [211] determine_type (image.c)
+  [65] supervoxel::numHoles() [140] void std::__uninitialized_fill_n<false>::uninitialized_fill_n<std::_List_iterator<nucleus>*, unsigned long, std::_List_iterator<nucleus> >(std::_List_iterator<nucleus>*, unsigned long, std::_List_iterator<nucleus> const&) [196] extract_image_tags
+   [9] void lineageHyperTree::calculateGMMparametersFromNuclei<float>(std::_List_iterator<nucleus>&, float*, float*, float*) [83] std::deque<int, std::allocator<int> >::begin() [197] extract_shape
+  [18] int lineageHyperTree::calculateNucleiIntensityCentroid<float>(std::_List_iterator<nucleus>&) [68] std::deque<int, std::allocator<int> >::pop_front() [105] free_array (array.c)
+ [111] Eigen::DenseStorage<double, 9, 3, 3, 0>::data() [57] std::deque<int, std::allocator<int> >::push_back(int const&) [188] free_tifd (tiff.io.c)
+ [162] Eigen::DenseCoeffsBase<Eigen::ReturnByValue<Eigen::internal::inverse_impl<Eigen::Matrix<double, 3, 3, 0, 3, 3> > >, 1>::DenseCoeffsBase() [76] std::deque<unsigned long, std::allocator<unsigned long> >::push_back(unsigned long&&) [212] free_tiff_channel (tiff.image.c)
+ [163] Eigen::DenseCoeffsBase<Eigen::Matrix<double, 3, 1, 0, 3, 1>, 1>::operator()(long) [141] std::queue<int, std::deque<int, std::allocator<int> > >::push(int const&) [213] free_timage (tiff.image.c)
+ [164] Eigen::DenseCoeffsBase<Eigen::Matrix<double, 3, 1, 0, 3, 1>, 1>::operator[](long) [84] std::queue<int, std::deque<int, std::allocator<int> > >::front() [191] free_treader (tiff.io.c)
+ [112] void Eigen::DenseCoeffsBase<Eigen::Matrix<double, 6, 6, 0, 6, 6>, 1>::copyCoeffByOuterInner<Eigen::CwiseNullaryOp<Eigen::internal::scalar_identity_op<double>, Eigen::Matrix<double, 6, 6, 0, 6, 6> > >(long, long, Eigen::DenseBase<Eigen::CwiseNullaryOp<Eigen::internal::scalar_identity_op<double>, Eigen::Matrix<double, 6, 6, 0, 6, 6> > > const&) [142] std::queue<int, std::deque<int, std::allocator<int> > >::queue(std::deque<int, std::allocator<int> > const&) [183] get_integer_tag (tiff.image.c)
+ [113] Eigen::MapBase<Eigen::Block<Eigen::Matrix<double, 3, 3, 0, 3, 3>, 3, 1, true, true>, 1>::coeffRef(long) [143] std::queue<unsigned long, std::deque<unsigned long, std::allocator<unsigned long> > >::push(unsigned long&&) [228] image_depth (image.c)
+ [165] Eigen::internal::special_scalar_op_base<Eigen::ReturnByValue<Eigen::internal::inverse_impl<Eigen::Matrix<double, 3, 3, 0, 3, 3> > >, double, double, false>::special_scalar_op_base() [144] std::vector<supervoxel, std::allocator<supervoxel> >::operator[](unsigned long) [202] image_reader (image.c)
+ [114] Eigen::EigenBase<Eigen::Matrix<double, 3, 3, 0, 3, 3> >::derived() [145] std::vector<treeStump, std::allocator<treeStump> >::vector(unsigned long, treeStump const&, std::allocator<treeStump> const&) [10] main
+ [166] __gnu_cxx::new_allocator<std::_List_iterator<supervoxel> >::allocate(unsigned long, void const*) [146] std::vector<treeStump, std::allocator<treeStump> >::operator[](unsigned long) [61] make_shape (array.c)
+ [115] __gnu_cxx::new_allocator<int>::construct(int*, int const&) [147] std::vector<GaussianMixtureModel*, std::allocator<GaussianMixtureModel*> >::_M_fill_insert(__gnu_cxx::__normal_iterator<GaussianMixtureModel**, std::vector<GaussianMixtureModel*, std::allocator<GaussianMixtureModel*> > >, unsigned long, GaussianMixtureModel* const&) [71] make_start (array.c)
+  [42] __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::__normal_iterator(unsigned long long const* const&) [148] std::vector<std::vector<std::_List_iterator<supervoxel>, std::allocator<std::_List_iterator<supervoxel> > >, std::allocator<std::vector<std::_List_iterator<supervoxel>, std::allocator<std::_List_iterator<supervoxel> > > > >::operator[](unsigned long) [91] new_array (array.c)
+  [44] __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator++(int) [149] void std::vector<float, std::allocator<float> >::_M_insert_aux<float const&>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float const&&&) [198] new_tifd (tiff.io.c)
+ [116] __gnu_cxx::__normal_iterator<unsigned long long const*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator++() [173] void std::vector<float, std::allocator<float> >::_M_insert_aux<float>(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, float&&) [214] new_tiff_channel (tiff.image.c)
+ [117] __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::__normal_iterator(float* const&) [85] std::vector<float, std::allocator<float> >::operator[](unsigned long) [215] new_timage (tiff.image.c)
+  [30] __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator--() [37] std::vector<unsigned long long, std::allocator<unsigned long long> >::end() [225] new_treader (tiff.io.c)
+  [33] __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >::operator++() [46] std::vector<unsigned long long, std::allocator<unsigned long long> >::begin() [184] optseek (tiff.io.c)
+   [6] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::__normal_iterator(unsigned long long* const&) [150] std::vector<unsigned long long, std::allocator<unsigned long long> >::clear() [199] optseek (tiff.image.c)
+ [118] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::__normal_iterator() [77] std::vector<unsigned long long, std::allocator<unsigned long long> >::resize(unsigned long, unsigned long long) [176] read_array (image.c)
+  [21] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator--() [47] std::vector<unsigned long long, std::allocator<unsigned long long> >::operator[](unsigned long) [177] read_tiff (image.c)
+   [4] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator+=(long const&) [51] std::iterator_traits<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >::difference_type std::__distance<__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >, std::random_access_iterator_tag) [218] tic
+   [7] __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >::operator++() [102] __gnu_cxx::__enable_if<std::__is_scalar<float>::__value, float*>::__type std::__fill_n_a<float*, unsigned long, float>(float*, unsigned long, float const&) [219] toc
+  [98] bool __gnu_cxx::operator==<float*, std::vector<float, std::allocator<float> > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > const&) [69] __gnu_cxx::__enable_if<std::__is_scalar<unsigned long long>::__value, unsigned long long*>::__type std::__fill_n_a<unsigned long long*, unsigned long, unsigned long long>(unsigned long long*, unsigned long, unsigned long long const&) [95] translate (array.c)
+  [99] bool __gnu_cxx::operator==<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > >(__gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&, __gnu_cxx::__normal_iterator<unsigned long long*, std::vector<unsigned long long, std::allocator<unsigned long long> > > const&) [151] void std::__pop_heap<__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > > >(__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float> > >)

@@ -53,6 +53,7 @@
 //Added by Haibo Hao
 #include <omp.h>
 #include <pthread.h>
+#include <thread>
 //Added by Haibo Hao
 
 
