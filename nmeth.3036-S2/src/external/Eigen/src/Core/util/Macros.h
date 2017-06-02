@@ -246,10 +246,13 @@
 #endif
 
 // Suppresses 'unused variable' warnings.
-#define EIGEN_UNUSED_VARIABLE(var) (void)var;
+// origin
+//#define EIGEN_UNUSED_VARIABLE(var) (void)var;
+// modified by hhb
+#define EIGEN_UNUSED_VARIABLE(var) (void)var
 
 #if (defined __GNUC__)
-#define EIGEN_ASM_COMMENT(X)  asm("#"X)
+#define EIGEN_ASM_COMMENT(X)  asm("#"#X)
 #else
 #define EIGEN_ASM_COMMENT(X)
 #endif

@@ -4,7 +4,7 @@
  *  Created on: May 24, 2011
  *      Author: amatf
  */
-
+#include <unistd.h>
 #include "WishartCDF.h"
 
 const double Wishartdev::Pi=3.14159265358979323846;

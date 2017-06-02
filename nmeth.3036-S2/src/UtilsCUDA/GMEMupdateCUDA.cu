@@ -36,7 +36,7 @@
 
 #include "../constants.h"
 
-using namespace std;
+//using namespace std;
 
 __constant__ float scaleGMEMCUDA[dimsImage];
 
@@ -1691,7 +1691,8 @@ __global__ void __launch_bounds__(MAX_THREADS) GMEMcheckDeadCellsKernel(Gaussian
 		//check for nan in W
 		bool isnanW=false;
 		for(int ii=0;ii<dimsImage*(1+dimsImage+1)/2;ii++)
-			if(isnan(GM->W_k[ii]))
+			//if(isnan(GM->W_k[ii]))   // origin
+			if(isnan(GM->W_k[ii]))  // modified by hhb
 				isnanW=true;
 
 		if(isnanW==true || (GM->alpha_k/totalAlpha<minPi_kForDead_CUDA && GM->m_o[0]>-1e31 && GM->fixed==false))
@@ -2595,7 +2596,10 @@ double calculateTotalAlpha(GaussianMixtureModelCUDA *vecGMCUDA,double *totalAlph
 
 	if(numGrids==1)//make sure numThreads is a power of 2
 	{
-		numThreads=(int)pow(2.0f,(int)ceil(log2((float)numThreads)));
+        // origin 
+		//numThreads=(int)pow(2.0f,(int)ceil(log2((float)numThreads)));
+        // modified by hhb
+		numThreads=(int)pow(2.0f,(int)ceil(std::log2((float)numThreads)));
 	}
 
 	if(numGrids!=numGridsCheck)
@@ -2628,7 +2632,10 @@ double addTotalLikelihood(float *imgDataCUDA,float *likelihoodVecCUDA,float* fin
 
 	if(numGrids==1)//make sure numThreads is a power of 2
 	{
-		numThreads=(int)pow(2.0f,(int)ceil(log2((float)numThreads)));
+        // origin 
+		//numThreads=(int)pow(2.0f,(int)ceil(log2((float)numThreads)));
+        // modified by hhb
+		numThreads=(int)pow(2.0f,(int)ceil(std::log2((float)numThreads)));
 	}
 
 	GMEMcomputeLikelihoodKernel<<<numGrids,numThreads>>>(likelihoodVecCUDA,vecGMCUDA,indCUDA,queryCUDA,imgDataCUDA,query_nb,ref_nb,totalAlpha);HANDLE_ERROR_KERNEL;
@@ -2653,7 +2660,10 @@ double addTotalLikelihoodWithSupervoxels(float *imgDataCUDA,float *likelihoodVec
 	int numThreads=MAX_THREADS;
 	int numGrids=numLabels;
 
-	int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(log2((float)numLabels)));
+    // origin
+	//int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(log2((float)numLabels)));
+    // modified by hhb
+	int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(std::log2((float)numLabels)));
 
 	HANDLE_ERROR(cudaMemset(likelihoodVecCUDA,0,sizeof(float)*sizeLikelihoodVec));//some elements might not be updated since we chose the smallest power of 2 above numLabels
 	
@@ -2693,7 +2703,10 @@ double addLocalLikelihoodWithSupervoxels(float *imgDataCUDA,float *likelihoodVec
 	if(numLocalLabels == 0)//to protect from error launching the kernel. It is just an empty Gaussian
 		return -1e32;//very unlikely event
 
-	int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(log2((float)numLocalLabels)));
+    // origin
+	//int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(log2((float)numLocalLabels)));
+    // modified by hhb
+	int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(std::log2((float)numLocalLabels)));
 
 	HANDLE_ERROR(cudaMemset(likelihoodVecCUDA,0,sizeof(float)*sizeLikelihoodVec));//some elements might not be updated since we chose the smallest power of 2 above numLabels
 
@@ -2746,7 +2759,7 @@ double addLocalLikelihoodWithSupervoxels(float *imgDataCUDA,float *likelihoodVec
 }
 
 //==============================================================================================================
-void calculateLocalLikelihood(vector<double>& localLikelihood, const vector< vector<int> >& listSupervoxels, float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,int *indCUDA,GaussianMixtureModelCUDA *vecGMtemp,long long int *labelListPtrCUDA,long long int query_nb,int ref_nb, int numLabels)
+void calculateLocalLikelihood(std::vector<double>& localLikelihood, const std::vector< std::vector<int> >& listSupervoxels, float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,int *indCUDA,GaussianMixtureModelCUDA *vecGMtemp,long long int *labelListPtrCUDA,long long int query_nb,int ref_nb, int numLabels)
 {
 	localLikelihood.resize( listSupervoxels.size() );
 
@@ -2763,7 +2776,10 @@ void calculateLocalLikelihood(vector<double>& localLikelihood, const vector< vec
 	long long 	int numThreads_labels=std::min((long long int)MAX_THREADS,(long long int)numLocalLabelsMax);
 	long long 	int numGrids_labels=std::min((long long int)MAX_BLOCKS,(long long int)((numLocalLabelsMax+numThreads_labels-1)/numThreads_labels));
 
-	int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(log2((float)numLocalLabelsMax)));//we need it to be apower of 2 in order to perform summation as a kernel (dot product example)
+    // origin 
+	//int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(log2((float)numLocalLabelsMax)));//we need it to be apower of 2 in order to perform summation as a kernel (dot product example)
+    // modified by hhb
+	int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(std::log2((float)numLocalLabelsMax)));//we need it to be apower of 2 in order to perform summation as a kernel (dot product example)
 	long long 	int numThreads_likelihood=std::min((long long int)MAX_THREADS,(long long int)sizeLikelihoodVec);
 	long long 	int numGrids_likelihood=std::min((long long int)MAX_BLOCKS,(long long int)((sizeLikelihoodVec+numThreads_likelihood-1)/numThreads_likelihood));
 
@@ -3145,7 +3161,7 @@ void mainTestGMEMcomputeRnkCUDA(long long int query_nb)
 
 //=================================================================================
 //main interface to run variational inference in GPU
-void GMEMvariationalInferenceCUDA(float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,pxi *rnkCUDAtr,int *indCUDA,int *indCUDAtr,GaussianMixtureModelCUDA *vecGMtemp,long long int query_nb,int ref_nb,int maxIterEM,double tolLikelihood,int devCUDA,int frame,bool W4DOF, string debugPath)
+void GMEMvariationalInferenceCUDA(float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,pxi *rnkCUDAtr,int *indCUDA,int *indCUDAtr,GaussianMixtureModelCUDA *vecGMtemp,long long int query_nb,int ref_nb,int maxIterEM,double tolLikelihood,int devCUDA,int frame,bool W4DOF, std::string debugPath)
 {
 	if(query_nb>((long long int)MAX_THREADS) *((long long int)MAX_BLOCKS))
 	{
@@ -3609,7 +3625,7 @@ __device__ GaussianMixtureModelCUDA::GaussianMixtureModelCUDA()
 
 //=================================================================================
 //main interface to run variational inference in GPU with supervoxels, so the same assignment is guaranteed for voxels withihn the same supervoxel
-void GMEMvariationalInferenceCUDAWithSupervoxels(float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,pxi *rnkCUDAtr,int *indCUDA,int *indCUDAtr,float *centroidLabelPositionCUDA,long long int *labelListPtrCUDA,GaussianMixtureModelCUDA *vecGMtemp,long long int query_nb,int ref_nb,unsigned short int numLabels,int maxIterEM,double tolLikelihood,int devCUDA,int frame, bool W4DOF, string debugPath)
+void GMEMvariationalInferenceCUDAWithSupervoxels(float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,pxi *rnkCUDAtr,int *indCUDA,int *indCUDAtr,float *centroidLabelPositionCUDA,long long int *labelListPtrCUDA,GaussianMixtureModelCUDA *vecGMtemp,long long int query_nb,int ref_nb,unsigned short int numLabels,int maxIterEM,double tolLikelihood,int devCUDA,int frame, bool W4DOF, std::string debugPath)
 {
 	if(query_nb>((long long int)MAX_THREADS) *((long long int)MAX_BLOCKS))
 	{
@@ -3655,7 +3671,10 @@ long long 	int numGrids_query=std::min((long long int)MAX_BLOCKS,(query_nb+numTh
 long long 	int numThreads_labels=std::min((long long int)MAX_THREADS,(long long int)numLabels);
 long long 	int numGrids_labels=std::min((long long int)MAX_BLOCKS,(long long int)((numLabels+numThreads_labels-1)/numThreads_labels));
 
-	int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(log2((float)numLabels)));//we need it to be apower of 2 in order to perform summation as a kernel (dot product example)
+    // origin
+	//int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(log2((float)numLabels)));//we need it to be apower of 2 in order to perform summation as a kernel (dot product example)
+    // modified by hhb
+	int sizeLikelihoodVec=(int)pow(2.0f,(int)ceil(std::log2((float)numLabels)));//we need it to be apower of 2 in order to perform summation as a kernel (dot product example)
 long long 	int numThreads_likelihood=std::min((long long int)MAX_THREADS,(long long int)sizeLikelihoodVec);
 long long 	int numGrids_likelihood=std::min((long long int)MAX_BLOCKS,(long long int)((sizeLikelihoodVec+numThreads_likelihood-1)/numThreads_likelihood));
 
@@ -4156,14 +4175,14 @@ void GMEMreleaseMemoryWithSupervoxels(float **queryCUDA,float **imgDataCUDA,floa
 }
 
 //=========================================================================================
-ostream& GaussianMixtureModelCUDA::writeXML(ostream& os,int id)
+std::ostream& GaussianMixtureModelCUDA::writeXML(std::ostream& os,int id)
 {
 	os<<"<GaussianMixtureModel ";;
 	os<<"id=\""<<id<<"\" lineage=\""<<0<<"\" parent=\""<<0<<"\" dims=\""<<dimsImage<<"\" splitScore=\""<<splitScore<<"\"";
 
 	os<<" scale=\"";
 	for(int ii=0;ii<dimsImage;ii++) os<<1.0f<<" ";
-	os<<"\""<<endl;
+	os<<"\""<<std::endl;
 
 	//write variables values
 	os<<"nu=\""<<nu_k<<"\" beta=\""<<beta_k<<"\" alpha=\""<<alpha_k<<"\"";
@@ -4173,7 +4192,7 @@ ostream& GaussianMixtureModelCUDA::writeXML(ostream& os,int id)
 	//for dimsImage==3
 	os<<"\" W=\""<<W_k[0]<< " "<<W_k[1]<< " "<<W_k[2]<< " "<<W_k[1]<< " "<<W_k[3]<< " "<<W_k[4]<< " "<<W_k[2]<< " "<<W_k[4]<< " "<<W_k[5];
 
-	os<<"\""<<endl;
+	os<<"\""<<std::endl;
 
 
 	//write priors values
@@ -4182,10 +4201,10 @@ ostream& GaussianMixtureModelCUDA::writeXML(ostream& os,int id)
 	for(int ii=0;ii<dimsImage;ii++) os<<m_o[ii]<<" ";
 	os<<"\" WPrior=\""<<W_o[0]<< " "<<W_o[1]<< " "<<W_o[2]<< " "<<W_o[1]<< " "<<W_o[3]<< " "<<W_o[4]<< " "<<W_o[2]<< " "<<W_o[4]<< " "<<W_o[5];
 
-	os<<"\">"<<endl;
+	os<<"\">"<<std::endl;
 
 
-	os<<"</GaussianMixtureModel>"<<endl;
+	os<<"</GaussianMixtureModel>"<<std::endl;
 
 	return os;
 
@@ -4244,14 +4263,14 @@ void writeXMLdebugCUDA(GaussianMixtureModelCUDA *vecGMtemp,unsigned int numElem)
 {
 	char logBuffer[32];
 	sprintf(logBuffer,"%.4d",iterEMdebug++);//increment iter in order to save next iteration
-	string itoaLog=string(logBuffer);
-	string filename("/Users/amatf/TrackingNuclei/tmp/GMEMtracking3D_1320774859/XML_EMiter/XML_EMiter_frame127_TM"+itoaLog+".xml");//change this to save debug file
+    std::string itoaLog=std::string(logBuffer);
+    std::string filename("/Users/amatf/TrackingNuclei/tmp/GMEMtracking3D_1320774859/XML_EMiter/XML_EMiter_frame127_TM"+itoaLog+".xml");//change this to save debug file
 	float scale[dimsImage]={1.0f,1.0f,5.0f};
-	cout<<"Saving iteration at "<<filename<<endl;
-	ofstream os(filename.c_str());
+    std::cout<<"Saving iteration at "<<filename<<std::endl;
+    std::ofstream os(filename.c_str());
 	
 	//write XML header 
-	os<<"<?xml version=\"1.0\" encoding=\"utf-8\"?>"<<endl<<"<document>"<<endl;
+	os<<"<?xml version=\"1.0\" encoding=\"utf-8\"?>"<<std::endl<<"<document>"<<std::endl;
 	
 	double *auxW=new double[dimsImage*dimsImage];
 	int count=0;
@@ -4263,7 +4282,7 @@ void writeXMLdebugCUDA(GaussianMixtureModelCUDA *vecGMtemp,unsigned int numElem)
 
 		os<<" scale=\"";
 		for(int ii=0;ii<dimsImage;ii++) os<<scale[ii]<<" ";
-		os<<"\""<<endl;
+		os<<"\""<<std::endl;
 
 		//write variables values
 		os<<"nu=\""<<GM->nu_k<<"\" beta=\""<<GM->beta_k<<"\" alpha=\""<<GM->alpha_k<<"\"";
@@ -4282,7 +4301,7 @@ void writeXMLdebugCUDA(GaussianMixtureModelCUDA *vecGMtemp,unsigned int numElem)
 			}
 		}
 		for(int ii=0;ii<dimsImage*dimsImage;ii++) os<<auxW[ii]<<" ";
-		os<<"\""<<endl;
+		os<<"\""<<std::endl;
 
 
 		//write priors values
@@ -4301,11 +4320,11 @@ void writeXMLdebugCUDA(GaussianMixtureModelCUDA *vecGMtemp,unsigned int numElem)
 			}
 		}
 		for(int ii=0;ii<dimsImage*dimsImage;ii++) os<<auxW[ii]<<" ";
-		os<<"\">"<<endl;
-		os<<"</GaussianMixtureModel>"<<endl;
+		os<<"\">"<<std::endl;
+		os<<"</GaussianMixtureModel>"<<std::endl;
 	}
 	//write XML footer
-	os<<"</document>"<<endl;
+	os<<"</document>"<<std::endl;
 	
 	os.close();
 

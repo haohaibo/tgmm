@@ -601,7 +601,7 @@ struct gebp_kernel
             RhsPacket B0;
             RhsPacket T0;
             
-EIGEN_ASM_COMMENT("mybegin2");
+EIGEN_ASM_COMMENT(mybegin2);
             traits.loadLhs(&blA[0*LhsProgress], A0);
             traits.loadLhs(&blA[1*LhsProgress], A1);
             traits.loadRhs(&blB[0*RhsProgress], B0);
@@ -637,11 +637,11 @@ EIGEN_ASM_COMMENT("mybegin2");
             traits.loadRhs(&blB[7*RhsProgress], B0);
             traits.madd(A0,B0,C1,T0);
             traits.madd(A1,B0,C5,B0);
-EIGEN_ASM_COMMENT("myend");
+EIGEN_ASM_COMMENT(myend);
           }
           else
           {
-EIGEN_ASM_COMMENT("mybegin4");
+EIGEN_ASM_COMMENT(mybegin4);
             LhsPacket A0, A1;
             RhsPacket B0, B1, B2, B3;
             RhsPacket T0;

@@ -9,7 +9,7 @@
  *  Email: haohaibo@ncic.ac.cn
  */
 
-
+#include <unistd.h>
 #include <string>
 #include <ctime>
 #include <list>

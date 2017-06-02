@@ -14,7 +14,7 @@
 #include "../Utils/CSparse.h"
 
 
-using namespace std;
+//using namespace std;
 //reduced version of the GaussianMixtureModel class to operate in the GPU
 //VIP: if you update this structure you need to update void copy2GMEM_CUDA(GaussianMixtureModel *GM,GaussianMixtureModelCUDA *GMCUDAtemp) in variationalInference.cpp
 
@@ -41,9 +41,9 @@ struct GaussianMixtureModelCUDA
 	int supervoxelIdx[MAX_SUPERVOXELS_PER_GAUSSIAN];
 	int supervoxelNum; 
 
-    ostream& writeXML(ostream& os,int id);
-    static ostream& writeXMLheader(ostream &os){os<<"<?xml version=\"1.0\" encoding=\"utf-8\"?>"<<endl<<"<document>"<<endl;return os;};
-    static ostream& writeXMLfooter(ostream &os){os<<"</document>"<<endl;return os;};
+    std::ostream& writeXML(std::ostream& os,int id);
+    static std::ostream& writeXMLheader(std::ostream &os){os<<"<?xml version=\"1.0\" encoding=\"utf-8\"?>"<<std::endl<<"<document>"<<std::endl;return os;};
+    static std::ostream& writeXMLfooter(std::ostream &os){os<<"</document>"<<std::endl;return os;};
 
 	//assignment operator
 	GaussianMixtureModelCUDA& operator=(const GaussianMixtureModelCUDA& p);
@@ -62,8 +62,8 @@ double calculateTotalAlpha(GaussianMixtureModelCUDA *vecGMCUDA,double *totalAlph
 void copyScaleToDvice(float *scale);
 
 //void GMEMvariationalInferenceCUDA(float *queryCUDA,float *imgDataCUDA,GaussianMixtureModelCUDA *vecGMtemp,long long int query_nb,int ref_nb,int maxIterEM,double tolLikelihood,int devCUDA,int frame);
-void GMEMvariationalInferenceCUDA(float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,pxi *rnkCUDAtr,int *indCUDA,int *indCUDAtr,GaussianMixtureModelCUDA *vecGMtemp,long long int query_nb,int ref_nb,int maxIterEM,double tolLikelihood,int devCUDA,int frame,bool W4DOF, string debugPath="");
-void GMEMvariationalInferenceCUDAWithSupervoxels(float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,pxi *rnkCUDAtr,int *indCUDA,int *indCUDAtr,float *centroidLabelPositionCUDA,long long int *labelListPtrCUDA,GaussianMixtureModelCUDA *vecGMtemp,long long int query_nb,int ref_nb,unsigned short int maxLabels,int maxIterEM,double tolLikelihood,int devCUDA,int frame, bool W4DOF,string debugPath="");
+void GMEMvariationalInferenceCUDA(float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,pxi *rnkCUDAtr,int *indCUDA,int *indCUDAtr,GaussianMixtureModelCUDA *vecGMtemp,long long int query_nb,int ref_nb,int maxIterEM,double tolLikelihood,int devCUDA,int frame,bool W4DOF, std::string debugPath="");
+void GMEMvariationalInferenceCUDAWithSupervoxels(float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,pxi *rnkCUDAtr,int *indCUDA,int *indCUDAtr,float *centroidLabelPositionCUDA,long long int *labelListPtrCUDA,GaussianMixtureModelCUDA *vecGMtemp,long long int query_nb,int ref_nb,unsigned short int maxLabels,int maxIterEM,double tolLikelihood,int devCUDA,int frame, bool W4DOF,std::string debugPath="");
 double addTotalLikelihood(float *imgDataCUDA,float *likelihoodVecCUDA,float* finalSumVectorInHostF,GaussianMixtureModelCUDA *vecGMCUDA,int *indCUDA,float *queryCUDA,int query_nb,int ref_nb,double totalAlpha);
 double addTotalLikelihoodWithSupervoxels(float *imgDataCUDA,float *likelihoodVecCUDA,float* finalSumVectorInHostF,GaussianMixtureModelCUDA *vecGMCUDA,int *indCUDA,float *queryCUDA,long long int *labelListPtrCUDA,int query_nb,unsigned short int numLabels,double totalAlpha);
 double addLocalLikelihoodWithSupervoxels(float *imgDataCUDA,float *likelihoodVecCUDA,float* finalSumVectorInHostF,GaussianMixtureModelCUDA *vecGMCUDA,int *indCUDA,float *queryCUDA,long long int *labelListPtrCUDA,long long int query_nb,int ref_nb, unsigned short int numLabels,double totalAlpha, int* listSupervoxelsIdxCUDA, int listSupervoxelsIdxLength);
@@ -71,7 +71,7 @@ double addLocalLikelihoodWithSupervoxels(float *imgDataCUDA,float *likelihoodVec
 /*
 \brief Calculates local likelihood. Each region is defined by a list of nearby supervoxels. Useful to perform likelihood ratio tests for cell division
 */
-void calculateLocalLikelihood(vector<double>& localLikelihood, const vector< vector<int> >& listSupervoxels, float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,int *indCUDA,GaussianMixtureModelCUDA *vecGMtemp,long long int *labelListPtrCUDA,long long int query_nb,int ref_nb,int numLabels);
+void calculateLocalLikelihood(std::vector<double>& localLikelihood, const std::vector< std::vector<int> >& listSupervoxels, float *queryCUDA,float *imgDataCUDA,pxi *rnkCUDA,int *indCUDA,GaussianMixtureModelCUDA *vecGMtemp,long long int *labelListPtrCUDA,long long int query_nb,int ref_nb,int numLabels);
 
 
 void GMEMinitializeMemory(float **queryCUDA,float *query,float **imgDataCUDA,float *imgData,float *scale,long long int query_nb,float **rnkCUDA,int **indCUDA,int **indCUDAtr);
