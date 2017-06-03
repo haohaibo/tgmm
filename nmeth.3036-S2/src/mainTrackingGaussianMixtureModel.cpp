@@ -494,6 +494,13 @@ int main( int argc, const char** argv )
     double for1_time11_sum = 0;
 
     for1_start = omp_get_wtime();
+
+    unsigned long const hardware_threads = 
+        std::thread::hardware_concurrency();
+    std::cout << "----------------------------\n" << std::endl;
+    std::cout << "  hardware_threads = " << hardware_threads << std::endl;
+    std::cout << "\n----------------------------" << std::endl;
+    std::vector<std::thread> threads(hardware_threads);
     for(int frame=iniFrame;frame<=endFrame;frame++)
     {
 	for1_time_GMM_start = omp_get_wtime();
@@ -699,7 +706,7 @@ int main( int argc, const char** argv )
 
         for1_iner_start = omp_get_wtime();
 
-        // doing  construct thread pool
+        // (doing)  construct multi-threads 
         
         for(size_t ii = 0; ii < hs->currentSegmentatioSupervoxel.size(); ii++)
         {
