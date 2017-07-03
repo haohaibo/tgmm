@@ -153,10 +153,172 @@ struct OffsetCoordinates
 };
 
 
-void * thread_fun_trimming_supervoxel(void *arg)
-{
+//void * thread_fun_trimming_supervoxel(void *arg)
+//{
 
-    return ((void*)0);
+//    return ((void*)0);
+//}
+
+struct Parameter
+{
+    hierarchicalSegmentation *hs;
+    mylib::uint16 * imgDataUINT16;
+    vector<int> eraseIdx;
+    int numSplits;
+    bool *imgVisited;
+    mylib::uint16 thr;
+    long long int query_nb;
+};
+
+
+struct trimming_supervoxel
+{
+    void operator() (std::size_t first, std::size_t last)
+    {
+
+#if 0
+        for(size_t ii = 0; ii < hs->currentSegmentatioSupervoxel.size(); ii++)
+        {
+            //int task_id = ii % threads.size();
+            
+            //threas[task_id]
+            //trimming supervoxels
+            thr = hs->currentSegmentatioSupervoxel[ii].trimSupervoxel<mylib::uint16>();			
+
+            //split supervoxels if necessary (obvius oversegmentations)
+            TreeNode<nodeHierarchicalSegmentation>* rootSplit[2];
+            supervoxel rootSplitSv[2];
+            float scoreS;
+            queue<size_t> q;
+            q.push(ii);
+            while( q.empty() == false )
+            {
+                size_t aa = q.front();
+                //std::cout << "***" << aa << std::endl;
+                q.pop();			
+                if( hs->currentSegmentatioSupervoxel[aa].getDeltaZ() > 
+                                     supervoxel::pMergeSplit.deltaZthr )
+                {
+                    scoreS = hs->suggestSplit<mylib::uint16>(hs->currentSegmentationNodes[aa],
+                            hs->currentSegmentatioSupervoxel[aa], rootSplit, rootSplitSv);
+                    if( scoreS > 0.0f )
+                    {   //std::cout << "##" << rootSplitSv[0] << " " << rootSplitSv[1] << std::endl;
+                        //root split has the correct nodeHSptr
+                        hs->currentSegmentatioSupervoxel[aa] = rootSplitSv[0];
+                        hs->currentSegmentatioSupervoxel.push_back( rootSplitSv[1] );						
+                        hs->currentSegmentationNodes[aa] = rootSplit[0];
+                        hs->currentSegmentationNodes.push_back( rootSplit[1] );
+
+                        numSplits++;
+                        q.push(aa);
+                        q.push(hs->currentSegmentationNodes.size() - 1 );
+                    }
+                    //recalculate thr
+                    thr = numeric_limits<mylib::uint16>::max();
+                    for(vector<uint64>::const_iterator iter = 
+                        hs->currentSegmentatioSupervoxel[ii].PixelIdxList.begin(); 
+                        iter != hs->currentSegmentatioSupervoxel[ii].PixelIdxList.end(); ++iter)
+                    {
+                        thr = min(thr , imgDataUINT16[ *iter ] );
+                    }
+                }
+            }
+
+            //delete supervoxel	
+            if( hs->currentSegmentatioSupervoxel[ii].PixelIdxList.size() < minNucleiSize )
+            {
+                eraseIdx.push_back(ii);
+            }else{
+                //local background subtraction and reference points for local geometrical descriptors
+                hs->currentSegmentatioSupervoxel[ii].weightedGaussianStatistics<mylib::uint16>(true);
+
+                localGeometricDescriptor<dimsImage>::addRefPt(frame, 
+                        hs->currentSegmentatioSupervoxel[ii].centroid);
+
+                for(vector<uint64>::const_iterator iter = 
+                    hs->currentSegmentatioSupervoxel[ii].PixelIdxList.begin(); 
+                    iter != hs->currentSegmentatioSupervoxel[ii].PixelIdxList.end(); ++iter)
+                {
+                    //local background subtraction: since these are the trimmed 
+                    //supervoxels, they are guaranteed to be above thr
+                    imgDataUINT16[ *iter ] -= thr;
+                    imgVisited[ *iter ] = true;
+                }
+            }
+
+            query_nb += hs->currentSegmentatioSupervoxel[ii].PixelIdxList.size();
+            hs->currentSegmentatioSupervoxel[ii].localBackgroundSubtracted = true;
+        }
+#endif
+
+    }
+};
+
+#if 0
+hierarchicalSegmentation *hs = new hierarchicalSegmentation(inHS); 
+        mylib::uint16* imgDataUINT16 = (mylib::uint16*) (img->data);
+        vector<int> eraseIdx;
+        eraseIdx.reserve( hs->currentSegmentatioSupervoxel.size() / 10 );
+        int numSplits = 0;	
+        //margin we need to calculate connected components
+        int64 boundarySize[dimsImage];	
+        int64 *neighOffsetSv = supervoxel::buildNeighboorhoodConnectivity(conn3Dsv, boundarySize);
+        mylib::uint16 thr;
+        bool *imgVisited = new bool[img->size];
+        //if visited->true (so I can set the rest to zero)
+        memset(imgVisited, 0, sizeof(bool) * img->size );
+
+        //necessary to initiate reposnsibilities
+        long long int query_nb=0;		
+#endif
+
+
+
+void parallel_trimming_supervoxel(std::size_t first, std::size_t last)
+{
+    unsigned long const length = last - first;
+
+    // 每个线程最少处理min_per_thread个元素
+    unsigned long const min_per_thread = 25;
+
+    // 总共需要的最大线程数
+    unsigned long const max_threads = 
+        (length + min_per_thread -1)/min_per_thread;
+
+    // 处理器的线程数
+    unsigned long const hardware_threads = 
+        std::thread::hardware_concurrency();
+
+    unsigned long const num_threads = 
+        std::min(hardware_threads != 0?hardware_threads:12, max_threads);
+    
+    std::cout << "acctually use num_threads = " << num_threads << std::endl; 
+
+    // 每个线程处理block_size个元素
+    unsigned long const block_size = length/num_threads;
+
+    // 这里去除主线程
+    std::vector<std::thread> threads(num_threads -1);
+
+    std::size_t block_start = first;
+    // 前num_threads-1个线程计算前block_size-1个block
+    for(unsigned long i = 0; i < (num_threads-1); ++i)
+    {
+        std::size_t block_end = block_start;
+        //给迭代器block_end增加block_size大小的偏移量
+        //std::advance(block_end, block_size);
+        block_end += block_size;
+        
+        threads[i] = std::thread(trimming_supervoxel(),block_start, block_end);
+        block_start = block_end;
+    }
+
+    // 主线程计算最后一个block
+    trimming_supervoxel()(block_start, last); 
+
+    std::for_each(threads.begin(), threads.end(),
+            std::mem_fn(&std::thread::join));
+
 }
 
 //===========================================
@@ -172,8 +334,6 @@ int main( int argc, const char** argv )
     //whether we allow rotation in Z for Gaussian covariance or not.
     //If regularize_W4DOF==true->W_02 = W_12 = 0
     bool regularize_W4DOF = true;		
-
-
 
     //from http://stackoverflow.com/questions/1023306/finding-current-executables-path-without-proc-self-exe
     //for platform-dependant options
@@ -500,7 +660,7 @@ int main( int argc, const char** argv )
     std::cout << "----------------------------\n" << std::endl;
     std::cout << "  hardware_threads = " << hardware_threads << std::endl;
     std::cout << "\n----------------------------" << std::endl;
-    std::vector<std::thread> threads(hardware_threads);
+    std::vector<std::thread> threads(hardware_threads - 1);
     for(int frame=iniFrame;frame<=endFrame;frame++)
     {
 	for1_time_GMM_start = omp_get_wtime();
@@ -708,8 +868,34 @@ int main( int argc, const char** argv )
 
         // (doing)  construct multi-threads 
         
+        //std::cout << "frame = " << frame << "  hs->cSS.size() = " << hs->currentSegmentatioSupervoxel.size() << std::endl;
+         
+        int ii = 0;
+        int iniSize = hs->currentSegmentatioSupervoxel.size();
+        while(ii < hs->currentSegmentatioSupervoxel.size())
+        {
+
+            int Size = hs->currentSegmentatioSupervoxel.size();
+            //for(int id = 0; id < threads.size(); ii++) {
+            
+                //int task_id = ii % threads.size();
+            
+             //   threads[id+1].run(hs->currentSegmentatioSupervoxel,ii,Size);
+            //}
+            // id = 0
+            //run(hs->currentSegmentatioSupervoxel, 0, Size);
+
+            parallel_trimming_supervoxel(ii, Size); 
+            //waitforallthreadend();
+            ii = Size ;
+        }
+        
+
         for(size_t ii = 0; ii < hs->currentSegmentatioSupervoxel.size(); ii++)
         {
+            //int task_id = ii % threads.size();
+            
+            //threas[task_id]
             //trimming supervoxels
             thr = hs->currentSegmentatioSupervoxel[ii].trimSupervoxel<mylib::uint16>();			
 
@@ -722,6 +908,7 @@ int main( int argc, const char** argv )
             while( q.empty() == false )
             {
                 size_t aa = q.front();
+                //std::cout << "***" << aa << std::endl;
                 q.pop();			
                 if( hs->currentSegmentatioSupervoxel[aa].getDeltaZ() > 
                                      supervoxel::pMergeSplit.deltaZthr )
@@ -729,7 +916,7 @@ int main( int argc, const char** argv )
                     scoreS = hs->suggestSplit<mylib::uint16>(hs->currentSegmentationNodes[aa],
                             hs->currentSegmentatioSupervoxel[aa], rootSplit, rootSplitSv);
                     if( scoreS > 0.0f )
-                    {
+                    {   //std::cout << "##" << rootSplitSv[0] << " " << rootSplitSv[1] << std::endl;
                         //root split has the correct nodeHSptr
                         hs->currentSegmentatioSupervoxel[aa] = rootSplitSv[0];
                         hs->currentSegmentatioSupervoxel.push_back( rootSplitSv[1] );						
