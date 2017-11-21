@@ -1,12 +1,4 @@
 /*
- * Copyright (C) 2011-2012 by  Fernando Amat
- * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *  watershedPersistanceAgglomeration.h
- *
- *  Created on: September 17th, 2012
- *      Author: Fernando Amat
  *
  * \brief Implements main functionalities to segment nuclei channel using watershed + agglomeration based on persistance methods
  *

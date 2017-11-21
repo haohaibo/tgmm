@@ -1,8 +1,5 @@
 /*
  * responsibilities.h
- *
- *  Created on: May 12, 2011
- *      Author: amatf
  */
 
 #ifndef RESPONSIBILITIES_H_

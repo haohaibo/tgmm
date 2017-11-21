@@ -1,12 +1,4 @@
 /*
- * Copyright (C) 2011-2013 by  Fernando Amat
- * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *  backgroundDetectionInterface.cpp
- *
- *  Created on: September 21st, 2013
- *      Author: Fernando Amat
  *
  * \brief Interface to backgroundDetection lib to find incoherent tracks that look like background
  *        

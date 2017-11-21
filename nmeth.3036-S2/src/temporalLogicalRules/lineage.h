@@ -1,12 +1,5 @@
 /*
- * Copyright (C) 2011-2012 by  Fernando Amat
  * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *  lineage.h
- *
- *  Created on: August 17th, 2012
- *      Author: Fernando Amat
  *
  * \brief Lineage as a binary tree. Each node in the tree is a pointer to a nuclei (we keep as a template to be able to handle any sort of lineage object)
  *

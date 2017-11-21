@@ -1,9 +1,6 @@
 /*
  * Ellipsoid.h
  *
- *  Created on: Feb 15, 2011
- *      Author: amatf
- *
  *
  *      @brief  Ellipsoids in 3D are defined by a 3x3 covariance matrix. Therefore we only store the 6 lower triangular elements in the Surface::coeff vector in the following order
  *      for(int ii=0;ii<sigma1.cols();ii++)

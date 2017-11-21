@@ -1,9 +1,4 @@
 /*
- * GaussianMixtureModel.cpp
- *
- *  Created on: May 12, 2011
- *      Author: amatf
- *
  *
  *      CheckBishop's book section 10.2 for more reference on notation
  */

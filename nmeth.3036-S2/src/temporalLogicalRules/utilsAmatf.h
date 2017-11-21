@@ -1,12 +1,7 @@
 /*
-* Copyright (C) 2011-2012 by  Fernando Amat
 * See license.txt for full license and copyright notice.
 *
-* Authors: Fernando Amat 
 *  utils.h
-*
-*  Created on: October 29th, 2012
-*      Author: Fernando Amat
 *
 * \brief Miscellanea of simple functions to perform different tasks
 *

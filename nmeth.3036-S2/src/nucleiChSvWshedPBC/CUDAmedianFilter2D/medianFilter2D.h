@@ -1,12 +1,4 @@
 /*
- * Copyright (C) 2013 by  Fernando Amat
- * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *  medianFilter2D.h
- *
- *  Created on: January 17th, 2013
- *      Author: Fernando Amat
  *
  * \brief Code to calculate 2D median filter in CUDA using templates and different window sizes
  * \Note: this code can be easily used for any non-linear processing in a neighborhhod block around each pixel with a simple modoifcation. Analogous to blockproc by Matlab

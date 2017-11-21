@@ -1,13 +1,5 @@
 /*
- * Copyright (C) 2011-2012 by  Fernando Amat
  * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *
- * temporalLogicalRules.cpp
- *
- *  Created on: October 29th, 2012
- *      Author: Fernando Amat
  *
  * \brief Methods to calculate tracklets from super-voxel decomposition
  *

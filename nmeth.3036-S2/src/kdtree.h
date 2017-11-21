@@ -1,8 +1,4 @@
 /*
- * kdtree.h
- *
- *  Created on: Oct 5, 2010
- *      Author: amatf
  *
  *      Based on the code from http://www2.imm.dtu.dk/~bdl/02561/photonmap/
  *

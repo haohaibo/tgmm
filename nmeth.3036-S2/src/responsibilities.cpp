@@ -1,8 +1,6 @@
 /*
  * responsibilities.cpp
  *
- *  Created on: May 12, 2011
- *      Author: amatf
  */
 
 #include "responsibilities.h"

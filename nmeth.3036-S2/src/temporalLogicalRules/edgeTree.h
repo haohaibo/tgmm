@@ -1,13 +1,6 @@
 /*
- * Copyright (C) 2011-2012 by  Fernando Amat
- * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
  *
  * edgeTree.h
- *
- *  Created on: August 17th, 2012
- *      Author: Fernando Amat
  *
  * \brief template to add tree like (parent and children) relationship to a given class
  *

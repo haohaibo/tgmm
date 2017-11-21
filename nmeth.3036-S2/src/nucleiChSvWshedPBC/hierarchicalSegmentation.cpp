@@ -1,12 +1,4 @@
 /*
- * Copyright (C) 2011-2012 by  Fernando Amat
- * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *  hierachicalSegmentation.cpp
- *
- *  Created on: January 17th, 2013
- *      Author: Fernando Amat
  *
  * \brief Data structure to save a hierarchical segmentation of an image
  *

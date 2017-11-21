@@ -1,8 +1,5 @@
 /*
  * GaussianMixtureModel.cpp
- *
- *  Created on: May 12, 2011
- *      Author: amatf
  */
 
 #include "GaussianMixtureModel.h"
@@ -410,7 +407,7 @@ double GaussianMixtureModel::distEllipsoid(meanPrecisionSample &p1,meanPrecision
 	if((p2.mu_k.transpose()*p1.lambda_k*p2.mu_k)(0)<=1.0){return 0.0;};
 
 	//longer check based on algorithm described in
-	//	[1] A. Lin and S. Han, ÒOn the Distance between Two Ellipsoids,Ó SIAM Journal on Optimization, vol. 13, pp. 298Ð308, May. 2002.
+	//	[1] A. Lin and S. Han, ?On the Distance between Two Ellipsoids,? SIAM Journal on Optimization, vol. 13, pp. 298?308, May. 2002.
 
 	Matrix<double,dimsImage,1> g1=p1.mu_k;
 	Matrix<double,dimsImage,1> g2=p2.mu_k;//centers fo ball within the sphere

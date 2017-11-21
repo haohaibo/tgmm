@@ -1,13 +1,7 @@
 /*
- * Copyright (C) 2011-2013 by  Fernando Amat
  * See license.txt for full license and copyright notice.
  *
- * Authors: Fernando Amat 
- *
  * lineageWindowFeature.cpp
- *
- *  Created on: January 7th, 2013
- *      Author: Fernando Amat
  *
  * \brief Calculates features for given lineage in a temporal interval in order to use them for different classification tasks
  *

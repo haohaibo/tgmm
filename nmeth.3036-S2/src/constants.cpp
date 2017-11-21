@@ -1,9 +1,4 @@
 /*
- * constants.cpp
- *
- *  Created on: Jul 21, 2011
- *      Author: amatf
- *
  *      defines global constants across the program
  */
 

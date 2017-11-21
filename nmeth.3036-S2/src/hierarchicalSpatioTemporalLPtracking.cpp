@@ -1,12 +1,7 @@
 /*
- * Copyright (C) 2011-2013 by  Fernando Amat
  * See license.txt for full license and copyright notice.
  *
- * Authors: Fernando Amat 
  *  hierarchicalSpatioTemporalLPtracking.cpp
- *
- *  Created on: April 21st, 2013
- *      Author: Fernando Amat
  *
  * \brief routines to implement techniques to track cells using hierarhiccal segmentations + LP tracking
  *        

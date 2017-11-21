@@ -1,10 +1,6 @@
 /*
  * GaussianMixtureModel_redux.cpp
  *
- *  Created on: May 12, 2011
- *      Author: amatf
- *
- *
  *      A small subset of teh original class just to read and write xml files
  */
 

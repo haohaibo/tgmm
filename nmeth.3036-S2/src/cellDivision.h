@@ -1,15 +1,6 @@
 /*
- * Copyright (C) 2011-2013 by  Fernando Amat
- * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *  cellDivision.h
- *
- *  Created on: January 21st, 2012
- *      Author: Fernando Amat
  *
  * \brief Contains routines dealing with cell division for lineage hypertree
- *        
  *
  */
 #ifndef __CELL_DVISION_ROUTINES_H__

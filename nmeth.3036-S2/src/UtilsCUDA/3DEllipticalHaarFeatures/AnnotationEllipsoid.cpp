@@ -1,8 +1,6 @@
 /*
  * Ellipsoid.cpp
  *
- *  Created on: Feb 15, 2011
- *      Author: amatf
  */
 
 #include "AnnotationEllipsoid.h"

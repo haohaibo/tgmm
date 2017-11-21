@@ -1,8 +1,5 @@
 /*
  * testKnnResults.h
- *
- *  Created on: Jul 18, 2011
- *      Author: amatf
  */
 
 #ifndef TESTKNNRESULTS_H_

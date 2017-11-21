@@ -1,15 +1,5 @@
 /*
- * Copyright (C) 2011-2012 by  Fernando Amat
- * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *  graph.h
- *
- *  Created on: January 17th, 2013
- *      Author: Fernando Amat
- *
  * \brief Graph data structure based on "The algorithm design book" by Steven S. Skiena
- *
  */
 
 

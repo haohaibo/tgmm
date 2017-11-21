@@ -1,13 +1,6 @@
 /*
- * Copyright (C) 2011-2012 by  Fernando Amat
- * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
  *
  * mainTest.cpp
- *
- *  Created on: September 17th, 2012
- *      Author: Fernando Amat
  *
  * \brief Generates a hierachical segmentation of a 3D stack and saves teh result in binary format
  *

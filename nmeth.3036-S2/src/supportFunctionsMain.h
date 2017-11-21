@@ -1,15 +1,6 @@
 /*
- * Copyright (C) 2011-2013 by  Fernando Amat
- * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *  supportFunctionsMain.h
- *
- *  Created on: January 21st, 2012
- *      Author: Fernando Amat
  *
  * \brief Contains different routines that are called form the main.cpp part of theprogram to not make the code so cluttr
- *        
  *
  */
 #ifndef __SUPPORT_FUNCTIONS_MAIN_H__

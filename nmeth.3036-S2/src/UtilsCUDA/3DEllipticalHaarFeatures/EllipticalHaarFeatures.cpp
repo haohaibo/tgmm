@@ -1,13 +1,6 @@
 /*
 *  EllipticalHaarFeatures.cpp
 *
-*  Created on: August 3rd, 2012
-*      Author: Fernando Amat
-*
-
-*     Copyright (C) 2012 by  Fernando Amat
-*     See license.txt for full license and copyright notice.
-*     
 *     \brief Implements the functions in EllipticalHaarFeatures.h that are not CUDA related
 *
 */

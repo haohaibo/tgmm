@@ -1,12 +1,4 @@
 /*
- * Copyright (C) 2011-2013 by  Fernando Amat
- * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *  cellDivision.cpp
- *
- *  Created on: January 21st, 2012
- *      Author: Fernando Amat
  *
  * \brief Contains routines dealing with cell division for lineage hypertree
  *        

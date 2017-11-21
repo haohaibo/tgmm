@@ -1,12 +1,5 @@
 /*
- * Copyright (C) 2011-2012 by  Fernando Amat
  * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *  sparseHungarianAlgorithm.h
- *
- *  Created on: September 28th, 2012
- *      Author: Fernando Amat
  *
  * \brief Solves bipartite matching assignment using Hungarian algorithm. We want to MINIMIZE the sume of teh weights in the assignment. Check notebook September 28th 2012 for more details.
  *        It is dessigned for sparse graphs to be efficient in memory

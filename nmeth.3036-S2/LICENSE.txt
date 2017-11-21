@@ -1,13 +1,10 @@
 COPYRIGHT
      
-     This code was developed by Fernando Amat from January 2011 to January 2014 while
-   at the Janelia Farm Research Campus of the Howard Hughes Medical Institute. It is
-   released under the following copyright notice that applies to all files:
+     This code was developed by Haibo Hao from January 2016 to January 2017 
 
 /*****************************************************************************************\
 *                                                                                         *
-*  Copyright (c) January, 2011 Dr. Fernando Amat and Howard Hughes Medical Institute      *
-*  ("HHMI")                                                                               *
+*  Copyright (c) January, 2016 Haibo Hao
 *                                                                                         *
 *  This software is provided and licensed on the following terms. By downloading,         *
 *  using and/or copying the software, you agree that you have read, understood, and       *
@@ -26,22 +23,6 @@ COPYRIGHT
 *     4. Anyone incorporating the software or any of its components into a commercial	  * 
 *	   product must notify the authors of this use.					  *
 *                                                                                         *
-*  For use of this software and documentation for purposes other than those listed above, *
-*  contact Dr. Fernando Amat at:                                                          *
-*                                                                                         *
-*    Janelia Farm Research Campus                                                         *
-*    19700 Helix Drive                                                                    *
-*    Ashburn, VA  20147-2408                                                              *
-*    											  *
-*    Email: amatf...@AT@...janelia.hhmi.org    (substitute ...@AT@... by @)               *
-*                                                                                         *
-*  For any issues regarding HHMI or use of its name, contact:                             *
-*                                                                                         *
-*    Howard Hughes Medical Institute                                                      *
-*    4000 Jones Bridge Road                                                               *
-*    Chevy Chase, MD 20815-6789                                                           *
-*    (301) 215-8500                                                                       *
-*    Email: webmaster...@AT@...hhmi.org                                                   *
 *                                                                                         *
 *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY    *
 *  EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES   *

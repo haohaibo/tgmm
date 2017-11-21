@@ -1,8 +1,6 @@
 /*
  * GaussianMixtureModel.cpp
  *
- *  Created on: May 12, 2011
- *      Author: amatf
  */
 
 #include "GaussianMixtureModel_Redux.h"

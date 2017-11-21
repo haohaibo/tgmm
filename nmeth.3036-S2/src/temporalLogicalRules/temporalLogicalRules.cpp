@@ -1,13 +1,5 @@
 /*
- * Copyright (C) 2011-2012 by  Fernando Amat
  * See license.txt for full license and copyright notice.
- *
- * Authors: Fernando Amat 
- *
- * temporalLogicalRules.cpp
- *
- *  Created on: August 17th, 2012
- *      Author: Fernando Amat
  *
  * \brief Implements methods to inforce temporal logical rules in a cell lineage
  *

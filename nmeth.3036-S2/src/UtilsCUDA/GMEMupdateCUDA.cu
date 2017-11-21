@@ -1,8 +1,6 @@
 /*
  * GMEMupdateCUDA.cu
  *
- *  Created on: Jul 15, 2011
- *      Author: amatf
  */
 
 //#define USE_CUDA_PRINTF

@@ -1,8 +1,6 @@
 /*
  * variationalInference.cpp
  *
- *  Created on: May 12, 2011
- *      Author: amatf
  */
 
 #include "variationalInference.h"

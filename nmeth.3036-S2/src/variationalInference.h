@@ -1,9 +1,4 @@
 /*
- * variationalInference.h
- *
- *  Created on: May 12, 2011
- *      Author: amatf
- *
  *      @brief Contains all the routines to perform varuational inference in one image
  */
 
@@ -37,7 +32,7 @@ void updateGaussianParametersWithParticles(mylib::Array *img, vector<GaussianMix
 double calculateLogLikelihood(mylib::Array *img, vector<GaussianMixtureModel*> &vecGM, responsibilities &r);
 double calculateLogLikelihoodWithParticles(mylib::Array *img, vector<GaussianMixtureModel*> &vecGM, responsibilities &r);
 //model selection penalty based on
-//[1] M. A. T. Figueiredo and A. K. Jain, ÒUnsupervised Learning of Finite Mixture Models,Ó IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 24, p. 381Ð396, Mar. 2002.
+//[1] M. A. T. Figueiredo and A. K. Jain, ?Unsupervised Learning of Finite Mixture Models,? IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 24, p. 381?396, Mar. 2002.
 double calculateModelSelectionPenalty(mylib::Array *img, vector<GaussianMixtureModel*> &vecGM, responsibilities &r,double numSamples);
 
 GaussianMixtureModel* splitGaussian(vector<GaussianMixtureModel*> &vecGM, responsibilities &r,int pos);
@@ -45,7 +40,7 @@ void deleteGaussian(vector<GaussianMixtureModel*> &vecGM, responsibilities &r,in
 void unfixedAllMixtures(vector<GaussianMixtureModel*> &vecGM);
 
 
-//based on [1] N. Ueda, R. Nakano, Z. Ghahramani, and G. E. Hinton, ÒSMEM Algorithm for Mixture Models,Ó Neural Computation, vol. 12, p. 2109Ð2128, Sep. 2000.
+//based on [1] N. Ueda, R. Nakano, Z. Ghahramani, and G. E. Hinton, ?SMEM Algorithm for Mixture Models,? Neural Computation, vol. 12, p. 2109?2128, Sep. 2000.
 //returns a measure to estimate candidates to split. The higher the Kullback divergence value the more likely to split
 void calculateLocalKullbackDiversity(mylib::Array *img, vector<GaussianMixtureModel*> &vecGM, const responsibilities &r);
 //extension to pairs within the mixture

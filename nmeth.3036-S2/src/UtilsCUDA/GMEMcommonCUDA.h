@@ -1,8 +1,6 @@
 /*
  * GMEMcommonCUDA.h
  *
- *  Created on: Jul 21, 2011
- *      Author: amatf
  */
 
 #ifndef GMEMCOMMONCUDA_H_
