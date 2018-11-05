@@ -26,121 +26,127 @@
 #define EIGEN_SPARSE_CWISE_UNARY_OP_H
 
 // template<typename UnaryOp, typename MatrixType>
-// struct internal::traits<SparseCwiseUnaryOp<UnaryOp, MatrixType> > : internal::traits<MatrixType>
+// struct internal::traits<SparseCwiseUnaryOp<UnaryOp, MatrixType> > :
+// internal::traits<MatrixType>
 // {
 //   typedef typename internal::result_of<
 //                      UnaryOp(typename MatrixType::Scalar)
 //                    >::type Scalar;
 //   typedef typename MatrixType::Nested MatrixTypeNested;
-//   typedef typename internal::remove_reference<MatrixTypeNested>::type _MatrixTypeNested;
+//   typedef typename internal::remove_reference<MatrixTypeNested>::type
+//   _MatrixTypeNested;
 //   enum {
-//     CoeffReadCost = _MatrixTypeNested::CoeffReadCost + internal::functor_traits<UnaryOp>::Cost
+//     CoeffReadCost = _MatrixTypeNested::CoeffReadCost +
+//     internal::functor_traits<UnaryOp>::Cost
 //   };
 // };
 
-template<typename UnaryOp, typename MatrixType>
-class CwiseUnaryOpImpl<UnaryOp,MatrixType,Sparse>
-  : public SparseMatrixBase<CwiseUnaryOp<UnaryOp, MatrixType> >
-{
-  public:
+template <typename UnaryOp, typename MatrixType>
+class CwiseUnaryOpImpl<UnaryOp, MatrixType, Sparse>
+    : public SparseMatrixBase<CwiseUnaryOp<UnaryOp, MatrixType> > {
+ public:
+  class InnerIterator;
+  //     typedef typename internal::remove_reference<LhsNested>::type
+  //     _LhsNested;
 
-    class InnerIterator;
-//     typedef typename internal::remove_reference<LhsNested>::type _LhsNested;
-
-    typedef CwiseUnaryOp<UnaryOp, MatrixType> Derived;
-    EIGEN_SPARSE_PUBLIC_INTERFACE(Derived)
+  typedef CwiseUnaryOp<UnaryOp, MatrixType> Derived;
+  EIGEN_SPARSE_PUBLIC_INTERFACE(Derived)
 };
 
-template<typename UnaryOp, typename MatrixType>
-class CwiseUnaryOpImpl<UnaryOp,MatrixType,Sparse>::InnerIterator
-{
-    typedef typename CwiseUnaryOpImpl::Scalar Scalar;
-    typedef typename internal::traits<Derived>::_XprTypeNested _MatrixTypeNested;
-    typedef typename _MatrixTypeNested::InnerIterator MatrixTypeIterator;
-    typedef typename MatrixType::Index Index;
-  public:
+template <typename UnaryOp, typename MatrixType>
+class CwiseUnaryOpImpl<UnaryOp, MatrixType, Sparse>::InnerIterator {
+  typedef typename CwiseUnaryOpImpl::Scalar Scalar;
+  typedef typename internal::traits<Derived>::_XprTypeNested _MatrixTypeNested;
+  typedef typename _MatrixTypeNested::InnerIterator MatrixTypeIterator;
+  typedef typename MatrixType::Index Index;
 
-    EIGEN_STRONG_INLINE InnerIterator(const CwiseUnaryOpImpl& unaryOp, Index outer)
-      : m_iter(unaryOp.derived().nestedExpression(),outer), m_functor(unaryOp.derived().functor())
-    {}
+ public:
+  EIGEN_STRONG_INLINE InnerIterator(const CwiseUnaryOpImpl& unaryOp,
+                                    Index outer)
+      : m_iter(unaryOp.derived().nestedExpression(), outer),
+        m_functor(unaryOp.derived().functor()) {}
 
-    EIGEN_STRONG_INLINE InnerIterator& operator++()
-    { ++m_iter; return *this; }
+  EIGEN_STRONG_INLINE InnerIterator& operator++() {
+    ++m_iter;
+    return *this;
+  }
 
-    EIGEN_STRONG_INLINE Scalar value() const { return m_functor(m_iter.value()); }
+  EIGEN_STRONG_INLINE Scalar value() const { return m_functor(m_iter.value()); }
 
-    EIGEN_STRONG_INLINE Index index() const { return m_iter.index(); }
-    EIGEN_STRONG_INLINE Index row() const { return m_iter.row(); }
-    EIGEN_STRONG_INLINE Index col() const { return m_iter.col(); }
+  EIGEN_STRONG_INLINE Index index() const { return m_iter.index(); }
+  EIGEN_STRONG_INLINE Index row() const { return m_iter.row(); }
+  EIGEN_STRONG_INLINE Index col() const { return m_iter.col(); }
 
-    EIGEN_STRONG_INLINE operator bool() const { return m_iter; }
+  EIGEN_STRONG_INLINE operator bool() const { return m_iter; }
 
-  protected:
-    MatrixTypeIterator m_iter;
-    const UnaryOp m_functor;
+ protected:
+  MatrixTypeIterator m_iter;
+  const UnaryOp m_functor;
 };
 
-template<typename ViewOp, typename MatrixType>
-class CwiseUnaryViewImpl<ViewOp,MatrixType,Sparse>
-  : public SparseMatrixBase<CwiseUnaryView<ViewOp, MatrixType> >
-{
-  public:
+template <typename ViewOp, typename MatrixType>
+class CwiseUnaryViewImpl<ViewOp, MatrixType, Sparse>
+    : public SparseMatrixBase<CwiseUnaryView<ViewOp, MatrixType> > {
+ public:
+  class InnerIterator;
+  //     typedef typename internal::remove_reference<LhsNested>::type
+  //     _LhsNested;
 
-    class InnerIterator;
-//     typedef typename internal::remove_reference<LhsNested>::type _LhsNested;
-
-    typedef CwiseUnaryView<ViewOp, MatrixType> Derived;
-    EIGEN_SPARSE_PUBLIC_INTERFACE(Derived)
+  typedef CwiseUnaryView<ViewOp, MatrixType> Derived;
+  EIGEN_SPARSE_PUBLIC_INTERFACE(Derived)
 };
 
-template<typename ViewOp, typename MatrixType>
-class CwiseUnaryViewImpl<ViewOp,MatrixType,Sparse>::InnerIterator
-{
-    typedef typename CwiseUnaryViewImpl::Scalar Scalar;
-    typedef typename internal::traits<Derived>::_MatrixTypeNested _MatrixTypeNested;
-    typedef typename _MatrixTypeNested::InnerIterator MatrixTypeIterator;
-    typedef typename MatrixType::Index Index;
-  public:
+template <typename ViewOp, typename MatrixType>
+class CwiseUnaryViewImpl<ViewOp, MatrixType, Sparse>::InnerIterator {
+  typedef typename CwiseUnaryViewImpl::Scalar Scalar;
+  typedef
+      typename internal::traits<Derived>::_MatrixTypeNested _MatrixTypeNested;
+  typedef typename _MatrixTypeNested::InnerIterator MatrixTypeIterator;
+  typedef typename MatrixType::Index Index;
 
-    EIGEN_STRONG_INLINE InnerIterator(const CwiseUnaryViewImpl& unaryView, Index outer)
-      : m_iter(unaryView.derived().nestedExpression(),outer), m_functor(unaryView.derived().functor())
-    {}
+ public:
+  EIGEN_STRONG_INLINE InnerIterator(const CwiseUnaryViewImpl& unaryView,
+                                    Index outer)
+      : m_iter(unaryView.derived().nestedExpression(), outer),
+        m_functor(unaryView.derived().functor()) {}
 
-    EIGEN_STRONG_INLINE InnerIterator& operator++()
-    { ++m_iter; return *this; }
+  EIGEN_STRONG_INLINE InnerIterator& operator++() {
+    ++m_iter;
+    return *this;
+  }
 
-    EIGEN_STRONG_INLINE Scalar value() const { return m_functor(m_iter.value()); }
-    EIGEN_STRONG_INLINE Scalar& valueRef() { return m_functor(m_iter.valueRef()); }
+  EIGEN_STRONG_INLINE Scalar value() const { return m_functor(m_iter.value()); }
+  EIGEN_STRONG_INLINE Scalar& valueRef() {
+    return m_functor(m_iter.valueRef());
+  }
 
-    EIGEN_STRONG_INLINE Index index() const { return m_iter.index(); }
-    EIGEN_STRONG_INLINE Index row() const { return m_iter.row(); }
-    EIGEN_STRONG_INLINE Index col() const { return m_iter.col(); }
+  EIGEN_STRONG_INLINE Index index() const { return m_iter.index(); }
+  EIGEN_STRONG_INLINE Index row() const { return m_iter.row(); }
+  EIGEN_STRONG_INLINE Index col() const { return m_iter.col(); }
 
-    EIGEN_STRONG_INLINE operator bool() const { return m_iter; }
+  EIGEN_STRONG_INLINE operator bool() const { return m_iter; }
 
-  protected:
-    MatrixTypeIterator m_iter;
-    const ViewOp m_functor;
+ protected:
+  MatrixTypeIterator m_iter;
+  const ViewOp m_functor;
 };
 
-template<typename Derived>
-EIGEN_STRONG_INLINE Derived&
-SparseMatrixBase<Derived>::operator*=(const Scalar& other)
-{
-  for (Index j=0; j<outerSize(); ++j)
-    for (typename Derived::InnerIterator i(derived(),j); i; ++i)
+template <typename Derived>
+EIGEN_STRONG_INLINE Derived& SparseMatrixBase<Derived>::operator*=(
+    const Scalar& other) {
+  for (Index j = 0; j < outerSize(); ++j)
+    for (typename Derived::InnerIterator i(derived(), j); i; ++i)
       i.valueRef() *= other;
   return derived();
 }
 
-template<typename Derived>
-EIGEN_STRONG_INLINE Derived&
-SparseMatrixBase<Derived>::operator/=(const Scalar& other)
-{
-  for (Index j=0; j<outerSize(); ++j)
-    for (typename Derived::InnerIterator i(derived(),j); i; ++i)
+template <typename Derived>
+EIGEN_STRONG_INLINE Derived& SparseMatrixBase<Derived>::operator/=(
+    const Scalar& other) {
+  for (Index j = 0; j < outerSize(); ++j)
+    for (typename Derived::InnerIterator i(derived(), j); i; ++i)
       i.valueRef() /= other;
   return derived();
 }
 
-#endif // EIGEN_SPARSE_CWISE_UNARY_OP_H
+#endif  // EIGEN_SPARSE_CWISE_UNARY_OP_H

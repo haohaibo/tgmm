@@ -24,14 +24,17 @@
 #include "matrix.h"
 
 class Munkres {
-public:
+ public:
   void solve(Matrix<double> &m);
-private:
+
+ private:
   static const int NORMAL = 0;
   static const int STAR = 1;
-  static const int PRIME = 2; 
-  inline bool find_uncovered_in_matrix(double, unsigned int&, unsigned int&) const;
-  inline bool pair_in_list(const std::pair<int,int> &, const std::list<std::pair<int,int> > &);
+  static const int PRIME = 2;
+  inline bool find_uncovered_in_matrix(double, unsigned int &,
+                                       unsigned int &) const;
+  inline bool pair_in_list(const std::pair<int, int> &,
+                           const std::list<std::pair<int, int> > &);
   int step1(void);
   int step2(void);
   int step3(void);
@@ -46,7 +49,6 @@ private:
   unsigned int saverow, savecol;
 };
 
-
-int mainTestMunkres(int argc, const char **argv) ;
+int mainTestMunkres(int argc, const char **argv);
 
 #endif /* !defined(_MUNKRES_H_) */

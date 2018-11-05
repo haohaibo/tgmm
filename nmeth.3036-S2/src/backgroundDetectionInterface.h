@@ -1,6 +1,7 @@
 /*
  *
- * \brief Contains different routines that are called form the main.cpp part of theprogram to not make the code so cluttr
+ * \brief Contains different routines that are called form the main.cpp part of
+ * theprogram to not make the code so cluttr
  *
  */
 #ifndef __BACKGROUND_DETECTION_INTERFACE_H__
@@ -9,30 +10,42 @@
 #include <string>
 #include "lineageHyperTree.h"
 
-
 //---------------------------------------------------------------------------------
-//-----------------------------implementing background detection------------------
+//-----------------------------implementing background
+// detection------------------
 /*
-\brief uses a boosting classifier to determine incoherent tracks that might belong to background. It stores the results at lht.nucleiList[TM][i].probBackground
+\brief uses a boosting classifier to determine incoherent tracks that might
+belong to background. It stores the results at
+lht.nucleiList[TM][i].probBackground
 */
-int setProbBackgroundTracksAtTM(lineageHyperTree &lht, int TM, int temporalWindowSizeForBackground, string &classifierFilename, int devCUDA);
+int setProbBackgroundTracksAtTM(lineageHyperTree &lht, int TM,
+                                int temporalWindowSizeForBackground,
+                                string &classifierFilename, int devCUDA);
 
 //--------------------------------------------------------------------------------
 
-
 /*
-\brief uses background detector score to remove background elements. If a single branch has an element higher than thrBackground -> the whole branch is remove->we need a complete forward-backward pass
+\brief uses background detector score to remove background elements. If a single
+branch has an element higher than thrBackground -> the whole branch is
+remove->we need a complete forward-backward pass
 */
 
-int applyProbBackgroundMinMaxRulePerBranch(const string &basenameTGMMresult, int iniFrame, int endFrame, const string& outputFolder, float thrBackground);
+int applyProbBackgroundMinMaxRulePerBranch(const string &basenameTGMMresult,
+                                           int iniFrame, int endFrame,
+                                           const string &outputFolder,
+                                           float thrBackground);
 
+int applyProbBackgroundAvgRulePerBranch(const string &basenameTGMMresult,
+                                        int iniFrame, int endFrame,
+                                        const string &outputFolder,
+                                        float thrBackground);
 
-int applyProbBackgroundAvgRulePerBranch(const string &basenameTGMMresult, int iniFrame, int endFrame, const string& outputFolder, float thrBackground);
-
-int applyProbBackgroundHysteresisRulePerBranch(const string &basenameTGMMresult, int iniFrame, int endFrame, const string& outputFolder, float thrLow, float thrHigh);//two thresholds for hysteresis
+int applyProbBackgroundHysteresisRulePerBranch(
+    const string &basenameTGMMresult, int iniFrame, int endFrame,
+    const string &outputFolder, float thrLow,
+    float thrHigh);  // two thresholds for hysteresis
 
 //=============================================================================
 //--------------------------debugging------------------------------
 
-
-#endif //__BACKGROUND_DETECTION_INTERFACE_H__
+#endif  //__BACKGROUND_DETECTION_INTERFACE_H__

@@ -7,6 +7,6 @@
 
 #include "MultinormalCDF.h"
 
-const double Multinormaldev::Pi=3.14159265358979323846;
+const double Multinormaldev::Pi = 3.14159265358979323846;
 
-const double Multinormaldev::Pi2=6.28318530717958623200;
+const double Multinormaldev::Pi2 = 6.28318530717958623200;

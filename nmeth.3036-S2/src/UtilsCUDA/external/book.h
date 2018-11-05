@@ -13,44 +13,41 @@
  *
  */
 
-
 #ifndef __BOOK_H__
 #define __BOOK_H__
 #include <stdio.h>
 
-static void HandleError( cudaError_t err,
-                         const char *file,
-                         int line ) {
-    if (err != cudaSuccess) {
-        printf( "%s in %s at line %d\n", cudaGetErrorString( err ),
-                file, line );
-        exit( EXIT_FAILURE );
-    }
+static void HandleError(cudaError_t err, const char *file, int line) {
+  if (err != cudaSuccess) {
+    printf("%s in %s at line %d\n", cudaGetErrorString(err), file, line);
+    exit(EXIT_FAILURE);
+  }
 }
 
+#define HANDLE_ERROR_KERNEL \
+  HandleError(cudaPeekAtLastError(), __FILE__, __LINE__)
 
+#define HANDLE_ERROR(err) (HandleError(err, __FILE__, __LINE__))
 
-#define HANDLE_ERROR_KERNEL HandleError(cudaPeekAtLastError(),__FILE__, __LINE__ )
+#define HANDLE_NULL(a)                                                     \
+  {                                                                        \
+    if (a == NULL) {                                                       \
+      printf("Host memory failed in %s at line %d\n", __FILE__, __LINE__); \
+      exit(EXIT_FAILURE);                                                  \
+    }                                                                      \
+  }
 
-#define HANDLE_ERROR( err ) (HandleError( err, __FILE__, __LINE__ ))
+static void HandleError(cudaError_t err, const char *file, int line,
+                        const char *msg) {
+  if (err != cudaSuccess) {
+    printf("%s in %s at line %d\n", cudaGetErrorString(err), file, line);
+    printf("User msg %s\n", msg);
 
-#define HANDLE_NULL( a ) {if (a == NULL) { \
-                            printf( "Host memory failed in %s at line %d\n", \
-                                    __FILE__, __LINE__ ); \
-                            exit( EXIT_FAILURE );}}
-
-static void HandleError( cudaError_t err,
-                         const char *file,
-                         int line, const char *msg) {
-    if (err != cudaSuccess) 
-	{
-        printf( "%s in %s at line %d\n", cudaGetErrorString( err ), file, line );
-		printf( "User msg %s\n", msg);
-
-        exit( EXIT_FAILURE );
-    }
+    exit(EXIT_FAILURE);
+  }
 }
 
-#define HANDLE_ERROR_KERNEL_MSG( msg ) ( HandleError(cudaPeekAtLastError(),__FILE__, __LINE__ , msg) )
+#define HANDLE_ERROR_KERNEL_MSG(msg) \
+  (HandleError(cudaPeekAtLastError(), __FILE__, __LINE__, msg))
 
 #endif  // __BOOK_H__

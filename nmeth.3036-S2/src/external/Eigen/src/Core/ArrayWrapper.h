@@ -37,90 +37,82 @@
   */
 
 namespace internal {
-template<typename ExpressionType>
+template <typename ExpressionType>
 struct traits<ArrayWrapper<ExpressionType> >
-  : public traits<typename remove_all<typename ExpressionType::Nested>::type >
-{
+    : public traits<
+          typename remove_all<typename ExpressionType::Nested>::type> {
   typedef ArrayXpr XprKind;
 };
 }
 
-template<typename ExpressionType>
-class ArrayWrapper : public ArrayBase<ArrayWrapper<ExpressionType> >
-{
-  public:
-    typedef ArrayBase<ArrayWrapper> Base;
-    EIGEN_DENSE_PUBLIC_INTERFACE(ArrayWrapper)
-    EIGEN_INHERIT_ASSIGNMENT_OPERATORS(ArrayWrapper)
+template <typename ExpressionType>
+class ArrayWrapper : public ArrayBase<ArrayWrapper<ExpressionType> > {
+ public:
+  typedef ArrayBase<ArrayWrapper> Base;
+  EIGEN_DENSE_PUBLIC_INTERFACE(ArrayWrapper)
+  EIGEN_INHERIT_ASSIGNMENT_OPERATORS(ArrayWrapper)
 
-    typedef typename internal::nested<ExpressionType>::type NestedExpressionType;
+  typedef typename internal::nested<ExpressionType>::type NestedExpressionType;
 
-    inline ArrayWrapper(const ExpressionType& matrix) : m_expression(matrix) {}
+  inline ArrayWrapper(const ExpressionType& matrix) : m_expression(matrix) {}
 
-    inline Index rows() const { return m_expression.rows(); }
-    inline Index cols() const { return m_expression.cols(); }
-    inline Index outerStride() const { return m_expression.outerStride(); }
-    inline Index innerStride() const { return m_expression.innerStride(); }
+  inline Index rows() const { return m_expression.rows(); }
+  inline Index cols() const { return m_expression.cols(); }
+  inline Index outerStride() const { return m_expression.outerStride(); }
+  inline Index innerStride() const { return m_expression.innerStride(); }
 
-    inline const CoeffReturnType coeff(Index row, Index col) const
-    {
-      return m_expression.coeff(row, col);
-    }
+  inline const CoeffReturnType coeff(Index row, Index col) const {
+    return m_expression.coeff(row, col);
+  }
 
-    inline Scalar& coeffRef(Index row, Index col)
-    {
-      return m_expression.const_cast_derived().coeffRef(row, col);
-    }
+  inline Scalar& coeffRef(Index row, Index col) {
+    return m_expression.const_cast_derived().coeffRef(row, col);
+  }
 
-    inline const Scalar& coeffRef(Index row, Index col) const
-    {
-      return m_expression.const_cast_derived().coeffRef(row, col);
-    }
+  inline const Scalar& coeffRef(Index row, Index col) const {
+    return m_expression.const_cast_derived().coeffRef(row, col);
+  }
 
-    inline const CoeffReturnType coeff(Index index) const
-    {
-      return m_expression.coeff(index);
-    }
+  inline const CoeffReturnType coeff(Index index) const {
+    return m_expression.coeff(index);
+  }
 
-    inline Scalar& coeffRef(Index index)
-    {
-      return m_expression.const_cast_derived().coeffRef(index);
-    }
+  inline Scalar& coeffRef(Index index) {
+    return m_expression.const_cast_derived().coeffRef(index);
+  }
 
-    inline const Scalar& coeffRef(Index index) const
-    {
-      return m_expression.const_cast_derived().coeffRef(index);
-    }
+  inline const Scalar& coeffRef(Index index) const {
+    return m_expression.const_cast_derived().coeffRef(index);
+  }
 
-    template<int LoadMode>
-    inline const PacketScalar packet(Index row, Index col) const
-    {
-      return m_expression.template packet<LoadMode>(row, col);
-    }
+  template <int LoadMode>
+  inline const PacketScalar packet(Index row, Index col) const {
+    return m_expression.template packet<LoadMode>(row, col);
+  }
 
-    template<int LoadMode>
-    inline void writePacket(Index row, Index col, const PacketScalar& x)
-    {
-      m_expression.const_cast_derived().template writePacket<LoadMode>(row, col, x);
-    }
+  template <int LoadMode>
+  inline void writePacket(Index row, Index col, const PacketScalar& x) {
+    m_expression.const_cast_derived().template writePacket<LoadMode>(row, col,
+                                                                     x);
+  }
 
-    template<int LoadMode>
-    inline const PacketScalar packet(Index index) const
-    {
-      return m_expression.template packet<LoadMode>(index);
-    }
+  template <int LoadMode>
+  inline const PacketScalar packet(Index index) const {
+    return m_expression.template packet<LoadMode>(index);
+  }
 
-    template<int LoadMode>
-    inline void writePacket(Index index, const PacketScalar& x)
-    {
-      m_expression.const_cast_derived().template writePacket<LoadMode>(index, x);
-    }
+  template <int LoadMode>
+  inline void writePacket(Index index, const PacketScalar& x) {
+    m_expression.const_cast_derived().template writePacket<LoadMode>(index, x);
+  }
 
-    template<typename Dest>
-    inline void evalTo(Dest& dst) const { dst = m_expression; }
+  template <typename Dest>
+  inline void evalTo(Dest& dst) const {
+    dst = m_expression;
+  }
 
-  protected:
-    const NestedExpressionType m_expression;
+ protected:
+  const NestedExpressionType m_expression;
 };
 
 /** \class MatrixWrapper
@@ -135,87 +127,77 @@ class ArrayWrapper : public ArrayBase<ArrayWrapper<ExpressionType> >
   */
 
 namespace internal {
-template<typename ExpressionType>
+template <typename ExpressionType>
 struct traits<MatrixWrapper<ExpressionType> >
- : public traits<typename remove_all<typename ExpressionType::Nested>::type >
-{
+    : public traits<
+          typename remove_all<typename ExpressionType::Nested>::type> {
   typedef MatrixXpr XprKind;
 };
 }
 
-template<typename ExpressionType>
-class MatrixWrapper : public MatrixBase<MatrixWrapper<ExpressionType> >
-{
-  public:
-    typedef MatrixBase<MatrixWrapper<ExpressionType> > Base;
-    EIGEN_DENSE_PUBLIC_INTERFACE(MatrixWrapper)
-    EIGEN_INHERIT_ASSIGNMENT_OPERATORS(MatrixWrapper)
+template <typename ExpressionType>
+class MatrixWrapper : public MatrixBase<MatrixWrapper<ExpressionType> > {
+ public:
+  typedef MatrixBase<MatrixWrapper<ExpressionType> > Base;
+  EIGEN_DENSE_PUBLIC_INTERFACE(MatrixWrapper)
+  EIGEN_INHERIT_ASSIGNMENT_OPERATORS(MatrixWrapper)
 
-    typedef typename internal::nested<ExpressionType>::type NestedExpressionType;
+  typedef typename internal::nested<ExpressionType>::type NestedExpressionType;
 
-    inline MatrixWrapper(const ExpressionType& matrix) : m_expression(matrix) {}
+  inline MatrixWrapper(const ExpressionType& matrix) : m_expression(matrix) {}
 
-    inline Index rows() const { return m_expression.rows(); }
-    inline Index cols() const { return m_expression.cols(); }
-    inline Index outerStride() const { return m_expression.outerStride(); }
-    inline Index innerStride() const { return m_expression.innerStride(); }
+  inline Index rows() const { return m_expression.rows(); }
+  inline Index cols() const { return m_expression.cols(); }
+  inline Index outerStride() const { return m_expression.outerStride(); }
+  inline Index innerStride() const { return m_expression.innerStride(); }
 
-    inline const CoeffReturnType coeff(Index row, Index col) const
-    {
-      return m_expression.coeff(row, col);
-    }
+  inline const CoeffReturnType coeff(Index row, Index col) const {
+    return m_expression.coeff(row, col);
+  }
 
-    inline Scalar& coeffRef(Index row, Index col)
-    {
-      return m_expression.const_cast_derived().coeffRef(row, col);
-    }
+  inline Scalar& coeffRef(Index row, Index col) {
+    return m_expression.const_cast_derived().coeffRef(row, col);
+  }
 
-    inline const Scalar& coeffRef(Index row, Index col) const
-    {
-      return m_expression.derived().coeffRef(row, col);
-    }
+  inline const Scalar& coeffRef(Index row, Index col) const {
+    return m_expression.derived().coeffRef(row, col);
+  }
 
-    inline const CoeffReturnType coeff(Index index) const
-    {
-      return m_expression.coeff(index);
-    }
+  inline const CoeffReturnType coeff(Index index) const {
+    return m_expression.coeff(index);
+  }
 
-    inline Scalar& coeffRef(Index index)
-    {
-      return m_expression.const_cast_derived().coeffRef(index);
-    }
+  inline Scalar& coeffRef(Index index) {
+    return m_expression.const_cast_derived().coeffRef(index);
+  }
 
-    inline const Scalar& coeffRef(Index index) const
-    {
-      return m_expression.const_cast_derived().coeffRef(index);
-    }
+  inline const Scalar& coeffRef(Index index) const {
+    return m_expression.const_cast_derived().coeffRef(index);
+  }
 
-    template<int LoadMode>
-    inline const PacketScalar packet(Index row, Index col) const
-    {
-      return m_expression.template packet<LoadMode>(row, col);
-    }
+  template <int LoadMode>
+  inline const PacketScalar packet(Index row, Index col) const {
+    return m_expression.template packet<LoadMode>(row, col);
+  }
 
-    template<int LoadMode>
-    inline void writePacket(Index row, Index col, const PacketScalar& x)
-    {
-      m_expression.const_cast_derived().template writePacket<LoadMode>(row, col, x);
-    }
+  template <int LoadMode>
+  inline void writePacket(Index row, Index col, const PacketScalar& x) {
+    m_expression.const_cast_derived().template writePacket<LoadMode>(row, col,
+                                                                     x);
+  }
 
-    template<int LoadMode>
-    inline const PacketScalar packet(Index index) const
-    {
-      return m_expression.template packet<LoadMode>(index);
-    }
+  template <int LoadMode>
+  inline const PacketScalar packet(Index index) const {
+    return m_expression.template packet<LoadMode>(index);
+  }
 
-    template<int LoadMode>
-    inline void writePacket(Index index, const PacketScalar& x)
-    {
-      m_expression.const_cast_derived().template writePacket<LoadMode>(index, x);
-    }
+  template <int LoadMode>
+  inline void writePacket(Index index, const PacketScalar& x) {
+    m_expression.const_cast_derived().template writePacket<LoadMode>(index, x);
+  }
 
-  protected:
-    const NestedExpressionType m_expression;
+ protected:
+  const NestedExpressionType m_expression;
 };
 
-#endif // EIGEN_ARRAYWRAPPER_H
+#endif  // EIGEN_ARRAYWRAPPER_H

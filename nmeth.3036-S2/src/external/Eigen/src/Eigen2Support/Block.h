@@ -28,7 +28,8 @@
 
 /** \returns a dynamic-size expression of a corner of *this.
   *
-  * \param type the type of corner. Can be \a Eigen::TopLeft, \a Eigen::TopRight,
+  * \param type the type of corner. Can be \a Eigen::TopLeft, \a
+ * Eigen::TopRight,
   * \a Eigen::BottomLeft, \a Eigen::BottomRight.
   * \param cRows the number of rows in the corner
   * \param cCols the number of columns in the corner
@@ -42,12 +43,10 @@
   *
   * \sa class Block, block(Index,Index,Index,Index)
   */
-template<typename Derived>
-inline Block<Derived> DenseBase<Derived>
-  ::corner(CornerType type, Index cRows, Index cCols)
-{
-  switch(type)
-  {
+template <typename Derived>
+inline Block<Derived> DenseBase<Derived>::corner(CornerType type, Index cRows,
+                                                 Index cCols) {
+  switch (type) {
     default:
       eigen_assert(false && "Bad corner type.");
     case TopLeft:
@@ -57,17 +56,17 @@ inline Block<Derived> DenseBase<Derived>
     case BottomLeft:
       return Block<Derived>(derived(), rows() - cRows, 0, cRows, cCols);
     case BottomRight:
-      return Block<Derived>(derived(), rows() - cRows, cols() - cCols, cRows, cCols);
+      return Block<Derived>(derived(), rows() - cRows, cols() - cCols, cRows,
+                            cCols);
   }
 }
 
 /** This is the const version of corner(CornerType, Index, Index).*/
-template<typename Derived>
-inline const Block<Derived>
-DenseBase<Derived>::corner(CornerType type, Index cRows, Index cCols) const
-{
-  switch(type)
-  {
+template <typename Derived>
+inline const Block<Derived> DenseBase<Derived>::corner(CornerType type,
+                                                       Index cRows,
+                                                       Index cCols) const {
+  switch (type) {
     default:
       eigen_assert(false && "Bad corner type.");
     case TopLeft:
@@ -77,29 +76,30 @@ DenseBase<Derived>::corner(CornerType type, Index cRows, Index cCols) const
     case BottomLeft:
       return Block<Derived>(derived(), rows() - cRows, 0, cRows, cCols);
     case BottomRight:
-      return Block<Derived>(derived(), rows() - cRows, cols() - cCols, cRows, cCols);
+      return Block<Derived>(derived(), rows() - cRows, cols() - cCols, cRows,
+                            cCols);
   }
 }
 
 /** \returns a fixed-size expression of a corner of *this.
   *
-  * \param type the type of corner. Can be \a Eigen::TopLeft, \a Eigen::TopRight,
+  * \param type the type of corner. Can be \a Eigen::TopLeft, \a
+ * Eigen::TopRight,
   * \a Eigen::BottomLeft, \a Eigen::BottomRight.
   *
-  * The template parameters CRows and CCols arethe number of rows and columns in the corner.
+  * The template parameters CRows and CCols arethe number of rows and columns in
+ * the corner.
   *
   * Example: \include MatrixBase_template_int_int_corner_enum.cpp
   * Output: \verbinclude MatrixBase_template_int_int_corner_enum.out
   *
   * \sa class Block, block(Index,Index,Index,Index)
   */
-template<typename Derived>
-template<int CRows, int CCols>
-inline Block<Derived, CRows, CCols>
-DenseBase<Derived>::corner(CornerType type)
-{
-  switch(type)
-  {
+template <typename Derived>
+template <int CRows, int CCols>
+inline Block<Derived, CRows, CCols> DenseBase<Derived>::corner(
+    CornerType type) {
+  switch (type) {
     default:
       eigen_assert(false && "Bad corner type.");
     case TopLeft:
@@ -109,18 +109,17 @@ DenseBase<Derived>::corner(CornerType type)
     case BottomLeft:
       return Block<Derived, CRows, CCols>(derived(), rows() - CRows, 0);
     case BottomRight:
-      return Block<Derived, CRows, CCols>(derived(), rows() - CRows, cols() - CCols);
+      return Block<Derived, CRows, CCols>(derived(), rows() - CRows,
+                                          cols() - CCols);
   }
 }
 
 /** This is the const version of corner<int, int>(CornerType).*/
-template<typename Derived>
-template<int CRows, int CCols>
-inline const Block<Derived, CRows, CCols>
-DenseBase<Derived>::corner(CornerType type) const
-{
-  switch(type)
-  {
+template <typename Derived>
+template <int CRows, int CCols>
+inline const Block<Derived, CRows, CCols> DenseBase<Derived>::corner(
+    CornerType type) const {
+  switch (type) {
     default:
       eigen_assert(false && "Bad corner type.");
     case TopLeft:
@@ -130,8 +129,9 @@ DenseBase<Derived>::corner(CornerType type) const
     case BottomLeft:
       return Block<Derived, CRows, CCols>(derived(), rows() - CRows, 0);
     case BottomRight:
-      return Block<Derived, CRows, CCols>(derived(), rows() - CRows, cols() - CCols);
+      return Block<Derived, CRows, CCols>(derived(), rows() - CRows,
+                                          cols() - CCols);
   }
 }
 
-#endif // EIGEN_BLOCK2_H
+#endif  // EIGEN_BLOCK2_H

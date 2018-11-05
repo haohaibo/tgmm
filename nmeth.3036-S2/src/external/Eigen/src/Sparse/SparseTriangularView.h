@@ -26,75 +26,77 @@
 #define EIGEN_SPARSE_TRIANGULARVIEW_H
 
 namespace internal {
-  
-template<typename MatrixType, int Mode>
-struct traits<SparseTriangularView<MatrixType,Mode> >
-: public traits<MatrixType>
-{};
 
-} // namespace internal
+template <typename MatrixType, int Mode>
+struct traits<SparseTriangularView<MatrixType, Mode> >
+    : public traits<MatrixType> {};
 
-template<typename MatrixType, int Mode> class SparseTriangularView
-  : public SparseMatrixBase<SparseTriangularView<MatrixType,Mode> >
-{
-    enum { SkipFirst = (Mode==Lower && !(MatrixType::Flags&RowMajorBit))
-                    || (Mode==Upper &&  (MatrixType::Flags&RowMajorBit)) };
-  public:
-    
-    EIGEN_SPARSE_PUBLIC_INTERFACE(SparseTriangularView)
+}  // namespace internal
 
-    class InnerIterator;
+template <typename MatrixType, int Mode>
+class SparseTriangularView
+    : public SparseMatrixBase<SparseTriangularView<MatrixType, Mode> > {
+  enum {
+    SkipFirst = (Mode == Lower && !(MatrixType::Flags & RowMajorBit)) ||
+                (Mode == Upper && (MatrixType::Flags & RowMajorBit))
+  };
 
-    inline Index rows() const { return m_matrix.rows(); }
-    inline Index cols() const { return m_matrix.cols(); }
+ public:
+  EIGEN_SPARSE_PUBLIC_INTERFACE(SparseTriangularView)
 
-    typedef typename internal::conditional<internal::must_nest_by_value<MatrixType>::ret,
-        MatrixType, const MatrixType&>::type MatrixTypeNested;
+  class InnerIterator;
 
-    inline SparseTriangularView(const MatrixType& matrix) : m_matrix(matrix) {}
+  inline Index rows() const { return m_matrix.rows(); }
+  inline Index cols() const { return m_matrix.cols(); }
 
-    /** \internal */
-    inline const MatrixType& nestedExpression() const { return m_matrix; }
+  typedef typename internal::conditional<
+      internal::must_nest_by_value<MatrixType>::ret, MatrixType,
+      const MatrixType&>::type MatrixTypeNested;
 
-    template<typename OtherDerived>
-    typename internal::plain_matrix_type_column_major<OtherDerived>::type
-    solve(const MatrixBase<OtherDerived>& other) const;
+  inline SparseTriangularView(const MatrixType& matrix) : m_matrix(matrix) {}
 
-    template<typename OtherDerived> void solveInPlace(MatrixBase<OtherDerived>& other) const;
-    template<typename OtherDerived> void solveInPlace(SparseMatrixBase<OtherDerived>& other) const;
+  /** \internal */
+  inline const MatrixType& nestedExpression() const { return m_matrix; }
 
-  protected:
-    MatrixTypeNested m_matrix;
+  template <typename OtherDerived>
+  typename internal::plain_matrix_type_column_major<OtherDerived>::type solve(
+      const MatrixBase<OtherDerived>& other) const;
+
+  template <typename OtherDerived>
+  void solveInPlace(MatrixBase<OtherDerived>& other) const;
+  template <typename OtherDerived>
+  void solveInPlace(SparseMatrixBase<OtherDerived>& other) const;
+
+ protected:
+  MatrixTypeNested m_matrix;
 };
 
-template<typename MatrixType, int Mode>
-class SparseTriangularView<MatrixType,Mode>::InnerIterator : public MatrixType::InnerIterator
-{
-    typedef typename MatrixType::InnerIterator Base;
-  public:
+template <typename MatrixType, int Mode>
+class SparseTriangularView<MatrixType, Mode>::InnerIterator
+    : public MatrixType::InnerIterator {
+  typedef typename MatrixType::InnerIterator Base;
 
-    EIGEN_STRONG_INLINE InnerIterator(const SparseTriangularView& view, Index outer)
-      : Base(view.nestedExpression(), outer)
-    {
-      if(SkipFirst)
-        while((*this) && this->index()<outer)
-          ++(*this);
-    }
-    inline Index row() const { return Base::row(); }
-    inline Index col() const { return Base::col(); }
+ public:
+  EIGEN_STRONG_INLINE InnerIterator(const SparseTriangularView& view,
+                                    Index outer)
+      : Base(view.nestedExpression(), outer) {
+    if (SkipFirst)
+      while ((*this) && this->index() < outer) ++(*this);
+  }
+  inline Index row() const { return Base::row(); }
+  inline Index col() const { return Base::col(); }
 
-    EIGEN_STRONG_INLINE operator bool() const
-    {
-      return SkipFirst ? Base::operator bool() : (Base::operator bool() && this->index() <= this->outer());
-    }
+  EIGEN_STRONG_INLINE operator bool() const {
+    return SkipFirst ? Base::operator bool() : (Base::operator bool() &&
+                                                this->index() <= this->outer());
+  }
 };
 
-template<typename Derived>
-template<int Mode>
+template <typename Derived>
+template <int Mode>
 inline const SparseTriangularView<Derived, Mode>
-SparseMatrixBase<Derived>::triangularView() const
-{
+SparseMatrixBase<Derived>::triangularView() const {
   return derived();
 }
 
-#endif // EIGEN_SPARSE_TRIANGULARVIEW_H
+#endif  // EIGEN_SPARSE_TRIANGULARVIEW_H

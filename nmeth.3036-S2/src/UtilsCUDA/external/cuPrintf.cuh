@@ -15,14 +15,16 @@ or conditions to the contrary in the License Agreement, reproduction or
 disclosure of the Licensed Deliverables to any third party without the express
 written consent of NVIDIA is prohibited.
 
-NOTWITHSTANDING ANY TERMS OR CONDITIONS TO THE CONTRARY IN THE LICENSE AGREEMENT,
+NOTWITHSTANDING ANY TERMS OR CONDITIONS TO THE CONTRARY IN THE LICENSE
+AGREEMENT,
 NVIDIA MAKES NO REPRESENTATION ABOUT THE SUITABILITY OF THESE LICENSED
 DELIVERABLES FOR ANY PURPOSE. IT IS PROVIDED "AS IS" WITHOUT EXPRESS OR IMPLIED
 WARRANTY OF ANY KIND. NVIDIA DISCLAIMS ALL WARRANTIES WITH REGARD TO THESE
 LICENSED DELIVERABLES, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY,
 NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE. NOTWITHSTANDING ANY
 TERMS OR CONDITIONS TO THE CONTRARY IN THE LICENSE AGREEMENT, IN NO EVENT SHALL
-NVIDIA BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES,
+NVIDIA BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES,
 OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER
 IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THESE LICENSED DELIVERABLES.
@@ -75,17 +77,37 @@ return 0;
 
 // Abuse of templates to simulate varargs
 __device__ int cuPrintf(const char *fmt);
-template <typename T1> __device__ int cuPrintf(const char *fmt, T1 arg1);
-template <typename T1, typename T2> __device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2);
-template <typename T1, typename T2, typename T3> __device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3);
-template <typename T1, typename T2, typename T3, typename T4> __device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
-template <typename T1, typename T2, typename T3, typename T4, typename T5> __device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
-template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6> __device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6);
-template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7> __device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7);
-template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8> __device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8);
-template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9> __device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9);
-template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10> __device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10);
-
+template <typename T1>
+__device__ int cuPrintf(const char *fmt, T1 arg1);
+template <typename T1, typename T2>
+__device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2);
+template <typename T1, typename T2, typename T3>
+__device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3);
+template <typename T1, typename T2, typename T3, typename T4>
+__device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+template <typename T1, typename T2, typename T3, typename T4, typename T5>
+__device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+                        T5 arg5);
+template <typename T1, typename T2, typename T3, typename T4, typename T5,
+          typename T6>
+__device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+                        T5 arg5, T6 arg6);
+template <typename T1, typename T2, typename T3, typename T4, typename T5,
+          typename T6, typename T7>
+__device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+                        T5 arg5, T6 arg6, T7 arg7);
+template <typename T1, typename T2, typename T3, typename T4, typename T5,
+          typename T6, typename T7, typename T8>
+__device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+                        T5 arg5, T6 arg6, T7 arg7, T8 arg8);
+template <typename T1, typename T2, typename T3, typename T4, typename T5,
+          typename T6, typename T7, typename T8, typename T9>
+__device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+                        T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9);
+template <typename T1, typename T2, typename T3, typename T4, typename T5,
+          typename T6, typename T7, typename T8, typename T9, typename T10>
+__device__ int cuPrintf(const char *fmt, T1 arg1, T2 arg2, T3 arg3, T4 arg4,
+                        T5 arg5, T6 arg6, T7 arg7, T8 arg8, T9 arg9, T10 arg10);
 
 //
 // cuPrintfRestrict
@@ -105,8 +127,6 @@ template <typename T1, typename T2, typename T3, typename T4, typename T5, typen
 //
 #define CUPRINTF_UNRESTRICTED -1
 __device__ void cuPrintfRestrict(int threadid, int blockid);
-
-
 
 ///////////////////////////////////////////////////////////////////////////////
 // HOST SIDE
@@ -132,7 +152,15 @@ __device__ void cuPrintfRestrict(int threadid, int blockid);
 // Returns:
 // cudaSuccess if all is well.
 //
-extern "C" cudaError_t cudaPrintfInit(size_t bufferLen=1048576); // 1-meg - that's enough for 4096 printfs by all threads put together
+extern "C" cudaError_t cudaPrintfInit(size_t bufferLen = 1048576);  // 1-meg -
+                                                                    // that's
+                                                                    // enough
+                                                                    // for 4096
+                                                                    // printfs
+                                                                    // by all
+                                                                    // threads
+                                                                    // put
+                                                                    // together
 
 //
 // cudaPrintfEnd
@@ -157,7 +185,7 @@ extern "C" void cudaPrintfEnd();
 // Returns:
 // cudaSuccess if all is well.
 //
-extern "C" cudaError_t cudaPrintfDisplay(void *outputFP=NULL, bool showThreadID=false);
+extern "C" cudaError_t cudaPrintfDisplay(void *outputFP = NULL,
+                                         bool showThreadID = false);
 
-#endif // CUPRINTF_H
-
+#endif  // CUPRINTF_H

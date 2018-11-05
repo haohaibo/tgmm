@@ -32,41 +32,40 @@
 
 namespace internal {
 
-template<> EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS EIGEN_UNUSED
-Packet4f plog<Packet4f>(const Packet4f& _x)
-{
+template <>
+EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS EIGEN_UNUSED Packet4f
+plog<Packet4f>(const Packet4f& _x) {
   Packet4f x = _x;
-  _EIGEN_DECLARE_CONST_Packet4f(1 , 1.0f);
+  _EIGEN_DECLARE_CONST_Packet4f(1, 1.0f);
   _EIGEN_DECLARE_CONST_Packet4f(half, 0.5f);
   _EIGEN_DECLARE_CONST_Packet4i(0x7f, 0x7f);
 
   _EIGEN_DECLARE_CONST_Packet4f_FROM_INT(inv_mant_mask, ~0x7f800000);
 
   /* the smallest non denormalized float number */
-  _EIGEN_DECLARE_CONST_Packet4f_FROM_INT(min_norm_pos,  0x00800000);
+  _EIGEN_DECLARE_CONST_Packet4f_FROM_INT(min_norm_pos, 0x00800000);
 
   /* natural logarithm computed for 4 simultaneous float
     return NaN for x <= 0
   */
   _EIGEN_DECLARE_CONST_Packet4f(cephes_SQRTHF, 0.707106781186547524f);
   _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p0, 7.0376836292E-2f);
-  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p1, - 1.1514610310E-1f);
+  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p1, -1.1514610310E-1f);
   _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p2, 1.1676998740E-1f);
-  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p3, - 1.2420140846E-1f);
-  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p4, + 1.4249322787E-1f);
-  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p5, - 1.6668057665E-1f);
-  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p6, + 2.0000714765E-1f);
-  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p7, - 2.4999993993E-1f);
-  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p8, + 3.3333331174E-1f);
+  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p3, -1.2420140846E-1f);
+  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p4, +1.4249322787E-1f);
+  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p5, -1.6668057665E-1f);
+  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p6, +2.0000714765E-1f);
+  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p7, -2.4999993993E-1f);
+  _EIGEN_DECLARE_CONST_Packet4f(cephes_log_p8, +3.3333331174E-1f);
   _EIGEN_DECLARE_CONST_Packet4f(cephes_log_q1, -2.12194440e-4f);
   _EIGEN_DECLARE_CONST_Packet4f(cephes_log_q2, 0.693359375f);
-
 
   Packet4i emm0;
 
   Packet4f invalid_mask = _mm_cmple_ps(x, _mm_setzero_ps());
 
-  x = pmax(x, p4f_min_norm_pos);  /* cut off denormalized stuff */
+  x = pmax(x, p4f_min_norm_pos); /* cut off denormalized stuff */
   emm0 = _mm_srli_epi32(_mm_castps_si128(x), 23);
 
   /* keep only the fractional part */
@@ -88,14 +87,14 @@ Packet4f plog<Packet4f>(const Packet4f& _x)
   e = psub(e, _mm_and_ps(p4f_1, mask));
   x = padd(x, tmp);
 
-  Packet4f x2 = pmul(x,x);
-  Packet4f x3 = pmul(x2,x);
+  Packet4f x2 = pmul(x, x);
+  Packet4f x3 = pmul(x2, x);
 
   Packet4f y, y1, y2;
-  y  = pmadd(p4f_cephes_log_p0, x, p4f_cephes_log_p1);
+  y = pmadd(p4f_cephes_log_p0, x, p4f_cephes_log_p1);
   y1 = pmadd(p4f_cephes_log_p3, x, p4f_cephes_log_p4);
   y2 = pmadd(p4f_cephes_log_p6, x, p4f_cephes_log_p7);
-  y  = pmadd(y , x, p4f_cephes_log_p2);
+  y = pmadd(y, x, p4f_cephes_log_p2);
   y1 = pmadd(y1, x, p4f_cephes_log_p5);
   y2 = pmadd(y2, x, p4f_cephes_log_p8);
   y = pmadd(y, x3, y1);
@@ -109,17 +108,16 @@ Packet4f plog<Packet4f>(const Packet4f& _x)
   y2 = pmul(e, p4f_cephes_log_q2);
   x = padd(x, y);
   x = padd(x, y2);
-  return _mm_or_ps(x, invalid_mask); // negative arg will be NAN
+  return _mm_or_ps(x, invalid_mask);  // negative arg will be NAN
 }
 
-template<> EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS EIGEN_UNUSED
-Packet4f pexp<Packet4f>(const Packet4f& _x)
-{
+template <>
+EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS EIGEN_UNUSED Packet4f
+pexp<Packet4f>(const Packet4f& _x) {
   Packet4f x = _x;
-  _EIGEN_DECLARE_CONST_Packet4f(1 , 1.0f);
+  _EIGEN_DECLARE_CONST_Packet4f(1, 1.0f);
   _EIGEN_DECLARE_CONST_Packet4f(half, 0.5f);
   _EIGEN_DECLARE_CONST_Packet4i(0x7f, 0x7f);
-
 
   _EIGEN_DECLARE_CONST_Packet4f(exp_hi, 88.3762626647949f);
   _EIGEN_DECLARE_CONST_Packet4f(exp_lo, -88.3762626647949f);
@@ -146,7 +144,7 @@ Packet4f pexp<Packet4f>(const Packet4f& _x)
 
   /* how to perform a floorf with SSE: just below */
   emm0 = _mm_cvttps_epi32(fx);
-  tmp  = _mm_cvtepi32_ps(emm0);
+  tmp = _mm_cvtepi32_ps(emm0);
   /* if greater, substract 1 */
   Packet4f mask = _mm_cmpgt_ps(tmp, fx);
   mask = _mm_and_ps(mask, p4f_1);
@@ -157,7 +155,7 @@ Packet4f pexp<Packet4f>(const Packet4f& _x)
   x = psub(x, tmp);
   x = psub(x, z);
 
-  z = pmul(x,x);
+  z = pmul(x, x);
 
   Packet4f y = p4f_cephes_exp_p0;
   y = pmadd(y, x, p4f_cephes_exp_p1);
@@ -187,11 +185,11 @@ Packet4f pexp<Packet4f>(const Packet4f& _x)
    surprising but correct result.
 */
 
-template<> EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS EIGEN_UNUSED
-Packet4f psin<Packet4f>(const Packet4f& _x)
-{
+template <>
+EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS EIGEN_UNUSED Packet4f
+psin<Packet4f>(const Packet4f& _x) {
   Packet4f x = _x;
-  _EIGEN_DECLARE_CONST_Packet4f(1 , 1.0f);
+  _EIGEN_DECLARE_CONST_Packet4f(1, 1.0f);
   _EIGEN_DECLARE_CONST_Packet4f(half, 0.5f);
 
   _EIGEN_DECLARE_CONST_Packet4i(1, 1);
@@ -201,16 +199,16 @@ Packet4f psin<Packet4f>(const Packet4f& _x)
 
   _EIGEN_DECLARE_CONST_Packet4f_FROM_INT(sign_mask, 0x80000000);
 
-  _EIGEN_DECLARE_CONST_Packet4f(minus_cephes_DP1,-0.78515625f);
+  _EIGEN_DECLARE_CONST_Packet4f(minus_cephes_DP1, -0.78515625f);
   _EIGEN_DECLARE_CONST_Packet4f(minus_cephes_DP2, -2.4187564849853515625e-4f);
   _EIGEN_DECLARE_CONST_Packet4f(minus_cephes_DP3, -3.77489497744594108e-8f);
   _EIGEN_DECLARE_CONST_Packet4f(sincof_p0, -1.9515295891E-4f);
-  _EIGEN_DECLARE_CONST_Packet4f(sincof_p1,  8.3321608736E-3f);
+  _EIGEN_DECLARE_CONST_Packet4f(sincof_p1, 8.3321608736E-3f);
   _EIGEN_DECLARE_CONST_Packet4f(sincof_p2, -1.6666654611E-1f);
-  _EIGEN_DECLARE_CONST_Packet4f(coscof_p0,  2.443315711809948E-005f);
+  _EIGEN_DECLARE_CONST_Packet4f(coscof_p0, 2.443315711809948E-005f);
   _EIGEN_DECLARE_CONST_Packet4f(coscof_p1, -1.388731625493765E-003f);
-  _EIGEN_DECLARE_CONST_Packet4f(coscof_p2,  4.166664568298827E-002f);
-  _EIGEN_DECLARE_CONST_Packet4f(cephes_FOPI, 1.27323954473516f); // 4 / M_PI
+  _EIGEN_DECLARE_CONST_Packet4f(coscof_p2, 4.166664568298827E-002f);
+  _EIGEN_DECLARE_CONST_Packet4f(cephes_FOPI, 1.27323954473516f);  // 4 / M_PI
 
   Packet4f xmm1, xmm2 = _mm_setzero_ps(), xmm3, sign_bit, y;
 
@@ -260,7 +258,7 @@ Packet4f psin<Packet4f>(const Packet4f& _x)
 
   /* Evaluate the first polynom  (0 <= x <= Pi/4) */
   y = p4f_coscof_p0;
-  Packet4f z = _mm_mul_ps(x,x);
+  Packet4f z = _mm_mul_ps(x, x);
 
   y = pmadd(y, z, p4f_coscof_p1);
   y = pmadd(y, z, p4f_coscof_p2);
@@ -282,17 +280,17 @@ Packet4f psin<Packet4f>(const Packet4f& _x)
   /* select the correct result from the two polynoms */
   y2 = _mm_and_ps(poly_mask, y2);
   y = _mm_andnot_ps(poly_mask, y);
-  y = _mm_or_ps(y,y2);
+  y = _mm_or_ps(y, y2);
   /* update the sign */
   return _mm_xor_ps(y, sign_bit);
 }
 
 /* almost the same as psin */
-template<> EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS EIGEN_UNUSED
-Packet4f pcos<Packet4f>(const Packet4f& _x)
-{
+template <>
+EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS EIGEN_UNUSED Packet4f
+pcos<Packet4f>(const Packet4f& _x) {
   Packet4f x = _x;
-  _EIGEN_DECLARE_CONST_Packet4f(1 , 1.0f);
+  _EIGEN_DECLARE_CONST_Packet4f(1, 1.0f);
   _EIGEN_DECLARE_CONST_Packet4f(half, 0.5f);
 
   _EIGEN_DECLARE_CONST_Packet4i(1, 1);
@@ -300,16 +298,16 @@ Packet4f pcos<Packet4f>(const Packet4f& _x)
   _EIGEN_DECLARE_CONST_Packet4i(2, 2);
   _EIGEN_DECLARE_CONST_Packet4i(4, 4);
 
-  _EIGEN_DECLARE_CONST_Packet4f(minus_cephes_DP1,-0.78515625f);
+  _EIGEN_DECLARE_CONST_Packet4f(minus_cephes_DP1, -0.78515625f);
   _EIGEN_DECLARE_CONST_Packet4f(minus_cephes_DP2, -2.4187564849853515625e-4f);
   _EIGEN_DECLARE_CONST_Packet4f(minus_cephes_DP3, -3.77489497744594108e-8f);
   _EIGEN_DECLARE_CONST_Packet4f(sincof_p0, -1.9515295891E-4f);
-  _EIGEN_DECLARE_CONST_Packet4f(sincof_p1,  8.3321608736E-3f);
+  _EIGEN_DECLARE_CONST_Packet4f(sincof_p1, 8.3321608736E-3f);
   _EIGEN_DECLARE_CONST_Packet4f(sincof_p2, -1.6666654611E-1f);
-  _EIGEN_DECLARE_CONST_Packet4f(coscof_p0,  2.443315711809948E-005f);
+  _EIGEN_DECLARE_CONST_Packet4f(coscof_p0, 2.443315711809948E-005f);
   _EIGEN_DECLARE_CONST_Packet4f(coscof_p1, -1.388731625493765E-003f);
-  _EIGEN_DECLARE_CONST_Packet4f(coscof_p2,  4.166664568298827E-002f);
-  _EIGEN_DECLARE_CONST_Packet4f(cephes_FOPI, 1.27323954473516f); // 4 / M_PI
+  _EIGEN_DECLARE_CONST_Packet4f(coscof_p2, 4.166664568298827E-002f);
+  _EIGEN_DECLARE_CONST_Packet4f(cephes_FOPI, 1.27323954473516f);  // 4 / M_PI
 
   Packet4f xmm1, xmm2 = _mm_setzero_ps(), xmm3, y;
   Packet4i emm0, emm2;
@@ -349,10 +347,10 @@ Packet4f pcos<Packet4f>(const Packet4f& _x)
 
   /* Evaluate the first polynom  (0 <= x <= Pi/4) */
   y = p4f_coscof_p0;
-  Packet4f z = pmul(x,x);
+  Packet4f z = pmul(x, x);
 
-  y = pmadd(y,z,p4f_coscof_p1);
-  y = pmadd(y,z,p4f_coscof_p2);
+  y = pmadd(y, z, p4f_coscof_p1);
+  y = pmadd(y, z, p4f_coscof_p2);
   y = pmul(y, z);
   y = pmul(y, z);
   Packet4f tmp = _mm_mul_ps(z, p4f_half);
@@ -368,8 +366,8 @@ Packet4f pcos<Packet4f>(const Packet4f& _x)
 
   /* select the correct result from the two polynoms */
   y2 = _mm_and_ps(poly_mask, y2);
-  y  = _mm_andnot_ps(poly_mask, y);
-  y  = _mm_or_ps(y,y2);
+  y = _mm_andnot_ps(poly_mask, y);
+  y = _mm_or_ps(y, y2);
 
   /* update the sign */
   return _mm_xor_ps(y, sign_bit);
@@ -377,19 +375,20 @@ Packet4f pcos<Packet4f>(const Packet4f& _x)
 
 // This is based on Quake3's fast inverse square root.
 // For detail see here: http://www.beyond3d.com/content/articles/8/
-template<> EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS EIGEN_UNUSED
-Packet4f psqrt<Packet4f>(const Packet4f& _x)
-{
+template <>
+EIGEN_DEFINE_FUNCTION_ALLOWING_MULTIPLE_DEFINITIONS EIGEN_UNUSED Packet4f
+psqrt<Packet4f>(const Packet4f& _x) {
   Packet4f half = pmul(_x, pset1<Packet4f>(.5f));
 
   /* select only the inverse sqrt of non-zero inputs */
-  Packet4f non_zero_mask = _mm_cmpgt_ps(_x, pset1<Packet4f>(std::numeric_limits<float>::epsilon()));
+  Packet4f non_zero_mask =
+      _mm_cmpgt_ps(_x, pset1<Packet4f>(std::numeric_limits<float>::epsilon()));
   Packet4f x = _mm_and_ps(non_zero_mask, _mm_rsqrt_ps(_x));
 
-  x = pmul(x, psub(pset1<Packet4f>(1.5f), pmul(half, pmul(x,x))));
-  return pmul(_x,x);
+  x = pmul(x, psub(pset1<Packet4f>(1.5f), pmul(half, pmul(x, x))));
+  return pmul(_x, x);
 }
 
-} // end namespace internal
+}  // end namespace internal
 
-#endif // EIGEN_MATH_FUNCTIONS_SSE_H
+#endif  // EIGEN_MATH_FUNCTIONS_SSE_H

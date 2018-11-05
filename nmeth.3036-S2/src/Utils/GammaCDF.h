@@ -12,71 +12,64 @@
 #ifndef GAMMACDF_H_
 #define GAMMACDF_H_
 
-
+#include <fstream>
 #include <iostream>
 #include "math.h"
-#include <fstream>
-namespace mylib
-{
-	extern "C"
-	{
-		#include "../mylib/cdf.h"
-	}
+namespace mylib {
+extern "C" {
+#include "../mylib/cdf.h"
+}
 }
 
 using namespace std;
 
-struct Gammadev{
+struct Gammadev {
+  double alph, oalph, bet;
+  double a1, a2;
+  mylib::CDF *normal;
 
-	double alph, oalph, bet;
-	double a1,a2;
-	mylib::CDF *normal;
+  Gammadev(double aalph, double bbet, mylib::uint32 seed)
+      : alph(aalph), oalph(aalph), bet(bbet) {
+    if (alph <= 0.) {
+      cout << "bad alpha in Gammadev" << endl;
+      exit(2);
+    }
+    if (alph < 1.) alph += 1.;
+    a1 = alph - 1. / 3.;
+    a2 = 1. / sqrt(9. * a1);
 
-	Gammadev(double aalph, double bbet,mylib::uint32 seed) : alph(aalph), oalph(aalph), bet(bbet)
-	{
+    normal = mylib::Normal_CDF(0.0, 1.0);
+    mylib::Seed_CDF(normal, seed);
+  };
+  // destructor
+  ~Gammadev() { mylib::Free_CDF(normal); };
 
-		if (alph <= 0.)
-		{
-			cout<<"bad alpha in Gammadev"<<endl;
-			exit(2);
-		}
-		if (alph < 1.) alph += 1.;
-		a1 = alph-1./3.;
-		a2 = 1./sqrt(9.*a1);
+  // sample method
+  double sample() {
+    double u, v, x;
+    do {
+      do {
+        x = mylib::Sample_CDF(normal);
+        v = 1. + a2 * x;
+      } while (v <= 0.);
+      v = v * v * v;
+      u = mylib::drand();
+    } while (u > 1. - 0.331 * pow(x, 4) &&
+             log(u) >
+                 0.5 * x * x + a1 * (1. - v + log(v)));  // Rarely evaluated.
 
-		normal=mylib::Normal_CDF(0.0,1.0);
-		mylib::Seed_CDF(normal,seed);
-	};
-	//destructor
-	~Gammadev()
-	{
-		mylib::Free_CDF(normal);
-	};
+    if (alph == oalph)
+      return a1 * v / bet;
+    else {
+      do
+        u = mylib::drand();
+      while (u == 0.);
+      return pow(u, 1. / oalph) * a1 * v / bet;
+    }
+  };
 
-	//sample method
-	double sample()
-	{
-		double u,v,x;
-		do {
-			do {
-				x = mylib::Sample_CDF(normal);
-				v = 1. + a2*x;
-			}while (v <= 0.);
-			v = v*v*v;
-			u = mylib::drand();
-		} while (u > 1. - 0.331*pow(x,4) && log(u) > 0.5*x*x + a1*(1.-v+log(v))); //Rarely evaluated.
-
-		if (alph == oalph)
-			return a1*v/bet;
-		else {
-			do u=mylib::drand();
-			while (u == 0.);
-			return pow(u,1./oalph)*a1*v/bet;
-		}
-	};
-
-	//test
-	void testChiSquare(string fileOut);
+  // test
+  void testChiSquare(string fileOut);
 };
 
 #endif /* GAMMACDF_H_ */

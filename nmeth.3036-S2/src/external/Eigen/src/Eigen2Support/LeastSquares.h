@@ -75,7 +75,8 @@
   *
   * Let's now describe precisely the parameters:
   * @param numPoints the number of points
-  * @param points the array of pointers to the points on which to perform the linear regression
+  * @param points the array of pointers to the points on which to perform the
+  linear regression
   * @param result pointer to the vector in which to store the result.
                   This vector must be of the same type and size as the
                   data points. The meaning of its coords is as follows.
@@ -94,22 +95,19 @@
   *
   * \sa fitHyperplane()
   */
-template<typename VectorType>
-void linearRegression(int numPoints,
-                      VectorType **points,
-                      VectorType *result,
-                      int funcOfOthers )
-{
+template <typename VectorType>
+void linearRegression(int numPoints, VectorType **points, VectorType *result,
+                      int funcOfOthers) {
   typedef typename VectorType::Scalar Scalar;
   typedef Hyperplane<Scalar, VectorType::SizeAtCompileTime> HyperplaneType;
   const int size = points[0]->size();
   result->resize(size);
   HyperplaneType h(size);
   fitHyperplane(numPoints, points, &h);
-  for(int i = 0; i < funcOfOthers; i++)
-    result->coeffRef(i) = - h.coeffs()[i] / h.coeffs()[funcOfOthers];
-  for(int i = funcOfOthers; i < size; i++)
-    result->coeffRef(i) = - h.coeffs()[i+1] / h.coeffs()[funcOfOthers];
+  for (int i = 0; i < funcOfOthers; i++)
+    result->coeffRef(i) = -h.coeffs()[i] / h.coeffs()[funcOfOthers];
+  for (int i = funcOfOthers; i < size; i++)
+    result->coeffRef(i) = -h.coeffs()[i + 1] / h.coeffs()[funcOfOthers];
 }
 
 /** \ingroup LeastSquares_Module
@@ -129,40 +127,41 @@ void linearRegression(int numPoints,
   * Thus, the vector \a retCoefficients has size \f$n+1\f$, which is another
   * difference from linearRegression().
   *
-  * In practice, this function performs an hyper-plane fit in a total least square sense
+  * In practice, this function performs an hyper-plane fit in a total least
+ * square sense
   * via the following steps:
   *  1 - center the data to the mean
   *  2 - compute the covariance matrix
-  *  3 - pick the eigenvector corresponding to the smallest eigenvalue of the covariance matrix
-  * The ratio of the smallest eigenvalue and the second one gives us a hint about the relevance
+  *  3 - pick the eigenvector corresponding to the smallest eigenvalue of the
+ * covariance matrix
+  * The ratio of the smallest eigenvalue and the second one gives us a hint
+ * about the relevance
   * of the solution. This value is optionally returned in \a soundness.
   *
   * \sa linearRegression()
   */
-template<typename VectorType, typename HyperplaneType>
-void fitHyperplane(int numPoints,
-                   VectorType **points,
-                   HyperplaneType *result,
-                   typename NumTraits<typename VectorType::Scalar>::Real* soundness = 0)
-{
+template <typename VectorType, typename HyperplaneType>
+void fitHyperplane(
+    int numPoints, VectorType **points, HyperplaneType *result,
+    typename NumTraits<typename VectorType::Scalar>::Real *soundness = 0) {
   typedef typename VectorType::Scalar Scalar;
-  typedef Matrix<Scalar,VectorType::SizeAtCompileTime,VectorType::SizeAtCompileTime> CovMatrixType;
+  typedef Matrix<Scalar, VectorType::SizeAtCompileTime,
+                 VectorType::SizeAtCompileTime>
+      CovMatrixType;
   EIGEN_STATIC_ASSERT_VECTOR_ONLY(VectorType)
   ei_assert(numPoints >= 1);
   int size = points[0]->size();
-  ei_assert(size+1 == result->coeffs().size());
+  ei_assert(size + 1 == result->coeffs().size());
 
   // compute the mean of the data
   VectorType mean = VectorType::Zero(size);
-  for(int i = 0; i < numPoints; ++i)
-    mean += *(points[i]);
+  for (int i = 0; i < numPoints; ++i) mean += *(points[i]);
   mean /= numPoints;
 
   // compute the covariance matrix
   CovMatrixType covMat = CovMatrixType::Zero(size, size);
   VectorType remean = VectorType::Zero(size);
-  for(int i = 0; i < numPoints; ++i)
-  {
+  for (int i = 0; i < numPoints; ++i) {
     VectorType diff = (*(points[i]) - mean).conjugate();
     covMat += diff * diff.adjoint();
   }
@@ -171,12 +170,11 @@ void fitHyperplane(int numPoints,
   SelfAdjointEigenSolver<CovMatrixType> eig(covMat);
   result->normal() = eig.eigenvectors().col(0);
   if (soundness)
-    *soundness = eig.eigenvalues().coeff(0)/eig.eigenvalues().coeff(1);
+    *soundness = eig.eigenvalues().coeff(0) / eig.eigenvalues().coeff(1);
 
   // let's compute the constant coefficient such that the
   // plane pass trough the mean point:
-  result->offset() = - (result->normal().cwise()* mean).sum();
+  result->offset() = -(result->normal().cwise() * mean).sum();
 }
 
-
-#endif // EIGEN2_LEASTSQUARES_H
+#endif  // EIGEN2_LEASTSQUARES_H

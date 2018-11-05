@@ -36,15 +36,15 @@
 
 #pragma once
 
+#include <stdlib.h>
+#include <deque>
+#include <iostream>
+#include <limits>
+#include <map>
+#include <set>
+#include <sstream>
 #include <string>
 #include <vector>
-#include <set>
-#include <iostream>
-#include <sstream>
-#include <map>
-#include <deque>
-#include <stdlib.h>
-#include <limits>
 #include "xmlParser.h"
 
 using namespace std;
@@ -52,19 +52,19 @@ using namespace std;
 // Templated function to make conversion from simple data types like
 // ints and doubles to strings easy for debugging. This avoids messy
 // char buffers.
-template<class T>
+template <class T>
 std::string toString(const T& v);
 
-template<class T>
+template <class T>
 std::string toString(const std::vector<T>& v);
 
-template<class T>
+template <class T>
 std::string toString(const std::set<T>& v);
 
-template<class T>
+template <class T>
 std::string toString(const std::deque<T>& q);
 
-template<class T, class U>
+template <class T, class U>
 std::string toString(const std::pair<T, U>& p);
 
 // Specialized toString() routines
@@ -74,12 +74,12 @@ std::string toString(const map<std::string, std::string>& m);
 int strNoCaseCompare(const std::string& A, const std::string& B);
 
 // Conversion from a string.
-template<class T>
+template <class T>
 int parseString(const std::string& str, std::vector<T>& v);
 
-template<class T, bool B>
+template <class T, bool B>
 struct parseInfToken {
-    static bool apply(const std::string& token, T& value);
+  static bool apply(const std::string& token, T& value);
 };
 
 map<string, string> parseNameValueString(string str);
@@ -89,139 +89,137 @@ std::string padString(const std::string& str, int padLength,
                       unsigned char padChar = '0');
 
 // Replaces any occurrences in str of substr with rep
-string strReplaceSubstr(const string& str, const string& substr, const string& rep);
+string strReplaceSubstr(const string& str, const string& substr,
+                        const string& rep);
 
 // Some filename/directory processing functions
-string strBaseName(const string &fullPath); // no dir and no ext
-string strFilename(const string &fullPath); // no dir
-string strDirectory(const string &fullPath); // only dir
-string strExtension(const string &fullPath); // only ext
-string strReplaceExt(const string &fullPath, const string &ext);
-string strWithoutExt(const string &fullPath);
-string strWithoutEndSlashes(const string &fullPath); // stips off all '/' at the end
-int strFileIndex(const string &fullPath);
+string strBaseName(const string& fullPath);   // no dir and no ext
+string strFilename(const string& fullPath);   // no dir
+string strDirectory(const string& fullPath);  // only dir
+string strExtension(const string& fullPath);  // only ext
+string strReplaceExt(const string& fullPath, const string& ext);
+string strWithoutExt(const string& fullPath);
+string strWithoutEndSlashes(
+    const string& fullPath);  // stips off all '/' at the end
+int strFileIndex(const string& fullPath);
 
-//added by Fernando Amat
-template<class T>
-void parseXMLattribute(const XMLNode &node,std::string attr,std::vector<T> &val,bool isMandatory);
+// added by Fernando Amat
+template <class T>
+void parseXMLattribute(const XMLNode& node, std::string attr,
+                       std::vector<T>& val, bool isMandatory);
 
 // Implementation -----------------------------------------------------------
 
-template<class T>
-std::string toString(const T& v)
-{
-    std::stringstream s;
-    s << v;
-    return s.str();
+template <class T>
+std::string toString(const T& v) {
+  std::stringstream s;
+  s << v;
+  return s.str();
 }
 
-template<class T>
-std::string toString(const std::vector<T>& v)
-{
-    std::stringstream s;
-    for (unsigned i = 0; i < v.size(); i++) {
-        s << " " << v[i];
-    }
-    return s.str();
+template <class T>
+std::string toString(const std::vector<T>& v) {
+  std::stringstream s;
+  for (unsigned i = 0; i < v.size(); i++) {
+    s << " " << v[i];
+  }
+  return s.str();
 }
 
-template<class T>
-std::string toString(const std::set<T>& v)
-{
-    std::stringstream s;
-    s << "{";
-    for (typename std::set<T>::const_iterator it = v.begin(); it != v.end(); ++it) {
-        s << " " << *it;
-    }
-    s << " }";
-    return s.str();
+template <class T>
+std::string toString(const std::set<T>& v) {
+  std::stringstream s;
+  s << "{";
+  for (typename std::set<T>::const_iterator it = v.begin(); it != v.end();
+       ++it) {
+    s << " " << *it;
+  }
+  s << " }";
+  return s.str();
 }
 
-template<class T>
-std::string toString(const std::deque<T>& q)
-{
-    std::stringstream s;
-    for (typename std::deque<T>::const_iterator it = q.begin(); it != q.end(); ++it) {
-        s << " " << *it;
-    }
-    return s.str();
+template <class T>
+std::string toString(const std::deque<T>& q) {
+  std::stringstream s;
+  for (typename std::deque<T>::const_iterator it = q.begin(); it != q.end();
+       ++it) {
+    s << " " << *it;
+  }
+  return s.str();
 }
 
-template<class T, class U>
-std::string toString(const std::pair<T, U>& p)
-{
-    std::stringstream s;
-    s << "(" << p.first << ", " << p.second << ")";
-    return s.str();
+template <class T, class U>
+std::string toString(const std::pair<T, U>& p) {
+  std::stringstream s;
+  s << "(" << p.first << ", " << p.second << ")";
+  return s.str();
 }
 
 // Conversion from a string
-template<class T>
-int parseString(const std::string& str, std::vector<T>& v)
-{
-    std::stringstream buffer;
-    T data;
-    int count;
+template <class T>
+int parseString(const std::string& str, std::vector<T>& v) {
+  std::stringstream buffer;
+  T data;
+  int count;
 
-    buffer << str;
+  buffer << str;
 
-    count = 0;
-    while (1) {
-        int lastPosition = buffer.tellg();
-        buffer >> data;
-        if (buffer.fail()) {
-            // try to parse special token
-            buffer.clear();
-            buffer.seekg(lastPosition, ios::beg);
-            string token;
-            buffer >> token;            
-            if (!parseInfToken<T, numeric_limits<T>::has_infinity>::apply(token, data)) {
-                break;
-            }
-        }
-        v.push_back(data);
-        count++;
-
-        if (buffer.eof()) break;
+  count = 0;
+  while (1) {
+    int lastPosition = buffer.tellg();
+    buffer >> data;
+    if (buffer.fail()) {
+      // try to parse special token
+      buffer.clear();
+      buffer.seekg(lastPosition, ios::beg);
+      string token;
+      buffer >> token;
+      if (!parseInfToken<T, numeric_limits<T>::has_infinity>::apply(token,
+                                                                    data)) {
+        break;
+      }
     }
+    v.push_back(data);
+    count++;
 
-    return count;
+    if (buffer.eof()) break;
+  }
+
+  return count;
 }
 
-template<class T>
-struct parseInfToken<T, true>  {
-    static bool apply(const std::string& token, T& value) {
-        if (token.compare("-inf") == 0) {
-            value = -numeric_limits<T>::infinity();
-        } else if (token.compare("inf") == 0) {
-            value = numeric_limits<T>::infinity();
-        } else {
-            return false;
-        }
-        
-        return true;
+template <class T>
+struct parseInfToken<T, true> {
+  static bool apply(const std::string& token, T& value) {
+    if (token.compare("-inf") == 0) {
+      value = -numeric_limits<T>::infinity();
+    } else if (token.compare("inf") == 0) {
+      value = numeric_limits<T>::infinity();
+    } else {
+      return false;
     }
+
+    return true;
+  }
 };
 
-template<class T>
-struct parseInfToken<T, false>  {
-    static bool apply(const std::string& token, T& value) {
-        return false;
-    }
+template <class T>
+struct parseInfToken<T, false> {
+  static bool apply(const std::string& token, T& value) { return false; }
 };
 
-//added by Fernando Amat
-template<class T>
-void parseXMLattribute(const XMLNode &node,std::string attr,std::vector<T> &val,bool isMandatory)
-{
-	XMLCSTR aux=node.getAttribute(attr.c_str());
-	if(aux==NULL && isMandatory==true)
-	{
-		cout<<"ERROR: attribute "<<attr<<" could not be found and it is mandatory"<<endl;
-		exit(10);
-	}
-	val.clear();
-	if(aux==NULL) return;
+// added by Fernando Amat
+template <class T>
+void parseXMLattribute(const XMLNode& node, std::string attr,
+                       std::vector<T>& val, bool isMandatory) {
+  XMLCSTR aux = node.getAttribute(attr.c_str());
+  if (aux == NULL && isMandatory == true) {
+    cout << "ERROR: attribute " << attr
+         << " could not be found and it is mandatory" << endl;
+    exit(10);
+  }
+  val.clear();
+  if (aux == NULL) return;
 
-	parseString<T>(string(aux), val);
+  parseString<T>(string(aux), val);
 }

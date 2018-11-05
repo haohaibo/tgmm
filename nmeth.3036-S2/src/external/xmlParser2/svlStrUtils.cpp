@@ -32,173 +32,158 @@
 **
 *****************************************************************************/
 
-#include <string>
 #include <iostream>
 #include <sstream>
+#include <string>
 
 #include "svlStrUtils.h"
 
 using namespace std;
 
 // toString() routines.
-string toString(const map<string, string>& p)
-{
-    std::stringstream s;    
-    for (map<string, string>::const_iterator i = p.begin();
-	 i != p.end(); i++) {
-	if (i != p.begin()) {
-	    s << ", ";
-	}
-	s << i->first << "=" << i->second;
+string toString(const map<string, string> &p) {
+  std::stringstream s;
+  for (map<string, string>::const_iterator i = p.begin(); i != p.end(); i++) {
+    if (i != p.begin()) {
+      s << ", ";
     }
-    return s.str();
+    s << i->first << "=" << i->second;
+  }
+  return s.str();
 }
 
 // Case insensitive comparison
-int strNoCaseCompare(const string& A, const string& B)
-{
-    string::const_iterator itA = A.begin();
-    string::const_iterator itB = B.begin();
+int strNoCaseCompare(const string &A, const string &B) {
+  string::const_iterator itA = A.begin();
+  string::const_iterator itB = B.begin();
 
-    while ((itA != A.end()) && (itB != B.end())) { 
-        if (::toupper(*itA) != ::toupper(*itB))
-            return (::toupper(*itA)  < ::toupper(*itB)) ? -1 : 1; 
-        ++itA;
-        ++itB;
-    }
+  while ((itA != A.end()) && (itB != B.end())) {
+    if (::toupper(*itA) != ::toupper(*itB))
+      return (::toupper(*itA) < ::toupper(*itB)) ? -1 : 1;
+    ++itA;
+    ++itB;
+  }
 
-    if (A.size() == B.size()) 
-        return 0;
-    return (A.size() < B.size()) ? -1 : 1;
+  if (A.size() == B.size()) return 0;
+  return (A.size() < B.size()) ? -1 : 1;
 }
 
 // Function to break string of "<name>\s*=\s*<value>[,; ]" pairs
 // into an stl map. If the value part does not exist then sets to
 // "true".
-map<string, string> parseNameValueString(string str)
-{
-    // first tokenize into <name>=<value> pairs
-    vector<string> tokens;
-    string::size_type lastPos = str.find_first_not_of(" ", 0);
-    string::size_type pos = str.find_first_of(",; ", lastPos);
+map<string, string> parseNameValueString(string str) {
+  // first tokenize into <name>=<value> pairs
+  vector<string> tokens;
+  string::size_type lastPos = str.find_first_not_of(" ", 0);
+  string::size_type pos = str.find_first_of(",; ", lastPos);
 
-    while ((string::npos != pos) || (string::npos != lastPos)) {
-        // found a token, add it to the vector.
-        tokens.push_back(str.substr(lastPos, pos - lastPos));
-        // skip delimiters
-        lastPos = str.find_first_not_of(",; ", pos);
-        // find next "non-delimiter"
-        pos = str.find_first_of(",; ", lastPos);
-    }
+  while ((string::npos != pos) || (string::npos != lastPos)) {
+    // found a token, add it to the vector.
+    tokens.push_back(str.substr(lastPos, pos - lastPos));
+    // skip delimiters
+    lastPos = str.find_first_not_of(",; ", pos);
+    // find next "non-delimiter"
+    pos = str.find_first_of(",; ", lastPos);
+  }
 
-    // now break tokens into name and value pairs
-    map<string, string> output;
-    for (unsigned i = 0; i < tokens.size(); i++) {
-	pos = tokens[i].find_first_of("=", 0);
-	if (pos != string::npos) {
-	    output[tokens[i].substr(0, pos)] = 
-		tokens[i].substr(pos + 1, tokens[i].length() - pos);
-	} else {
-	    output[tokens[i]] = "true";
-	}
+  // now break tokens into name and value pairs
+  map<string, string> output;
+  for (unsigned i = 0; i < tokens.size(); i++) {
+    pos = tokens[i].find_first_of("=", 0);
+    if (pos != string::npos) {
+      output[tokens[i].substr(0, pos)] =
+          tokens[i].substr(pos + 1, tokens[i].length() - pos);
+    } else {
+      output[tokens[i]] = "true";
     }
-   
-    return output;
+  }
+
+  return output;
 }
 
-string padString(const string& str, int padLength,
-                 unsigned char padChar)
-{
-    if (str.size() >= (unsigned)padLength) {
-        return str;
-    }
+string padString(const string &str, int padLength, unsigned char padChar) {
+  if (str.size() >= (unsigned)padLength) {
+    return str;
+  }
 
-    string padString((unsigned)padLength - str.size(), padChar);
-    return (padString + str);
+  string padString((unsigned)padLength - str.size(), padChar);
+  return (padString + str);
 }
 
-string strReplaceSubstr(const string & str, const string & substr, const string & rep)
-{
+string strReplaceSubstr(const string &str, const string &substr,
+                        const string &rep) {
   string rval;
 
   size_t searchPos = 0, prevPos;
 
-  while (searchPos != string::npos && searchPos < str.size())
-    {
-      prevPos = searchPos;
+  while (searchPos != string::npos && searchPos < str.size()) {
+    prevPos = searchPos;
 
-      searchPos = str.find(substr, searchPos);
-      
-      if (searchPos == string::npos)
-	rval += str.substr(prevPos);
-      else
-	{
-	  rval += str.substr(prevPos, searchPos - prevPos);
-	  rval += rep;
+    searchPos = str.find(substr, searchPos);
 
-	  searchPos += substr.length();
-	}
+    if (searchPos == string::npos)
+      rval += str.substr(prevPos);
+    else {
+      rval += str.substr(prevPos, searchPos - prevPos);
+      rval += rep;
+
+      searchPos += substr.length();
     }
+  }
   return rval;
 }
 
-string strBaseName(const string &fullPath)
-{
-    string baseName;
-    
-    // strip directory name
-    string::size_type pos = fullPath.find_last_of("/\\");
-    if (pos == string::npos) {
-	baseName = fullPath;
-    } else {
-	baseName = fullPath.substr(pos + 1, fullPath.length() - pos);
-    }
+string strBaseName(const string &fullPath) {
+  string baseName;
 
-    // strip extension
-    return strWithoutExt(baseName);
+  // strip directory name
+  string::size_type pos = fullPath.find_last_of("/\\");
+  if (pos == string::npos) {
+    baseName = fullPath;
+  } else {
+    baseName = fullPath.substr(pos + 1, fullPath.length() - pos);
+  }
+
+  // strip extension
+  return strWithoutExt(baseName);
 }
 
-string strFilename(const string &fullPath)
-{
-    // strip directory name
-    string::size_type pos = fullPath.find_last_of("/\\");
-    if (pos == string::npos) {
-	return fullPath;
-    }
-    
-    return fullPath.substr(pos + 1, fullPath.length() - pos);
+string strFilename(const string &fullPath) {
+  // strip directory name
+  string::size_type pos = fullPath.find_last_of("/\\");
+  if (pos == string::npos) {
+    return fullPath;
+  }
+
+  return fullPath.substr(pos + 1, fullPath.length() - pos);
 }
 
-string strDirectory(const string &fullPath)
-{
-    string::size_type pos = fullPath.find_last_of("/\\");
-    if (pos == string::npos) {
-	return string(".");
-    }
-    
-    return fullPath.substr(0, pos);
+string strDirectory(const string &fullPath) {
+  string::size_type pos = fullPath.find_last_of("/\\");
+  if (pos == string::npos) {
+    return string(".");
+  }
+
+  return fullPath.substr(0, pos);
 }
 
-string strExtension(const string &fullPath)
-{
-    string filename = strFilename(fullPath);
-    string::size_type pos = filename.find_last_of(".");
-    if (pos != string::npos) {
-	return filename.substr(pos + 1, filename.length() - pos);
-    }
-    
-    return string("");
+string strExtension(const string &fullPath) {
+  string filename = strFilename(fullPath);
+  string::size_type pos = filename.find_last_of(".");
+  if (pos != string::npos) {
+    return filename.substr(pos + 1, filename.length() - pos);
+  }
+
+  return string("");
 }
 
-string strReplaceExt(const string &fullPath, const string &ext)
-{
-    string oldExt = strExtension(fullPath);
-    int len = oldExt.length() == 0 ? 0 : oldExt.length() + 1;
-    return (fullPath.substr(0, fullPath.length() - len) + ext);
+string strReplaceExt(const string &fullPath, const string &ext) {
+  string oldExt = strExtension(fullPath);
+  int len = oldExt.length() == 0 ? 0 : oldExt.length() + 1;
+  return (fullPath.substr(0, fullPath.length() - len) + ext);
 }
 
-string strWithoutExt(const string &fullPath)
-{
+string strWithoutExt(const string &fullPath) {
   string filename = fullPath;
 
   // strip extension
@@ -209,25 +194,22 @@ string strWithoutExt(const string &fullPath)
   return filename;
 }
 
-string strWithoutEndSlashes(const string &fullPath)
-{
+string strWithoutEndSlashes(const string &fullPath) {
   string filename = fullPath;
   string::size_type pos = filename.find_last_not_of("/");
-  return filename.substr(0, pos+1);
+  return filename.substr(0, pos + 1);
 }
 
 // Returns index from filenames with the form <base><index>.<ext>
-int strFileIndex(const string &fullPath)
-{
-    string baseName = strBaseName(fullPath);
-    string::size_type ib = baseName.find_first_of("0123456789");
-    string::size_type ie = baseName.find_last_of("0123456789");
-   
-    if ((ib == string::npos) || (ie == string::npos)) {
-	return -1;
-    }
+int strFileIndex(const string &fullPath) {
+  string baseName = strBaseName(fullPath);
+  string::size_type ib = baseName.find_first_of("0123456789");
+  string::size_type ie = baseName.find_last_of("0123456789");
 
-    string index = baseName.substr(ib, ie - ib + 1);
-    return atoi(index.c_str());
+  if ((ib == string::npos) || (ie == string::npos)) {
+    return -1;
+  }
+
+  string index = baseName.substr(ib, ie - ib + 1);
+  return atoi(index.c_str());
 }
-

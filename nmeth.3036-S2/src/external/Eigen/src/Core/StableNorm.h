@@ -26,19 +26,18 @@
 #define EIGEN_STABLENORM_H
 
 namespace internal {
-template<typename ExpressionType, typename Scalar>
-inline void stable_norm_kernel(const ExpressionType& bl, Scalar& ssq, Scalar& scale, Scalar& invScale)
-{
+template <typename ExpressionType, typename Scalar>
+inline void stable_norm_kernel(const ExpressionType& bl, Scalar& ssq,
+                               Scalar& scale, Scalar& invScale) {
   Scalar max = bl.cwiseAbs().maxCoeff();
-  if (max>scale)
-  {
-    ssq = ssq * abs2(scale/max);
+  if (max > scale) {
+    ssq = ssq * abs2(scale / max);
     scale = max;
-    invScale = Scalar(1)/scale;
+    invScale = Scalar(1) / scale;
   }
   // TODO if the max is much much smaller than the current scale,
   // then we can neglect this sub vector
-  ssq += (bl*invScale).squaredNorm();
+  ssq += (bl * invScale).squaredNorm();
 }
 }
 
@@ -52,23 +51,26 @@ inline void stable_norm_kernel(const ExpressionType& bl, Scalar& ssq, Scalar& sc
   *
   * \sa norm(), blueNorm(), hypotNorm()
   */
-template<typename Derived>
+template <typename Derived>
 inline typename NumTraits<typename internal::traits<Derived>::Scalar>::Real
-MatrixBase<Derived>::stableNorm() const
-{
+MatrixBase<Derived>::stableNorm() const {
   const Index blockSize = 4096;
   RealScalar scale = 0;
   RealScalar invScale = 1;
-  RealScalar ssq = 0; // sum of square
+  RealScalar ssq = 0;  // sum of square
   enum {
-    Alignment = (int(Flags)&DirectAccessBit) || (int(Flags)&AlignedBit) ? 1 : 0
+    Alignment =
+        (int(Flags) & DirectAccessBit) || (int(Flags) & AlignedBit) ? 1 : 0
   };
   Index n = size();
   Index bi = internal::first_aligned(derived());
-  if (bi>0)
+  if (bi > 0)
     internal::stable_norm_kernel(this->head(bi), ssq, scale, invScale);
-  for (; bi<n; bi+=blockSize)
-    internal::stable_norm_kernel(this->segment(bi,std::min(blockSize, n - bi)).template forceAlignedAccessIf<Alignment>(), ssq, scale, invScale);
+  for (; bi < n; bi += blockSize)
+    internal::stable_norm_kernel(
+        this->segment(bi, std::min(blockSize, n - bi))
+            .template forceAlignedAccessIf<Alignment>(),
+        ssq, scale, invScale);
   return scale * internal::sqrt(ssq);
 }
 
@@ -81,14 +83,12 @@ MatrixBase<Derived>::stableNorm() const
   *
   * \sa norm(), stableNorm(), hypotNorm()
   */
-template<typename Derived>
+template <typename Derived>
 inline typename NumTraits<typename internal::traits<Derived>::Scalar>::Real
-MatrixBase<Derived>::blueNorm() const
-{
+MatrixBase<Derived>::blueNorm() const {
   static Index nmax = -1;
   static RealScalar b1, b2, s1m, s2m, overfl, rbig, relerr;
-  if(nmax <= 0)
-  {
+  if (nmax <= 0) {
     int nbig, ibeta, it, iemin, iemax, iexp;
     RealScalar abig, eps;
     // This program calculates the machine-dependent constants
@@ -99,76 +99,80 @@ MatrixBase<Derived>::blueNorm() const
     // For portability, the PORT subprograms "ilmaeh" and "rlmach"
     // are used. For any specific computer, each of the assignment
     // statements can be replaced
-    nbig  = std::numeric_limits<Index>::max();            // largest integer
-    ibeta = std::numeric_limits<RealScalar>::radix;         // base for floating-point numbers
-    it    = std::numeric_limits<RealScalar>::digits;        // number of base-beta digits in mantissa
+    nbig = std::numeric_limits<Index>::max();        // largest integer
+    ibeta = std::numeric_limits<RealScalar>::radix;  // base for floating-point
+                                                     // numbers
+    it = std::numeric_limits<RealScalar>::digits;  // number of base-beta digits
+                                                   // in mantissa
     iemin = std::numeric_limits<RealScalar>::min_exponent;  // minimum exponent
     iemax = std::numeric_limits<RealScalar>::max_exponent;  // maximum exponent
-    rbig  = std::numeric_limits<RealScalar>::max();         // largest floating-point number
+    rbig = std::numeric_limits<RealScalar>::max();  // largest floating-point
+                                                    // number
 
-    iexp  = -((1-iemin)/2);
-    b1    = RealScalar(std::pow(RealScalar(ibeta),RealScalar(iexp)));  // lower boundary of midrange
-    iexp  = (iemax + 1 - it)/2;
-    b2    = RealScalar(std::pow(RealScalar(ibeta),RealScalar(iexp)));   // upper boundary of midrange
+    iexp = -((1 - iemin) / 2);
+    b1 = RealScalar(std::pow(RealScalar(ibeta),
+                             RealScalar(iexp)));  // lower boundary of midrange
+    iexp = (iemax + 1 - it) / 2;
+    b2 = RealScalar(std::pow(RealScalar(ibeta),
+                             RealScalar(iexp)));  // upper boundary of midrange
 
-    iexp  = (2-iemin)/2;
-    s1m   = RealScalar(std::pow(RealScalar(ibeta),RealScalar(iexp)));   // scaling factor for lower range
-    iexp  = - ((iemax+it)/2);
-    s2m   = RealScalar(std::pow(RealScalar(ibeta),RealScalar(iexp)));   // scaling factor for upper range
+    iexp = (2 - iemin) / 2;
+    s1m = RealScalar(
+        std::pow(RealScalar(ibeta),
+                 RealScalar(iexp)));  // scaling factor for lower range
+    iexp = -((iemax + it) / 2);
+    s2m = RealScalar(
+        std::pow(RealScalar(ibeta),
+                 RealScalar(iexp)));  // scaling factor for upper range
 
-    overfl  = rbig*s2m;             // overflow boundary for abig
-    eps     = RealScalar(std::pow(double(ibeta), 1-it));
-    relerr  = internal::sqrt(eps);         // tolerance for neglecting asml
-    abig    = RealScalar(1.0/eps - 1.0);
-    if (RealScalar(nbig)>abig)  nmax = int(abig);  // largest safe n
-    else                        nmax = nbig;
+    overfl = rbig * s2m;  // overflow boundary for abig
+    eps = RealScalar(std::pow(double(ibeta), 1 - it));
+    relerr = internal::sqrt(eps);  // tolerance for neglecting asml
+    abig = RealScalar(1.0 / eps - 1.0);
+    if (RealScalar(nbig) > abig)
+      nmax = int(abig);  // largest safe n
+    else
+      nmax = nbig;
   }
   Index n = size();
   RealScalar ab2 = b2 / RealScalar(n);
   RealScalar asml = RealScalar(0);
   RealScalar amed = RealScalar(0);
   RealScalar abig = RealScalar(0);
-  for(Index j=0; j<n; ++j)
-  {
+  for (Index j = 0; j < n; ++j) {
     RealScalar ax = internal::abs(coeff(j));
-    if(ax > ab2)     abig += internal::abs2(ax*s2m);
-    else if(ax < b1) asml += internal::abs2(ax*s1m);
-    else             amed += internal::abs2(ax);
+    if (ax > ab2)
+      abig += internal::abs2(ax * s2m);
+    else if (ax < b1)
+      asml += internal::abs2(ax * s1m);
+    else
+      amed += internal::abs2(ax);
   }
-  if(abig > RealScalar(0))
-  {
+  if (abig > RealScalar(0)) {
     abig = internal::sqrt(abig);
-    if(abig > overfl)
-    {
+    if (abig > overfl) {
       eigen_assert(false && "overflow");
       return rbig;
     }
-    if(amed > RealScalar(0))
-    {
-      abig = abig/s2m;
+    if (amed > RealScalar(0)) {
+      abig = abig / s2m;
       amed = internal::sqrt(amed);
-    }
-    else
-      return abig/s2m;
-  }
-  else if(asml > RealScalar(0))
-  {
-    if (amed > RealScalar(0))
-    {
+    } else
+      return abig / s2m;
+  } else if (asml > RealScalar(0)) {
+    if (amed > RealScalar(0)) {
       abig = internal::sqrt(amed);
       amed = internal::sqrt(asml) / s1m;
-    }
-    else
-      return internal::sqrt(asml)/s1m;
-  }
-  else
+    } else
+      return internal::sqrt(asml) / s1m;
+  } else
     return internal::sqrt(amed);
   asml = std::min(abig, amed);
   abig = std::max(abig, amed);
-  if(asml <= abig*relerr)
+  if (asml <= abig * relerr)
     return abig;
   else
-    return abig * internal::sqrt(RealScalar(1) + internal::abs2(asml/abig));
+    return abig * internal::sqrt(RealScalar(1) + internal::abs2(asml / abig));
 }
 
 /** \returns the \em l2 norm of \c *this avoiding undeflow and overflow.
@@ -176,11 +180,10 @@ MatrixBase<Derived>::blueNorm() const
   *
   * \sa norm(), stableNorm()
   */
-template<typename Derived>
+template <typename Derived>
 inline typename NumTraits<typename internal::traits<Derived>::Scalar>::Real
-MatrixBase<Derived>::hypotNorm() const
-{
+MatrixBase<Derived>::hypotNorm() const {
   return this->cwiseAbs().redux(internal::scalar_hypot_op<RealScalar>());
 }
 
-#endif // EIGEN_STABLENORM_H
+#endif  // EIGEN_STABLENORM_H

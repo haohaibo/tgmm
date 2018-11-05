@@ -102,11 +102,9 @@
 #define frexp gsl_frexp
 #endif
 
-
 #if !HAVE_DECL_ISINF
 #define isinf gsl_isinf
 #endif
-
 
 #if !HAVE_DECL_FINITE
 #if HAVE_DECL_ISFINITE
@@ -116,20 +114,21 @@
 #endif
 #endif
 
-
 #if !HAVE_DECL_ISNAN
 #define isnan gsl_isnan
 #endif
 
-
 #ifdef __GNUC__
-#define DISCARD_POINTER(p) do { ; } while(p ? 0 : 0);
+#define DISCARD_POINTER(p) \
+  do {                     \
+    ;                      \
+  } while (p ? 0 : 0);
 #else
 #define DISCARD_POINTER(p) /* ignoring discarded pointer */
 #endif
 
 #if defined(GSL_RANGE_CHECK_OFF) || !defined(GSL_RANGE_CHECK)
-#define GSL_RANGE_CHECK 0  /* turn off range checking by default internally */
+#define GSL_RANGE_CHECK 0 /* turn off range checking by default internally */
 #endif
 
 /* Disable deprecated functions and enums while building */
